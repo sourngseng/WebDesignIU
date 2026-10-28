@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>សៀវភៅគោល: ជំពូកទី ១ — សេចក្តីផ្តើមអំពីការរចនាគេហទំព័រ (Introduction to Web Design)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Siemreap&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ==========================================================================
+     Master Responsive & Reader-Friendly Styling
+     ========================================================================== */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --font-body: 'Kantumruy Pro', 'Khmer OS Siemreap', 'Siemreap', system-ui, -apple-system, sans-serif;
+    --font-code: 'Fira Code', Consolas, Monaco, monospace;
+    --color-primary: #0F172A;
+    --color-navy: #1E3A8A;
+    --color-blue: #2563EB;
+    --color-muted: #64748B;
+    --color-bg: #F8FAFC;
+    --color-card: #FFFFFF;
+    --color-border: #E2E8F0;
+    --color-border-dark: #CBD5E1;
+    --color-code-bg: #F8FAFC;
+    --font-scale: 16px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: var(--font-scale);
+    line-height: 1.75;
+    color: var(--color-primary);
+    background-color: var(--color-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Top Utility Reader Bar */
+  .reader-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.6rem 1.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .toolbar-container {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .badge-tag {
+    background: #EEF2FF;
+    color: var(--color-blue);
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-tool {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border-dark);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .btn-tool:hover {
+    background: #F1F5F9;
+    border-color: #94A3B8;
+  }
+
+  /* Main Document Container */
+  .document-wrapper {
+    flex: 1;
+    padding: 1.5rem 0.75rem 3rem 0.75rem;
+    width: 100%;
+  }
+
+  .page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+    padding: 3rem 2.8rem;
+    transition: padding 0.3s ease;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4 {
+    color: var(--color-primary);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-size: 1.45rem;
+    color: var(--color-navy);
+    border-bottom: 2px solid #EEF2FF;
+    padding-bottom: 0.4rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: #1E293B;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    color: var(--color-navy);
+  }
+
+  p {
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
+  strong {
+    font-weight: 700;
+    color: #0F172A;
+  }
+
+  /* Responsive Lists */
+  ul.bullet-list {
+    margin: 0.5rem 0 1.25rem 1.5rem;
+    list-style-type: disc;
+  }
+
+  ul.bullet-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.25rem;
+  }
+
+  ul.numbered-list {
+    list-style: none !important;
+    margin: 0.5rem 0 1.25rem 0;
+    padding-left: 0;
+  }
+
+  ul.numbered-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+    list-style: none !important;
+  }
+
+  .num-badge {
+    font-weight: 700;
+    color: var(--color-navy);
+    flex-shrink: 0;
+    min-width: 1.8rem;
+    line-height: 1.75;
+  }
+
+  /* Responsive Code Blocks */
+  pre.code-block, pre {
+    font-family: var(--font-code);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    background-color: var(--color-code-bg);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-blue);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre;
+    color: var(--color-primary);
+  }
+
+  .tag { color: #991B1B; font-weight: 600; }
+  .attr { color: #DC2626; }
+  .str { color: #2563EB; }
+  .comm { color: #16A34A; font-style: italic; }
+  .blue { color: #2563EB; font-weight: 600; }
+
+  /* Responsive Table Container */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: #FFFFFF;
+  }
+
+  table, table.data-table {
+    width: 100%;
+    min-width: 550px;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  table th, table td {
+    border: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+  }
+
+  table th {
+    background-color: #F1F5F9;
+    font-weight: 700;
+    color: var(--color-navy);
+    text-align: center;
+  }
+
+  table tbody tr:nth-child(even) {
+    background-color: #FBFDFF;
+  }
+
+  table tbody tr:hover {
+    background-color: #F1F5F9;
+  }
+
+  /* Scroll hint on mobile */
+  .scroll-hint {
+    display: none;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 0.25rem;
+    text-align: right;
+  }
+
+  /* Mobile Responsive Breakpoints */
+  @media screen and (max-width: 768px) {
+    :root {
+      --font-scale: 15px;
+    }
+    .document-wrapper {
+      padding: 0.75rem 0.35rem 2rem 0.35rem;
+    }
+    .page-container {
+      padding: 1.5rem 1.15rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    h1 { font-size: 1.3rem; }
+    h2 { font-size: 1.15rem; }
+    h3 { font-size: 1.05rem; }
+    p { text-align: left; }
+    .scroll-hint { display: block; }
+  }
+
+  /* Print Stylesheet (Exact University A4 Standard) */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin-left: 2.5cm;
+      margin-right: 1.5cm;
+      margin-top: 2.5cm;
+      margin-bottom: 2.5cm;
+    }
+    body {
+      background: transparent !important;
+      padding: 0 !important;
+      font-family: 'Khmer OS Siemreap', 'Siemreap', sans-serif !important;
+      font-size: 12pt !important;
+      line-height: 1.15 !important;
+      color: #000000 !important;
+    }
+    .no-print, .reader-toolbar, .scroll-hint {
+      display: none !important;
+    }
+    .document-wrapper {
+      padding: 0 !important;
+      width: 100% !important;
+    }
+    .page-container {
+      max-width: 100% !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+    h1, h2, h3 {
+      font-family: 'Khmer OS Muol Light', 'Khmer OS Muol Light-Kh Auto', sans-serif !important;
+      font-size: 12pt !important;
+      line-height: 1.25 !important;
+      border: none !important;
+    }
+    table {
+      min-width: 100% !important;
+    }
+    .table-responsive {
+      border: none !important;
+      overflow: visible !important;
+    }
+    pre.code-block, pre {
+      background: transparent !important;
+      white-space: pre-wrap !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Interactive Reader Utility Bar -->
+<div class="reader-toolbar no-print">
+  <div class="toolbar-container">
+    <div class="toolbar-brand">
+      <span class="badge-tag">Web Design (Year 3)</span>
+      <span>សៀវភៅគោល (Core Textbook)</span>
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn-tool" onclick="changeFontSize(-1)" title="បន្ថយទំហំអក្សរ">A-</button>
+      <button class="btn-tool" onclick="changeFontSize(1)" title="ពង្រីកទំហំអក្សរ">A+</button>
+      <button class="btn-tool" onclick="window.print()" title="បោះពុម្ព ឬរក្សាទុកជា PDF">🖨️ បោះពុម្ព / PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- Main Reader Document -->
+<div class="document-wrapper">
+  <div class="page-container">
+<div class="print-bar no-print">
+    <span>📄 ស្តង់ដាសៀវភៅគោល A4 (Left 2.5cm, Right 1.5cm, Top 2.5cm, Bottom 2.5cm)</span>
+    <button class="print-btn" onclick="window.print()">🖨️ បោះពុម្ព ឬទាញយកជា PDF (Print / Save as PDF)</button>
+  </div>
+  <div class="page-container">
+
+    <div class="title-center">
+      <h1 class="heading-muol">សាកលវិទ្យាល័យភូមិន្ទ — មហាវិទ្យាល័យវិទ្យាសាស្ត្រកុំព្យូទ័រ</h1>
+      <h2 class="heading-muol">មុខវិជ្ជា៖ ការរចនាគេហទំព័រ (Web Design — Bachelor Year 3)</h2>
+      <h2 class="heading-muol">ម៉ូឌុល ០១៖ មូលដ្ឋានគ្រឹះនៃការរចនាគេហទំព័រ និង UI/UX (Web Design Fundamentals & UI/UX)</h2>
+      <h2 class="heading-muol" style="color: #0284c7;">ជំពូកទី ១៖ សេចក្តីផ្តើមអំពីការរចនាគេហទំព័រ (Introduction to Web Design)</h2>
+    </div>
+
+    <div class="callout-box">
+      <strong>កម្រិតសិក្សា៖</strong> ថ្នាក់បរិញ្ញាបត្រឆ្នាំទី ៣ | <strong>រយៈពេលបង្រៀន៖</strong> ៣ ម៉ោងសិក្សា (1.5 Session) | <strong>ស្តង់ដាឯកសារ៖</strong> Core Textbook
+    </div>
+
+    <h2 class="heading-muol">គោលបំណងនៃការរៀនសូត្រ (Learning Objectives)</h2>
+    <p>បន្ទាប់ពីបញ្ចប់ជំពូកនេះ និស្សិតនឹងមានសមត្ថភាពចំណេះដឹង និងបំណិនដូចខាងក្រោម៖</p>
+    <ul class="numbered-list">
+      <li><span class="num-badge">១.</span> <strong>និយមន័យ និងវិសាលភាព៖</strong> អាចពន្យល់ពីនិយមន័យ វិសាលភាព និងគោលដៅនៃការរចនាគេហទំព័រក្នុងបរិបទឧស្សាហកម្មឌីជីថលទំនើប។</li>
+      <li><span class="num-badge">២.</span> <strong>ប្រវត្តិនៃបណ្តាញវេប៖</strong> យល់ដឹងពីការវិវឌ្ឍជាប្រវត្តិសាស្ត្រពី Web 1.0 (Static), Web 2.0 (Interactive) រហូតដល់ Web 3.0 (Semantic & Decentralized)។</li>
+      <li><span class="num-badge">៣.</span> <strong>Website ទល់នឹង Web Application៖</strong> ចេះបែងចែកភាពខុសគ្នាដាច់ស្រឡះរវាង Website និង Web Application តាមរយៈលក្ខណៈបច្ចេកទេស និងបទពិសោធអ្នកប្រើប្រាស់។</li>
+      <li><span class="num-badge">៤.</span> <strong>តួនាទី និងស្ថាបត្យកម្ម៖</strong> យល់ច្បាស់ពីតួនាទី និងទំនួលខុសត្រូវរវាង Web Designer និង Web Developer ព្រមទាំងស្ថាបត្យកម្ម Frontend និង Backend។</li>
+      <li><span class="num-badge">៥.</span> <strong>សសរស្តម្ភបច្ចេកវិទ្យាទាំងបី៖</strong> វិភាគបានពីតួនាទីស្នូលទាំងបី៖ HTML (គ្រោងឆ្អឹង), CSS (សោភ័ណភាព) និង JavaScript (អន្តរកម្ម) ក្នុងការបង្កើតទំព័រគេហទំព័រ។</li>
+      <li><span class="num-badge">៦.</span> <strong>យន្តការដំណើរការវេប៖</strong> ពន្យល់បានច្បាស់លាស់ពីយន្តការដំណើរការរបស់ Web Browser, Web Server, DNS Lookup, HTTP/HTTPS Request-Response និង Critical Rendering Path (CRP)។</li>
+      <li><span class="num-badge">៧.</span> <strong>ប្រភេទគេហទំព័រ៖</strong> កំណត់អត្តសញ្ញាណ និងប្រៀបធៀបប្រភេទគេហទំព័រទាំង ៦ (Static, Dynamic, E-Commerce, Portfolio, Corporate, Educational)។</li>
+      <li><span class="num-badge">៨.</span> <strong>លំហូរការងារ និងឧបករណ៍៖</strong> យល់ដឹងពីលំហូរការងាររចនាគេហទំព័រអាជីព (Workflow) និងឧបករណ៍ដែលប្រើប្រាស់ក្នុងឧស្សាហកម្ម។</li>
+      <li><span class="num-badge">៩.</span> <strong>ឧបករណ៍អ្នកអភិវឌ្ឍន៍ (DevTools)៖</strong> ចេះប្រើប្រាស់ឧបករណ៍ Browser Developer Tools (DevTools) ដើម្បីត្រួតពិនិត្យ DOM, Style, Console និង Network Requests។</li>
+    </ul>
+
+    <hr style="border: none; border-top: 1px solid #cbd5e1; margin: 16pt 0;">
+
+    <h2 class="heading-muol">១.១ និយមន័យនៃការរចនាគេហទំព័រ (Definition of Web Design)</h2>
+    <p>
+      ការរចនាគេហទំព័រ (Web Design) គឺជាសិល្បៈ និងវិទ្យាសាស្ត្រនៃការរៀបចំ គំនិតច្នៃប្រឌិត និងការបង្កើតគេហទំព័រនៅលើបណ្ដាញអ៊ីនធឺណិត។ វាមិនត្រឹមតែជាការជ្រើសរើសរូបភាព ពណ៌ និងពុម្ពអក្សរប៉ុណ្ណោះទេ ប៉ុន្តែគឺជាដំណើរការរួមបញ្ចូលគ្នាយ៉ាងស្មុគស្មាញរវាង សោភ័ណភាពនៃការមើលឃើញ (Visual Design), ស្ថាបត្យកម្មព័ត៌មាន (Information Architecture), បទពិសោធអ្នកប្រើប្រាស់ (User Experience - UX), ចំណុចប្រទាក់អ្នកប្រើប្រាស់ (User Interface - UI) និងការគិតគូរលើលទ្ធភាពបច្ចេកវិទ្យា (Technical Feasibility)។
+    </p>
+    <p>នៅក្នុងបរិបទនៃការអភិវឌ្ឍន៍សហសម័យ ការរចនាគេហទំព័រត្រូវផ្តោតលើគោលការណ៍គ្រឹះចំនួន ៤ យ៉ាង៖</p>
+    <ul>
+      <li><strong>ភាពងាយស្រួលប្រើប្រាស់ (Usability):</strong> គេហទំព័រត្រូវតែមានភាពវិចារណញាណ ងាយស្រួលរុករក (Intuitive Navigation) និងអនុញ្ញាតឱ្យអ្នកប្រើប្រាស់សម្រេចគោលបំណងរបស់ពួកគេដោយរលូនបំផុត។</li>
+      <li><strong>លទ្ធភាពទទួលបាន (Accessibility):</strong> គេហទំព័រត្រូវរចនាឡើងដើម្បីឱ្យមនុស្សគ្រប់រូប រួមទាំងជនមានពិការភាព (Disabilities) អាចចូលប្រើប្រាស់ និងយល់ខ្លឹមសារបានស្របតាមស្តង់ដា WCAG (Web Content Accessibility Guidelines)។</li>
+      <li><strong>សោភ័ណភាព និងទំនុកចិត្ត (Aesthetic & Credibility):</strong> ការប្រើប្រាស់ទ្រឹស្តីពណ៌ ពុម្ពអក្សរ និងចន្លោះទំនេរ (White Space) ឱ្យមានតុល្យភាព ដើម្បីកសាងអត្តសញ្ញាណម៉ាកយីហោ (Brand Identity) គួរឱ្យទុកចិត្ត។</li>
+      <li><strong>ការឆ្លើយតបគ្រប់អេក្រង់ (Responsive Adaptability):</strong> គេហទំព័រត្រូវតែរចនាឱ្យសម្របតាមទំហំអេក្រង់គ្រប់ប្រភេទ ចាប់ពីទូរស័ព្ទដៃ Tablet រហូតដល់កុំព្យូទ័រលើតុ (Desktop)។</li>
+    </ul>
+
+    <p><strong>ភាពខុសគ្នារវាងការរចនាលើក្រដាសបោះពុម្ព (Print Design) និងការរចនាគេហទំព័រ (Web Design)៖</strong></p>
+    <ul>
+      <li><strong>ការរចនាលើក្រដាស (Print Design):</strong> ផ្ទាំងក្រដាសមានទំហំថេរច្បាស់លាស់ (Fixed Canvas) ដូចជា A4 ឬ Letter, ពណ៌ប្រើប្រព័ន្ធ CMYK, គ្មានអន្តរកម្ម (Static), និងមិនអាចផ្លាស់ប្តូរបានឡើយក្រោយពេលបោះពុម្ព។</li>
+      <li><strong>ការរចនាគេហទំព័រ (Web Design):</strong> ផ្ទៃបង្ហាញមានលក្ខណៈបត់បែនគ្មានដែនកំណត់ (Fluid / Dynamic Canvas), ពណ៌ប្រើប្រព័ន្ធឌីជីថល sRGB, មានអន្តរកម្មខ្ពស់ (Interactive), និងអាចកែប្រែធ្វើបច្ចុប្បន្នភាពខ្លឹមសារបានគ្រប់វិនាទី។</li>
+    </ul>
+
+    <h2 class="heading-muol">១.២ ប្រវត្តិ និងការវិវឌ្ឍនៃបណ្ដាញវេប (History and Evolution of the Web)</h2>
+    <p>
+      បណ្ដាញ World Wide Web (WWW) ត្រូវបានបង្កើតឡើងនៅឆ្នាំ ១៩៨៩ ដោយអ្នកវិទ្យាសាស្ត្រកុំព្យូទ័រជនជាតិអង់គ្លេសឈ្មោះ <strong>Sir Tim Berners-Lee</strong> នៅមជ្ឈមណ្ឌលស្រាវជ្រាវនុយក្លេអ៊ែរអឺរ៉ុប (CERN) ក្នុងគោលបំណងចែករំលែកឯកសារស្រាវជ្រាវដោយស្វ័យប្រវត្តិតាមរយៈប្រព័ន្ធ Hypertext។ ចាប់តាំងពីពេលនោះមក បណ្តាញវេបបានឆ្លងកាត់ការវិវឌ្ឍយ៉ាងលឿនជា ៣ យុគសម័យធំៗ៖
+    </p>
+    <p>
+      <strong>១. យុគសម័យ Web 1.0 (The Read-Only Web: 1991 – 2004)៖</strong> នៅក្នុងដំណាក់កាលដំបូង គេហទំព័រគឺជាឯកសារឋិតិវន្ត (Static HTML pages) ដែលម្ចាស់គេហទំព័រជាអ្នកសរសេរព័ត៌មាន ហើយអ្នកប្រើប្រាស់គ្រាន់តែជាអ្នកអានទិន្នន័យតែប៉ុណ្ណោះ (One-way communication)។ គេហទំព័រគ្មានប្រព័ន្ធស្វែងរកទិន្នន័យស្មុគស្មាញ គ្មានការចូលប្រើប្រាស់គណនី (Authentication) និងគ្មានការបញ្ចេញមតិយោបល់ (Comments) ឡើយ។
+    </p>
+    <p>
+      <strong>២. យុគសម័យ Web 2.0 (The Read-Write & Interactive Web: 2004 – បច្ចុប្បន្ន)៖</strong> ការលេចឡើងនៃបច្ចេកវិទ្យា AJAX (Asynchronous JavaScript and XML), ភាសា CSS កម្រិតខ្ពស់ និងប្រព័ន្ធគ្រប់គ្រងខ្លឹមសារ (Content Management Systems - CMS) បានផ្លាស់ប្តូរវេបទៅជាវេទិកាអន្តរកម្ម។ អ្នកប្រើប្រាស់លែងត្រឹមតែជាអ្នកអានទៀតហើយ តែបានក្លាយជាអ្នកបង្កើតខ្លឹមសារ (User-Generated Content) ដូចជា បណ្តាញសង្គម (Facebook, YouTube, X), វេទិកាពិភាក្សា និងកម្មវិធី Web Applications ដូចជា Google Docs។
+    </p>
+    <p>
+      <strong>៣. យុគសម័យ Web 3.0 (The Semantic, AI & Decentralized Web)៖</strong> Web 3.0 គឺជាទិសដៅអនាគតដែលផ្តោតលើ Semantic Web (កុំព្យូទ័រអាចយល់អត្ថន័យនៃទិន្នន័យបាន), ការរួមបញ្ចូលបញ្ញាសិប្បនិម្មិត (AI-driven interfaces), ក្រាហ្វិក 3D លើ Browser តាមរយៈ WebGL/WebGPU, និងបច្ចេកវិទ្យាវិមជ្ឈការ (Decentralization)។
+    </p>
+    <p>
+      <strong>តួនាទីរបស់អង្គការ W3C (World Wide Web Consortium)៖</strong> W3C ត្រូវបានបង្កើតឡើងនៅឆ្នាំ ១៩៩៤ ដោយលោក Tim Berners-Lee ដើម្បីកំណត់ស្តង់ដាអន្តរជាតិរួម (Web Standards) សម្រាប់ HTML, CSS, XML និង Web Accessibility។ ប្រសិនបើគ្មាន W3C ទេ នោះ Browser នីមួយៗនឹងបង្កើតកូដផ្ទាល់ខ្លួន ដែលធ្វើឱ្យគេហទំព័រមួយមិនអាចដំណើរការបាននៅលើ Browser ផ្សេងទៀតឡើយ។
+    </p>
+
+    <h2 class="heading-muol">១.៣ គេហទំព័រ និងកម្មវិធីគេហទំព័រ (Website and Web Application)</h2>
+    <p>នៅក្នុងការអនុវត្តវិជ្ជាជីវៈ ការបែងចែករវាង Website (គេហទំព័រព័ត៌មាន) និង Web Application (កម្មវិធីគេហទំព័រ) គឺមានសារៈសំខាន់ខ្លាំងណាស់ក្នុងការកំណត់ស្ថាបត្យកម្ម និងថវិកាគម្រោង៖</p>
+    <ul>
+      <li><strong>Website (គេហទំព័រ):</strong> ផ្តោតលើការបង្ហាញព័ត៌មាន និងខ្លឹមសារ (Content-driven)។ អ្នកប្រើប្រាស់ចូលមកដើម្បីអាន មើល ឬទាញយកទិន្នន័យ។ កម្រិតអន្តរកម្មមានកម្រិតទាប ដូចជា ការចុច Link, ការបំពេញ Form ទំនាក់ទំនងសាមញ្ញ។ ឧទាហរណ៍៖ គេហទំព័រព័ត៌មានទាន់ហេតុការណ៍, គេហទំព័របង្ហាញស្នាដៃ (Portfolio), គេហទំព័រក្រុមហ៊ុន។</li>
+      <li><strong>Web Application (កម្មវិធីគេហទំព័រ):</strong> ផ្តោតលើការអនុវត្តមុខងារ និងកិច្ចការស្មុគស្មាញ (Task-driven / Software-like)។ អ្នកប្រើប្រាស់អាចបង្កើត កែប្រែ រៀបចំ និងរក្សាទុកទិន្នន័យផ្ទាល់ខ្លួន។ ទាមទារការគ្រប់គ្រងស្ថានភាពទិន្នន័យ (State Management), ការផ្ទៀងផ្ទាត់សិទ្ធិ (Authentication) និងការតភ្ជាប់ API ស្មុគស្មាញ។ ឧទាហរណ៍៖ Google Docs, Figma Web, Trello, Netflix Web Player, Canva។</li>
+    </ul>
+
+    <div class="table-responsive">
+<table class="data-table">
+      <thead>
+        <tr>
+          <th>លក្ខណៈប្រៀបធៀប</th>
+          <th>Website (គេហទំព័រ)</th>
+          <th>Web Application (កម្មវិធីវេប)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>គោលបំណងស្នូល</strong></td>
+          <td>ផ្តល់ព័ត៌មាន និងចំណេះដឹង (Informational)</td>
+          <td>អនុវត្តកិច្ចការ និងដោះស្រាយបញ្ហា (Perform Tasks)</td>
+        </tr>
+        <tr>
+          <td><strong>កម្រិតអន្តរកម្ម (Interactivity)</strong></td>
+          <td>ទាបទៅមធ្យម (អាន, ចុចតំណភ្ជាប់, បំពេញ Form)</td>
+          <td>ខ្ពស់បំផុត (បង្កើតទិន្នន័យ, drag-and-drop, real-time collaboration)</td>
+        </tr>
+        <tr>
+          <td><strong>ការផ្ទៀងផ្ទាត់អ្នកប្រើ (Auth)</strong></td>
+          <td>ភាគច្រើនមិនទាមទារ Login ទេ</td>
+          <td>ទាមទារការចុះឈ្មោះ និងគ្រប់គ្រងសិទ្ធិអ្នកប្រើជាចាំបាច់</td>
+        </tr>
+        <tr>
+          <td><strong>ស្ថាបត្យកម្ម (Architecture)</strong></td>
+          <td>ទំព័រ HTML ឋិតិវន្ត ឬ Server-Side Rendered (SSR)</td>
+          <td>Single Page Application (SPA), REST/GraphQL API, Cloud State</td>
+        </tr>
+        <tr>
+          <td><strong>ឧទាហរណ៍ជាក់ស្តែង</strong></td>
+          <td>Wikipedia, BBC News, គេហទំព័រសាកលវិទ្យាល័យ</td>
+          <td>Google Sheets, Spotify Web, Figma, Notion</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div class="scroll-hint">⇄ អូសទៅស្តាំដើម្បីមើលតារាងពេញ (Scroll table horizontally)</div>
+
+    <h2 class="heading-muol">១.៤ ការរចនាគេហទំព័រ និងការអភិវឌ្ឍគេហទំព័រ (Web Design and Web Development)</h2>
+    <p>នៅក្នុងឧស្សាហកម្មបច្ចេកវិទ្យា តួនាទីទាំងពីរនេះមានការបំពេញបន្ថែមឱ្យគ្នាទៅវិញទៅមក ប៉ុន្តែទាមទារជំនាញស្នូល និងឧបករណ៍ខុសគ្នា៖</p>
+    <ul>
+      <li><strong>Web Designer (អ្នករចនាគេហទំព័រ):</strong> ផ្តោតលើរូបរាង សោភ័ណភាព និងអារម្មណ៍របស់អ្នកប្រើប្រាស់ (Look and Feel)។ ទំនួលខុសត្រូវរួមមាន ការសិក្សាអាកប្បកិរិយាអ្នកប្រើប្រាស់ (UX Research), ការគូរប្លង់រចនាសម្ព័ន្ធ (Wireframing), ការបង្កើតគំរូសាកល្បងអន្តរកម្ម (Prototyping), ការកំណត់ពណ៌ និងប្រព័ន្ធពុម្ពអក្សរ (Design Systems)។ ឧបករណ៍ប្រើប្រាស់៖ Figma, Adobe XD, Sketch, Photoshop។</li>
+      <li><strong>Web Developer (អ្នកអភិវឌ្ឍគេហទំព័រ):</strong> ផ្តោតលើការយកប្លង់រចនាមកបំប្លែងទៅជាកូដកម្មវិធីដែលអាចដំណើរការបានពិតប្រាកដ (Functionality and Logic)។ ទំនួលខុសត្រូវរួមមាន ការសរសេរកូដ Frontend និង Backend, ការបង្កើតក្បួនដោះស្រាយ (Algorithms), ការតភ្ជាប់មូលដ្ឋានទិន្នន័យ (Databases), និងការធានាសុវត្ថិភាពទិន្នន័យ។ ឧបករណ៍ប្រើប្រាស់៖ VS Code, Git, Node.js, Webpack, Docker។</li>
+    </ul>
+    <p>
+      <strong>ចំណុចប្រសព្វ (The Intersection - UI Developer / Frontend Designer)៖</strong> គឺជាអ្នកជំនាញដែលមានការយល់ដឹងទាំងផ្នែកសិល្បៈនៃការរចនា UI/UX និងចេះសរសេរកូដ HTML5, CSS3 និង Modern JavaScript យ៉ាងស្ទាត់ជំនាញ ដើម្បីបំប្លែងប្លង់ Design System ទៅជាកូដ Component ដែលស្អាត និងមានប្រសិទ្ធភាពខ្ពស់។
+    </p>
+
+    <h2 class="heading-muol">១.៥ ស្ថាបត្យកម្ម Frontend និង Backend (Frontend and Backend)</h2>
+    <p>ស្ថាបត្យកម្មគេហទំព័រទំនើបដំណើរការលើគំរូ Client-Server Model ដែលបែងចែកជាពីរផ្នែកធំៗ៖</p>
+    <ul class="numbered-list">
+      <li><span class="num-badge">១.</span> <strong>ផ្នែកខាងមុខ (Frontend / Client-Side):</strong> គឺជាផ្នែកទាំងអស់ដែលដំណើរការដោយផ្ទាល់នៅលើ Browser របស់កុំព្យូទ័រ ឬទូរស័ព្ទរបស់អ្នកប្រើប្រាស់។ វាទទួលខុសត្រូវលើចំណុចប្រទាក់ក្រាហ្វិក (UI), គំនូរជីវចល (Animations) និងការឆ្លើយតបព្រឹត្តិការណ៍ភ្លាមៗ។ បច្ចេកវិទ្យាស្នូលរួមមាន HTML5, CSS3, JavaScript (ព្រមទាំង Frameworks ដូចជា React, Vue, Angular)។</li>
+      <li><span class="num-badge">២.</span> <strong>ផ្នែកខាងក្រោយ (Backend / Server-Side):</strong> គឺជាផ្នែកដំណើរការនៅខាងក្រោយលើម៉ាស៊ីនមេ (Remote Web Server) ដែលអ្នកប្រើប្រាស់មើលមិនឃើញ។ វាទទួលខុសត្រូវលើតក្កវិជ្ជាអាជីវកម្ម (Business Logic), ការផ្ទៀងផ្ទាត់គណនី, ការរក្សាទុក និងដំណើរការទិន្នន័យក្នុង Database, និងការបញ្ជូនទិន្នន័យតាមរយៈ REST APIs ឬ GraphQL។ បច្ចេកវិទ្យាស្នូលរួមមាន Node.js, Python, PHP, Java, Go និង Databases ដូចជា MySQL, PostgreSQL, MongoDB។</li>
+    </ul>
+
+    <h2 class="heading-muol">១.៦ តួនាទីរបស់ HTML, CSS និង JavaScript (Role of HTML, CSS and JavaScript)</h2>
+    <p>បច្ចេកវិទ្យាទាំងបីនេះគឺជាសសរស្តម្ភដែលមិនអាចខ្វះបាន (The Holy Trinity of Web Development)។ ដើម្បីងាយស្រួលយល់ យើងអាចប្រៀបធៀបវាទៅនឹងរាងកាយរបស់មនុស្ស៖</p>
+    <ul>
+      <li><strong>HTML (HyperText Markup Language):</strong> ប្រៀបបានទៅនឹង «គ្រោងឆ្អឹង (Skeleton)»។ វាផ្តល់រចនាសម្ព័ន្ធ និងអត្ថន័យដល់ខ្លឹមសារ (Semantic Structure) ដូចជា ការកំណត់ថាទីណាជាចំណងជើង (&lt;header&gt;), កថាខណ្ឌ (&lt;p&gt;), រូបភាព (&lt;img&gt;), តារាង (&lt;table&gt;) ឬបញ្ជី (&lt;ul&gt;)។</li>
+      <li><strong>CSS (Cascading Style Sheets):</strong> ប្រៀបបានទៅនឹង «ស្បែក និងសម្លៀកបំពាក់ (Skin & Clothing)»។ វាគ្រប់គ្រងការបង្ហាញរូបរាង សោភ័ណភាព ពណ៌ ពុម្ពអក្សរ គម្លាត ប្លង់សម្របតាមអេក្រង់ (Responsive Layouts តាម Flexbox/Grid) និងចលនាផ្លាស់ប្តូរ (Transitions/Animations)។</li>
+      <li><strong>JavaScript (JS):</strong> ប្រៀបបានទៅនឹង «ប្រព័ន្ធប្រសាទ និងសាច់ដុំ (Muscles & Nervous System)»។ វាបន្ថែមឥរិយាបថ និងអន្តរកម្ម (Interactivity & Behavior) ដូចជា ការចុចប៊ូតុងបើកផ្ទាំង Modal, ការទាញទិន្នន័យពី Server ដោយមិនចាំបាច់ Reload ទំព័រ (Fetch API), និងការផ្ទៀងផ្ទាត់ទម្រង់បែបបទ (Form Validation)។</li>
+    </ul>
+
+    <p><strong>កូដគំរូនៃការធ្វើការរួមគ្នារវាង HTML, CSS និង JavaScript (VS Code Light Style គ្មាន background color)៖</strong></p>
+
+    <!-- VS Code Colored Code Sample without background -->
+    <pre class="vscode-code">
+<span class="token-comment">&lt;!-- ១. គ្រោងឆ្អឹង HTML5 --&gt;</span>
+<span class="token-tag">&lt;div</span> <span class="token-attr">class=</span><span class="token-str">"profile-card"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;h2</span> <span class="token-attr">id=</span><span class="token-str">"student-name"</span><span class="token-tag">&gt;</span>សុខ សុវណ្ណ<span class="token-tag">&lt;/h2&gt;</span>
+  <span class="token-tag">&lt;button</span> <span class="token-attr">id=</span><span class="token-str">"btn-greet"</span><span class="token-tag">&gt;</span>ចុចស្វាគមន៍<span class="token-tag">&lt;/button&gt;</span>
+<span class="token-tag">&lt;/div&gt;</span>
+
+<span class="token-comment">/* ២. សោភ័ណភាព CSS3 */</span>
+<span class="token-tag">.profile-card</span> {
+  <span class="token-prop">padding</span>: <span class="token-val">20px</span>;
+  <span class="token-prop">border-radius</span>: <span class="token-val">12px</span>;
+  <span class="token-prop">background-color</span>: <span class="token-val">#ffffff</span>;
+  <span class="token-prop">box-shadow</span>: <span class="token-val">0 4px 6px rgba(0,0,0,0.1)</span>;
+}
+
+<span class="token-comment">// ៣. អន្តរកម្ម JavaScript (ES6+)</span>
+<span class="token-keyword">const</span> btn = document.querySelector(<span class="token-str">"#btn-greet"</span>);
+btn.addEventListener(<span class="token-str">"click"</span>, () =&gt; {
+  alert(<span class="token-str">"សួស្តីនិស្សិតឆ្នាំទី ៣!"</span>);
+});
+    </pre>
+
+    <h2 class="heading-muol">១.៧ ម៉ាស៊ីនរុករក និងម៉ាស៊ីនបម្រើគេហទំព័រ (Web Browser and Web Server)</h2>
+    <p><strong>១. ម៉ាស៊ីនរុករកគេហទំព័រ (Web Browser)៖</strong> គឺជាកម្មវិធី Software ដែលដំណើរការលើកុំព្យូទ័ររបស់អ្នកប្រើប្រាស់ (Client) ដើម្បីស្នើសុំ បកប្រែ និងបង្ហាញទំព័រគេហទំព័រ។ ផ្នែកស្នូលរបស់ Browser រួមមាន៖</p>
+    <ul>
+      <li><strong>Rendering Engine:</strong> ទទួលខុសត្រូវលើការអាន និងបកប្រែកូដ HTML និង CSS ទៅជារូបភាព និងប្លង់ភីកសែលលើអេក្រង់។ ឧទាហរណ៍៖ Blink (Google Chrome, Microsoft Edge, Opera), Gecko (Mozilla Firefox), WebKit (Apple Safari)។</li>
+      <li><strong>JavaScript Engine:</strong> ទទួលខុសត្រូវលើការបកប្រែ និងដំណើរការកូដ JavaScript (JIT Compilation)។ ឧទាហរណ៍៖ V8 Engine (Google Chrome, Node.js), SpiderMonkey (Firefox), JavaScriptCore / Nitro (Safari)។</li>
+    </ul>
+
+    <p><strong>២. ម៉ាស៊ីនបម្រើគេហទំព័រ (Web Server)៖</strong> គឺជាកុំព្យូទ័រដែលមានសមត្ថភាពខ្ពស់ ឬកម្មវិធី Software ដែលដំណើរការ ២៤/៧ ដើម្បីរង់ចាំស្តាប់ (Listening on Port 80 សម្រាប់ HTTP ឬ Port 443 សម្រាប់ HTTPS) និងឆ្លើយតបសំណូមពរពី Browser។ Web Servers ពេញនិយមរួមមាន៖ Nginx (ល្បឿនលឿនក្នុងការផ្តល់ Static files និង Reverse Proxy), Apache HTTP Server (បត់បែន និងមានប្រព័ន្ធ .htaccess), Caddy, និង Node.js HTTP Server។</p>
+
+    <h2 class="heading-muol">១.៨ យន្តការដំណើរការនៃគេហទំព័រ (How a Website Works)</h2>
+    <p>នៅពេលដែលអ្នកប្រើប្រាស់វាយបញ្ចូល URL ឧទាហរណ៍ <code>https://www.example.com</code> រួចចុចគ្រាប់ចុច Enter ដំណើរការលំអិតចំនួន ៦ ដំណាក់កាលនឹងកើតឡើងភ្លាមៗក្នុងរយៈពេលតែប៉ុន្មានរយមីលីវិនាទី (Milliseconds)៖</p>
+    <ul>
+      <li><strong>ដំណាក់កាលទី ១ — URL Parsing:</strong> Browser វិភាគ URL ដើម្បីញែកចេញជា Protocol (HTTPS), Domain Name (www.example.com) និង Port (443)។</li>
+      <li><strong>ដំណាក់កាលទី ២ — DNS Resolution:</strong> កុំព្យូទ័រមិនស្គាល់អក្សរឈ្មោះគេហទំព័រទេ វាត្រូវការលេខ IP Address (ដូចជា 93.184.216.34)។ Browser នឹងឆែកមើលក្នុង Browser Cache, OS Cache, Router Cache ប្រសិនបើគ្មាន វានឹងសួរទៅកាន់ DNS Resolver (ISP ឬ 8.8.8.8) -&gt; Root Server -&gt; TLD Server (.com) -&gt; Authoritative DNS Server ដើម្បីទទួលបានលេខ IP ពិតប្រាកដ។</li>
+      <li><strong>ដំណាក់កាលទី ៣ — TCP &amp; TLS Handshake:</strong> Browser បង្កើតការតភ្ជាប់សុវត្ថិភាពជាមួយ Server តាមរយៈ TCP 3-Way Handshake (SYN -&gt; SYN-ACK -&gt; ACK) រួចបន្តធ្វើ TLS/SSL Handshake ដើម្បីចរចាសោអ៊ិនគ្រីបទិន្នន័យ (Encryption Keys)។</li>
+      <li><strong>ដំណាក់កាលទី ៤ — HTTP Request Transmission:</strong> Browser ផ្ញើសំណើ HTTP GET Request ទៅកាន់ Web Server អមជាមួយ Headers ដូចជា User-Agent, Accept-Encoding, Cookies។</li>
+      <li><strong>ដំណាក់កាលទី ៥ — Server Processing &amp; HTTP Response:</strong> Web Server ដំណើរការសំណើ រកមើលឯកសារ HTML ឬទាញទិន្នន័យពី Database រួចផ្ញើ HTTP Response Status Code 200 OK ត្រឡប់មកវិញ អមជាមួយ Payload កូដ HTML។</li>
+      <li><strong>ដំណាក់កាលទី ៦ — Critical Rendering Path (CRP):</strong> Browser ដំណើរការគន្លងនៃការបង្ហាញទំព័រ៖
+        <br>• កសាង DOM Tree (Document Object Model) ពីកូដ HTML
+        <br>• កសាង CSSOM Tree (CSS Object Model) ពីកូដ CSS
+        <br>• រួមបញ្ចូលគ្នាបង្កើត Render Tree
+        <br>• គណនាប្លង់ និងទីតាំងភីកសែល (Layout / Reflow)
+        <br>• គូរពណ៌ និងរូបភាពលើអេក្រង់ (Paint &amp; Compositing)
+      </li>
+    </ul>
+
+    <h2 class="heading-muol">១.៩ ប្រភេទគេហទំព័រទាំង ៦ (Types of Websites)</h2>
+    <p>នៅក្នុងទីផ្សារការងារ និងការរចនាគេហទំព័រអាជីព គេហទំព័រត្រូវបានបែងចែកជា ៦ ប្រភេទចម្បង៖</p>
+    <ul class="numbered-list">
+      <li><span class="num-badge">១.</span> <strong>គេហទំព័រឋិតិវន្ត (Static Website):</strong> គឺជាគេហទំព័រដែលមានឯកសារ HTML, CSS និង JavaScript ថេរនៅលើ Server។ មាតិកាមិនផ្លាស់ប្តូរទេ លុះត្រាតែអ្នកអភិវឌ្ឍន៍ចូលទៅកែកូដឯកសារផ្ទាល់។ គុណសម្បត្តិ៖ ផ្ទុកលឿនបំផុត (Sub-second loading), សុវត្ថិភាពខ្ពស់បំផុត (មិនងាយរងការវាយប្រហារតាម SQL Injection), និងតម្លៃ Hosting ថោក។ ករណីប្រើប្រាស់៖ ឯកសារបច្ចេកទេស (Documentation), Landing Pages, ប្លុកសាមញ្ញ។</li>
+      <li><span class="num-badge">២.</span> <strong>គេហទំព័រឌីណាមិក (Dynamic Website):</strong> គឺជាគេហទំព័រដែលទំព័រ HTML ត្រូវបានបង្កើតឡើងដោយស្វ័យប្រវត្តិតាមរយៈ Server Scripting (PHP, Node.js, Python) ដោយទាញទិន្នន័យចេញពី Database (MySQL, PostgreSQL)។ គុណសម្បត្តិ៖ ងាយស្រួលគ្រប់គ្រងទិន្នន័យរាប់ពាន់ទំព័រតាមរយៈ Dashboard (CMS), គាំទ្រការស្វែងរក និងប្រព័ន្ធសមាជិក។ ករណីប្រើប្រាស់៖ សារព័ត៌មានអនឡាញ, បណ្តាញសង្គម, វេទិកាពិភាក្សា។</li>
+      <li><span class="num-badge">៣.</span> <strong>គេហទំព័រពាណិជ្ជកម្មអេឡិចត្រូនិក (E-Commerce Website):</strong> គឺជាគេហទំព័រពាណិជ្ជកម្មសម្រាប់លក់ទំនិញ ឬសេវាកម្មអនឡាញ។ លក្ខណៈពិសេសស្នូល៖ កាតាឡុកទំនិញ (Product Catalog), កន្ត្រកទំនិញ (Shopping Cart), ប្រព័ន្ធទូទាត់ប្រាក់ (Payment Gateway ដូចជា Stripe, PayPal, Bakong KHQR), និងការគ្រប់គ្រងស្តុក។ ករណីប្រើប្រាស់៖ Amazon, eBay, Shopify Stores។</li>
+      <li><span class="num-badge">៤.</span> <strong>គេហទំព័របង្ហាញស្នាដៃផ្ទាល់ខ្លួន (Portfolio Website):</strong> គឺជាគេហទំព័របង្ហាញស្នាដៃ និងសមត្ថភាពរបស់បុគ្គល ឬ Freelancer (Web Designers, Developers, វិចិត្រករ)។ ផ្តោតលើការបង្ហាញ Case Studies, ជំនាញ, ប្រវត្តិការងារ និងទម្រង់ទំនាក់ទំនង (Call-to-Action) ដើម្បីទាក់ទាញអតិថិជន ឬនិយោជក។</li>
+      <li><span class="num-badge">៥.</span> <strong>គេហទំព័រស្ថាប័ន / ក្រុមហ៊ុន (Corporate Website):</strong> គឺជាគេហទំព័រតំណាងឱ្យក្រុមហ៊ុន ស្ថាប័ន ឬសាជីវកម្ម។ គោលបំណងចម្បងគឺកសាងទំនុកចិត្ត (Brand Credibility), បង្ហាញសេវាកម្ម, វប្បធម៌ស្ថាប័ន, ព័ត៌មានវិនិយោគិន និងបណ្តាញទំនាក់ទំនងផ្លូវការ។</li>
+      <li><span class="num-badge">៦.</span> <strong>គេហទំព័រអប់រំ (Educational Website):</strong> គឺជាគេហទំព័ររបស់សាលារៀន សាកលវិទ្យាល័យ ឬវេទិកាសិក្សាអនឡាញ (Coursera, Khan Academy)។ មុខងារស្នូលរួមមាន ប្រព័ន្ធគ្រប់គ្រងការសិក្សា (LMS - Moodle, Canvas), មាតិកាមេរៀន, តារាងកាលវិភាគប្រឡង និងការចុះឈ្មោះវគ្គសិក្សា។</li>
+    </ul>
+
+    <h2 class="heading-muol">១.១០ លំហូរការងាររចនាគេហទំព័រអាជីព (Web Design Workflow)</h2>
+    <p>ការបង្កើតគេហទំព័រអាជីពមួយប្រកបដោយគុណភាពខ្ពស់ ត្រូវអនុវត្តតាមលំហូរការងារស្តង់ដាចំនួន ៨ ដំណាក់កាល៖</p>
+    <ul class="numbered-list">
+      <li><span class="num-badge">១.</span> <strong>ការស្រាវជ្រាវ និងប្រមូលតម្រូវការ (Discovery &amp; Research):</strong> ជួបពិភាក្សាជាមួយអតិថិជន កំណត់គោលដៅគេហទំព័រ កំណត់ក្រុមអ្នកប្រើប្រាស់គោលដៅ (Target Audience) និងវិភាគដៃគូប្រកួតប្រជែង។</li>
+      <li><span class="num-badge">២.</span> <strong>ស្ថាបត្យកម្មព័ត៌មាន (Information Architecture):</strong> រៀបចំផែនទីគេហទំព័រ (Sitemap) និងរចនាសម្ព័ន្ធលំហូរទិន្នន័យ (User Flow) ដើម្បីធានាថាអ្នកប្រើប្រាស់អាចស្វែងរកព័ត៌មានបានលឿន។</li>
+      <li><span class="num-badge">៣.</span> <strong>ការគូរប្លង់បឋម (Wireframing):</strong> គូរប្លង់ព្រាងសាមញ្ញដោយគ្មានពណ៌ (Low-fidelity wireframes) ដើម្បីរៀបចំទីតាំងធាតុ (Header, Hero, Cards, Footer)។</li>
+      <li><span class="num-badge">៤.</span> <strong>ការរចនា UI/UX លម្អិត (UI/UX Design):</strong> បង្កើតប្លង់ច្បាស់លាស់ពេញលេញ (High-fidelity mockup) ដោយកំណត់ពណ៌ ពុម្ពអក្សរ រូបភាព និងធ្វើគំរូអន្តរកម្មសាកល្បង (Interactive Prototype) លើ Figma។</li>
+      <li><span class="num-badge">៥.</span> <strong>ការអភិវឌ្ឍ Frontend &amp; Backend (Development):</strong> សរសេរកូដ Semantic HTML5, CSS3 និង JavaScript ព្រមទាំងតភ្ជាប់ Backend APIs និង Database។</li>
+      <li><span class="num-badge">៦.</span> <strong>ការធ្វើតេស្តគុណភាព (Quality Assurance - QA):</strong> ធ្វើតេស្តលើទំហំអេក្រង់ផ្សេងៗ (Responsive Testing), ត្រួតពិនិត្យភាពស៊ីគ្នាលើ Browser (Cross-Browser Testing), ពិនិត្យល្បឿន និងសុវត្ថិភាព។</li>
+      <li><span class="num-badge">៧.</span> <strong>ការដាក់ឱ្យដំណើរការ (Deployment):</strong> បង្ហោះគេហទំព័រទៅកាន់ Production Server (Hosting, Cloud, CDN, Domain setup)។</li>
+      <li><span class="num-badge">៨.</span> <strong>ការថែទាំជាប្រចាំ (Maintenance &amp; Updates):</strong> តាមដានដំណើរការ (Performance Monitoring), បម្រុងទុកទិន្នន័យ (Backups), និងធ្វើបច្ចុប្បន្នភាពខ្លឹមសារជាប្រចាំ។</li>
+    </ul>
+
+    <h2 class="heading-muol">១.១១ ឧបករណ៍សំខាន់ៗក្នុងការងាររចនាគេហទំព័រ (Web Design Tools)</h2>
+    <ul>
+      <li><strong>ឧបករណ៍រចនា UI/UX (Design &amp; Prototyping):</strong> Figma (ឧបករណ៍លេខ ១ បច្ចុប្បន្នសម្រាប់ UI/UX និងការសហការជាក្រុម), Adobe XD, Sketch, Penpot (Open-source)។</li>
+      <li><strong>កម្មវិធីសរសេរកូដ (Code Editors):</strong> Visual Studio Code (VS Code - កម្មវិធីកូដពេញនិយមបំផុតក្នុងពិភពលោក), WebStorm, Sublime Text។</li>
+      <li><strong>ប្រព័ន្ធគ្រប់គ្រងកំណែកូដ (Version Control):</strong> Git (គ្រប់គ្រងប្រវត្តិកូដ) និង GitHub / GitLab (កន្លែងផ្ទុកកូដ និងធ្វើការងារជាក្រុម)។</li>
+      <li><strong>ឧបករណ៍បង្កើនប្រសិទ្ធភាពរូបភាព (Asset Optimization):</strong> Squoosh (Google Image Compression), TinyPNG, SVGO (Optimize SVG vectors) ដើម្បីកាត់បន្ថយទំហំរូបភាពបង្កើនល្បឿនគេហទំព័រ។</li>
+      <li><strong>ឧបករណ៍ត្រួតពិនិត្យលើ Browser (Inspection Tools):</strong> Chrome DevTools, Firefox Developer Edition, Lighthouse (សម្រាប់ Audit SEO, Accessibility, Core Web Vitals)។</li>
+    </ul>
+
+    <h2 class="heading-muol">១.១២ សេចក្តីផ្តើមអំពីឧបករណ៍អ្នកអភិវឌ្ឍន៍នៅលើ Browser (Introduction to Browser DevTools)</h2>
+    <p>
+      Browser Developer Tools (DevTools) គឺជាសំណុំឧបករណ៍វិជ្ជាជីវៈដែលត្រូវបានបង្កប់ស្រាប់នៅក្នុង Modern Web Browsers ដូចជា Google Chrome និង Microsoft Edge។ របៀបបើក DevTools៖ ចុចគ្រាប់ចុច <code>F12</code> ឬ <code>Ctrl + Shift + I</code> (លើ Windows) ឬចុចកណ្ដុរខាងស្តាំលើទំព័រ រួចជ្រើសរើស «Inspect»។
+    </p>
+    <p>ផ្ទាំងសំខាន់ៗទាំង ៦ ក្នុង DevTools ដែលនិស្សិតត្រូវក្តាប់ឱ្យបានស្ទាត់ជំនាញ៖</p>
+    <ul class="numbered-list">
+      <li><span class="num-badge">១.</span> <strong>ផ្ទាំង Elements:</strong> បង្ហាញរចនាសម្ព័ន្ធ DOM Tree នៃកូដ HTML ជាក់ស្តែង។ និស្សិតអាចចុចកែប្រែកូដ HTML ឬកែប្រែស្ទីល CSS (Styles Panel) ផ្ទាល់បានភ្លាមៗ (Real-time Live Editing)។</li>
+      <li><span class="num-badge">២.</span> <strong>ផ្ទាំង Console:</strong> កន្លែងបង្ហាញសារកំហុស (JavaScript Errors), ការព្រមាន (Warnings) និងជាកន្លែងដែលអ្នកអភិវឌ្ឍន៍អាចវាយបញ្ជាកូដ JavaScript ដើម្បីធ្វើតេស្តមុខងារភ្លាមៗ។</li>
+      <li><span class="num-badge">៣.</span> <strong>ផ្ទាំង Network:</strong> តាមដានរាល់ការស្នើសុំឯកសារតាមបណ្តាញ (HTTP Requests)។ វាបង្ហាញពីឈ្មោះឯកសារ, Method (GET/POST), Status Code (200, 404), ទំហំឯកសារ (Size) និងរយៈពេលដែលត្រូវចំណាយក្នុងការទាញយក (Time / Waterfall)។</li>
+      <li><span class="num-badge">៤.</span> <strong>ផ្ទាំង Sources:</strong> កន្លែងផ្ទុកកូដប្រភព (Source Code) ទាំងអស់នៃគេហទំព័រ។ ប្រើប្រាស់សម្រាប់ដាក់ចំណុចផ្អាក (Breakpoints) ដើម្បីបំបាត់កំហុស (Debugging) ក្នុងកូដ JavaScript។</li>
+      <li><span class="num-badge">៥.</span> <strong>មុខងារ Responsive Device Mode:</strong> អនុញ្ញាតឱ្យអ្នករចនាធ្វើការក្លែងទំហំអេក្រង់ទូរស័ព្ទ (ដូចជា iPhone, Samsung Galaxy) ឬ Tablet ដើម្បីពិនិត្យមើលភាពរៀបរយនៃ Responsive Layout។</li>
+      <li><span class="num-badge">៦.</span> <strong>ផ្ទាំង Lighthouse Audit:</strong> ឧបករណ៍ស្វ័យប្រវត្តរបស់ Google សម្រាប់វាយតម្លៃគុណភាពគេហទំព័រលើ ៤ ចំណុច៖ Performance (ល្បឿន), Accessibility (លទ្ធភាពប្រើប្រាស់), Best Practices (ការអនុវត្តល្អ), និង SEO (ការបង្កើនប្រសិទ្ធភាពម៉ាស៊ីនស្វែងរក)។</li>
+    </ul>
+
+    <h2 class="heading-muol">សេចក្តីសង្ខេបមេរៀន (Chapter Summary)</h2>
+    <p>
+      ជំពូកទី ១ នេះបានផ្តល់នូវគ្រឹះដ៏រឹងមាំសម្រាប់និស្សិតឆ្នាំទី ៣ ក្នុងការឈានជើងចូលទៅក្នុងពិភពវិជ្ជាជីវៈនៃការរចនាគេហទំព័រ។ យើងបានសិក្សាថា គេហទំព័រទំនើបកើតឡើងពីការរួមផ្សំរវាង HTML (រចនាសម្ព័ន្ធ), CSS (សោភ័ណភាព) និង JavaScript (អន្តរកម្ម) នៅលើស្ថាបត្យកម្ម Client-Server។ ការយល់ដឹងពីលំហូរនៃ HTTP Request, DNS Resolution និង Critical Rendering Path ជួយឱ្យយើងមិនត្រឹមតែអាចរចនាគេហទំព័រឱ្យមានសោភ័ណភាពស្អាតប៉ុណ្ណោះទេ ប៉ុន្តែថែមទាំងដំណើរការបានលឿន និងប្រកបដោយសុវត្ថិភាព។ ប្រភេទគេហទំព័រនីមួយៗទាមទារនូវយុទ្ធសាស្ត្ររចនា និងបច្ចេកវិទ្យាសមស្រប។ ឧបករណ៍ DevTools គឺជាអាវុធដ៏មានអានុភាពដែលជួយយើងក្នុងការវិភាគ និងដោះស្រាយបញ្ហាបច្ចេកទេសប្រចាំថ្ងៃ។
+    </p>
+
+    <h2 class="heading-muol">សំណួរត្រួតពិនិត្យការយល់ដឹង (Review &amp; Discussion Questions)</h2>
+    <ol>
+      <li>ចូរពន្យល់ពីគោលការណ៍គ្រឹះទាំង ៤ នៃការរចនាគេហទំព័រទំនើប (Usability, Accessibility, Aesthetics, Responsiveness)។</li>
+      <li>ចូរប្រៀបធៀបភាពខុសគ្នារវាង Website និង Web Application។ លើកឧទាហរណ៍ជាក់ស្តែងយ៉ាងតិចចំនួន ២ សម្រាប់ប្រភេទនីមួយៗ។</li>
+      <li>ហេតុអ្វីបានជាគេប្រៀបធៀប HTML, CSS និង JavaScript ទៅនឹង គ្រោងឆ្អឹង ស្បែក និងសាច់ដុំរបស់មនុស្ស? ចូរពន្យល់ដោយលើកឧទាហរណ៍កូដខ្លីមួយ។</li>
+      <li>ចូររៀបរាប់ពីដំណើរការ ៦ ដំណាក់កាលនៅពេលដែលអ្នកប្រើប្រាស់វាយ URL ចូលទៅក្នុង Browser រហូតដល់ទំព័របង្ហាញចប់។</li>
+      <li>តើគេហទំព័រឋិតិវន្ត (Static) និងគេហទំព័រឌីណាមិក (Dynamic) មានគុណសម្បត្តិ និងគុណវិបត្តិខុសគ្នាយ៉ាងដូចម្តេចខ្លះ? តើពេលណាដែលយើងគួរជ្រើសរើស Static Website?</li>
+    </ol>
+    
+  
+  </div>
+</div>
+
+<script>
+  let currentScale = 16;
+  function changeFontSize(delta) {
+    currentScale = Math.min(22, Math.max(13, currentScale + delta));
+    document.documentElement.style.setProperty('--font-scale', currentScale + 'px');
+  }
+</script>
+
+</body>
+</html>

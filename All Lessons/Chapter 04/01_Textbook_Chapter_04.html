@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>សៀវភៅគោល: ជំពូកទី ៤ — ពណ៌ ពុម្ពអក្សរ និងឋានានុក្រម (Color, Typography & Hierarchy)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Siemreap&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ==========================================================================
+     Master Responsive & Reader-Friendly Styling
+     ========================================================================== */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --font-body: 'Kantumruy Pro', 'Khmer OS Siemreap', 'Siemreap', system-ui, -apple-system, sans-serif;
+    --font-code: 'Fira Code', Consolas, Monaco, monospace;
+    --color-primary: #0F172A;
+    --color-navy: #1E3A8A;
+    --color-blue: #2563EB;
+    --color-muted: #64748B;
+    --color-bg: #F8FAFC;
+    --color-card: #FFFFFF;
+    --color-border: #E2E8F0;
+    --color-border-dark: #CBD5E1;
+    --color-code-bg: #F8FAFC;
+    --font-scale: 16px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: var(--font-scale);
+    line-height: 1.75;
+    color: var(--color-primary);
+    background-color: var(--color-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Top Utility Reader Bar */
+  .reader-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.6rem 1.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .toolbar-container {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .badge-tag {
+    background: #EEF2FF;
+    color: var(--color-blue);
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-tool {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border-dark);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .btn-tool:hover {
+    background: #F1F5F9;
+    border-color: #94A3B8;
+  }
+
+  /* Main Document Container */
+  .document-wrapper {
+    flex: 1;
+    padding: 1.5rem 0.75rem 3rem 0.75rem;
+    width: 100%;
+  }
+
+  .page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+    padding: 3rem 2.8rem;
+    transition: padding 0.3s ease;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4 {
+    color: var(--color-primary);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-size: 1.45rem;
+    color: var(--color-navy);
+    border-bottom: 2px solid #EEF2FF;
+    padding-bottom: 0.4rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: #1E293B;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    color: var(--color-navy);
+  }
+
+  p {
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
+  strong {
+    font-weight: 700;
+    color: #0F172A;
+  }
+
+  /* Responsive Lists */
+  ul.bullet-list {
+    margin: 0.5rem 0 1.25rem 1.5rem;
+    list-style-type: disc;
+  }
+
+  ul.bullet-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.25rem;
+  }
+
+  ul.numbered-list {
+    list-style: none !important;
+    margin: 0.5rem 0 1.25rem 0;
+    padding-left: 0;
+  }
+
+  ul.numbered-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+    list-style: none !important;
+  }
+
+  .num-badge {
+    font-weight: 700;
+    color: var(--color-navy);
+    flex-shrink: 0;
+    min-width: 1.8rem;
+    line-height: 1.75;
+  }
+
+  /* Responsive Code Blocks */
+  pre.code-block, pre {
+    font-family: var(--font-code);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    background-color: var(--color-code-bg);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-blue);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre;
+    color: var(--color-primary);
+  }
+
+  .tag { color: #991B1B; font-weight: 600; }
+  .attr { color: #DC2626; }
+  .str { color: #2563EB; }
+  .comm { color: #16A34A; font-style: italic; }
+  .blue { color: #2563EB; font-weight: 600; }
+
+  /* Responsive Table Container */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: #FFFFFF;
+  }
+
+  table, table.data-table {
+    width: 100%;
+    min-width: 550px;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  table th, table td {
+    border: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+  }
+
+  table th {
+    background-color: #F1F5F9;
+    font-weight: 700;
+    color: var(--color-navy);
+    text-align: center;
+  }
+
+  table tbody tr:nth-child(even) {
+    background-color: #FBFDFF;
+  }
+
+  table tbody tr:hover {
+    background-color: #F1F5F9;
+  }
+
+  /* Scroll hint on mobile */
+  .scroll-hint {
+    display: none;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 0.25rem;
+    text-align: right;
+  }
+
+  /* Mobile Responsive Breakpoints */
+  @media screen and (max-width: 768px) {
+    :root {
+      --font-scale: 15px;
+    }
+    .document-wrapper {
+      padding: 0.75rem 0.35rem 2rem 0.35rem;
+    }
+    .page-container {
+      padding: 1.5rem 1.15rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    h1 { font-size: 1.3rem; }
+    h2 { font-size: 1.15rem; }
+    h3 { font-size: 1.05rem; }
+    p { text-align: left; }
+    .scroll-hint { display: block; }
+  }
+
+  /* Print Stylesheet (Exact University A4 Standard) */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin-left: 2.5cm;
+      margin-right: 1.5cm;
+      margin-top: 2.5cm;
+      margin-bottom: 2.5cm;
+    }
+    body {
+      background: transparent !important;
+      padding: 0 !important;
+      font-family: 'Khmer OS Siemreap', 'Siemreap', sans-serif !important;
+      font-size: 12pt !important;
+      line-height: 1.15 !important;
+      color: #000000 !important;
+    }
+    .no-print, .reader-toolbar, .scroll-hint {
+      display: none !important;
+    }
+    .document-wrapper {
+      padding: 0 !important;
+      width: 100% !important;
+    }
+    .page-container {
+      max-width: 100% !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+    h1, h2, h3 {
+      font-family: 'Khmer OS Muol Light', 'Khmer OS Muol Light-Kh Auto', sans-serif !important;
+      font-size: 12pt !important;
+      line-height: 1.25 !important;
+      border: none !important;
+    }
+    table {
+      min-width: 100% !important;
+    }
+    .table-responsive {
+      border: none !important;
+      overflow: visible !important;
+    }
+    pre.code-block, pre {
+      background: transparent !important;
+      white-space: pre-wrap !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Interactive Reader Utility Bar -->
+<div class="reader-toolbar no-print">
+  <div class="toolbar-container">
+    <div class="toolbar-brand">
+      <span class="badge-tag">Web Design (Year 3)</span>
+      <span>សៀវភៅគោល (Core Textbook)</span>
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn-tool" onclick="changeFontSize(-1)" title="បន្ថយទំហំអក្សរ">A-</button>
+      <button class="btn-tool" onclick="changeFontSize(1)" title="ពង្រីកទំហំអក្សរ">A+</button>
+      <button class="btn-tool" onclick="window.print()" title="បោះពុម្ព ឬរក្សាទុកជា PDF">🖨️ បោះពុម្ព / PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- Main Reader Document -->
+<div class="document-wrapper">
+  <div class="page-container">
+<div class="print-bar no-print">
+    <span>📄 ស្តង់ដាសៀវភៅគោល A4 (Left 2.5cm, Right 1.5cm, Top 2.5cm, Bottom 2.5cm)</span>
+    <button class="print-btn" onclick="window.print()">🖨️ បោះពុម្ព ឬទាញយកជា PDF (Print / Save as PDF)</button>
+  </div>
+  <div class="page-container">
+
+    <div class="title-center">
+      <h1 class="heading-muol">សាកលវិទ្យាល័យភូមិន្ទ — មហាវិទ្យាល័យវិទ្យាសាស្ត្រកុំព្យូទ័រ</h1>
+      <h2 class="heading-muol">មុខវិជ្ជា៖ ការរចនាគេហទំព័រ (Web Design — Bachelor Year 3)</h2>
+      <h2 class="heading-muol">ម៉ូឌុល ០១៖ មូលដ្ឋានគ្រឹះនៃការរចនាគេហទំព័រ និង UI/UX (Web Design Fundamentals & UI/UX)</h2>
+      <h2 class="heading-muol" style="color: #0284c7;">ជំពូកទី ៤៖ ពណ៌ ពុម្ពអក្សរ និងឋានានុក្រមនៃការមើលឃើញ (Color, Typography and Visual Hierarchy)</h2>
+    </div>
+
+    <div class="callout-box">
+      <strong>កម្រិតសិក្សា៖</strong> ថ្នាក់បរិញ្ញាបត្រឆ្នាំទី ៣ | <strong>រយៈពេលបង្រៀន៖</strong> ៣ ម៉ោងសិក្សា | <strong>ស្តង់ដាឯកសារ៖</strong> Core Textbook
+    </div>
+
+    <h2 class="heading-muol">គោលបំណងនៃការរៀនសូត្រ (Learning Objectives)</h2>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>ទ្រឹស្តីពណ៌ និងកង់ពណ៌៖</strong> យល់ដឹងពីទ្រឹស្តីពណ៌ (Color Theory), កង់ពណ៌ (Color Wheel), ពណ៌បឋម (Primary), អនុវិទ្យាល័យ (Secondary), និងតតិយភូមិ (Tertiary)។</li>
+      <li><span class='num-badge'>២.</span> <strong>ក្ដារលាយពណ៌ (Palette)៖</strong> ចេះផ្សំក្បួនពណ៌ Color Schemes (Monochromatic, Analogous, Complementary, Triadic) និងអនុវត្តក្បួនសមាមាត្រ 60-30-10 Rule។</li>
+      <li><span class='num-badge'>៣.</span> <strong>ស្តង់ដាពណ៌ផ្ទុយ (Contrast)៖</strong> យល់ដឹង និងចេះវាស់កម្រិតពណ៌ផ្ទុយ (Color Contrast) ស្របតាមស្តង់ដា WCAG 2.1 AA (4.5:1)។</li>
+      <li><span class='num-badge'>៤.</span> <strong>ប្រព័ន្ធពុម្ពអក្សរ (Typography)៖</strong> យល់ដឹងពីចំណាត់ថ្នាក់ពុម្ពអក្សរ៖ Serif, Sans-serif, Monospace និងការជ្រើសរើស Web-safe fonts / Google Fonts។</li>
+      <li><span class='num-badge'>៥.</span> <strong>លក្ខណៈសម្បត្តិអក្សរ៖</strong> ក្តាប់បាននូវបច្ចេកទេស Font Size (rem, em, px), Font Weight, Line Height, Letter Spacing និង Text Alignment។</li>
+      <li><span class='num-badge'>៦.</span> <strong>ឋានានុក្រម និង White Space៖</strong> អនុវត្តគោលការណ៍ឋានានុក្រមនៃការមើលឃើញ (Visual Hierarchy) និងចន្លោះទំនេរ (White Space) ដើម្បីដឹកនាំក្រសែភ្នែកអ្នកទស្សនា។</li>
+      <li><span class='num-badge'>៧.</span> <strong>មគ្គុទ្ទេសក៍រចនា (Style Guide)៖</strong> បង្កើតមគ្គុទ្ទេសក៍រចនាស្ទីល (Website Style Guide) និងកំណត់ Design Tokens ក្នុង CSS Custom Properties។</li>
+    </ul>
+
+    <hr style="border: none; border-top: 1px solid #cbd5e1; margin: 16pt 0;">
+
+    <h2 class="heading-muol">៤.១ ដល់ ៤.៥ ទ្រឹស្តីពណ៌ និងកង់ពណ៌ (Color Theory &amp; Color Wheel)</h2>
+    <p>
+      ទ្រឹស្តីពណ៌ (Color Theory) គឺជាវិទ្យាសាស្ត្រ និងសិល្បៈនៃការយល់ដឹងពីរបៀបដែលពណ៌មានអន្តរកម្មជាមួយគ្នា និងរបៀបដែលពណ៌ជះឥទ្ធិពលលើអារម្មណ៍ ចិត្តសាស្ត្រ និងការសម្រេចចិត្តរបស់មនុស្ស (Color Psychology)។ នៅក្នុងវិស័យឌីជីថល ពណ៌ទាំងអស់ត្រូវបានរៀបចំនៅលើ «កង់ពណ៌ (Color Wheel)»។
+    </p>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>៤.</span> <strong>២ ពណ៌បឋម (Primary Colors):</strong> ក្រហម (Red), ខៀវ (Blue), និងលឿង (Yellow)។ លើអេក្រង់ឌីជីថលប្រើប្រព័ន្ធ Additive RGB (Red, Green, Blue)។</li>
+      <li><span class='num-badge'>៤.</span> <strong>៣ ពណ៌អនុវិទ្យាល័យ (Secondary Colors):</strong> កើតពីការលាយពណ៌បឋមពីរស្មើគ្នា៖ បៃតង (Green), ទឹកក្រូច (Orange), និងស្វាយ (Purple)។</li>
+      <li><span class='num-badge'>៤.</span> <strong>៤ ពណ៌តតិយភូមិ (Tertiary Colors):</strong> កើតពីការលាយពណ៌បឋមជាមួយពណ៌អនុវិទ្យាល័យដែលនៅជាប់គ្នា។</li>
+      <li><span class='num-badge'>៤.</span> <strong>៥ ពណ៌ក្តៅ និងពណ៌ត្រជាក់ (Warm &amp; Cool Colors):</strong> ពណ៌ក្តៅផ្តល់ថាមពល និងភាពរំភើប។ ពណ៌ត្រជាក់ផ្តល់នូវភាពស្ងប់ស្ងាត់ ទំនុកចិត្ត និងវិជ្ជាជីវៈ។</li>
+    </ul>
+
+    <h2 class="heading-muol">៤.៦ ក្បួនផ្សំពណ៌ (Color Schemes / Harmonies)</h2>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>Monochromatic (ឯកពណ៌):</strong> ប្រើប្រាស់ពណ៌តែមួយ ប៉ុន្តែមានកម្រិតខ្ចី-ចាស់ខុសៗគ្នា (Shades, Tints, Tones)។</li>
+      <li><span class='num-badge'>២.</span> <strong>Analogous (ពណ៌ស្រដៀងគ្នា):</strong> ប្រើប្រាស់ពណ៌ដែលនៅជាប់គ្នាលើកង់ពណ៌ (ឧ. ខៀវ, ខៀវ-បៃតង, បៃតង)។</li>
+      <li><span class='num-badge'>៣.</span> <strong>Complementary (ពណ៌ផ្ទុយគ្នា):</strong> ប្រើប្រាស់ពណ៌ពីរដែលស្ថិតនៅទល់មុខគ្នាលើកង់ពណ៌ (ឧ. ខៀវ និងទឹកក្រូច)។ កម្រិតផ្ទុយខ្ពស់ ស័ក្តិសមសម្រាប់ CTA។</li>
+      <li><span class='num-badge'>៤.</span> <strong>Triadic (ពណ៌ត្រីកោណ):</strong> ប្រើប្រាស់ពណ៌ ៣ ដែលមានចម្ងាយស្មើគ្នានៅលើកង់ពណ៌ជាទម្រង់ត្រីកោណសម័ង្ស។</li>
+      <li><span class='num-badge'>៥.</span> <strong>Split-Complementary:</strong> ប្រើពណ៌គោលមួយ រួមជាមួយពណ៌ពីរដែលនៅសងខាងនៃពណ៌ផ្ទុយរបស់វា។</li>
+    </ul>
+
+    <h2 class="heading-muol">៤.៧ ក្ដារលាយពណ៌នៃគេហទំព័រ (Website Color Palette)</h2>
+    <p>អនុវត្តតាម «ក្បួនសមាមាត្រ 60 - 30 - 10 (The 60-30-10 Rule)»៖</p>
+    <ul>
+      <li><strong>៦០% ពណ៌ចម្បង (Dominant Color):</strong> ពណ៌ផ្ទៃខាងក្រោយ (Background / Canvas) ដូចជា #F8FAFC។</li>
+      <li><strong>៣០% ពណ៌បន្ទាប់បន្សំ (Secondary Color):</strong> ពណ៌រចនាសម្ព័ន្ធលើ Header, Cards, Footers (#0F172A)។</li>
+      <li><strong>១០% ពណ៌លេចធ្លោ (Accent Color):</strong> ពណ៌សង្កត់សំឡេងលើប៊ូតុង Primary CTA (#F59E0B)។</li>
+    </ul>
+
+    <h2 class="heading-muol">៤.៨ កម្រិតពណ៌ផ្ទុយ និងស្តង់ដាពិភពលោក (Color Contrast &amp; WCAG 2.1)</h2>
+    <p>ស្តង់ដា WCAG 2.1 កម្រិត AA តម្រូវឱ្យ៖</p>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>អត្ថបទធម្មតា (Normal Text &lt; 18pt):</strong> Contrast Ratio យ៉ាងតិច <strong>4.5:1</strong></li>
+      <li><span class='num-badge'>២.</span> <strong>អត្ថបទធំ (Large Text &ge; 18pt):</strong> Contrast Ratio យ៉ាងតិច <strong>3.0:1</strong></li>
+      <li><span class='num-badge'>៣.</span> <strong>ធាតុ UI និងប៊ូតុង:</strong> Contrast Ratio យ៉ាងតិច <strong>3.0:1</strong></li>
+    </ul>
+
+    <h2 class="heading-muol">៤.៩ ដល់ ៤.១៥ ប្រព័ន្ធពុម្ពអក្សរ (Web Typography Fundamentals)</h2>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>៤.</span> <strong>៩ ប្រភេទពុម្ពអក្សរ:</strong> Serif (មានជើង), Sans-serif (គ្មានជើង ដូចជា Khmer OS Siemreap ងាយអានលើអេក្រង់), Monospace (កូដកម្មវិធី)។</li>
+      <li><span class='num-badge'>៤.</span> <strong>១០ Font Family:</strong> Web-Safe Fonts vs Google Fonts (Kantumruy Pro, Moul)។</li>
+      <li><span class='num-badge'>៤.</span> <strong>១១ Font Size:</strong> ណែនាំឱ្យប្រើប្រាស់ relative units (rem) ដោយ 1rem = 16px។</li>
+      <li><span class='num-badge'>៤.</span> <strong>១២ Font Weight:</strong> 400 (Regular), 600 (Semi-bold), 700 (Bold)។</li>
+      <li><span class='num-badge'>៤.</span> <strong>១៣ Line Height:</strong> សម្រាប់ Body Text គួរស្ថិតនៅចន្លោះ 1.5 ដល់ 1.8។</li>
+      <li><span class='num-badge'>៤.</span> <strong>១៤ Letter Spacing:</strong> បន្ថែម 0.5px ដល់ 1.5px សម្រាប់អក្សរធំ (ALL CAPS)។</li>
+      <li><span class='num-badge'>៤.</span> <strong>១៥ Text Alignment:</strong> Left Alignment គឺងាយអានបំផុត ជៀសវាង Justify លើគេហទំព័រ។</li>
+    </ul>
+
+    <h2 class="heading-muol">៤.១៦ ឋានានុក្រមនៃការមើលឃើញ (Visual Hierarchy)</h2>
+    <p>ដឹកនាំក្រសែភ្នែកអ្នកទស្សនាតាមរយៈ៖ <strong>ទំហំ (Size)</strong>, <strong>កម្រាស់ (Weight)</strong>, <strong>ពណ៌ (Color &amp; Contrast)</strong>, និង <strong>ទីតាំងលំហ (Spatial Position)</strong>។</p>
+
+    <h2 class="heading-muol">៤.១៧ ចន្លោះទំនេរ (White Space / Negative Space)</h2>
+    <ul>
+      <li><strong>Macro White Space:</strong> ចន្លោះធំៗរវាង Sections និង Layout Containers។</li>
+      <li><strong>Micro White Space:</strong> ចន្លោះតូចៗរវាងបន្ទាត់អក្សរ (Line-height) និង Padding ក្នុងប៊ូតុង។</li>
+    </ul>
+
+    <h2 class="heading-muol">៤.១៨ ភាពស៊ីសង្វាក់គ្នានៃការរចនា និង Design Tokens</h2>
+    <pre class="vscode-code">
+<span class="token-comment">/* កូដ Design Tokens ក្នុង CSS Custom Properties */</span>
+<span class="token-tag">:root</span> {
+  <span class="token-prop">--color-primary</span>: <span class="token-val">#0284c7</span>;
+  <span class="token-prop">--color-secondary</span>: <span class="token-val">#0f172a</span>;
+  <span class="token-prop">--color-accent</span>: <span class="token-val">#f59e0b</span>;
+  <span class="token-prop">--font-h1</span>: <span class="token-val">2.0rem</span>;
+  <span class="token-prop">--font-body</span>: <span class="token-val">1.0rem</span>;
+  <span class="token-prop">--space-md</span>: <span class="token-val">16px</span>;
+}
+    </pre>
+
+    <h2 class="heading-muol">សេចក្តីសង្ខេបមេរៀន (Chapter Summary)</h2>
+    <p>
+      ជំពូកទី ៤ នេះបានបញ្ចប់ Module 01 យ៉ាងពេញលេញ ដោយផ្តល់នូវឧបករណ៍សោភ័ណភាព និងស្ថាបត្យកម្មនៃការមើលឃើញ។ ការជ្រើសរើសពណ៌តាមក្បួន 60-30-10 Rule និងការធានា Contrast Ratio តាមស្តង់ដា WCAG 2.1 ជួយឱ្យគេហទំព័រមានទាំងភាពស្រស់ស្អាត និងលទ្ធភាពទទួលបាន (Accessibility) ខ្ពស់។
+    </p>
+
+    <h2 class="heading-muol">សំណួរត្រួតពិនិត្យការយល់ដឹង (Review &amp; Discussion Questions)</h2>
+    <ol>
+      <li>ចូរពន្យល់ពីក្បួនសមាមាត្រពណ៌ 60 - 30 - 10 នៅក្នុងការរចនាគេហទំព័រ។</li>
+      <li>តើស្តង់ដា WCAG 2.1 កម្រិត AA តម្រូវឱ្យមានកម្រិតពណ៌ផ្ទុយ (Contrast Ratio) ប៉ុន្មានសម្រាប់ Normal Text និង Large Text?</li>
+      <li>ចូរប្រៀបធៀបភាពខុសគ្នារវាងពុម្ពអក្សរ Serif និង Sans-serif។</li>
+      <li>ហេតុអ្វីបានជាគេណែនាំឱ្យប្រើប្រាស់ឯកតា relative units (rem) ជំនួសឱ្យ pixels (px)?</li>
+      <li>ចូរពន្យល់ពីភាពខុសគ្នារវាង Macro White Space និង Micro White Space។</li>
+    </ol>
+    
+  
+  </div>
+</div>
+
+<script>
+  let currentScale = 16;
+  function changeFontSize(delta) {
+    currentScale = Math.min(22, Math.max(13, currentScale + delta));
+    document.documentElement.style.setProperty('--font-scale', currentScale + 'px');
+  }
+</script>
+
+</body>
+</html>

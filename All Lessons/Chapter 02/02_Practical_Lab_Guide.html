@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍: ការបង្កើតផែនទីគេហទំព័រសាកលវិទ្យាល័យ (Practical Lab Guide)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Siemreap&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ==========================================================================
+     Master Responsive & Reader-Friendly Styling
+     ========================================================================== */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --font-body: 'Kantumruy Pro', 'Khmer OS Siemreap', 'Siemreap', system-ui, -apple-system, sans-serif;
+    --font-code: 'Fira Code', Consolas, Monaco, monospace;
+    --color-primary: #0F172A;
+    --color-navy: #1E3A8A;
+    --color-blue: #2563EB;
+    --color-muted: #64748B;
+    --color-bg: #F8FAFC;
+    --color-card: #FFFFFF;
+    --color-border: #E2E8F0;
+    --color-border-dark: #CBD5E1;
+    --color-code-bg: #F8FAFC;
+    --font-scale: 16px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: var(--font-scale);
+    line-height: 1.75;
+    color: var(--color-primary);
+    background-color: var(--color-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Top Utility Reader Bar */
+  .reader-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.6rem 1.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .toolbar-container {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .badge-tag {
+    background: #EEF2FF;
+    color: var(--color-blue);
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-tool {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border-dark);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .btn-tool:hover {
+    background: #F1F5F9;
+    border-color: #94A3B8;
+  }
+
+  /* Main Document Container */
+  .document-wrapper {
+    flex: 1;
+    padding: 1.5rem 0.75rem 3rem 0.75rem;
+    width: 100%;
+  }
+
+  .page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+    padding: 3rem 2.8rem;
+    transition: padding 0.3s ease;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4 {
+    color: var(--color-primary);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-size: 1.45rem;
+    color: var(--color-navy);
+    border-bottom: 2px solid #EEF2FF;
+    padding-bottom: 0.4rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: #1E293B;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    color: var(--color-navy);
+  }
+
+  p {
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
+  strong {
+    font-weight: 700;
+    color: #0F172A;
+  }
+
+  /* Responsive Lists */
+  ul.bullet-list {
+    margin: 0.5rem 0 1.25rem 1.5rem;
+    list-style-type: disc;
+  }
+
+  ul.bullet-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.25rem;
+  }
+
+  ul.numbered-list {
+    list-style: none !important;
+    margin: 0.5rem 0 1.25rem 0;
+    padding-left: 0;
+  }
+
+  ul.numbered-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+    list-style: none !important;
+  }
+
+  .num-badge {
+    font-weight: 700;
+    color: var(--color-navy);
+    flex-shrink: 0;
+    min-width: 1.8rem;
+    line-height: 1.75;
+  }
+
+  /* Responsive Code Blocks */
+  pre.code-block, pre {
+    font-family: var(--font-code);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    background-color: var(--color-code-bg);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-blue);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre;
+    color: var(--color-primary);
+  }
+
+  .tag { color: #991B1B; font-weight: 600; }
+  .attr { color: #DC2626; }
+  .str { color: #2563EB; }
+  .comm { color: #16A34A; font-style: italic; }
+  .blue { color: #2563EB; font-weight: 600; }
+
+  /* Responsive Table Container */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: #FFFFFF;
+  }
+
+  table, table.data-table {
+    width: 100%;
+    min-width: 550px;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  table th, table td {
+    border: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+  }
+
+  table th {
+    background-color: #F1F5F9;
+    font-weight: 700;
+    color: var(--color-navy);
+    text-align: center;
+  }
+
+  table tbody tr:nth-child(even) {
+    background-color: #FBFDFF;
+  }
+
+  table tbody tr:hover {
+    background-color: #F1F5F9;
+  }
+
+  /* Scroll hint on mobile */
+  .scroll-hint {
+    display: none;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 0.25rem;
+    text-align: right;
+  }
+
+  /* Mobile Responsive Breakpoints */
+  @media screen and (max-width: 768px) {
+    :root {
+      --font-scale: 15px;
+    }
+    .document-wrapper {
+      padding: 0.75rem 0.35rem 2rem 0.35rem;
+    }
+    .page-container {
+      padding: 1.5rem 1.15rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    h1 { font-size: 1.3rem; }
+    h2 { font-size: 1.15rem; }
+    h3 { font-size: 1.05rem; }
+    p { text-align: left; }
+    .scroll-hint { display: block; }
+  }
+
+  /* Print Stylesheet (Exact University A4 Standard) */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin-left: 2.5cm;
+      margin-right: 1.5cm;
+      margin-top: 2.5cm;
+      margin-bottom: 2.5cm;
+    }
+    body {
+      background: transparent !important;
+      padding: 0 !important;
+      font-family: 'Khmer OS Siemreap', 'Siemreap', sans-serif !important;
+      font-size: 12pt !important;
+      line-height: 1.15 !important;
+      color: #000000 !important;
+    }
+    .no-print, .reader-toolbar, .scroll-hint {
+      display: none !important;
+    }
+    .document-wrapper {
+      padding: 0 !important;
+      width: 100% !important;
+    }
+    .page-container {
+      max-width: 100% !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+    h1, h2, h3 {
+      font-family: 'Khmer OS Muol Light', 'Khmer OS Muol Light-Kh Auto', sans-serif !important;
+      font-size: 12pt !important;
+      line-height: 1.25 !important;
+      border: none !important;
+    }
+    table {
+      min-width: 100% !important;
+    }
+    .table-responsive {
+      border: none !important;
+      overflow: visible !important;
+    }
+    pre.code-block, pre {
+      background: transparent !important;
+      white-space: pre-wrap !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Interactive Reader Utility Bar -->
+<div class="reader-toolbar no-print">
+  <div class="toolbar-container">
+    <div class="toolbar-brand">
+      <span class="badge-tag">Web Design (Year 3)</span>
+      <span>មន្ទីរពិសោធន៍អនុវត្ត (Practical Lab Guide)</span>
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn-tool" onclick="changeFontSize(-1)" title="បន្ថយទំហំអក្សរ">A-</button>
+      <button class="btn-tool" onclick="changeFontSize(1)" title="ពង្រីកទំហំអក្សរ">A+</button>
+      <button class="btn-tool" onclick="window.print()" title="បោះពុម្ព ឬរក្សាទុកជា PDF">🖨️ បោះពុម្ព / PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- Main Reader Document -->
+<div class="document-wrapper">
+  <div class="page-container">
+<div class="print-bar no-print">
+    <span>📄 ស្តង់ដាសៀវភៅគោល A4 (Left 2.5cm, Right 1.5cm, Top 2.5cm, Bottom 2.5cm)</span>
+    <button class="print-btn" onclick="window.print()">🖨️ បោះពុម្ព ឬទាញយកជា PDF (Print / Save as PDF)</button>
+  </div>
+  <div class="page-container">
+
+    <div class="title-center">
+      <h1 class="heading-muol">សាកលវិទ្យាល័យភូមិន្ទ — មហាវិទ្យាល័យវិទ្យាសាស្ត្រកុំព្យូទ័រ</h1>
+      <h2 class="heading-muol">កិច្ចការអនុវត្តជាក់ស្តែងក្នុងបន្ទប់ពិសោធន៍ (Practical Lab Guide)</h2>
+      <h2 class="heading-muol" style="color: #0284c7;">ម៉ូឌុល ០១ • ជំពូកទី ២៖ ការបង្កើតផែនទីគេហទំព័រសម្រាប់សាកលវិទ្យាល័យ (Create a Sitemap for a University Website)</h2>
+    </div>
+
+    <div class="callout-box">
+      <strong>កម្រិតសិក្សា៖</strong> បរិញ្ញាបត្រឆ្នាំទី ៣ | <strong>រយៈពេលអនុវត្ត៖</strong> ៣ ម៉ោង | <strong>ប្រភេទទម្រង់៖</strong> Step-by-Step Practical Lab
+    </div>
+
+    <h2 class="heading-muol">គោលបំណងនៃការអនុវត្ត (Lab Objectives)</h2>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>ការវិភាគតម្រូវការអ្នកប្រើប្រាស់៖</strong> ចេះកំណត់ក្រុមទស្សនិកជនគោលដៅ (User Personas &amp; Stakeholders) សម្រាប់គេហទំព័រសាកលវិទ្យាល័យ។</li>
+      <li><span class='num-badge'>២.</span> <strong>Card Sorting &amp; IA៖</strong> អនុវត្តវិធីសាស្ត្រ Card Sorting ដើម្បីចាត់ថ្នាក់ និងរៀបចំស្ថាបត្យកម្មព័ត៌មាន (Information Architecture)។</li>
+      <li><span class='num-badge'>៣.</span> <strong>ការគូសប្លង់ Sitemap៖</strong> បង្កើតផែនទីគេហទំព័រ (Visual Sitemap) តាមឋានានុក្រម ៣ កម្រិត (Level 1 Root, Level 2 Sections, Level 3 Pages) ដោយប្រើឧបករណ៍ឌីជីថល។</li>
+      <li><span class='num-badge'>៤.</span> <strong>ការបំប្លែងទៅជាកូដ Semantic HTML៖</strong> បំប្លែងប្លង់ Sitemap ទៅជាកូដរចនាសម្ព័ន្ធ Semantic HTML Navigation និងរៀបចំទីតាំង Call-to-Action (CTA)។</li>
+      <li><span class='num-badge'>៥.</span> <strong>របាយការណ៍បច្ចេកទេស៖</strong> ចងក្រងជារបាយការណ៍បច្ចេកទេស និងការពាររចនាសម្ព័ន្ធដែលខ្លួនបានបង្កើតឡើង។</li>
+    </ul>
+
+    <h2 class="heading-muol">សម្ភារ និងបរិស្ថានអនុវត្តដែលត្រូវការ (Required Tools &amp; Setup)</h2>
+    <ul>
+      <li><strong>Hardware &amp; Browser:</strong> កុំព្យូទ័រភ្ជាប់អ៊ីនធឺណិត និងកម្មវិធីរុករក Google Chrome / Microsoft Edge។</li>
+      <li><strong>Diagramming Tools:</strong> ឧបករណ៍គូរ Diagram (FigJam, Miro, ឬ draw.io)។</li>
+      <li><strong>Code Editor:</strong> Visual Studio Code (សម្រាប់សរសេរ និងពិនិត្យកូដ HTML/CSS)។</li>
+      <li><strong>Reference Project:</strong> គម្រោងគំរូ «sample_project» ក្នុង Folder ជំពូកទី ២ សម្រាប់ជាឯកសារយោង។</li>
+    </ul>
+
+    <h2 class="heading-muol">ការណែនាំអនុវត្តជាជំហានៗ (Step-by-Step Lab Instructions)</h2>
+
+    <h3 class="heading-muol">ជំហានទី ១៖ កំណត់ក្រុមអ្នកប្រើប្រាស់ និងតម្រូវការ (User Personas &amp; User Goals)</h3>
+    <p>គេហទំព័រសាកលវិទ្យាល័យបម្រើឱ្យក្រុមអ្នកប្រើប្រាស់ ៤ ក្រុមខុសៗគ្នា៖</p>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>និស្សិតអនាគត (Prospective Students):</strong> ត្រូវការស្វែងរកព័ត៌មានអំពី៖ តម្លៃសិក្សា, អាហារូបករណ៍, លក្ខខណ្ឌចុះឈ្មោះ, វគ្គសិក្សា, និងប៊ូតុង Apply Now។</li>
+      <li><span class='num-badge'>២.</span> <strong>និស្សិតបច្ចុប្បន្ន (Current Students):</strong> ត្រូវការស្វែងរកព័ត៌មានអំពី៖ កាលវិភាគប្រឡង, ពិន្ទុ, Student Portal Login, បណ្ណាល័យ, និងសេចក្តីជូនដំណឹង។</li>
+      <li><span class='num-badge'>៣.</span> <strong>សាស្ត្រាចារ្យ និងបុគ្គលិក (Faculty &amp; Staff):</strong> ត្រូវការស្វែងរកព័ត៌មានអំពី៖ ប្រព័ន្ធស្រាវជ្រាវ (Research Grants), វិបផតថលគ្រូ, កាលវិភាគបង្រៀន, និងបញ្ជីឈ្មោះសហការី។</li>
+      <li><span class='num-badge'>៤.</span> <strong>ដៃគូ និងសាធារណជន (Partners &amp; Public):</strong> ត្រូវការស្វែងរកព័ត៌មានអំពី៖ ប្រវត្តិសាកលវិទ្យាល័យ, ព័ត៌មានទាក់ទង, ការងារជ្រើសរើសបុគ្គលិក, និងកិច្ចសហប្រតិបត្តិការ។</li>
+    </ul>
+
+    <h3 class="heading-muol">ជំហានទី ២៖ អនុវត្តវិធីសាស្ត្រ Card Sorting</h3>
+    <p>និស្សិតត្រូវយកប្រធានបទព័ត៌មានចំនួន ១៦ ខាងក្រោម មកធ្វើការចាត់ក្រុម (Categorization) ដោយប្រើប្រាស់ Open Card Sorting៖</p>
+    <div class="callout-box">
+      [Undergraduate Programs, Postgraduate Programs, Scholarships, Tuition Fees, Computer Science, Web Design, Software Engineering, Research Lab, Publications, Student Club, Dormitory, Library, Leadership Team, Campus Map, Contact Form, Job Vacancies]
+    </div>
+
+    <h3 class="heading-muol">ជំហានទី ៣៖ ការគូសប្លង់ 3-Tier Visual Sitemap</h3>
+    <p>ដោយប្រើប្រាស់ FigJam ឬ draw.io សូមគូសប្លង់ Visual Sitemap ឋានានុក្រម ៣ កម្រិត៖</p>
+    <ul>
+      <li><strong>Level 1 (Root):</strong> ទំព័រដើម (Homepage) អាសយដ្ឋាន URL Slug: <code>/</code></li>
+      <li><strong>Level 2 (Main Categories):</strong> Admissions (<code>/admissions</code>), Academics (<code>/academics</code>), Research (<code>/research</code>), Campus Life (<code>/campus-life</code>), About Us (<code>/about</code>)</li>
+      <li><strong>Level 3 (Child Pages):</strong> ទំព័ររងជាក់លាក់នីមួយៗ (យ៉ាងតិច ៣ ទំព័រក្នុងផ្នែកនីមួយៗ)</li>
+    </ul>
+
+    <h3 class="heading-muol">ជំហានទី ៤៖ ការបំប្លែង Sitemap ទៅជាកូដ Semantic HTML Navigation</h3>
+    <p>បើកកម្មវិធី Visual Studio Code រួចសរសេរកូដ Semantic HTML5 បង្កើតប្រព័ន្ធ Navigation Bar ដែលមាន Dropdown Menu ស្របតាម Sitemap៖</p>
+    <pre class="vscode-code">
+<span class="token-comment">&lt;!-- កូដគំរូ Semantic HTML Navigation Bar --&gt;</span>
+<span class="token-tag">&lt;nav</span> <span class="token-attr">class=</span><span class="token-str">"site-nav"</span> <span class="token-attr">aria-label=</span><span class="token-str">"Main Navigation"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;ul</span> <span class="token-attr">class=</span><span class="token-str">"nav-list"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;li</span> <span class="token-attr">class=</span><span class="token-str">"nav-item dropdown"</span><span class="token-tag">&gt;</span>
+      <span class="token-tag">&lt;a</span> <span class="token-attr">href=</span><span class="token-str">"/admissions"</span><span class="token-tag">&gt;</span>ការចុះឈ្មោះ (Admissions)<span class="token-tag">&lt;/a&gt;</span>
+      <span class="token-tag">&lt;ul</span> <span class="token-attr">class=</span><span class="token-str">"dropdown-menu"</span><span class="token-tag">&gt;</span>
+        <span class="token-tag">&lt;li&gt;&lt;a</span> <span class="token-attr">href=</span><span class="token-str">"/admissions/undergraduate"</span><span class="token-tag">&gt;</span>ថ្នាក់បរិញ្ញាបត្រ<span class="token-tag">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="token-tag">&lt;li&gt;&lt;a</span> <span class="token-attr">href=</span><span class="token-str">"/admissions/scholarships"</span><span class="token-tag">&gt;</span>អាហារូបករណ៍<span class="token-tag">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="token-tag">&lt;/ul&gt;</span>
+    <span class="token-tag">&lt;/li&gt;</span>
+  <span class="token-tag">&lt;/ul&gt;</span>
+<span class="token-tag">&lt;/nav&gt;</span>
+    </pre>
+
+    <h3 class="heading-muol">ជំហានទី ៥៖ ការកំណត់ទីតាំង Call-to-Action (CTA) យុទ្ធសាស្ត្រ</h3>
+    <p>សម្រាប់ទំព័រនីមួយៗក្នុង Sitemap និស្សិតត្រូវកំណត់ Primary CTA និង Secondary CTA ឱ្យបានច្បាស់លាស់។</p>
+
+    <h2 class="heading-muol">ទម្រង់របាយការណ៍បច្ចេកទេសរបស់និស្សិត (Student Submission Template)</h2>
+    <div class="table-responsive">
+<table class="data-table">
+      <thead>
+        <tr>
+          <th>Level 2 Section</th>
+          <th>Level 3 Pages (Child Pages)</th>
+          <th>URL Slug</th>
+          <th>Primary Call-to-Action (CTA)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Admissions</strong></td>
+          <td>• Undergraduate<br>• Postgraduate<br>• Scholarships</td>
+          <td>/admissions/undergraduate<br>/admissions/postgraduate<br>/admissions/scholarships</td>
+          <td>«ចុះឈ្មោះឥឡូវនេះ»<br>«ស្នើសុំអាហារូបករណ៍»</td>
+        </tr>
+        <tr>
+          <td><strong>2. Academics</strong></td>
+          <td>• Computer Science<br>• Web Design<br>• Cybersecurity</td>
+          <td>/academics/computer-science<br>/academics/web-design<br>/academics/cybersecurity</td>
+          <td>«ទាញយក Syllabus»<br>«ជួបប្រឹក្សាការសិក្សា»</td>
+        </tr>
+        <tr>
+          <td><strong>3. Research</strong></td>
+          <td>• AI Research Lab<br>• Publications<br>• Innovation Grants</td>
+          <td>/research/ai-lab<br>/research/publications<br>/research/grants</td>
+          <td>«អានស្នាដៃស្រាវជ្រាវ»<br>«ដាក់ពាក្យសុំជំនួយ»</td>
+        </tr>
+        <tr>
+          <td><strong>4. About Us</strong></td>
+          <td>• University History<br>• Leadership Team<br>• Campus Map &amp; Contact</td>
+          <td>/about/history<br>/about/leadership<br>/about/contact</td>
+          <td>«ទាក់ទងមកយើង»<br>«មើលផែនទីសាកលវិទ្យាល័យ»</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div class="scroll-hint">⇄ អូសទៅស្តាំដើម្បីមើលតារាងពេញ (Scroll table horizontally)</div>
+
+    <h2 class="heading-muol">តារាងពិន្ទុវាយតម្លៃការអនុវត្ត (Evaluation Rubric — 100 Points)</h2>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>គុណភាពនៃស្ថាបត្យកម្មព័ត៌មាន IA (២៥ ពិន្ទុ)៖</strong> ចាត់ថ្នាក់ប្រធានបទព័ត៌មានបានត្រឹមត្រូវ សមហេតុផល និងងាយស្រួលយល់ស្របតាមក្បួន Card Sorting។</li>
+      <li><span class='num-badge'>២.</span> <strong>ប្លង់ Visual Sitemap Diagram (២៥ ពិន្ទុ)៖</strong> គូសប្លង់ Sitemap ឋានានុក្រម ៣ កម្រិតបានច្បាស់លាស់ ស្រស់ស្អាត និងអនុលោមតាមក្បួន 3-Click Rule។</li>
+      <li><span class='num-badge'>៣.</span> <strong>កូដ Semantic HTML Navigation (២៥ ពិន្ទុ)៖</strong> សរសេរកូដ Semantic HTML5 (&lt;header&gt;, &lt;nav&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;a&gt;) បានត្រឹមត្រូវតាមស្តង់ដា W3C។</li>
+      <li><span class='num-badge'>៤.</span> <strong>យុទ្ធសាស្ត្រ CTA និងការការពាររបាយការណ៍ (២៥ ពិន្ទុ)៖</strong> កំណត់ Primary/Secondary CTA បានលេចធ្លោ និងរៀបចំរបាយការណ៍បច្ចេកទេសបានពេញលេញ។</li>
+    </ul>
+    
+  
+  </div>
+</div>
+
+<script>
+  let currentScale = 16;
+  function changeFontSize(delta) {
+    currentScale = Math.min(22, Math.max(13, currentScale + delta));
+    document.documentElement.style.setProperty('--font-scale', currentScale + 'px');
+  }
+</script>
+
+</body>
+</html>

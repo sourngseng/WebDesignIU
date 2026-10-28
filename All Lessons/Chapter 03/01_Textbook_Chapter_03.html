@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>សៀវភៅគោល: ជំពូកទី ៣ — មូលដ្ឋានគ្រឹះនៃ UI និង UX (UI and UX Fundamentals)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Siemreap&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ==========================================================================
+     Master Responsive & Reader-Friendly Styling
+     ========================================================================== */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --font-body: 'Kantumruy Pro', 'Khmer OS Siemreap', 'Siemreap', system-ui, -apple-system, sans-serif;
+    --font-code: 'Fira Code', Consolas, Monaco, monospace;
+    --color-primary: #0F172A;
+    --color-navy: #1E3A8A;
+    --color-blue: #2563EB;
+    --color-muted: #64748B;
+    --color-bg: #F8FAFC;
+    --color-card: #FFFFFF;
+    --color-border: #E2E8F0;
+    --color-border-dark: #CBD5E1;
+    --color-code-bg: #F8FAFC;
+    --font-scale: 16px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: var(--font-scale);
+    line-height: 1.75;
+    color: var(--color-primary);
+    background-color: var(--color-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Top Utility Reader Bar */
+  .reader-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.6rem 1.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .toolbar-container {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .badge-tag {
+    background: #EEF2FF;
+    color: var(--color-blue);
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-tool {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border-dark);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .btn-tool:hover {
+    background: #F1F5F9;
+    border-color: #94A3B8;
+  }
+
+  /* Main Document Container */
+  .document-wrapper {
+    flex: 1;
+    padding: 1.5rem 0.75rem 3rem 0.75rem;
+    width: 100%;
+  }
+
+  .page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+    padding: 3rem 2.8rem;
+    transition: padding 0.3s ease;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4 {
+    color: var(--color-primary);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-size: 1.45rem;
+    color: var(--color-navy);
+    border-bottom: 2px solid #EEF2FF;
+    padding-bottom: 0.4rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: #1E293B;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    color: var(--color-navy);
+  }
+
+  p {
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
+  strong {
+    font-weight: 700;
+    color: #0F172A;
+  }
+
+  /* Responsive Lists */
+  ul.bullet-list {
+    margin: 0.5rem 0 1.25rem 1.5rem;
+    list-style-type: disc;
+  }
+
+  ul.bullet-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.25rem;
+  }
+
+  ul.numbered-list {
+    list-style: none !important;
+    margin: 0.5rem 0 1.25rem 0;
+    padding-left: 0;
+  }
+
+  ul.numbered-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+    list-style: none !important;
+  }
+
+  .num-badge {
+    font-weight: 700;
+    color: var(--color-navy);
+    flex-shrink: 0;
+    min-width: 1.8rem;
+    line-height: 1.75;
+  }
+
+  /* Responsive Code Blocks */
+  pre.code-block, pre {
+    font-family: var(--font-code);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    background-color: var(--color-code-bg);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-blue);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre;
+    color: var(--color-primary);
+  }
+
+  .tag { color: #991B1B; font-weight: 600; }
+  .attr { color: #DC2626; }
+  .str { color: #2563EB; }
+  .comm { color: #16A34A; font-style: italic; }
+  .blue { color: #2563EB; font-weight: 600; }
+
+  /* Responsive Table Container */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: #FFFFFF;
+  }
+
+  table, table.data-table {
+    width: 100%;
+    min-width: 550px;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  table th, table td {
+    border: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+  }
+
+  table th {
+    background-color: #F1F5F9;
+    font-weight: 700;
+    color: var(--color-navy);
+    text-align: center;
+  }
+
+  table tbody tr:nth-child(even) {
+    background-color: #FBFDFF;
+  }
+
+  table tbody tr:hover {
+    background-color: #F1F5F9;
+  }
+
+  /* Scroll hint on mobile */
+  .scroll-hint {
+    display: none;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 0.25rem;
+    text-align: right;
+  }
+
+  /* Mobile Responsive Breakpoints */
+  @media screen and (max-width: 768px) {
+    :root {
+      --font-scale: 15px;
+    }
+    .document-wrapper {
+      padding: 0.75rem 0.35rem 2rem 0.35rem;
+    }
+    .page-container {
+      padding: 1.5rem 1.15rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    h1 { font-size: 1.3rem; }
+    h2 { font-size: 1.15rem; }
+    h3 { font-size: 1.05rem; }
+    p { text-align: left; }
+    .scroll-hint { display: block; }
+  }
+
+  /* Print Stylesheet (Exact University A4 Standard) */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin-left: 2.5cm;
+      margin-right: 1.5cm;
+      margin-top: 2.5cm;
+      margin-bottom: 2.5cm;
+    }
+    body {
+      background: transparent !important;
+      padding: 0 !important;
+      font-family: 'Khmer OS Siemreap', 'Siemreap', sans-serif !important;
+      font-size: 12pt !important;
+      line-height: 1.15 !important;
+      color: #000000 !important;
+    }
+    .no-print, .reader-toolbar, .scroll-hint {
+      display: none !important;
+    }
+    .document-wrapper {
+      padding: 0 !important;
+      width: 100% !important;
+    }
+    .page-container {
+      max-width: 100% !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+    h1, h2, h3 {
+      font-family: 'Khmer OS Muol Light', 'Khmer OS Muol Light-Kh Auto', sans-serif !important;
+      font-size: 12pt !important;
+      line-height: 1.25 !important;
+      border: none !important;
+    }
+    table {
+      min-width: 100% !important;
+    }
+    .table-responsive {
+      border: none !important;
+      overflow: visible !important;
+    }
+    pre.code-block, pre {
+      background: transparent !important;
+      white-space: pre-wrap !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Interactive Reader Utility Bar -->
+<div class="reader-toolbar no-print">
+  <div class="toolbar-container">
+    <div class="toolbar-brand">
+      <span class="badge-tag">Web Design (Year 3)</span>
+      <span>សៀវភៅគោល (Core Textbook)</span>
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn-tool" onclick="changeFontSize(-1)" title="បន្ថយទំហំអក្សរ">A-</button>
+      <button class="btn-tool" onclick="changeFontSize(1)" title="ពង្រីកទំហំអក្សរ">A+</button>
+      <button class="btn-tool" onclick="window.print()" title="បោះពុម្ព ឬរក្សាទុកជា PDF">🖨️ បោះពុម្ព / PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- Main Reader Document -->
+<div class="document-wrapper">
+  <div class="page-container">
+<div class="print-bar no-print">
+    <span>📄 ស្តង់ដាសៀវភៅគោល A4 (Left 2.5cm, Right 1.5cm, Top 2.5cm, Bottom 2.5cm)</span>
+    <button class="print-btn" onclick="window.print()">🖨️ បោះពុម្ព ឬទាញយកជា PDF (Print / Save as PDF)</button>
+  </div>
+  <div class="page-container">
+
+    <div class="title-center">
+      <h1 class="heading-muol">សាកលវិទ្យាល័យភូមិន្ទ — មហាវិទ្យាល័យវិទ្យាសាស្ត្រកុំព្យូទ័រ</h1>
+      <h2 class="heading-muol">មុខវិជ្ជា៖ ការរចនាគេហទំព័រ (Web Design — Bachelor Year 3)</h2>
+      <h2 class="heading-muol">ម៉ូឌុល ០១៖ មូលដ្ឋានគ្រឹះនៃការរចនាគេហទំព័រ និង UI/UX (Web Design Fundamentals & UI/UX)</h2>
+      <h2 class="heading-muol" style="color: #0284c7;">ជំពូកទី ៣៖ មូលដ្ឋានគ្រឹះនៃ UI និង UX (UI and UX Fundamentals)</h2>
+    </div>
+
+    <div class="callout-box">
+      <strong>កម្រិតសិក្សា៖</strong> ថ្នាក់បរិញ្ញាបត្រឆ្នាំទី ៣ | <strong>រយៈពេលបង្រៀន៖</strong> ៣ ម៉ោងសិក្សា | <strong>ស្តង់ដាឯកសារ៖</strong> Core Textbook
+    </div>
+
+    <h2 class="heading-muol">គោលបំណងនៃការរៀនសូត្រ (Learning Objectives)</h2>
+    <p>បន្ទាប់ពីបញ្ចប់ជំពូកទី ៣ នេះ និស្សិតនឹងមានសមត្ថភាពចំណេះដឹង និងបំណិនដូចខាងក្រោម៖</p>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>ការយល់ដឹងពី UI និង UX៖</strong> ពន្យល់បានច្បាស់លាស់ពីនិយមន័យនៃ User Interface (UI) និង User Experience (UX) ព្រមទាំងភាពខុសគ្នាដាច់ស្រឡះរវាងមុខវិជ្ជាទាំងពីរ។</li>
+      <li><span class='num-badge'>២.</span> <strong>អ្នកប្រើប្រាស់ និងតម្រូវការ៖</strong> វិភាគស្វែងយល់ពីតម្រូវការ (User Needs), គោលដៅ (User Goals) និងផ្នត់គំនិតរបស់អ្នកប្រើប្រាស់ (Mental Models)។</li>
+      <li><span class='num-badge'>៣.</span> <strong>User Journey &amp; User Flow៖</strong> ចេះគូរផែនទីដំណើរកម្សាន្តរបស់អ្នកប្រើប្រាស់ (User Journey Map) និងលំហូរអ្នកប្រើប្រាស់ (User Flow)។</li>
+      <li><span class='num-badge'>៤.</span> <strong>Usability &amp; Accessibility៖</strong> ក្តាប់បាននូវគោលការណ៍គុណភាព Usability ទាំង ៥ របស់ Jakob Nielsen និងស្តង់ដា Accessibility (WCAG 2.1)។</li>
+      <li><span class='num-badge'>៥.</span> <strong>គោលការណ៍ស្នូលទាំង ៤៖</strong> អនុវត្តគោលការណ៍គ្រឹះនៃ UX៖ ភាពស៊ីសង្វាក់គ្នា (Consistency), ភាពសាមញ្ញ (Simplicity &amp; Hick's Law), ការឆ្លើយតប (Feedback) និងការបង្ការកំហុស (Error Prevention)។</li>
+      <li><span class='num-badge'>៦.</span> <strong>ដំណើរការរចនា Design Thinking៖</strong> យល់ដឹង និងចេះអនុវត្តដំណើរការរចនា UI/UX (UI/UX Design Process) តាមទ្រឹស្តី Design Thinking ៥ ដំណាក់កាល។</li>
+    </ul>
+
+    <hr style="border: none; border-top: 1px solid #cbd5e1; margin: 16pt 0;">
+
+    <h2 class="heading-muol">៣.១ និយមន័យនៃចំណុចប្រទាក់អ្នកប្រើប្រាស់ (Definition of User Interface - UI)</h2>
+    <p>
+      ចំណុចប្រទាក់អ្នកប្រើប្រាស់ (User Interface - UI) គឺជាចំណុចប្រាស្រ័យទាក់ទងដោយផ្ទាល់រវាងមនុស្ស និងប្រព័ន្ធកុំព្យូទ័រ។ នៅក្នុងបរិបទនៃការរចនាគេហទំព័រ UI គឺជាអ្វីៗទាំងអស់ដែលអ្នកប្រើប្រាស់អាចមើលឃើញ ប៉ះពាល់ និងមានអន្តរកម្មជាមួយនៅលើអេក្រង់ (The Visual and Interactive Layer)។ UI រួមបញ្ចូលទាំង៖ ប្លង់ទំព័រ (Layouts), ពណ៌ (Colors), ប្រព័ន្ធពុម្ពអក្សរ (Typography), ប៊ូតុង (Buttons), និមិត្តសញ្ញា (Icons), រូបភាព និងចលនាផ្លាស់ប្តូរ (Animations/Transitions)។ គោលដៅចម្បងរបស់ UI គឺធ្វើឱ្យចំណុចប្រទាក់មើលទៅមានសោភ័ណភាពស្រស់ស្អាត ទាក់ទាញភ្នែក និងមានភាពវិចារណញាណខ្ពស់ (Aesthetically Pleasing &amp; Intuitive)។
+    </p>
+
+    <h2 class="heading-muol">៣.២ និយមន័យនៃបទពិសោធអ្នកប្រើប្រាស់ (Definition of User Experience - UX)</h2>
+    <p>
+      បទពិសោធអ្នកប្រើប្រាស់ (User Experience - UX) គឺជាអារម្មណ៍ សតិអារម្មណ៍ និងការយល់ឃើញជារួមរបស់មនុស្សម្នាក់ នៅពេលដែលពួកគេកំពុងមានអន្តរកម្មជាមួយផលិតផល ឬសេវាកម្មគេហទំព័រ (Overall Experience &amp; Perception)។ UX មិនមែនគ្រាន់តែជាអ្វីដែលបង្ហាញនៅលើអេក្រង់ប៉ុណ្ណោះទេ ប៉ុន្តែវាគ្របដណ្តប់លើ៖ ភាពងាយស្រួលក្នុងការស្វែងរកព័ត៌មាន (Findability), ល្បឿនផ្ទុកទំព័រ (Performance), ប្រសិទ្ធភាពក្នុងការបំពេញកិច្ចការ (Efficiency), និងអារម្មណ៍ពេញចិត្តក្រោយពេលប្រើប្រាស់ចប់ (User Satisfaction)។ គោលដៅចម្បងរបស់ UX គឺដោះស្រាយបញ្ហារបស់អ្នកប្រើប្រាស់ដោយរលូន គ្មានឧបសគ្គ (Frictionless) និងមានប្រយោជន៍ពិតប្រាកដ។
+    </p>
+
+    <h2 class="heading-muol">៣.៣ ភាពខុសគ្នារវាង UI និង UX (Difference Between UI and UX)</h2>
+    <div class="table-responsive">
+<table class="data-table">
+      <thead>
+        <tr>
+          <th>លក្ខណៈប្រៀបធៀប</th>
+          <th>User Interface (UI)</th>
+          <th>User Experience (UX)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ការផ្តោតសំខាន់ (Focus)</strong></td>
+          <td>សោភ័ណភាព និងចំណុចប្រទាក់ក្រាហ្វិក (Visuals, Styling, Components)</td>
+          <td>តក្កវិជ្ជា ការដោះស្រាយបញ្ហា និងអារម្មណ៍ (Logic, Functionality, Journey)</td>
+        </tr>
+        <tr>
+          <td><strong>សំណួរគន្លឹះ (Core Question)</strong></td>
+          <td>«តើវាមានរូបរាងដូចម្តេច? (How does it look?)»</td>
+          <td>«តើវាដំណើរការ និងមានអារម្មណ៍យ៉ាងណា? (How does it work &amp; feel?)»</td>
+        </tr>
+        <tr>
+          <td><strong>ឧបករណ៍ប្រើប្រាស់ (Tools)</strong></td>
+          <td>Figma, Adobe XD, Illustrator, Color Palettes</td>
+          <td>User Interviews, Journey Maps, User Flows, Wireframes, Usability Testing</td>
+        </tr>
+        <tr>
+          <td><strong>ភាពប្រៀបធៀបឡាន</strong></td>
+          <td>ពណ៌រថយន្ត ពូកស្បែក ចង្កូតស្រោបប្រាក់ ផ្ទាំងកុងទ័រ</td>
+          <td>ម៉ាស៊ីនរត់ស្រួល សុវត្ថិភាព ស៊ីសាំងតិច ផាសុកភាពពេលបើកបរ</td>
+        </tr>
+        <tr>
+          <td><strong>ភាពប្រៀបធៀបនំខេក</strong></td>
+          <td>ការតែងលម្អក្រែម ផ្លែឈើ និងទៀននៅលើនំ (Icing &amp; Frosting)</td>
+          <td>រសជាតិនំ ភាពទន់ឆ្ងាញ់ និងគុណភាពអាហារូបត្ថម្ភ (Taste &amp; Texture)</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div class="scroll-hint">⇄ អូសទៅស្តាំដើម្បីមើលតារាងពេញ (Scroll table horizontally)</div>
+
+    <h2 class="heading-muol">៣.៤ អ្នកប្រើប្រាស់ (User)</h2>
+    <p>
+      នៅក្នុងការរចនាគេហទំព័រ ពាក្យថា «អ្នកប្រើប្រាស់ (User)» គឺជាបេះដូងនៃគ្រប់ការសម្រេចចិត្តទាំងអស់ (User-Centered Design - UCD)។ <strong>ផ្នត់គំនិតរបស់អ្នកប្រើប្រាស់ (Mental Models)៖</strong> គឺជាការយល់ឃើញ និងការរំពឹងទុកទុកជាមុននៅក្នុងខួរក្បាលរបស់អ្នកប្រើប្រាស់ អំពីរបៀបដែលប្រព័ន្ធមួយគួរតែដំណើរការ ដោយផ្អែកលើបទពិសោធពីមុនៗរបស់ពួកគេ។ ឧទាហរណ៍៖ អ្នកប្រើប្រាស់រំពឹងថា រូបសញ្ញាកន្ត្រកទំនិញ (Cart Icon) ត្រូវតែស្ថិតនៅជ្រុងខាងស្តាំលើនៃ Header ហើយការចុចលើ Logo ត្រូវតែនាំត្រឡប់ទៅ Homepage វិញ។
+    </p>
+
+    <h2 class="heading-muol">៣.៥ តម្រូវការរបស់អ្នកប្រើប្រាស់ (User Needs)</h2>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>តម្រូវការមុខងារ (Functional Needs):</strong> តម្រូវការជាក់ស្តែងដើម្បីបំពេញកិច្ចការណាមួយ ដូចជា៖ ត្រូវការស្វែងរកវគ្គសិក្សា, ត្រូវការបង់ប្រាក់ថ្លៃសិក្សា, ត្រូវការទាញយកកាលវិភាគប្រឡង។</li>
+      <li><span class='num-badge'>២.</span> <strong>តម្រូវការផ្លូវចិត្ត (Emotional Needs):</strong> អារម្មណ៍ដែលអ្នកប្រើប្រាស់ចង់ទទួលបានក្នុងពេលប្រើប្រាស់ ដូចជា៖ អារម្មណ៍សុវត្ថិភាពពេលបញ្ចូលលេខកាត, អារម្មណ៍ជឿជាក់លើកិត្យានុភាពសាកលវិទ្យាល័យ។</li>
+    </ul>
+
+    <h2 class="heading-muol">៣.៦ គោលដៅរបស់អ្នកប្រើប្រាស់ (User Goals)</h2>
+    <ul>
+      <li><strong>គោលដៅចុងក្រោយ (End Goals):</strong> អ្វីដែលអ្នកប្រើប្រាស់ចង់សម្រេចបានក្នុងកិច្ចការជាក់ស្តែង (ឧទាហរណ៍៖ ទិញកុំព្យូទ័រមួយគ្រឿងឱ្យបានជោគជ័យ)។</li>
+      <li><strong>គោលដៅបទពិសោធន៍ (Experience Goals):</strong> អារម្មណ៍ដែលពួកគេចង់ទទួលបានក្នុងដំណើរការប្រើប្រាស់ (ឧទាហរណ៍៖ មិនចង់មានអារម្មណ៍ល្ងង់ ឬធុញថប់ក្នុងការបំពេញ Form វែងៗ)។</li>
+      <li><strong>គោលដៅជីវិត (Life Goals):</strong> សេចក្តីប្រាថ្នារយៈពេលវែងក្នុងជីវិត (ឧទាហរណ៍៖ ក្លាយជាវិស្វករសូហ្វវែរឆ្នើម)។</li>
+    </ul>
+
+    <h2 class="heading-muol">៣.៧ ដំណើររបស់អ្នកប្រើប្រាស់ (User Journey)</h2>
+    <p>ដំណើររបស់អ្នកប្រើប្រាស់ (User Journey) រួមមាន ៥ ជំហាន៖</p>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>ការយល់ដឹង (Awareness):</strong> អ្នកប្រើប្រាស់ដឹងពីបញ្ហារបស់ខ្លួន និងចាប់ផ្តើមស្វែងរកដំណោះស្រាយ។</li>
+      <li><span class='num-badge'>២.</span> <strong>ការពិចារណា (Consideration):</strong> ចូលមកទស្សនាគេហទំព័រ ប្រៀបធៀបតម្លៃ និងពិនិត្យលក្ខណៈសម្បត្តិផលិតផល។</li>
+      <li><span class='num-badge'>៣.</span> <strong>ការទិញ ឬចុះឈ្មោះ (Purchase / Conversion):</strong> សម្រេចចិត្តចុះឈ្មោះ ឬទិញទំនិញតាមរយៈ Checkout Flow។</li>
+      <li><span class='num-badge'>៤.</span> <strong>ការរក្សាអតិថិជន (Retention):</strong> ទទួលបានសេវាកម្មគាំទ្រល្អ និងបន្តប្រើប្រាស់គេហទំព័រជាប្រចាំ។</li>
+      <li><span class='num-badge'>៥.</span> <strong>ការគាំទ្រ និងផ្សព្វផ្សាយ (Advocacy):</strong> ពេញចិត្តយ៉ាងខ្លាំង និងណែនាំគេហទំព័រនេះទៅកាន់មិត្តភក្តិបន្ត។</li>
+    </ul>
+
+    <h2 class="heading-muol">៣.៨ លំហូររបស់អ្នកប្រើប្រាស់ (User Flow)</h2>
+    <p>
+      លំហូររបស់អ្នកប្រើប្រាស់ (User Flow) គឺជាគំនូសបំព្រួញមួយជំហានម្តងៗ (Step-by-step Flowchart) ដែលបង្ហាញពីផ្លូវដែលអ្នកប្រើប្រាស់ត្រូវដើរពីចំណុចចាប់ផ្តើម (Entry Point) រហូតដល់សម្រេចគោលដៅជាក់លាក់ណាមួយ (Success State) នៅក្នុងគេហទំព័រ។
+    </p>
+
+    <h2 class="heading-muol">៣.៩ ភាពងាយស្រួលប្រើប្រាស់ (Usability)</h2>
+    <p>សូចនាករគុណភាពទាំង ៥ របស់ Jakob Nielsen៖</p>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>ភាពងាយរៀន (Learnability):</strong> អ្នកប្រើប្រាស់លើកដំបូងអាចរៀនប្រើប្រព័ន្ធបានលឿន។</li>
+      <li><span class='num-badge'>២.</span> <strong>ប្រសិទ្ធភាពការងារ (Efficiency):</strong> អាចបំពេញការងារបានលឿនពេលស្ទាត់ជំនាញ។</li>
+      <li><span class='num-badge'>៣.</span> <strong>ភាពងាយចងចាំ (Memorability):</strong> ងាយចាំវិធីប្រើទោះបីខកខានប្រើមួយរយៈ។</li>
+      <li><span class='num-badge'>៤.</span> <strong>អត្រាកំហុសទាប (Errors):</strong> កំហុសកើតឡើងតិច និងអាចកែប្រែវិញបានលឿន។</li>
+      <li><span class='num-badge'>៥.</span> <strong>ភាពពេញចិត្ត (Satisfaction):</strong> អ្នកប្រើប្រាស់មានអារម្មណ៍រីករាយ និងពេញចិត្តក្នុងការប្រើប្រាស់។</li>
+    </ul>
+
+    <h2 class="heading-muol">៣.១០ លទ្ធភាពទទួលបាន (Accessibility - a11y)</h2>
+    <p>គោលការណ៍គ្រឹះទាំង ៤ នៃ WCAG 2.1 គឺ <strong>POUR</strong>៖</p>
+    <ul>
+      <li><strong>Perceivable (អាចដឹងបាន):</strong> ព័ត៌មានត្រូវតែបង្ហាញក្នុងទម្រង់ដែលញ្ញាណរបស់មនុស្សអាចចាប់បាន (ឧ. alt text សម្រាប់រូបភាព)។</li>
+      <li><strong>Operable (អាចដំណើរការបាន):</strong> អាចបញ្ជាបានតាមក្តារចុច (Keyboard Navigable)។</li>
+      <li><strong>Understandable (អាចយល់បាន):</strong> អត្ថបទ និងទម្រង់បែបបទងាយយល់ មានការណែនាំច្បាស់។</li>
+      <li><strong>Robust (រឹងមាំ):</strong> កូដអនុលោមតាមស្តង់ដា W3C ដំណើរការបានលើគ្រប់ Browser និង Assistive Tech។</li>
+    </ul>
+
+    <h2 class="heading-muol">៣.១១ ភាពស៊ីសង្វាក់គ្នា (Consistency)</h2>
+    <p>
+      រួមមាន <strong>Visual Consistency</strong> (ពណ៌ ពុម្ពអក្សរ ប៊ូតុងដូចៗគ្នា), <strong>Functional Consistency</strong> (ធាតុដូចគ្នាដំណើរការដូចគ្នា), និង <strong>External Consistency</strong> (គោរពស្តង់ដាទូទៅលើវេប)។
+    </p>
+
+    <h2 class="heading-muol">៣.១២ ភាពសាមញ្ញ (Simplicity)</h2>
+    <p>
+      <strong>ច្បាប់របស់ Hick (Hick's Law)៖</strong> «ពេលវេលាដែលមនុស្សម្នាក់ត្រូវការដើម្បីធ្វើការសម្រេចចិត្ត នឹងកើនឡើងទៅតាមចំនួន និងភាពស្មុគស្មាញនៃជម្រើសដែលមាន»។ ត្រូវបំបែកកិច្ចការស្មុគស្មាញឱ្យទៅជាជំហានខ្លីៗ (Stepped Flow)។
+    </p>
+
+    <h2 class="heading-muol">៣.១៣ ការឆ្លើយតបព័ត៌មាន (Feedback)</h2>
+    <p>
+      Visibility of System Status តាមរយៈ៖ Loading Spinners, Toast Notifications, និង Button Hover/Active Micro-interactions។
+    </p>
+
+    <h2 class="heading-muol">៣.១៤ ការបង្ការកំហុស (Error Prevention)</h2>
+    <ul>
+      <li><strong>Inline Real-Time Validation:</strong> បង្ហាញកំហុសភ្លាមៗនៅពេលវាយខុស។</li>
+      <li><strong>Constraints:</strong> ប្រើ Dropdown ឬ Date Picker ជំនួសឱ្យការវាយដោយដៃ។</li>
+      <li><strong>Confirmation Safeguards:</strong> បង្ហាញ Modal សួរមុនពេលលុបទិន្នន័យ។</li>
+    </ul>
+
+    <h2 class="heading-muol">៣.១៥ ដំណើរការរចនា UI/UX (UI/UX Design Process)</h2>
+    <p>ទ្រឹស្តី Design Thinking ៥ ដំណាក់កាល៖</p>
+    <ol>
+      <li><strong>Empathize:</strong> យល់ចិត្ត និងអង្កេតបញ្ហារបស់អ្នកប្រើប្រាស់ពិត។</li>
+      <li><strong>Define:</strong> កំណត់សេចក្តីថ្លែងការណ៍បញ្ហាស្នូល (Problem Statement)។</li>
+      <li><strong>Ideate:</strong> បំផុសគំនិតរកដំណោះស្រាយជាច្រើន (Brainstorming)។</li>
+      <li><strong>Prototype:</strong> បង្កើតគំរូសាកល្បងពី Wireframe ទៅ Clickable Prototype។</li>
+      <li><strong>Test:</strong> ធ្វើតេស្ត Usability Testing ជាមួយអ្នកប្រើប្រាស់ពិត។</li>
+    </ol>
+
+    <h2 class="heading-muol">សេចក្តីសង្ខេបមេរៀន (Chapter Summary)</h2>
+    <p>
+      ជំពូកទី ៣ បានផ្តល់នូវមូលដ្ឋានគ្រឹះយ៉ាងជ្រាលជ្រៅអំពីការយល់ដឹងពីមនុស្ស (User) នៅក្នុងវិស្វកម្មគេហទំព័រ។ UI ផ្តល់នូវរូបរាង និងសោភ័ណភាព ខណៈដែល UX ធានានូវភាពរលូន និងប្រសិទ្ធភាពក្នុងការដោះស្រាយបញ្ហា។ គេហទំព័រដែលជោគជ័យត្រូវតែប្រកាន់ខ្ជាប់នូវគោលការណ៍ Usability, Accessibility (WCAG POUR), ភាពស៊ីសង្វាក់គ្នា (Consistency), ភាពសាមញ្ញតាមច្បាប់ Hick's Law, ការឆ្លើយតបព័ត៌មានរហ័ស (Feedback), និងការបង្ការកំហុស (Error Prevention)។
+    </p>
+
+    <h2 class="heading-muol">សំណួរត្រួតពិនិត្យការយល់ដឹង (Review &amp; Discussion Questions)</h2>
+    <ol>
+      <li>ចូរពន្យល់ពីភាពខុសគ្នារវាង UI និង UX ដោយលើកយកការប្រៀបធៀបជាក់ស្តែងមួយមកពន្យល់ (ឧទាហរណ៍៖ រថយន្ត ឬនំខេក)។</li>
+      <li>តើអ្វីទៅជា «Mental Model» របស់អ្នកប្រើប្រាស់? ហេតុអ្វីបានជាអ្នករចនាមិនគួររចនាបំពាន Mental Model? លើកឧទាហរណ៍មួយមកបញ្ជាក់។</li>
+      <li>ចូររៀបរាប់ពីគោលការណ៍គ្រឹះទាំង ៤ នៃស្តង់ដា Web Accessibility (WCAG 2.1 POUR)។</li>
+      <li>តើច្បាប់របស់ Hick (Hick's Law) ជះឥទ្ធិពលយ៉ាងដូចម្តេចខ្លះទៅលើការរចនាប្រព័ន្ធ Checkout នៃគេហទំព័រ E-Commerce?</li>
+      <li>ចូររៀបរាប់ពីដំណាក់កាលទាំង ៥ នៃដំណើរការ Design Thinking ក្នុងការរចនា UI/UX (Empathize, Define, Ideate, Prototype, Test)។</li>
+    </ol>
+    
+  
+  </div>
+</div>
+
+<script>
+  let currentScale = 16;
+  function changeFontSize(delta) {
+    currentScale = Math.min(22, Math.max(13, currentScale + delta));
+    document.documentElement.style.setProperty('--font-scale', currentScale + 'px');
+  }
+</script>
+
+</body>
+</html>

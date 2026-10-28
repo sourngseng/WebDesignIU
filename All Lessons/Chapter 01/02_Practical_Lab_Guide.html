@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍: ការវិភាគគេហទំព័រអាជីពចំនួន ៣ (Practical Lab Guide)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Siemreap&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ==========================================================================
+     Master Responsive & Reader-Friendly Styling
+     ========================================================================== */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --font-body: 'Kantumruy Pro', 'Khmer OS Siemreap', 'Siemreap', system-ui, -apple-system, sans-serif;
+    --font-code: 'Fira Code', Consolas, Monaco, monospace;
+    --color-primary: #0F172A;
+    --color-navy: #1E3A8A;
+    --color-blue: #2563EB;
+    --color-muted: #64748B;
+    --color-bg: #F8FAFC;
+    --color-card: #FFFFFF;
+    --color-border: #E2E8F0;
+    --color-border-dark: #CBD5E1;
+    --color-code-bg: #F8FAFC;
+    --font-scale: 16px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: var(--font-scale);
+    line-height: 1.75;
+    color: var(--color-primary);
+    background-color: var(--color-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Top Utility Reader Bar */
+  .reader-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.6rem 1.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .toolbar-container {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .badge-tag {
+    background: #EEF2FF;
+    color: var(--color-blue);
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-tool {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border-dark);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .btn-tool:hover {
+    background: #F1F5F9;
+    border-color: #94A3B8;
+  }
+
+  /* Main Document Container */
+  .document-wrapper {
+    flex: 1;
+    padding: 1.5rem 0.75rem 3rem 0.75rem;
+    width: 100%;
+  }
+
+  .page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+    padding: 3rem 2.8rem;
+    transition: padding 0.3s ease;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4 {
+    color: var(--color-primary);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-size: 1.45rem;
+    color: var(--color-navy);
+    border-bottom: 2px solid #EEF2FF;
+    padding-bottom: 0.4rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: #1E293B;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    color: var(--color-navy);
+  }
+
+  p {
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
+  strong {
+    font-weight: 700;
+    color: #0F172A;
+  }
+
+  /* Responsive Lists */
+  ul.bullet-list {
+    margin: 0.5rem 0 1.25rem 1.5rem;
+    list-style-type: disc;
+  }
+
+  ul.bullet-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.25rem;
+  }
+
+  ul.numbered-list {
+    list-style: none !important;
+    margin: 0.5rem 0 1.25rem 0;
+    padding-left: 0;
+  }
+
+  ul.numbered-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+    list-style: none !important;
+  }
+
+  .num-badge {
+    font-weight: 700;
+    color: var(--color-navy);
+    flex-shrink: 0;
+    min-width: 1.8rem;
+    line-height: 1.75;
+  }
+
+  /* Responsive Code Blocks */
+  pre.code-block, pre {
+    font-family: var(--font-code);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    background-color: var(--color-code-bg);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-blue);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre;
+    color: var(--color-primary);
+  }
+
+  .tag { color: #991B1B; font-weight: 600; }
+  .attr { color: #DC2626; }
+  .str { color: #2563EB; }
+  .comm { color: #16A34A; font-style: italic; }
+  .blue { color: #2563EB; font-weight: 600; }
+
+  /* Responsive Table Container */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: #FFFFFF;
+  }
+
+  table, table.data-table {
+    width: 100%;
+    min-width: 550px;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  table th, table td {
+    border: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+  }
+
+  table th {
+    background-color: #F1F5F9;
+    font-weight: 700;
+    color: var(--color-navy);
+    text-align: center;
+  }
+
+  table tbody tr:nth-child(even) {
+    background-color: #FBFDFF;
+  }
+
+  table tbody tr:hover {
+    background-color: #F1F5F9;
+  }
+
+  /* Scroll hint on mobile */
+  .scroll-hint {
+    display: none;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 0.25rem;
+    text-align: right;
+  }
+
+  /* Mobile Responsive Breakpoints */
+  @media screen and (max-width: 768px) {
+    :root {
+      --font-scale: 15px;
+    }
+    .document-wrapper {
+      padding: 0.75rem 0.35rem 2rem 0.35rem;
+    }
+    .page-container {
+      padding: 1.5rem 1.15rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    h1 { font-size: 1.3rem; }
+    h2 { font-size: 1.15rem; }
+    h3 { font-size: 1.05rem; }
+    p { text-align: left; }
+    .scroll-hint { display: block; }
+  }
+
+  /* Print Stylesheet (Exact University A4 Standard) */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin-left: 2.5cm;
+      margin-right: 1.5cm;
+      margin-top: 2.5cm;
+      margin-bottom: 2.5cm;
+    }
+    body {
+      background: transparent !important;
+      padding: 0 !important;
+      font-family: 'Khmer OS Siemreap', 'Siemreap', sans-serif !important;
+      font-size: 12pt !important;
+      line-height: 1.15 !important;
+      color: #000000 !important;
+    }
+    .no-print, .reader-toolbar, .scroll-hint {
+      display: none !important;
+    }
+    .document-wrapper {
+      padding: 0 !important;
+      width: 100% !important;
+    }
+    .page-container {
+      max-width: 100% !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+    h1, h2, h3 {
+      font-family: 'Khmer OS Muol Light', 'Khmer OS Muol Light-Kh Auto', sans-serif !important;
+      font-size: 12pt !important;
+      line-height: 1.25 !important;
+      border: none !important;
+    }
+    table {
+      min-width: 100% !important;
+    }
+    .table-responsive {
+      border: none !important;
+      overflow: visible !important;
+    }
+    pre.code-block, pre {
+      background: transparent !important;
+      white-space: pre-wrap !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Interactive Reader Utility Bar -->
+<div class="reader-toolbar no-print">
+  <div class="toolbar-container">
+    <div class="toolbar-brand">
+      <span class="badge-tag">Web Design (Year 3)</span>
+      <span>មន្ទីរពិសោធន៍អនុវត្ត (Practical Lab Guide)</span>
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn-tool" onclick="changeFontSize(-1)" title="បន្ថយទំហំអក្សរ">A-</button>
+      <button class="btn-tool" onclick="changeFontSize(1)" title="ពង្រីកទំហំអក្សរ">A+</button>
+      <button class="btn-tool" onclick="window.print()" title="បោះពុម្ព ឬរក្សាទុកជា PDF">🖨️ បោះពុម្ព / PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- Main Reader Document -->
+<div class="document-wrapper">
+  <div class="page-container">
+<div class="print-bar no-print">
+    <span>📄 ស្តង់ដាសៀវភៅគោល A4 (Left 2.5cm, Right 1.5cm, Top 2.5cm, Bottom 2.5cm)</span>
+    <button class="print-btn" onclick="window.print()">🖨️ បោះពុម្ព ឬទាញយកជា PDF (Print / Save as PDF)</button>
+  </div>
+  <div class="page-container">
+
+    <div class="title-center">
+      <h1 class="heading-muol">សាកលវិទ្យាល័យភូមិន្ទ — មហាវិទ្យាល័យវិទ្យាសាស្ត្រកុំព្យូទ័រ</h1>
+      <h2 class="heading-muol">កិច្ចការអនុវត្តជាក់ស្តែងក្នុងបន្ទប់ពិសោធន៍ (Practical Lab Guide)</h2>
+      <h2 class="heading-muol" style="color: #0284c7;">ម៉ូឌុល ០១ • ជំពូកទី ១៖ ការវិភាគគេហទំព័រអាជីពចំនួន ៣ (Analyze Three Professional Websites)</h2>
+    </div>
+
+    <div class="callout-box">
+      <strong>កម្រិតសិក្សា៖</strong> បរិញ្ញាបត្រឆ្នាំទី ៣ | <strong>រយៈពេលអនុវត្ត៖</strong> ៣ ម៉ោង | <strong>ប្រភេទទម្រង់៖</strong> Step-by-Step Practical Lab
+    </div>
+
+    <h2 class="heading-muol">គោលបំណងនៃការអនុវត្ត (Lab Objectives)</h2>
+    <ul class="numbered-list">
+      <li><span class="num-badge">១.</span> <strong>ជំនាញ DevTools៖</strong> ប្រើប្រាស់ Browser Developer Tools (F12) លើ Google Chrome ឬ Microsoft Edge ក្នុងការត្រួតពិនិត្យកូដប្រភពគេហទំព័រផ្ទាល់។</li>
+      <li><span class="num-badge">២.</span> <strong>ការវិភាគរចនាសម្ព័ន្ធ៖</strong> ស្វែងយល់ជាក់ស្តែងពីរបៀបដែលគេហទំព័រអាជីពរៀបចំ Semantic HTML, CSS Stylesheet, និង JavaScript Assets។</li>
+      <li><span class="num-badge">៣.</span> <strong>ការវាស់វែង Network៖</strong> វាស់វែងល្បឿនផ្ទុកទំព័រ (Load Time), ចំនួន HTTP Requests, ទំហំទិន្នន័យ (Transferred Size) និង Status Codes លើ Network Panel។</li>
+      <li><span class="num-badge">៤.</span> <strong>ការធ្វើតេស្ត Responsive៖</strong> វាយតម្លៃសមត្ថភាពសម្របតាមទំហំអេក្រង់ (Responsive Design) លើទូរស័ព្ទ Tablet និងកុំព្យូទ័រលើតុ។</li>
+      <li><span class="num-badge">៥.</span> <strong>របាយការណ៍បច្ចេកទេស៖</strong> ចងក្រងជារបាយការណ៍បច្ចេកទេស និងតារាងប្រៀបធៀបតាមស្តង់ដាវិស្វកម្មគេហទំព័រ។</li>
+    </ul>
+
+    <h2 class="heading-muol">សម្ភារ និងបរិស្ថានអនុវត្តដែលត្រូវការ (Required Tools &amp; Setup)</h2>
+    <ul>
+      <li><strong>Hardware:</strong> កុំព្យូទ័រដែលមានប្រព័ន្ធប្រតិបត្តិការ Windows / macOS / Linux និងភ្ជាប់អ៊ីនធឺណិត។</li>
+      <li><strong>Web Browser:</strong> Google Chrome (កំណែ 110+) ឬ Microsoft Edge (កំណែ Chromium-based)។</li>
+      <li><strong>Code Editor:</strong> Visual Studio Code (សម្រាប់កត់ត្រា និងបើកកូដគំរូ)។</li>
+      <li><strong>Sample Project:</strong> គម្រោងគំរូ «sample_project» ដែលមាននៅក្នុង Folder មេរៀន។</li>
+    </ul>
+
+    <h2 class="heading-muol">ការណែនាំអនុវត្តជាជំហានៗ (Step-by-Step Lab Instructions)</h2>
+
+    <h3 class="heading-muol">ជំហានទី ១៖ កម្តៅសាច់ដុំជាមួយ Browser DevTools (DevTools Warm-Up)</h3>
+    <p>១. បើក Browser Google Chrome ឬ Microsoft Edge រួចបើកឯកសារ <code>sample_project/index.html</code> នៅក្នុងម៉ាស៊ីនរបស់អ្នក។</p>
+    <p>២. ចុចគ្រាប់ចុច <code>F12</code> ឬបន្សំគ្រាប់ចុច <code>Ctrl + Shift + I</code> នៅលើក្តារចុច (Keyboard)។</p>
+    <p><strong>៣. ការអនុវត្តលើផ្ទាំង Elements៖</strong></p>
+    <ul>
+      <li><strong>ក. ត្រួតពិនិត្យ Element:</strong> ចុចលើរូបសញ្ញាព្រួញជ្រើសរើស (Inspect element icon នៅជ្រុងខាងឆ្វេងលើបំផុតនៃ DevTools) រួចយកទៅចុចលើចំណងជើង «Web Tech Explorer» ក្នុងទំព័រ។</li>
+      <li><strong>ខ. កែប្រែអត្ថបទផ្ទាល់ (Live Text Editing):</strong> នៅលើផ្ទាំង Elements ចុចកណ្ដុរពីរដងលើអត្ថបទចំណងជើង រួចប្តូរទៅជាឈ្មោះផ្ទាល់ខ្លួនរបស់អ្នក។ សង្កេតមើលការផ្លាស់ប្តូរភ្លាមៗលើអេក្រង់។</li>
+      <li><strong>គ. កែប្រែពណ៌ CSS ផ្ទាល់ (Live CSS Editing):</strong> នៅផ្ទាំង Styles (ខាងស្តាំ) រកមើល property <code>color</code> រួចចុចប្តូរពណ៌។ សង្កេតមើលថាតើហេតុអ្វីបានជាការកែប្រែនេះបាត់ទៅវិញនៅពេលយើង Refresh ទំព័រ (F5)។</li>
+    </ul>
+    <p><strong>៤. ការអនុវត្តលើផ្ទាំង Console៖</strong></p>
+    <ul>
+      <li><strong>ក. បញ្ជាកូដ:</strong> ចូលទៅកាន់ផ្ទាំង Console រួចវាយបញ្ចូល៖ <code>console.log("Hello Web Design Year 3!");</code> រួចចុច Enter។</li>
+      <li><strong>ខ. ប្តូរចំណងជើង Tab:</strong> វាយបញ្ចូល៖ <code>document.title = "My Custom Title";</code> រួចពិនិត្យមើលចំណងជើងនៅលើ Tab នៃ Browser របស់អ្នក។</li>
+    </ul>
+    <p><strong>៥. ការអនុវត្តលើ Responsive Device Toolbar៖</strong></p>
+    <ul>
+      <li><strong>ក. បើក Device Mode:</strong> ចុចលើរូបសញ្ញាទូរស័ព្ទ/Tablet (Toggle device toolbar - <code>Ctrl + Shift + M</code>)។</li>
+      <li><strong>ខ. ពិនិត្យការសម្របខ្លួន:</strong> ជ្រើសរើសទំហំឧបករណ៍ «iPhone 14 Pro» និង «iPad Air» រួចសង្កេតមើលប្លង់ Layout ថាតើវាសម្របខ្លួនយ៉ាងដូចម្តេច។</li>
+    </ul>
+
+    <h3 class="heading-muol">ជំហានទី ២៖ ជ្រើសរើស និងវិភាគគេហទំព័រអាជីពចំនួន ៣ (Site Selection &amp; Audit)</h3>
+    <p>និស្សិតម្នាក់ៗត្រូវជ្រើសរើសគេហទំព័រអាជីពចំនួន ៣ ដែលមានប្រភេទខុសគ្នាដាច់ស្រឡះ ដើម្បីធ្វើការវិភាគ៖</p>
+    <ul>
+      <li><strong>គេហទំព័រទី ១ (Static / Portfolio Website):</strong> ជ្រើសរើសគេហទំព័ររបស់ Developer ឬ Designer អាជីពម្នាក់ (ឧទាហរណ៍៖ leerob.io, bruno-simon.com, ឬ portfolio ផ្ទាល់ខ្លួន)។</li>
+      <li><strong>គេហទំព័រទី ២ (Corporate / Dynamic Media Portal):</strong> ជ្រើសរើសគេហទំព័រស្ថាប័នធំ ឬសារព័ត៌មានអន្តរជាតិ (ឧទាហរណ៍៖ apple.com, bbc.com, ឬ wikipedia.org)។</li>
+      <li><strong>គេហទំព័រទី ៣ (E-Commerce / Complex Web App):</strong> ជ្រើសរើសគេហទំព័រពាណិជ្ជកម្មអេឡិចត្រូនិក ឬ Web App (ឧទាហរណ៍៖ amazon.com, canva.com, ឬ figma.com)។</li>
+    </ul>
+
+    <h3 class="heading-muol">ជំហានទី ៣៖ ការប្រមូលទិន្នន័យបច្ចេកទេសជាក់ស្តែងតាម Network Panel</h3>
+    <p>សម្រាប់គេហទំព័រនីមួយៗក្នុងចំណោមទាំង ៣ សូមអនុវត្តតាមលំដាប់លំដោយដូចខាងក្រោម៖</p>
+    <ul class="numbered-list">
+      <li><span class="num-badge">១.</span> <strong>របៀបស្អាត:</strong> បើកគេហទំព័រនោះក្នុង Incognito Window (ដើម្បីកុំឱ្យជាប់ Cache ឬ Extension នានា)។</li>
+      <li><span class="num-badge">២.</span> <strong>បិទ Cache:</strong> បើក DevTools រួចចុចចូលផ្ទាំង Network។ គូសធីកលើប្រអប់ «Disable cache»។</li>
+      <li><span class="num-badge">៣.</span> <strong>ទាញយកឡើងវិញ:</strong> ចុចគ្រាប់ចុច <code>Ctrl + F5</code> (Hard Reload) ដើម្បីទាញយកទិន្នន័យថ្មីទាំងអស់ពី Server។</li>
+      <li><span class="num-badge">៤.</span> <strong>កត់ត្រាទិន្នន័យ:</strong> សង្កេតមើលរបាយការណ៍សង្ខេបនៅរបារខាងក្រោមនៃ Network Panel រួចកត់ត្រា៖ ចំនួន Requests សរុប, ទំហំ Transferred (ទិន្នន័យបង្ហាប់), ទំហំ Resources (ទិន្នន័យពិត), និងរយៈពេល Finish / Load Time។</li>
+      <li><span class="num-badge">៥.</span> <strong>វិភាគធនធាន:</strong> ត្រួតពិនិត្យប្រភេទធនធាន (Filter by Doc, CSS, JS, Img) ដើម្បីដឹងថាតើទំហំធ្ងន់បំផុតបណ្តាលមកពីអ្វី (រូបភាព ឬ JavaScript)។</li>
+    </ul>
+
+    <h3 class="heading-muol">ជំហានទី ៤៖ ការវាយតម្លៃគុណភាពតាមរយៈ Lighthouse Audit</h3>
+    <p>១. នៅលើ DevTools ចូលទៅកាន់ផ្ទាំង «Lighthouse»។</p>
+    <p>២. ជ្រើសរើស Mode: Navigation | Device: Mobile (ឬ Desktop) | Categories: គូសធីកទាំងអស់ (Performance, Accessibility, Best Practices, SEO)។</p>
+    <p>៣. ចុចប៊ូតុង «Analyze page load» រួចរង់ចាំប្រព័ន្ធដំណើរការប្រហែល ៣០ ទៅ ៦០ វិនាទី។</p>
+    <p>៤. កត់ត្រាពិន្ទុទាំង ៤ និងចំណុចខ្វះខាតធំៗដែល Lighthouse បានផ្តល់អនុសាសន៍។</p>
+
+    <h2 class="heading-muol">ទម្រង់របាយការណ៍បច្ចេកទេសរបស់និស្សិត (Student Technical Report Template)</h2>
+    <p>និស្សិតត្រូវបំពេញព័ត៌មានខាងក្រោមចូលទៅក្នុងរបាយការណ៍អនុវត្តជាក់ស្តែងរបស់ខ្លួន៖</p>
+
+    <div class="table-responsive">
+<table class="data-table">
+      <thead>
+        <tr>
+          <th>សូចនាករបច្ចេកទេស (Metrics)</th>
+          <th>គេហទំព័រទី ១ (Portfolio)</th>
+          <th>គេហទំព័រទី ២ (Corporate)</th>
+          <th>គេហទំព័រទី ៣ (E-Commerce)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ឈ្មោះ URL គេហទំព័រ</strong></td>
+          <td>https://...</td>
+          <td>https://...</td>
+          <td>https://...</td>
+        </tr>
+        <tr>
+          <td><strong>ប្រភេទស្ថាបត្យកម្ម</strong></td>
+          <td>Static / SSR</td>
+          <td>Dynamic / CMS</td>
+          <td>Web App / SPA</td>
+        </tr>
+        <tr>
+          <td><strong>ចំនួន HTTP Requests សរុប</strong></td>
+          <td>_____ requests</td>
+          <td>_____ requests</td>
+          <td>_____ requests</td>
+        </tr>
+        <tr>
+          <td><strong>ទំហំ Transferred Size</strong></td>
+          <td>_____ KB / MB</td>
+          <td>_____ KB / MB</td>
+          <td>_____ KB / MB</td>
+        </tr>
+        <tr>
+          <td><strong>រយៈពេលផ្ទុកចប់ (Load Time)</strong></td>
+          <td>_____ s / ms</td>
+          <td>_____ s / ms</td>
+          <td>_____ s / ms</td>
+        </tr>
+        <tr>
+          <td><strong>ចំនួនឯកសារ CSS ខាងក្រៅ</strong></td>
+          <td>_____ files</td>
+          <td>_____ files</td>
+          <td>_____ files</td>
+        </tr>
+        <tr>
+          <td><strong>ចំនួនឯកសារ JavaScript</strong></td>
+          <td>_____ files</td>
+          <td>_____ files</td>
+          <td>_____ files</td>
+        </tr>
+        <tr>
+          <td><strong>ពិន្ទុ Performance (Lighthouse)</strong></td>
+          <td>_____ / 100</td>
+          <td>_____ / 100</td>
+          <td>_____ / 100</td>
+        </tr>
+        <tr>
+          <td><strong>ពិន្ទុ Accessibility (Lighthouse)</strong></td>
+          <td>_____ / 100</td>
+          <td>_____ / 100</td>
+          <td>_____ / 100</td>
+        </tr>
+        <tr>
+          <td><strong>សមត្ថភាព Responsive Mobile</strong></td>
+          <td>ល្អឥតខ្ចោះ / មធ្យម</td>
+          <td>ល្អឥតខ្ចោះ / មធ្យម</td>
+          <td>ល្អឥតខ្ចោះ / មធ្យម</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div class="scroll-hint">⇄ អូសទៅស្តាំដើម្បីមើលតារាងពេញ (Scroll table horizontally)</div>
+
+    <h2 class="heading-muol">តារាងពិន្ទុវាយតម្លៃការអនុវត្ត (Evaluation Rubric — 100 Points)</h2>
+    <ul class="numbered-list">
+      <li><span class="num-badge">១.</span> <strong>ភាពត្រឹមត្រូវនៃទិន្នន័យ DevTools (២៥ ពិន្ទុ)៖</strong> ជ្រើសរើសគេហទំព័រត្រូវតាម ៣ ប្រភេទខុសគ្នា និងប្រមូលទិន្នន័យ Requests, Size, Load Time បានត្រឹមត្រូវពេញលេញ។</li>
+      <li><span class="num-badge">២.</span> <strong>ការវិភាគរចនាសម្ព័ន្ធកូដ (២៥ ពិន្ទុ)៖</strong> យល់ដឹងច្បាស់ពីតួនាទីរបស់ DOM Elements, CSS Stylesheet, និង Console Errors លើគេហទំព័រនីមួយៗ។</li>
+      <li><span class="num-badge">៣.</span> <strong>ការវាយតម្លៃ Lighthouse &amp; Responsive (២៥ ពិន្ទុ)៖</strong> ដំណើរការ Lighthouse និងពន្យល់ពីមូលហេតុដែលនាំឱ្យពិន្ទុ Performance ឬ Accessibility ខ្ពស់ ឬទាប។</li>
+      <li><span class="num-badge">៤.</span> <strong>សេចក្តីសន្និដ្ឋាន និងការរៀបចំរបាយការណ៍ (២៥ ពិន្ទុ)៖</strong> សរសេរអធិប្បាយ និងទាញសេចក្តីសន្និដ្ឋានប្រៀបធៀបរវាងគេហទំព័រទាំង ៣ ប្រកបដោយភាពចាស់ទុំ និងវិជ្ជាជីវៈ។</li>
+    </ul>
+    
+  
+  </div>
+</div>
+
+<script>
+  let currentScale = 16;
+  function changeFontSize(delta) {
+    currentScale = Math.min(22, Math.max(13, currentScale + delta));
+    document.documentElement.style.setProperty('--font-scale', currentScale + 'px');
+  }
+</script>
+
+</body>
+</html>

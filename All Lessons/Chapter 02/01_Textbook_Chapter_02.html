@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>សៀវភៅគោល: ជំពូកទី ២ — រចនាសម្ព័ន្ធគេហទំព័រ និងដំណើរការរចនា (Website Structure and Design Process)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Siemreap&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ==========================================================================
+     Master Responsive & Reader-Friendly Styling
+     ========================================================================== */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --font-body: 'Kantumruy Pro', 'Khmer OS Siemreap', 'Siemreap', system-ui, -apple-system, sans-serif;
+    --font-code: 'Fira Code', Consolas, Monaco, monospace;
+    --color-primary: #0F172A;
+    --color-navy: #1E3A8A;
+    --color-blue: #2563EB;
+    --color-muted: #64748B;
+    --color-bg: #F8FAFC;
+    --color-card: #FFFFFF;
+    --color-border: #E2E8F0;
+    --color-border-dark: #CBD5E1;
+    --color-code-bg: #F8FAFC;
+    --font-scale: 16px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: var(--font-scale);
+    line-height: 1.75;
+    color: var(--color-primary);
+    background-color: var(--color-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Top Utility Reader Bar */
+  .reader-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.6rem 1.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .toolbar-container {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .badge-tag {
+    background: #EEF2FF;
+    color: var(--color-blue);
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-tool {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border-dark);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .btn-tool:hover {
+    background: #F1F5F9;
+    border-color: #94A3B8;
+  }
+
+  /* Main Document Container */
+  .document-wrapper {
+    flex: 1;
+    padding: 1.5rem 0.75rem 3rem 0.75rem;
+    width: 100%;
+  }
+
+  .page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+    padding: 3rem 2.8rem;
+    transition: padding 0.3s ease;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4 {
+    color: var(--color-primary);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-size: 1.45rem;
+    color: var(--color-navy);
+    border-bottom: 2px solid #EEF2FF;
+    padding-bottom: 0.4rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: #1E293B;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    color: var(--color-navy);
+  }
+
+  p {
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
+  strong {
+    font-weight: 700;
+    color: #0F172A;
+  }
+
+  /* Responsive Lists */
+  ul.bullet-list {
+    margin: 0.5rem 0 1.25rem 1.5rem;
+    list-style-type: disc;
+  }
+
+  ul.bullet-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.25rem;
+  }
+
+  ul.numbered-list {
+    list-style: none !important;
+    margin: 0.5rem 0 1.25rem 0;
+    padding-left: 0;
+  }
+
+  ul.numbered-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+    list-style: none !important;
+  }
+
+  .num-badge {
+    font-weight: 700;
+    color: var(--color-navy);
+    flex-shrink: 0;
+    min-width: 1.8rem;
+    line-height: 1.75;
+  }
+
+  /* Responsive Code Blocks */
+  pre.code-block, pre {
+    font-family: var(--font-code);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    background-color: var(--color-code-bg);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-blue);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre;
+    color: var(--color-primary);
+  }
+
+  .tag { color: #991B1B; font-weight: 600; }
+  .attr { color: #DC2626; }
+  .str { color: #2563EB; }
+  .comm { color: #16A34A; font-style: italic; }
+  .blue { color: #2563EB; font-weight: 600; }
+
+  /* Responsive Table Container */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: #FFFFFF;
+  }
+
+  table, table.data-table {
+    width: 100%;
+    min-width: 550px;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  table th, table td {
+    border: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+  }
+
+  table th {
+    background-color: #F1F5F9;
+    font-weight: 700;
+    color: var(--color-navy);
+    text-align: center;
+  }
+
+  table tbody tr:nth-child(even) {
+    background-color: #FBFDFF;
+  }
+
+  table tbody tr:hover {
+    background-color: #F1F5F9;
+  }
+
+  /* Scroll hint on mobile */
+  .scroll-hint {
+    display: none;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 0.25rem;
+    text-align: right;
+  }
+
+  /* Mobile Responsive Breakpoints */
+  @media screen and (max-width: 768px) {
+    :root {
+      --font-scale: 15px;
+    }
+    .document-wrapper {
+      padding: 0.75rem 0.35rem 2rem 0.35rem;
+    }
+    .page-container {
+      padding: 1.5rem 1.15rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    h1 { font-size: 1.3rem; }
+    h2 { font-size: 1.15rem; }
+    h3 { font-size: 1.05rem; }
+    p { text-align: left; }
+    .scroll-hint { display: block; }
+  }
+
+  /* Print Stylesheet (Exact University A4 Standard) */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin-left: 2.5cm;
+      margin-right: 1.5cm;
+      margin-top: 2.5cm;
+      margin-bottom: 2.5cm;
+    }
+    body {
+      background: transparent !important;
+      padding: 0 !important;
+      font-family: 'Khmer OS Siemreap', 'Siemreap', sans-serif !important;
+      font-size: 12pt !important;
+      line-height: 1.15 !important;
+      color: #000000 !important;
+    }
+    .no-print, .reader-toolbar, .scroll-hint {
+      display: none !important;
+    }
+    .document-wrapper {
+      padding: 0 !important;
+      width: 100% !important;
+    }
+    .page-container {
+      max-width: 100% !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+    h1, h2, h3 {
+      font-family: 'Khmer OS Muol Light', 'Khmer OS Muol Light-Kh Auto', sans-serif !important;
+      font-size: 12pt !important;
+      line-height: 1.25 !important;
+      border: none !important;
+    }
+    table {
+      min-width: 100% !important;
+    }
+    .table-responsive {
+      border: none !important;
+      overflow: visible !important;
+    }
+    pre.code-block, pre {
+      background: transparent !important;
+      white-space: pre-wrap !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Interactive Reader Utility Bar -->
+<div class="reader-toolbar no-print">
+  <div class="toolbar-container">
+    <div class="toolbar-brand">
+      <span class="badge-tag">Web Design (Year 3)</span>
+      <span>សៀវភៅគោល (Core Textbook)</span>
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn-tool" onclick="changeFontSize(-1)" title="បន្ថយទំហំអក្សរ">A-</button>
+      <button class="btn-tool" onclick="changeFontSize(1)" title="ពង្រីកទំហំអក្សរ">A+</button>
+      <button class="btn-tool" onclick="window.print()" title="បោះពុម្ព ឬរក្សាទុកជា PDF">🖨️ បោះពុម្ព / PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- Main Reader Document -->
+<div class="document-wrapper">
+  <div class="page-container">
+<div class="print-bar no-print">
+    <span>📄 ស្តង់ដាសៀវភៅគោល A4 (Left 2.5cm, Right 1.5cm, Top 2.5cm, Bottom 2.5cm)</span>
+    <button class="print-btn" onclick="window.print()">🖨️ បោះពុម្ព ឬទាញយកជា PDF (Print / Save as PDF)</button>
+  </div>
+  <div class="page-container">
+
+    <div class="title-center">
+      <h1 class="heading-muol">សាកលវិទ្យាល័យភូមិន្ទ — មហាវិទ្យាល័យវិទ្យាសាស្ត្រកុំព្យូទ័រ</h1>
+      <h2 class="heading-muol">មុខវិជ្ជា៖ ការរចនាគេហទំព័រ (Web Design — Bachelor Year 3)</h2>
+      <h2 class="heading-muol">ម៉ូឌុល ០១៖ មូលដ្ឋានគ្រឹះនៃការរចនាគេហទំព័រ និង UI/UX (Web Design Fundamentals & UI/UX)</h2>
+      <h2 class="heading-muol" style="color: #0284c7;">ជំពូកទី ២៖ រចនាសម្ព័ន្ធគេហទំព័រ និងដំណើរការរចនា (Website Structure and Design Process)</h2>
+    </div>
+
+    <div class="callout-box">
+      <strong>កម្រិតសិក្សា៖</strong> ថ្នាក់បរិញ្ញាបត្រឆ្នាំទី ៣ | <strong>រយៈពេលបង្រៀន៖</strong> ៣ ម៉ោងសិក្សា | <strong>ស្តង់ដាឯកសារ៖</strong> Core Textbook
+    </div>
+
+    <h2 class="heading-muol">គោលបំណងនៃការរៀនសូត្រ (Learning Objectives)</h2>
+    <p>បន្ទាប់ពីបញ្ចប់ជំពូកទី ២ នេះ និស្សិតនឹងទទួលបានចំណេះដឹង និងជំនាញវិជ្ជាជីវៈដូចខាងក្រោម៖</p>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>រចនាសម្ព័ន្ធគេហទំព័រ៖</strong> យល់ដឹងពីគោលការណ៍រៀបចំ Website Structure និងគំរូស្ថាបត្យកម្មទំព័រ (Hierarchical, Linear, Matrix, Webbed)។</li>
+      <li><span class='num-badge'>២.</span> <strong>ទំព័រគេហទំព័រ (Pages)៖</strong> កំណត់អត្តសញ្ញាណ និងតួនាទីនៃទំព័រស្នូល (Core Pages) និងអនុវត្តក្បួន 3-Click Rule។</li>
+      <li><span class='num-badge'>៣.</span> <strong>កាយវិភាគវិទ្យានៃទំព័រ (Page Anatomy)៖</strong> វិភាគលម្អិតពីកាយវិភាគវិទ្យានៃទំព័រ៖ Header, Primary Navigation, Hero Section, Main Content, Sidebar និង Footer។</li>
+      <li><span class='num-badge'>៤.</span> <strong>Call-to-Action (CTA)៖</strong> ចេះរចនា និងដាក់ទីតាំងប៊ូតុងជំរុញសកម្មភាព ដើម្បីបង្កើនប្រសិទ្ធភាព Conversion Rate។</li>
+      <li><span class='num-badge'>៥.</span> <strong>Sitemap និង Information Architecture៖</strong> កសាងផែនទីគេហទំព័រ (Visual Sitemap) និងស្ថាបត្យកម្មព័ត៌មាន (Information Architecture - IA) តាមវិធីសាស្ត្រ Card Sorting។</li>
+      <li><span class='num-badge'>៦.</span> <strong>រចនាសម្ព័ន្ធខ្លឹមសារ (Content Structure)៖</strong> យល់ពីក្បួនរៀបចំខ្លឹមសារតាមគំរូពីរ៉ាមីតបញ្ច្រាស (Inverted Pyramid Model) និងក្បួនអាន F-Shaped / Z-Pattern។</li>
+      <li><span class='num-badge'>៧.</span> <strong>ផែនការ និងលំហូរការងារ (Planning &amp; Workflow)៖</strong> ក្តាប់បាននូវដំណើរការរៀបចំផែនការគេហទំព័រ (Planning Process) និងលំហូរការងាររចនា (Workflow) ពី Wireframe ដល់ Prototype។</li>
+      <li><span class='num-badge'>៨.</span> <strong>តម្រូវការគម្រោង (Project Requirements)៖</strong> ចេះកំណត់ និងចងក្រងឯកសារតម្រូវការគម្រោង (Functional &amp; Non-Functional Project Requirements)។</li>
+    </ul>
+
+    <hr style="border: none; border-top: 1px solid #cbd5e1; margin: 16pt 0;">
+
+    <h2 class="heading-muol">២.១ រចនាសម្ព័ន្ធគេហទំព័រ (Website Structure)</h2>
+    <p>
+      រចនាសម្ព័ន្ធគេហទំព័រ (Website Structure) សំដៅលើរបៀបដែលទំព័រផ្សេងៗនៅក្នុងគេហទំព័រត្រូវបានរៀបចំ ចាត់ថ្នាក់ និងភ្ជាប់គ្នាទៅវិញទៅមកតាមរយៈ Hyperlinks។ រចនាសម្ព័ន្ធគេហទំព័រដ៏ល្អមួយ គឺជាឆ្អឹងខ្នងនៃបទពិសោធអ្នកប្រើប្រាស់ (User Experience) និងជាកត្តាកំណត់ដ៏ចម្បងក្នុងការជួយឱ្យ Search Engine Crawlers (ដូចជា Googlebot) អាចស្វែងយល់ ស្រង់ទិន្នន័យ (Crawl) និងដាក់ចំណាត់ថ្នាក់ (Index) គេហទំព័របានត្រឹមត្រូវ។
+    </p>
+    <p>គំរូរចនាសម្ព័ន្ធគេហទំព័រសំខាន់ៗចំនួន ៤ ប្រភេទរួមមាន៖</p>
+    <ul>
+      <li><strong>រចនាសម្ព័ន្ធឋានានុក្រម (Hierarchical / Tree Structure):</strong> ជារចនាសម្ព័ន្ធពេញនិយមបំផុតសម្រាប់គេហទំព័រអាជីវកម្ម និងសាកលវិទ្យាល័យ។ ចាប់ផ្តើមពីទំព័រដើម (Homepage / Root) បែកចេញទៅកម្រិតមេ (Categories / Level 1) រួចបន្តទៅទំព័ររង (Sub-categories / Level 2) និងទំព័រខ្លឹមសារលម្អិត (Leaf Pages / Level 3)។</li>
+      <li><strong>រចនាសម្ព័ន្ធលីនេអ៊ែរ (Linear / Sequential Structure):</strong> រៀបចំទំព័រតាមលំដាប់មួយជំហានម្តងៗ ពីទំព័រមួយទៅទំព័រមួយទៀត។ ស័ក្តិសមសម្រាប់ Checkout Process ក្នុង E-Commerce, Online Quiz ឬការបណ្តុះបណ្តាលអនឡាញមួយជំហានម្តងៗ (Step-by-step Onboarding)។</li>
+      <li><strong>រចនាសម្ព័ន្ធបណ្តាញពីងពាង (Webbed / Network Structure):</strong> គ្រប់ទំព័រទាំងអស់ត្រូវបានភ្ជាប់គ្នាទៅវិញទៅមកយ៉ាងសេរី គ្មានឋានានុក្រមច្បាស់លាស់ឡើយ។ ឧទាហរណ៍ដូចជា វិគីភីឌា (Wikipedia) ដែលខ្លឹមសារត្រូវបានភ្ជាប់តាមរយៈពាក្យគន្លឹះនៅក្នុងអត្ថបទ។</li>
+      <li><strong>រចនាសម្ព័ន្ធម៉ាទ្រីស (Matrix Structure):</strong> អនុញ្ញាតឱ្យអ្នកប្រើប្រាស់រុករកទិន្នន័យតាមរយៈតម្រងច្រើនទិសដៅ (Faceted Navigation / Multi-dimensional filtering) ដូចជា ការរុករកផលិតផលតាម ប្រភេទ, តម្លៃ, ម៉ាកយីហោ ឬទំហំ។</li>
+    </ul>
+
+    <h2 class="heading-muol">២.២ ទំព័រគេហទំព័រ (Website Pages)</h2>
+    <p>គេហទំព័រអាជីពមួយកើតឡើងពីការផ្គុំគ្នានៃទំព័រជាច្រើន ដែលបំពេញមុខងារខុសៗគ្នាស្របតាមតម្រូវការរបស់អ្នកទស្សនា។ ប្រភេទនៃទំព័រស្នូល (Core Pages) រួមមាន៖</p>
+    <ul>
+      <li><strong>Homepage (ទំព័រដើម):</strong> ទំព័រសំខាន់បំផុតដែលជាច្រកទ្វារមុខ និងផ្តល់នូវទិដ្ឋភាពទូទៅនៃគេហទំព័រទាំងមូល។</li>
+      <li><strong>About Us (អំពីយើង):</strong> បង្ហាញពីប្រវត្តិ បេសកកម្ម ចក្ខុវិស័យ គុណតម្លៃ និងក្រុមការងារ ដើម្បីកសាងទំនុកចិត្ត (Trust &amp; Credibility)។</li>
+      <li><strong>Services / Products / Academics (សេវាកម្ម ឬកម្មវិធីសិក្សា):</strong> បង្ហាញព័ត៌មានលម្អិតអំពីអ្វីដែលស្ថាប័នផ្តល់ជូន (វគ្គសិក្សា មុខទំនិញ ឬសេវាកម្មប្រឹក្សា)។</li>
+      <li><strong>Contact Page (ទំព័រទំនាក់ទំនង):</strong> ផ្តល់មធ្យោបាយទំនាក់ទំនងដូចជា អាសយដ្ឋាន ទូរស័ព្ទ អ៊ីមែល ផែនទី Google Maps និងទម្រង់ទំនាក់ទំនង (Contact Form)។</li>
+      <li><strong>FAQ Page (សំណួរញឹកញាប់):</strong> ឆ្លើយសំណួរដែលត្រូវបានសួរញឹកញាប់ ដើម្បីកាត់បន្ថយបន្ទុកការងាររបស់ផ្នែកបម្រើអតិថិជន។</li>
+      <li><strong>Privacy Policy &amp; Terms of Service (គោលការណ៍ឯកជនភាព):</strong> ទំព័រផ្លូវច្បាប់ស្តីពីការការពារទិន្នន័យផ្ទាល់ខ្លួនរបស់អ្នកប្រើប្រាស់ និងលក្ខខណ្ឌប្រើប្រាស់សេវាកម្ម។</li>
+      <li><strong>404 Error Page:</strong> ទំព័រជូនដំណឹងកំហុសដែលបង្ហាញឡើងនៅពេលដែលអ្នកប្រើប្រាស់វាយតំណភ្ជាប់ខុស ឬទំព័រត្រូវបានលុប។</li>
+    </ul>
+    <p>
+      <strong>គោលការណ៍ 3-Click Rule៖</strong> គឺជាក្បួនរចនាបទពិសោធអ្នកប្រើប្រាស់ (UX Principle) ដែលចែងថា អ្នកប្រើប្រាស់គួរតែអាចស្វែងរកព័ត៌មានណាមួយដែលពួកគេចង់បាននៅក្នុងគេហទំព័រ ដោយចុចកណ្ដុរ (Click) មិនឱ្យលើសពី ៣ ដងឡើយ ដោយរាប់ចាប់ពីទំព័រដើម។
+    </p>
+
+    <h2 class="heading-muol">២.៣ ទំព័រដើម (Homepage)</h2>
+    <p>
+      ទំព័រដើម (Homepage) គឺជាចំណុចចាប់ផ្តើមនៃការធ្វើដំណើររបស់អ្នកប្រើប្រាស់ (User Journey)។ នៅក្នុងការរចនាគេហទំព័រ ទំព័រដើមត្រូវឆ្លងកាត់ការធ្វើតេស្តដ៏ល្បីមួយហៅថា «The 5-Second Test»៖ ក្នុងរយៈពេល ៥ វិនាទីដំបូង អ្នកទស្សនាត្រូវតែអាចដឹងច្បាស់ថា៖
+    </p>
+    <ul>
+      <li>តើគេហទំព័រនេះជាកម្មសិទ្ធិរបស់នរណា? (Brand Identity)</li>
+      <li>តើស្ថាប័ននេះធ្វើអ្វីខ្លះ ឬផ្តល់តម្លៃអ្វីដល់ពួកគេ? (Unique Value Proposition)</li>
+      <li>តើពួកគេគួរធ្វើអ្វីបន្ទាប់ទៀត? (Clear Next Steps / Call-to-Action)</li>
+    </ul>
+
+    <h2 class="heading-muol">២.៤ ផ្នែកក្បាលគេហទំព័រ (Header)</h2>
+    <p>
+      ផ្នែកក្បាល (Header) គឺជាផ្ទៃខាងលើបង្អស់នៃគេហទំព័រ ដែលត្រូវបានកំណត់ដោយស្លាក Semantic &lt;header&gt; ក្នុង HTML5។ វាដើរតួជាយុថ្កាសម្គាល់អត្តសញ្ញាណ (Brand Anchor) ដែលបង្ហាញវត្តមានជាប្រចាំនៅលើគ្រប់ទំព័រទាំងអស់នៃគេហទំព័រ។
+    </p>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>Brand Identity:</strong> និមិត្តសញ្ញា និងឈ្មោះស្ថាប័ន (Logo &amp; Brand Name) ដែលតែងតែមាន Hyperlink ត្រឡប់មកកាន់ Homepage វិញ។</li>
+      <li><span class='num-badge'>២.</span> <strong>Primary Navigation Menu:</strong> បញ្ជីតំណភ្ជាប់សំខាន់ៗដែលនាំទៅកាន់ទំព័រកម្រិតទី ១។</li>
+      <li><span class='num-badge'>៣.</span> <strong>Search Bar:</strong> ប្រអប់ស្វែងរកពាក្យគន្លឹះដែលជួយសម្រួលដល់អ្នកប្រើប្រាស់ដែលដឹងច្បាស់ពីអ្វីដែលខ្លួនចង់រក។</li>
+      <li><span class='num-badge'>៤.</span> <strong>Utility Links:</strong> តំណភ្ជាប់ប្តូរភាសា (ខ្មែរ/EN), ប៊ូតុងចូលប្រើប្រាស់គណនី (Login/Portal), និងកន្ត្រកទំនិញ (Cart)។</li>
+      <li><span class='num-badge'>៥.</span> <strong>Header CTA:</strong> ប៊ូតុងពិសេសដូចជា «ចុះឈ្មោះចូលរៀន» ឬ «ទាក់ទងមកយើង»។</li>
+    </ul>
+
+    <h2 class="heading-muol">២.៥ ប្រព័ន្ធរុករកគេហទំព័រ (Navigation)</h2>
+    <p>
+      ប្រព័ន្ធរុករក (Navigation System) ប្រៀបដូចជាផ្លាកសញ្ញាចរាចរណ៍ដែលជួយសម្រួលដល់ការធ្វើដំណើររបស់អ្នកប្រើប្រាស់ (Wayfinding System)។ ប្រសិនបើប្រព័ន្ធរុករកមានភាពរញ៉េរញ៉ៃ នោះអ្នកប្រើប្រាស់នឹងចាកចេញពីគេហទំព័រភ្លាមៗ (High Bounce Rate)។
+    </p>
+    <ul>
+      <li><strong>Primary / Global Navigation:</strong> របារមេនុធំដែលស្ថិតនៅក្នុង Header បង្ហាញផ្នែកស្នូលនៃគេហទំព័រ (Admissions, Academics, About, Contact)។</li>
+      <li><strong>Secondary / Utility Navigation:</strong> មេនុតូចៗនៅផ្នែកខាងលើបំផុត (Top bar) សម្រាប់មុខងារជំនួយដូចជា Portal Login, Language Selector, Hotline។</li>
+      <li><strong>Local / Sub-Navigation:</strong> មេនុរងដែលបង្ហាញនៅក្នុងទំព័រជាក់លាក់ណាមួយ ដូចជាមេនុរាយមុខវិជ្ជានៅក្នុងមហាវិទ្យាល័យ។</li>
+      <li><strong>Breadcrumb Navigation:</strong> គន្លងផ្លូវរុករកតាមឋានានុក្រម ឧទាហរណ៍៖ Home &gt; Academics &gt; Faculty of CS &gt; Web Design ដែលជួយឱ្យអ្នកប្រើប្រាស់ដឹងថាខ្លួនកំពុងស្ថិតនៅត្រង់ណា។</li>
+      <li><strong>Mobile Hamburger Menu:</strong> រូបសញ្ញាឆ្នូត ៣ ដែលលាក់មេនុលើអេក្រង់ទូរស័ព្ទដៃ ហើយបង្ហាញឡើងវិញនៅពេលចុច (Slide-in / Off-canvas Menu)។</li>
+    </ul>
+
+    <h2 class="heading-muol">២.៦ តួខ្លឹមសារចម្បង (Main Content)</h2>
+    <p>
+      តួខ្លឹមសារចម្បង ត្រូវបានកំណត់ដោយស្លាក &lt;main&gt; ក្នុង HTML5។ វាគឺជាតំបន់ស្នូលដែលផ្ទុកព័ត៌មានជាក់លាក់នៃទំព័រនីមួយៗ និងមិនមានភាពជាន់គ្នាជាមួយ Header ឬ Footer ឡើយ (Unique to the page)។ នៅក្នុងឯកសារ HTML មួយ អាចមានស្លាក &lt;main&gt; បានតែមួយគត់។
+    </p>
+    <ul>
+      <li><strong>F-Shaped Pattern (សម្រាប់ការអានអត្ថបទវែងៗ):</strong> អ្នកប្រើប្រាស់តែងតែអានព័ត៌មានពីឆ្វេងទៅស្តាំនៅផ្នែកខាងលើ រួចក្រឡេកចុះក្រោមបន្តិចអានបន្ទាត់ទីពីរ និងរំលកភ្នែកចុះក្រោមតាមជួរឈរខាងឆ្វេង។ ដូច្នេះ ព័ត៌មានសំខាន់បំផុត និងពាក្យគន្លឹះត្រូវដាក់នៅខាងឆ្វេង និងផ្នែកខាងលើ។</li>
+      <li><strong>Z-Pattern (សម្រាប់ទំព័រផ្សព្វផ្សាយ និង Landing Pages):</strong> ភ្នែករបស់អ្នកទស្សនាផ្លាស់ទីជាទម្រង់អក្សរ Z (ពីឆ្វេងទៅស្តាំលើ -&gt; កាត់ទ្រេតមកឆ្វេងក្រោម -&gt; ពីឆ្វេងទៅស្តាំក្រោម)។ គំរូនេះស័ក្តិសមបំផុតសម្រាប់ទំព័រ Landing Page ឬទំព័រដែលមិនសូវមានអត្ថបទច្រើន។</li>
+    </ul>
+
+    <h2 class="heading-muol">២.៧ ផ្នែកចំហៀង ឬរបារចំហៀង (Sidebar)</h2>
+    <p>
+      របារចំហៀង ត្រូវបានកំណត់ដោយស្លាក Semantic &lt;aside&gt; ក្នុង HTML5។ វាផ្ទុកព័ត៌មានបន្ទាប់បន្សំ ឬព័ត៌មានគាំទ្រដែលទាក់ទងដោយប្រយោលទៅនឹងខ្លឹមសារចម្បង (&lt;main&gt;)។ មុខងារទូទៅរួមមាន Table of Contents, Related Events, Quick Links, និង Newsletter Subscription Widget។ នៅលើ Mobile (&lt; 768px) Sidebar ត្រូវតែរុញទៅនៅខាងក្រោម Main Content (Responsive Stacking)។
+    </p>
+
+    <h2 class="heading-muol">២.៨ ផ្នែកបាតគេហទំព័រ (Footer)</h2>
+    <p>
+      ផ្នែកបាតគេហទំព័រ ត្រូវបានកំណត់ដោយស្លាក &lt;footer&gt; ក្នុង HTML5។ វាដើរតួជា «សំណាញ់សុវត្ថិភាព (Safety Net)» សម្រាប់អ្នកប្រើប្រាស់ដែលរមូរមកដល់បាតក្រោម។ សមាសភាគស្តង់ដារក្នុង Mega Footer រួមមាន Mini Sitemap, ព័ត៌មានទំនាក់ទំនងពេញលេញ, Social Media Links, Legal &amp; Privacy Links, និង Copyright Notice។
+    </p>
+
+    <h2 class="heading-muol">២.៩ ប៊ូតុង ឬសារជំរុញសកម្មភាព (Call-to-Action - CTA)</h2>
+    <p>
+      Call-to-Action (CTA) គឺជាធាតុផ្សំដ៏សំខាន់បំផុតមួយក្នុងការរចនាគេហទំព័រ ដែលមានគោលបំណងណែនាំ និងជំរុញឱ្យអ្នកប្រើប្រាស់ធ្វើសកម្មភាពជាក់លាក់ណាមួយដែលម្ចាស់គេហទំព័រចង់បាន (Conversion)។
+    </p>
+    <ul>
+      <li><strong>Primary CTA (សកម្មភាពចម្បង):</strong> សកម្មភាពចម្បងបំផុតដែលយើងចង់ឱ្យអ្នកទស្សនាធ្វើ (ឧទាហរណ៍៖ «ចុះឈ្មោះចូលរៀនឥឡូវនេះ», «ទិញឥឡូវនេះ»)។ ប៊ូតុងនេះត្រូវតែមានទំហំធំ និងមានពណ៌ផ្ទុយខ្លាំង (High Contrast)។</li>
+      <li><strong>Secondary CTA (សកម្មភាពបន្ទាប់បន្សំ):</strong> ជម្រើសជំនួសសម្រាប់អ្នកទស្សនាដែលមិនទាន់ត្រៀមខ្លួន (ឧទាហរណ៍៖ «ទាញយកសៀវភៅកម្មវិធីសិក្សា», «ស្វែងយល់បន្ថែម»)។</li>
+    </ul>
+
+    <pre class="vscode-code">
+<span class="token-comment">&lt;!-- គ្រោងឆ្អឹង Semantic Header &amp; Navigation --&gt;</span>
+<span class="token-tag">&lt;header</span> <span class="token-attr">class=</span><span class="token-str">"site-header"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class=</span><span class="token-str">"brand-logo"</span><span class="token-tag">&gt;</span>សាកលវិទ្យាល័យជាតិ<span class="token-tag">&lt;/div&gt;</span>
+  <span class="token-tag">&lt;nav</span> <span class="token-attr">class=</span><span class="token-str">"primary-nav"</span><span class="token-tag">&gt;</span>
+    <span class="token-tag">&lt;ul&gt;</span>
+      <span class="token-tag">&lt;li&gt;&lt;a</span> <span class="token-attr">href=</span><span class="token-str">"#admissions"</span><span class="token-tag">&gt;</span>ការចុះឈ្មោះ<span class="token-tag">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="token-tag">&lt;li&gt;&lt;a</span> <span class="token-attr">href=</span><span class="token-str">"#academics"</span><span class="token-tag">&gt;</span>មហាវិទ្យាល័យ<span class="token-tag">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="token-tag">&lt;/ul&gt;</span>
+  <span class="token-tag">&lt;/nav&gt;</span>
+  <span class="token-tag">&lt;a</span> <span class="token-attr">href=</span><span class="token-str">"#apply"</span> <span class="token-attr">class=</span><span class="token-str">"btn btn-cta"</span><span class="token-tag">&gt;</span>ចុះឈ្មោះចូលរៀន<span class="token-tag">&lt;/a&gt;</span>
+<span class="token-tag">&lt;/header&gt;</span>
+    </pre>
+
+    <h2 class="heading-muol">២.១០ ផែនទីគេហទំព័រ (Website Sitemap)</h2>
+    <p>
+      ផែនទីគេហទំព័រ (Sitemap) គឺជាប្លង់មេដែលបង្ហាញពីបញ្ជីទំព័រទាំងអស់នៅក្នុងគេហទំព័រ។ នៅក្នុងវិស័យវិស្វកម្មវេប Sitemap ត្រូវបានបែងចែកជា ២ ប្រភេទដាច់ពីគ្នា៖
+    </p>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>HTML Sitemap (សម្រាប់មនុស្ស):</strong> ប្លង់តំណភ្ជាប់ដែលរៀបចំឡើងសម្រាប់អ្នកប្រើប្រាស់រុករកទំព័រ។</li>
+      <li><span class='num-badge'>២.</span> <strong>XML Sitemap (សម្រាប់ម៉ាស៊ីនស្វែងរក):</strong> ឯកសារ <code>sitemap.xml</code> ដែលរៀបចំឡើងសម្រាប់ Googlebot ដើម្បី Index គេហទំព័រ។</li>
+    </ul>
+
+    <h2 class="heading-muol">២.១១ ស្ថាបត្យកម្មព័ត៌មាន (Information Architecture - IA)</h2>
+    <p>
+      ស្ថាបត្យកម្មព័ត៌មាន (Information Architecture - IA) គឺជាការអនុវត្តវិជ្ជាជីវៈនៃការរៀបចំ ចាត់ថ្នាក់ រៀបចំរចនាសម្ព័ន្ធ និងដាក់ស្លាកសម្គាល់ខ្លឹមសារគេហទំព័រ។ យោងតាមសៀវភៅគោលរបស់លោក Peter Morville និង Louis Rosenfeld ស្ថាបត្យកម្មព័ត៌មានផ្អែកលើសសរស្តម្ភធំៗចំនួន ៤៖ <strong>Organization Systems</strong>, <strong>Labeling Systems</strong>, <strong>Navigation Systems</strong>, និង <strong>Search Systems</strong>។ វិធីសាស្ត្រ Card Sorting ត្រូវបានប្រើប្រាស់ដើម្បីចាត់ថ្នាក់ទិន្នន័យឱ្យស្របតាមផ្នត់គំនិតអ្នកប្រើប្រាស់។
+    </p>
+
+    <h2 class="heading-muol">២.១២ រចនាសម្ព័ន្ធខ្លឹមសារគេហទំព័រ (Website Content Structure)</h2>
+    <p>
+      ការសរសេរ និងរៀបចំខ្លឹមសារលើគេហទំព័រត្រូវអនុវត្តតាម <strong>គំរូពីរ៉ាមីតបញ្ច្រាស (The Inverted Pyramid Model)</strong>៖
+    </p>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>កំពូលពីរ៉ាមីត (The Lead):</strong> ឆ្លើយសំណួរ Who, What, When, Where, Why ក្នុងកថាខណ្ឌដំបូងបំផុត។</li>
+      <li><span class='num-badge'>២.</span> <strong>តួពីរ៉ាមីត (Body Details):</strong> ភស្តុតាង តួលេខ ការពន្យល់ និងសក្ខីកម្មដែលពង្រឹងព័ត៌មានស្នូល។</li>
+      <li><span class='num-badge'>៣.</span> <strong>បាតពីរ៉ាមីត (Background &amp; Context):</strong> ព័ត៌មានប្រវត្តិទូទៅ ឬតំណភ្ជាប់ទៅកាន់ប្រធានបទផ្សេងទៀត។</li>
+    </ul>
+
+    <h2 class="heading-muol">២.១៣ ដំណើរការរៀបចំផែនការគេហទំព័រ (Website Planning Process)</h2>
+    <p>
+      ដំណើរការរៀបចំផែនការស្តង់ដារ ៥ ជំហាន៖ (១) កំណត់គោលដៅគម្រោងតាម SMART Goals, (២) កំណត់ក្រុមទស្សនិកជន User Personas, (៣) ពិនិត្យ និងចងក្រងខ្លឹមសារ Content Audit, (៤) បង្កើត Sitemap &amp; IA Blueprint, (៥) វិភាគបច្ចេកវិទ្យា Technical Feasibility។
+    </p>
+
+    <h2 class="heading-muol">២.១៤ លំហូរការងាររចនាគេហទំព័រ (Web Design Workflow)</h2>
+    <p>
+      លំហូរការងារពីគំនិតទៅជាកូដជាក់ស្តែង៖ (១) Wireframing (ប្លង់ព្រាងសខ្មៅ), (២) UI Mockup (ប្លង់សោភ័ណភាពពណ៌លើ Figma), (៣) Prototyping (គំរូសាកល្បងចុចបាន), (៤) Development (ការសរសេរកូដ Frontend &amp; Backend)។
+    </p>
+
+    <h2 class="heading-muol">២.១៥ តម្រូវការគម្រោងគេហទំព័រ (Website Project Requirements)</h2>
+    <div class="table-responsive">
+<table class="data-table">
+      <thead>
+        <tr>
+          <th>លក្ខណៈប្រៀបធៀប</th>
+          <th>តម្រូវការមុខងារ (Functional Requirements)</th>
+          <th>តម្រូវការមិនមែនមុខងារ (Non-Functional Requirements)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>និយមន័យ</strong></td>
+          <td>អ្វីដែលប្រព័ន្ធត្រូវតែធ្វើ (What the system should DO)</td>
+          <td>របៀបដែលប្រព័ន្ធដំណើរការប្រកបដោយគុណភាព (HOW well it performs)</td>
+        </tr>
+        <tr>
+          <td><strong>ការផ្តោតសំខាន់</strong></td>
+          <td>មុខងារ, អន្តរកម្ម, លក្ខណៈពិសេសនៃប្រព័ន្ធ</td>
+          <td>ល្បឿន, សុវត្ថិភាព, លទ្ធភាពប្រើប្រាស់, ភាពជឿជាក់</td>
+        </tr>
+        <tr>
+          <td><strong>ឧទាហរណ៍ទី ១</strong></td>
+          <td>និស្សិតអាចចុះឈ្មោះចូលរៀនតាមអនឡាញបាន</td>
+          <td>ទំព័រត្រូវផ្ទុកចប់ក្នុងរយៈពេលតិចជាង ២.០ វិនាទី (Performance)</td>
+        </tr>
+        <tr>
+          <td><strong>ឧទាហរណ៍ទី ២</strong></td>
+          <td>មានប្រព័ន្ធស្វែងរកវគ្គសិក្សា និងសាស្រ្តាចារ្យ</td>
+          <td>គេហទំព័រត្រូវបង្ហាញសមរម្យលើ Mobile, Tablet, Desktop (Responsive)</td>
+        </tr>
+        <tr>
+          <td><strong>ឧទាហរណ៍ទី ៣</strong></td>
+          <td>មានប្រព័ន្ធទូទាត់ថ្លៃសិក្សាតាម Bakong KHQR</td>
+          <td>ទិន្នន័យត្រូវការពារតាម HTTPS TLS 1.3 និង GDPR (Security)</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div class="scroll-hint">⇄ អូសទៅស្តាំដើម្បីមើលតារាងពេញ (Scroll table horizontally)</div>
+
+    <h2 class="heading-muol">សេចក្តីសង្ខេបមេរៀន (Chapter Summary)</h2>
+    <p>
+      ជំពូកទី ២ បានបង្ហាញយ៉ាងស៊ីជម្រៅអំពីកាយវិភាគវិទ្យានៃគេហទំព័រ (Website Anatomy) និងដំណើរការរៀបចំផែនការប្រកបដោយវិជ្ជាជីវៈ។ ការយល់ដឹងពីតួនាទីរបស់ Header, Primary Navigation, Hero Section, Main Content, Sidebar, និង Footer ជួយឱ្យអ្នករចនាអាចបង្កើតគេហទំព័រដែលមានរចនាសម្ព័ន្ធច្បាស់លាស់ និងសម្របតាមអេក្រង់គ្រប់ទំហំ។ លើសពីនេះ ស្ថាបត្យកម្មព័ត៌មាន (IA) និងការរៀបចំផែនទីគេហទំព័រ (Sitemap) តាមរយៈវិធីសាស្ត្រ Card Sorting គឺជាគ្រឹះដែលមិនអាចខ្វះបានដើម្បីធានាបាននូវភាពងាយស្រួលរុករកស្របតាមគោលការណ៍ 3-Click Rule។
+    </p>
+
+    <h2 class="heading-muol">សំណួរត្រួតពិនិត្យការយល់ដឹង (Review &amp; Discussion Questions)</h2>
+    <ol>
+      <li>ចូរពន្យល់ពីគំរូរចនាសម្ព័ន្ធគេហទំព័រទាំង ៤ (Hierarchical, Linear, Webbed, Matrix) និងលើកឧទាហរណ៍គេហទំព័រពិតប្រាកដដែលប្រើប្រាស់គំរូនីមួយៗ។</li>
+      <li>តើគោលការណ៍ «3-Click Rule» គឺជាអ្វី? ហេតុអ្វីបានជាវាមានសារៈសំខាន់ចំពោះបទពិសោធអ្នកប្រើប្រាស់ (UX)?</li>
+      <li>ចូរប្រៀបធៀបតួនាទី និងលក្ខណៈរចនារវាង Primary Call-to-Action (Primary CTA) និង Secondary Call-to-Action (Secondary CTA)។</li>
+      <li>ចូររៀបរាប់ពីសសរស្តម្ភធំៗទាំង ៤ នៃស្ថាបត្យកម្មព័ត៌មាន (Information Architecture) របស់លោក Morville &amp; Rosenfeld។</li>
+      <li>ចូរពន្យល់ពីភាពខុសគ្នារវាង Functional Requirements និង Non-Functional Requirements ព្រមទាំងលើកឧទាហរណ៍យ៉ាងតិចចំនួន ២ សម្រាប់ប្រភេទនីមួយៗក្នុងគម្រោងគេហទំព័រសាកលវិទ្យាល័យ។</li>
+    </ol>
+    
+  
+  </div>
+</div>
+
+<script>
+  let currentScale = 16;
+  function changeFontSize(delta) {
+    currentScale = Math.min(22, Math.max(13, currentScale + delta));
+    document.documentElement.style.setProperty('--font-scale', currentScale + 'px');
+  }
+</script>
+
+</body>
+</html>

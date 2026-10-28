@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍: ការបង្កើតលំហូរអ្នកប្រើប្រាស់ E-Commerce (Practical Lab Guide)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Siemreap&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ==========================================================================
+     Master Responsive & Reader-Friendly Styling
+     ========================================================================== */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --font-body: 'Kantumruy Pro', 'Khmer OS Siemreap', 'Siemreap', system-ui, -apple-system, sans-serif;
+    --font-code: 'Fira Code', Consolas, Monaco, monospace;
+    --color-primary: #0F172A;
+    --color-navy: #1E3A8A;
+    --color-blue: #2563EB;
+    --color-muted: #64748B;
+    --color-bg: #F8FAFC;
+    --color-card: #FFFFFF;
+    --color-border: #E2E8F0;
+    --color-border-dark: #CBD5E1;
+    --color-code-bg: #F8FAFC;
+    --font-scale: 16px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: var(--font-scale);
+    line-height: 1.75;
+    color: var(--color-primary);
+    background-color: var(--color-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Top Utility Reader Bar */
+  .reader-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.6rem 1.25rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .toolbar-container {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+
+  .badge-tag {
+    background: #EEF2FF;
+    color: var(--color-blue);
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-tool {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border-dark);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .btn-tool:hover {
+    background: #F1F5F9;
+    border-color: #94A3B8;
+  }
+
+  /* Main Document Container */
+  .document-wrapper {
+    flex: 1;
+    padding: 1.5rem 0.75rem 3rem 0.75rem;
+    width: 100%;
+  }
+
+  .page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+    padding: 3rem 2.8rem;
+    transition: padding 0.3s ease;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4 {
+    color: var(--color-primary);
+    font-weight: 700;
+    line-height: 1.35;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-size: 1.45rem;
+    color: var(--color-navy);
+    border-bottom: 2px solid #EEF2FF;
+    padding-bottom: 0.4rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: #1E293B;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    color: var(--color-navy);
+  }
+
+  p {
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
+  strong {
+    font-weight: 700;
+    color: #0F172A;
+  }
+
+  /* Responsive Lists */
+  ul.bullet-list {
+    margin: 0.5rem 0 1.25rem 1.5rem;
+    list-style-type: disc;
+  }
+
+  ul.bullet-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.25rem;
+  }
+
+  ul.numbered-list {
+    list-style: none !important;
+    margin: 0.5rem 0 1.25rem 0;
+    padding-left: 0;
+  }
+
+  ul.numbered-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+    list-style: none !important;
+  }
+
+  .num-badge {
+    font-weight: 700;
+    color: var(--color-navy);
+    flex-shrink: 0;
+    min-width: 1.8rem;
+    line-height: 1.75;
+  }
+
+  /* Responsive Code Blocks */
+  pre.code-block, pre {
+    font-family: var(--font-code);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    background-color: var(--color-code-bg);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-blue);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre;
+    color: var(--color-primary);
+  }
+
+  .tag { color: #991B1B; font-weight: 600; }
+  .attr { color: #DC2626; }
+  .str { color: #2563EB; }
+  .comm { color: #16A34A; font-style: italic; }
+  .blue { color: #2563EB; font-weight: 600; }
+
+  /* Responsive Table Container */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: #FFFFFF;
+  }
+
+  table, table.data-table {
+    width: 100%;
+    min-width: 550px;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  table th, table td {
+    border: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+  }
+
+  table th {
+    background-color: #F1F5F9;
+    font-weight: 700;
+    color: var(--color-navy);
+    text-align: center;
+  }
+
+  table tbody tr:nth-child(even) {
+    background-color: #FBFDFF;
+  }
+
+  table tbody tr:hover {
+    background-color: #F1F5F9;
+  }
+
+  /* Scroll hint on mobile */
+  .scroll-hint {
+    display: none;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 0.25rem;
+    text-align: right;
+  }
+
+  /* Mobile Responsive Breakpoints */
+  @media screen and (max-width: 768px) {
+    :root {
+      --font-scale: 15px;
+    }
+    .document-wrapper {
+      padding: 0.75rem 0.35rem 2rem 0.35rem;
+    }
+    .page-container {
+      padding: 1.5rem 1.15rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    h1 { font-size: 1.3rem; }
+    h2 { font-size: 1.15rem; }
+    h3 { font-size: 1.05rem; }
+    p { text-align: left; }
+    .scroll-hint { display: block; }
+  }
+
+  /* Print Stylesheet (Exact University A4 Standard) */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin-left: 2.5cm;
+      margin-right: 1.5cm;
+      margin-top: 2.5cm;
+      margin-bottom: 2.5cm;
+    }
+    body {
+      background: transparent !important;
+      padding: 0 !important;
+      font-family: 'Khmer OS Siemreap', 'Siemreap', sans-serif !important;
+      font-size: 12pt !important;
+      line-height: 1.15 !important;
+      color: #000000 !important;
+    }
+    .no-print, .reader-toolbar, .scroll-hint {
+      display: none !important;
+    }
+    .document-wrapper {
+      padding: 0 !important;
+      width: 100% !important;
+    }
+    .page-container {
+      max-width: 100% !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+    h1, h2, h3 {
+      font-family: 'Khmer OS Muol Light', 'Khmer OS Muol Light-Kh Auto', sans-serif !important;
+      font-size: 12pt !important;
+      line-height: 1.25 !important;
+      border: none !important;
+    }
+    table {
+      min-width: 100% !important;
+    }
+    .table-responsive {
+      border: none !important;
+      overflow: visible !important;
+    }
+    pre.code-block, pre {
+      background: transparent !important;
+      white-space: pre-wrap !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Interactive Reader Utility Bar -->
+<div class="reader-toolbar no-print">
+  <div class="toolbar-container">
+    <div class="toolbar-brand">
+      <span class="badge-tag">Web Design (Year 3)</span>
+      <span>មន្ទីរពិសោធន៍អនុវត្ត (Practical Lab Guide)</span>
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn-tool" onclick="changeFontSize(-1)" title="បន្ថយទំហំអក្សរ">A-</button>
+      <button class="btn-tool" onclick="changeFontSize(1)" title="ពង្រីកទំហំអក្សរ">A+</button>
+      <button class="btn-tool" onclick="window.print()" title="បោះពុម្ព ឬរក្សាទុកជា PDF">🖨️ បោះពុម្ព / PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- Main Reader Document -->
+<div class="document-wrapper">
+  <div class="page-container">
+<div class="print-bar no-print">
+    <span>📄 ស្តង់ដាសៀវភៅគោល A4 (Left 2.5cm, Right 1.5cm, Top 2.5cm, Bottom 2.5cm)</span>
+    <button class="print-btn" onclick="window.print()">🖨️ បោះពុម្ព ឬទាញយកជា PDF (Print / Save as PDF)</button>
+  </div>
+  <div class="page-container">
+
+    <div class="title-center">
+      <h1 class="heading-muol">សាកលវិទ្យាល័យភូមិន្ទ — មហាវិទ្យាល័យវិទ្យាសាស្ត្រកុំព្យូទ័រ</h1>
+      <h2 class="heading-muol">កិច្ចការអនុវត្តជាក់ស្តែងក្នុងបន្ទប់ពិសោធន៍ (Practical Lab Guide)</h2>
+      <h2 class="heading-muol" style="color: #0284c7;">ម៉ូឌុល ០១ • ជំពូកទី ៣៖ ការបង្កើតលំហូរអ្នកប្រើប្រាស់សម្រាប់គេហទំព័រ E-Commerce (Create a User Flow for an E-Commerce Website)</h2>
+    </div>
+
+    <div class="callout-box">
+      <strong>កម្រិតសិក្សា៖</strong> បរិញ្ញាបត្រឆ្នាំទី ៣ | <strong>រយៈពេលអនុវត្ត៖</strong> ៣ ម៉ោង | <strong>ប្រភេទទម្រង់៖</strong> Step-by-Step Practical Lab
+    </div>
+
+    <h2 class="heading-muol">គោលបំណងនៃការអនុវត្ត (Lab Objectives)</h2>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>ស្វែងយល់ User Flow៖</strong> យល់ច្បាស់ពីតួនាទីរបស់ User Flow ក្នុងការរចនាបទពិសោធអ្នកប្រើប្រាស់លើគេហទំព័រពាណិជ្ជកម្មអេឡិចត្រូនិក។</li>
+      <li><span class='num-badge'>២.</span> <strong>Happy Path vs Edge Cases៖</strong> កំណត់ផ្លូវជោគជ័យ (Happy Path) និងផ្លូវជំនួស/កំហុស (Alternate &amp; Error Paths) ក្នុង Checkout Flow។</li>
+      <li><span class='num-badge'>៣.</span> <strong>គំនូសបំព្រួញ Diagram៖</strong> ប្រើប្រាស់ឧបករណ៍ឌីជីថល (FigJam / Miro / draw.io) ដើម្បីគូរគំនូសបំព្រួញ User Flow Diagram តាមស្តង់ដាអន្តរជាតិ។</li>
+      <li><span class='num-badge'>៤.</span> <strong>ការបង្ការកំហុស និង Feedback៖</strong> អនុវត្តគោលការណ៍ Error Prevention, Inline Validation, និង Feedback ក្នុងគ្រប់ជំហាននៃលំហូរ។</li>
+      <li><span class='num-badge'>៥.</span> <strong>របាយការណ៍បច្ចេកទេស៖</strong> ចងក្រងជារបាយការណ៍បច្ចេកទេស និងការពារគម្រោងអនុវត្តរបស់ខ្លួន។</li>
+    </ul>
+
+    <h2 class="heading-muol">ការណែនាំអនុវត្តជាជំហានៗ (Step-by-Step Lab Instructions)</h2>
+
+    <h3 class="heading-muol">ជំហានទី ១៖ កំណត់ User Persona និងគោលបំណងទិញទំនិញ</h3>
+    <ul>
+      <li><strong>Persona Profile:</strong> ឈ្មោះ៖ សុខ សុវណ្ណ | អាយុ៖ ២១ ឆ្នាំ | មុខរបរ៖ និស្សិតឆ្នាំទី ៣ ផ្នែក IT។</li>
+      <li><strong>User Goal:</strong> ត្រូវការទិញកុំព្យូទ័រ Laptop ថ្មីសម្រាប់រៀនសរសេរកូដ ដោយប្រើ Voucher បញ្ចុះតម្លៃនិស្សិត និងទូទាត់ប្រាក់តាម Bakong KHQR។</li>
+    </ul>
+
+    <h3 class="heading-muol">ជំហានទី ២៖ វិភាគកិច្ចការ (Task Analysis) និងកំណត់លំដាប់លំហូរ</h3>
+    <ol>
+      <li><strong>Product Details:</strong> ជ្រើសរើសពណ៌ ទំហំ Storage និងចុច Add to Cart។</li>
+      <li><strong>Cart Review:</strong> ពិនិត្យតម្លៃ បញ្ចូលកូដ Voucher និងពិនិត្យតម្លៃសរុប។</li>
+      <li><strong>Shipping Details:</strong> បំពេញអាសយដ្ឋានដឹកជញ្ជូនជាមួយ Inline Real-time Validation។</li>
+      <li><strong>Payment Method:</strong> ជ្រើសរើសវិធីសាស្ត្រ Bakong KHQR និងស្កេនទូទាត់។</li>
+      <li><strong>Order Success:</strong> ទទួលបានវិក្កយបត្រអេឡិចត្រូនិក និងលេខកូដ Order ID។</li>
+    </ol>
+
+    <h3 class="heading-muol">ជំហានទី ៣៖ ការគូសប្លង់ User Flow Diagram តាមស្តង់ដា</h3>
+    <div class="callout-box">
+      [Start: ចូលទស្សនា] &rarr; [Action: ជ្រើសរើស Options] &rarr; [Action: Add to Cart] &rarr; &lt;Decision: មាន Voucher?&gt; &rarr; [Action: បំពេញអាសយដ្ឋាន] &rarr; &lt;Decision: ត្រឹមត្រូវ?&gt; &rarr; [Action: ស្កេន Bakong KHQR] &rarr; [End: វិក្កយបត្រជោគជ័យ]
+    </div>
+
+    <h3 class="heading-muol">ជំហានទី ៤៖ អនុវត្ត និងត្រួតពិនិត្យគោលការណ៍ UI/UX ក្នុងគម្រោងគំរូ</h3>
+    <p>បើកឯកសារ <code>sample_project/index.html</code> រួចធ្វើតេស្ត៖</p>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>Error Prevention Test:</strong> សាកល្បងចុច «សម្អាតកន្ត្រក» ដើម្បីសង្កេតមើលផ្ទាំង Confirmation Alert។</li>
+      <li><span class='num-badge'>២.</span> <strong>Form Validation Test:</strong> វាយបញ្ចូលទិន្នន័យខុសទម្រង់ ដើម្បីសង្កេតមើល Inline Real-time Error Message។</li>
+      <li><span class='num-badge'>៣.</span> <strong>Feedback Test:</strong> បញ្ចូលកូដ 'STUDENT2026' ដើម្បីមើលការគណនាតម្លៃ និង Toast Feedback ពណ៌បៃតង។</li>
+    </ul>
+
+    <h2 class="heading-muol">ទម្រង់របាយការណ៍បច្ចេកទេសរបស់និស្សិត (Student Submission Template)</h2>
+    <div class="table-responsive">
+<table class="data-table">
+      <thead>
+        <tr>
+          <th>ដំណាក់កាលលំហូរ (Flow Step)</th>
+          <th>សកម្មភាពអ្នកប្រើ (User Action)</th>
+          <th>ការឆ្លើយតបប្រព័ន្ធ (System Feedback)</th>
+          <th>ការបង្ការកំហុស (Error Prevention)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Step 1: Product Config</strong></td>
+          <td>ជ្រើសរើសពណ៌ និងទំហំ Storage</td>
+          <td>ផ្លាស់ប្តូររូបភាព និងតម្លៃភ្លាមៗ</td>
+          <td>កម្រិតបរិមាណអតិបរមា ៥ គ្រឿង</td>
+        </tr>
+        <tr>
+          <td><strong>Step 2: Cart Review</strong></td>
+          <td>បញ្ចូលលេខកូដ 'STUDENT2026'</td>
+          <td>បង្ហាញ Toast បញ្ចុះតម្លៃ ១០% ភ្លាមៗ</td>
+          <td>សួរ Confirmation មុនសម្អាតកន្ត្រក</td>
+        </tr>
+        <tr>
+          <td><strong>Step 3: Shipping Form</strong></td>
+          <td>វាយបញ្ចូលឈ្មោះ លេខទូរស័ព្ទ អ៊ីមែល</td>
+          <td>បង្ហាញ Inline Error ក្រហមពេលវាយខុស</td>
+          <td>មិនអនុញ្ញាតឱ្យបន្តបើទម្រង់មិនត្រឹមត្រូវ</td>
+        </tr>
+        <tr>
+          <td><strong>Step 4: Payment</strong></td>
+          <td>ស្កេនទូទាត់ Bakong KHQR</td>
+          <td>បង្ហាញ Countdown Timer ០៥:០០ នាទី</td>
+          <td>ទប់ស្កាត់ការចុច Submit ផ្ទួនៗ (Disabled)</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div class="scroll-hint">⇄ អូសទៅស្តាំដើម្បីមើលតារាងពេញ (Scroll table horizontally)</div>
+
+    <h2 class="heading-muol">តារាងពិន្ទុវាយតម្លៃការអនុវត្ត (Evaluation Rubric — 100 Points)</h2>
+    <ul class='numbered-list'>
+      <li><span class='num-badge'>១.</span> <strong>ការវិភាគតម្រូវការ និង Persona (២៥ ពិន្ទុ)៖</strong> កំណត់ User Persona និងវិភាគ Task Analysis បានត្រឹមត្រូវពេញលេញ។</li>
+      <li><span class='num-badge'>២.</span> <strong>គុណភាពនៃ User Flow Diagram (២៥ ពិន្ទុ)៖</strong> គូសប្លង់ User Flow Diagram ៥ ដំណាក់កាលច្បាស់លាស់ ត្រឹមត្រូវតាមស្តង់ដានិមិត្តសញ្ញា។</li>
+      <li><span class='num-badge'>៣.</span> <strong>ការរចនា Feedback &amp; Micro-interactions (២៥ ពិន្ទុ)៖</strong> បង្កប់នូវយន្តការ Feedback, Toast Notifications, និង Loading State បានត្រឹមត្រូវ។</li>
+      <li><span class='num-badge'>៤.</span> <strong>យុទ្ធសាស្ត្រ Error Prevention (២៥ ពិន្ទុ)៖</strong> មានយន្តការបង្ការកំហុស Inline Real-time Form Validation និង Confirmation Safeguards។</li>
+    </ul>
+    
+  
+  </div>
+</div>
+
+<script>
+  let currentScale = 16;
+  function changeFontSize(delta) {
+    currentScale = Math.min(22, Math.max(13, currentScale + delta));
+    document.documentElement.style.setProperty('--font-scale', currentScale + 'px');
+  }
+</script>
+
+</body>
+</html>
