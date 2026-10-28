@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="គម្រោងគំរូមេរៀនទី ២: រចនាសម្ព័ន្ធគេហទំព័រ និងដំណើរការរចនា (Website Structure and Design Process) - Bachelor Year 3">
+  <title>គម្រោងគំរូ: គេហទំព័រសាកលវិទ្យាល័យ និងឧបករណ៍វិភាគរចនាសម្ព័ន្ធ (University Portal & Structure Explorer)</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Moul&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ==================== TEACHER / STUDENT ANATOMY TOOLBAR (FLOATING HUD) ==================== -->
+  <aside class="anatomy-hud" aria-label="Anatomy Highlighter HUD">
+    <div class="hud-header">
+      <span class="hud-badge">ឧបករណ៍រៀនជាក់ស្តែង</span>
+      <h3 class="hud-title">Anatomy Inspector</h3>
+      <button type="button" id="btn-toggle-hud" class="hud-btn-minimize" aria-label="Minimize HUD">_</button>
+    </div>
+    <div class="hud-body" id="hud-body">
+      <p class="hud-desc">ចុចប៊ូតុងខាងក្រោមដើម្បីរំលេច (Highlight) រចនាសម្ព័ន្ធ Semantic នៃគេហទំព័រ៖</p>
+      <div class="hud-buttons">
+        <button type="button" class="btn-highlight" data-target="header">1. Header (&lt;header&gt;)</button>
+        <button type="button" class="btn-highlight" data-target="nav">2. Navigation (&lt;nav&gt;)</button>
+        <button type="button" class="btn-highlight" data-target="hero">3. Hero &amp; CTA</button>
+        <button type="button" class="btn-highlight" data-target="main">4. Main Content (&lt;main&gt;)</button>
+        <button type="button" class="btn-highlight" data-target="sidebar">5. Sidebar (&lt;aside&gt;)</button>
+        <button type="button" class="btn-highlight" data-target="footer">6. Footer (&lt;footer&gt;)</button>
+        <button type="button" class="btn-highlight" data-target="all">រំលេចទាំងអស់ (All Parts)</button>
+        <button type="button" class="btn-highlight btn-reset-hud" data-target="clear">លុបការរំលេច (Clear)</button>
+      </div>
+      <div class="hud-view-modes">
+        <button type="button" id="btn-open-sitemap-modal" class="btn-hud-action">🗺️ មើល Visual Sitemap</button>
+        <button type="button" id="btn-open-req-modal" class="btn-hud-action">📋 មើល Project Requirements</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== 1. TOP UTILITY BAR & HEADER ==================== -->
+  <header class="site-header" id="site-header">
+    <!-- Top Utility Bar -->
+    <div class="utility-bar">
+      <div class="container utility-container">
+        <div class="utility-left">
+          <span class="utility-item">📞 ទំនាក់ទំនង៖ (+855) 23 888 999</span>
+          <span class="utility-item">✉️ អ៊ីមែល៖ info@cambodia-tech.edu.kh</span>
+        </div>
+        <div class="utility-right">
+          <a href="#student-portal" class="utility-link">🎓 ប្រព័ន្ធព័ត៌មាននិស្សិត (Portal)</a>
+          <a href="#library" class="utility-link">📚 បណ្ណាល័យឌីជីថល</a>
+          <span class="lang-switch">🌐 <strong>ខ្មែរ</strong> | <a href="#en">EN</a></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Header Bar -->
+    <div class="container main-header-container">
+      <div class="brand-group">
+        <a href="index.html" class="brand-link" aria-label="University Homepage">
+          <div class="brand-logo-icon">🏛️</div>
+          <div class="brand-text">
+            <span class="brand-name">សាកលវិទ្យាល័យជាតិបច្ចេកវិទ្យា</span>
+            <span class="brand-tagline">National University of Digital Technology</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Quick Search Bar -->
+      <div class="header-search">
+        <form class="search-form" role="search" onsubmit="event.preventDefault();">
+          <input type="search" placeholder="ស្វែងរកវគ្គសិក្សា មហាវិទ្យាល័យ ព័ត៌មាន..." aria-label="Search site content">
+          <button type="submit" class="search-submit" aria-label="Submit search">🔍</button>
+        </form>
+      </div>
+
+      <!-- Header Primary CTA -->
+      <div class="header-action">
+        <a href="#admissions" class="btn btn-cta-primary">ចុះឈ្មោះចូលរៀន (Apply Now)</a>
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================== 2. PRIMARY NAVIGATION (NAV) ==================== -->
+    <nav class="primary-nav" id="primary-nav" aria-label="Primary Navigation">
+      <div class="container nav-container">
+        <ul class="nav-menu" id="nav-menu">
+          <li class="nav-item"><a href="#homepage" class="nav-link active">ទំព័រដើម</a></li>
+          
+          <li class="nav-item has-dropdown">
+            <a href="#admissions" class="nav-link">ការចុះឈ្មោះ<span class="arrow-down">▾</span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#apply-year1">ថ្នាក់បរិញ្ញាបត្រ (Undergraduate)</a></li>
+              <li><a href="#apply-master">ថ្នាក់បរិញ្ញាបត្រជាន់ខ្ពស់ (Postgraduate)</a></li>
+              <li><a href="#scholarships">អាហារូបករណ៍ (Scholarships)</a></li>
+              <li><a href="#tuition-fees">តម្លៃសិក្សា (Tuition &amp; Fees)</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-dropdown">
+            <a href="#academics" class="nav-link">មហាវិទ្យាល័យ <span class="arrow-down">▾</span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#faculty-cs">វិទ្យាសាស្ត្រកុំព្យូទ័រ (Computer Science)</a></li>
+              <li><a href="#faculty-web">ការរចនា និងអភិវឌ្ឍវេប (Web Design &amp; Dev)</a></li>
+              <li><a href="#faculty-se">វិស្វកម្មសូហ្វវែរ (Software Engineering)</a></li>
+              <li><a href="#faculty-cyber">សន្តិសុខសាយប័រ (Cybersecurity)</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a href="#research" class="nav-link">ការស្រាវជ្រាវ</a></li>
+          <li class="nav-item"><a href="#campus-life" class="nav-link">ជីវិតនិស្សិត</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">អំពីសាកលវិទ្យាល័យ</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">ទំនាក់ទំនង</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== 3. HERO SECTION WITH VALUE PROPOSITION & CTAs ==================== -->
+  <section class="hero-section" id="hero-section">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <span class="hero-tag">🌟 បើកទទួលពាក្យឆ្នាំសិក្សា ២០២៦ - ២០២៧</span>
+        <h1 class="hero-title">កសាងអនាគតឌីជីថលរបស់អ្នកជាមួយជំនាញបច្ចេកវិទ្យាកម្រិតខ្ពស់</h1>
+        <p class="hero-desc">
+          សាកលវិទ្យាល័យជាតិបច្ចេកវិទ្យា ផ្តល់ជូននូវកម្មវិធីសិក្សាស្របតាមស្តង់ដាអន្តរជាតិលើមុខវិជ្ជាការរចនាគេហទំព័រ (Web Design), 
+          វិស្វកម្មសូហ្វវែរ និងបញ្ញាសិប្បនិម្មិត ដោយផ្តោតលើការអនុវត្តជាក់ស្តែង ៨០% នៅក្នុងបន្ទប់ពិសោធន៍ទំនើប។
+        </p>
+        <!-- Strategic Dual Call-to-Actions (CTAs) -->
+        <div class="hero-actions">
+          <a href="#admissions" class="btn btn-hero-primary">
+            <span>🚀 ចុះឈ្មោះចូលរៀនឥឡូវនេះ (Primary CTA)</span>
+          </a>
+          <a href="#curriculum" class="btn btn-hero-secondary">
+            <span>📄 ទាញយកសៀវភៅកម្មវិធីសិក្សា (Secondary CTA)</span>
+          </a>
+        </div>
+        <div class="hero-stats-strip">
+          <div class="h-stat"><span class="h-stat-num">98%</span> និស្សិតមានការងារធ្វើ</div>
+          <div class="h-stat"><span class="h-stat-num">25+</span> ដៃគូឧស្សាហកម្មជាតិ-អន្តរជាតិ</div>
+          <div class="h-stat"><span class="h-stat-num">100%</span> បង្រៀនដោយអនុវត្តផ្ទាល់</div>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="hero-card-preview">
+          <div class="preview-badge">Featured Program</div>
+          <h3>Bachelor of Web Design &amp; UI/UX</h3>
+          <p>កម្មវិធីបណ្តុះបណ្តាលបរិញ្ញាបត្រ ៤ ឆ្នាំពេញលេញ បំពាក់ដោយបច្ចេកវិទ្យា Modern Web Technologies, Design Systems &amp; Frameworks។</p>
+          <div class="preview-footer">
+            <span>⏱️ រយៈពេល៖ ៤ ឆ្នាំ</span>
+            <span>📍 រាជធានីភ្នំពេញ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BREADCRUMB NAVIGATION ==================== -->
+  <nav class="breadcrumb-bar" aria-label="Breadcrumb Navigation">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="#home">ទំព័រដើម</a></li>
+        <li><a href="#academics">មហាវិទ្យាល័យ</a></li>
+        <li aria-current="page">មហាវិទ្យាល័យវិទ្យាសាស្ត្រកុំព្យូទ័រ និងការរចនាគេហទំព័រ</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- ==================== 4. MAIN CONTENT & 5. SIDEBAR LAYOUT ==================== -->
+  <div class="container layout-wrapper">
+    <!-- MAIN CONTENT (<main>) -->
+    <main class="main-content-area" id="main-content-area">
+
+      <!-- Section: Featured Faculties -->
+      <section class="content-section" id="faculties-section">
+        <div class="section-title-wrap">
+          <span class="sub-label">កម្មវិធីសិក្សាឆ្នើម</span>
+          <h2 class="section-title">កម្មវិធីបរិញ្ញាបត្រជំនាញបច្ចេកវិទ្យា (Undergraduate Programs)</h2>
+          <p class="section-subtitle">ជ្រើសរើសជំនាញដែលស័ក្តិសមជាមួយក្តីស្រមៃ និងទេពកោសល្យរបស់អ្នក៖</p>
+        </div>
+
+        <div class="cards-grid">
+          <!-- Card 1 -->
+          <article class="academic-card">
+            <div class="card-icon">🎨</div>
+            <h3 class="card-title">ការរចនាគេហទំព័រ និង UI/UX</h3>
+            <p class="card-desc">សិក្សាពីស្ថាបត្យកម្មព័ត៌មាន (IA), Wireframing, Figma Prototyping, Semantic HTML5, CSS3 Grid/Flexbox និង Modern Frontend Interactions។</p>
+            <div class="card-meta">
+              <span>បរិញ្ញាបត្រ ៤ ឆ្នាំ</span>
+              <a href="#apply" class="card-cta">លម្អិត &amp; ចុះឈ្មោះ &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="academic-card">
+            <div class="card-icon">💻</div>
+            <h3 class="card-title">វិទ្យាសាស្ត្រកុំព្យូទ័រ (Computer Science)</h3>
+            <p class="card-desc">ផ្តោតលើ Algorithms, Data Structures, Software Architecture, Database Management និង Cloud Computing Systems។</p>
+            <div class="card-meta">
+              <span>បរិញ្ញាបត្រ ៤ ឆ្នាំ</span>
+              <a href="#apply" class="card-cta">លម្អិត &amp; ចុះឈ្មោះ &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="academic-card">
+            <div class="card-icon">🔒</div>
+            <h3 class="card-title">សន្តិសុខសាយប័រ (Cybersecurity)</h3>
+            <p class="card-desc">សិក្សាពីការការពារបណ្តាញ Network Security, Web Application Pentesting, Cryptography និងការការពារទិន្នន័យឌីជីថល។</p>
+            <div class="card-meta">
+              <span>បរិញ្ញាបត្រ ៤ ឆ្នាំ</span>
+              <a href="#apply" class="card-cta">លម្អិត &amp; ចុះឈ្មោះ &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section: Inverted Pyramid Content Demonstration -->
+      <section class="content-section" id="content-structure-demo">
+        <div class="section-title-wrap">
+          <span class="sub-label">ទ្រឹស្តីខ្លឹមសារ ២.១២</span>
+          <h2 class="section-title">គំរូពីរ៉ាមីតបញ្ច្រាសនៃខ្លឹមសារ (Inverted Pyramid Model)</h2>
+        </div>
+        <div class="content-box">
+          <div class="pyramid-level level-lead">
+            <h4>១. ព័ត៌មានស្នូលសំខាន់បំផុត (The Lead / Most Critical Info)</h4>
+            <p><strong>តើនរណា? អ្វី? ទីណា? ពេលណា? និងហេតុអ្វី?</strong> — សាកលវិទ្យាល័យជាតិបច្ចេកវិទ្យា ចាប់ផ្តើមទទួលពាក្យសុំអាហារូបករណ៍ ១០០% សម្រាប់សិស្សទូទាំងប្រទេសចាប់ពីថ្ងៃទី ០១ ខែវិច្ឆិកា ឆ្នាំ ២០២៦ នេះតទៅ។</p>
+          </div>
+          <div class="pyramid-level level-body">
+            <h4>២. ព័ត៌មានលម្អិតគាំទ្រ (Important Body Details)</h4>
+            <p>លក្ខខណ្ឌនៃការជ្រើសរើសរួមមាន៖ សិស្សដែលបានប្រឡងជាប់សញ្ញាបត្រមធ្យមសិក្សាទុតិយភូមិ (បាក់ឌុប) និទ្ទេស A, B, C ឬឆ្លងកាត់ការប្រឡងវាស់ស្ទង់សមត្ថភាពផ្នែកតក្កវិជ្ជា និងភាសាអង់គ្លេស។</p>
+          </div>
+          <div class="pyramid-level level-tail">
+            <h4>៣. ព័ត៌មានបន្ថែម និងប្រវត្តិទូទៅ (Background &amp; General Info)</h4>
+            <p>ព័ត៌មានអំពីប្រវត្តិនៃការបង្កើតសាកលវិទ្យាល័យ កិច្ចសហប្រតិបត្តិការជាមួយដៃគូអន្តរជាតិ និងទីតាំងអន្តេវាសិកដ្ឋាននិស្សិត។</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- SIDEBAR (<aside>) -->
+    <aside class="site-sidebar" id="site-sidebar" aria-label="Secondary Sidebar">
+      <!-- Widget 1: Quick Action CTA Box -->
+      <div class="sidebar-widget widget-cta">
+        <h3 class="widget-title">📢 ការចុះឈ្មោះរហ័ស</h3>
+        <p>កុំឱ្យឱកាសអាហារូបករណ៍កន្លងផុតទៅ! បំពេញទម្រង់សុំប្រឹក្សាការសិក្សាដោយឥតគិតថ្លៃឥឡូវនេះ៖</p>
+        <a href="#consultation" class="btn btn-widget-cta">ស្នើសុំការប្រឹក្សា (Free Advice)</a>
+      </div>
+
+      <!-- Widget 2: Academic Calendar & Events -->
+      <div class="sidebar-widget">
+        <h3 class="widget-title">📅 កាលវិភាគព្រឹត្តិការណ៍</h3>
+        <ul class="events-list">
+          <li class="event-item">
+            <span class="event-date">15 វិច្ឆិកា</span>
+            <div class="event-info">
+              <strong>ពិព័រណ៍បច្ចេកវិទ្យា Open House</strong>
+              <small>សាលសន្និសីទធំ | ម៉ោង 8:00 AM</small>
+            </div>
+          </li>
+          <li class="event-item">
+            <span class="event-date">01 ធ្នូ</span>
+            <div class="event-info">
+              <strong>ការប្រឡងវាស់ស្ទង់សមត្ថភាព</strong>
+              <small>អគារ A បន្ទប់ Lab 3</small>
+            </div>
+          </li>
+          <li class="event-item">
+            <span class="event-date">10 មករា</span>
+            <div class="event-info">
+              <strong>ពិធីបើកបវេសនកាលថ្មី</strong>
+              <small>បរិវេណសាកលវិទ្យាល័យ</small>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Widget 3: Table of Contents / Quick Links -->
+      <div class="sidebar-widget">
+        <h3 class="widget-title">🔗 តំណភ្ជាប់សំខាន់ៗ</h3>
+        <ul class="quick-links">
+          <li><a href="#downloads">📥 ទាញយកពាក្យសុំចូលរៀន (.PDF)</a></li>
+          <li><a href="#student-handbook">📖 សៀវភៅណែនាំនិស្សិតឆ្នាំ ២០២៦</a></li>
+          <li><a href="#faq">❓ សំណួរដែលសួរញឹកញាប់ (FAQ)</a></li>
+          <li><a href="#map">🗺️ ផែនទីបរិវេណសាកលវិទ្យាល័យ</a></li>
+        </ul>
+      </div>
+
+      <!-- Widget 4: Newsletter Subscription -->
+      <div class="sidebar-widget widget-newsletter">
+        <h3 class="widget-title">✉️ ព្រឹត្តិបត្រព័ត៌មាន</h3>
+        <p>ជាវព័ត៌មានអាហារូបករណ៍ និងព្រឹត្តិការណ៍ថ្មីៗមុនគេ៖</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('អរគុណសម្រាប់ការជាវព្រឹត្តិបត្រព័ត៌មាន!');">
+          <input type="email" placeholder="បញ្ចូលអ៊ីមែលរបស់អ្នក..." required>
+          <button type="submit" class="btn btn-secondary">ជាវឥឡូវនេះ</button>
+        </form>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ==================== 6. MEGA FOOTER (<footer>) ==================== -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container footer-grid">
+      <!-- Footer Col 1: University Identity -->
+      <div class="footer-col col-brand">
+        <div class="footer-logo">🏛️ សាកលវិទ្យាល័យជាតិបច្ចេកវិទ្យា</div>
+        <p class="footer-about">
+          គ្រឹះស្ថានឧត្តមសិក្សាសាធារណៈឈានមុខគេក្នុងប្រទេសកម្ពុជា ក្នុងការបណ្តុះបណ្តាលធនធានមនុស្សជំនាញបច្ចេកវិទ្យា ឌីជីថល នវានុវត្តន៍ និងវិស្វកម្មសូហ្វវែរ។
+        </p>
+        <div class="social-links">
+          <a href="#fb" aria-label="Facebook">🔵 FB</a>
+          <a href="#tg" aria-label="Telegram">✈️ TG</a>
+          <a href="#yt" aria-label="YouTube">🔴 YT</a>
+          <a href="#in" aria-label="LinkedIn">💼 IN</a>
+        </div>
+      </div>
+
+      <!-- Footer Col 2: Mini Sitemap (Admissions) -->
+      <div class="footer-col">
+        <h4 class="footer-heading">ការចុះឈ្មោះសិក្សា</h4>
+        <ul class="footer-links">
+          <li><a href="#undergrad">ថ្នាក់បរិញ្ញាបត្រ</a></li>
+          <li><a href="#postgrad">ថ្នាក់បរិញ្ញាបត្រជាន់ខ្ពស់</a></li>
+          <li><a href="#scholarships">គោលការណ៍អាហារូបករណ៍</a></li>
+          <li><a href="#dormitory">អន្តេវាសិកដ្ឋាននិស្សិត</a></li>
+          <li><a href="#transfers">ការផ្ទេរការសិក្សា</a></li>
+        </ul>
+      </div>
+
+      <!-- Footer Col 3: Mini Sitemap (Academics) -->
+      <div class="footer-col">
+        <h4 class="footer-heading">មហាវិទ្យាល័យ</h4>
+        <ul class="footer-links">
+          <li><a href="#faculty-cs">វិទ្យាសាស្ត្រកុំព្យូទ័រ</a></li>
+          <li><a href="#faculty-web">ការរចនាគេហទំព័រ &amp; UI/UX</a></li>
+          <li><a href="#faculty-se">វិស្វកម្មសូហ្វវែរ</a></li>
+          <li><a href="#faculty-ds">វិទ្យាសាស្ត្រទិន្នន័យ &amp; AI</a></li>
+          <li><a href="#research-lab">មជ្ឈមណ្ឌលស្រាវជ្រាវ R&amp;D</a></li>
+        </ul>
+      </div>
+
+      <!-- Footer Col 4: Contact & Legal -->
+      <div class="footer-col">
+        <h4 class="footer-heading">អាសយដ្ឋាន &amp; ទំនាក់ទំនង</h4>
+        <address class="footer-address">
+          មហាវិថីសហព័ន្ធរុស្ស៊ី សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក រាជធានីភ្នំពេញ<br>
+          ទូរស័ព្ទ៖ (+855) 23 888 999<br>
+          អ៊ីមែល៖ info@cambodia-tech.edu.kh<br>
+          ម៉ោងធ្វើការ៖ ច័ន្ទ - សុក្រ (7:30 AM - 5:30 PM)
+        </address>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Compliance Bar -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p class="copyright-text">
+          &copy; 2026 សាកលវិទ្យាល័យជាតិបច្ចេកវិទ្យា (National University of Digital Technology). រក្សាសិទ្ធិគ្រប់យ៉ាង។
+        </p>
+        <div class="legal-links">
+          <a href="#privacy">គោលការណ៍ឯកជនភាព (Privacy Policy)</a>
+          <a href="#terms">លក្ខខណ្ឌប្រើប្រាស់ (Terms of Service)</a>
+          <a href="#sitemap">ផែនទីគេហទំព័រ (Sitemap)</a>
+          <a href="#accessibility">ភាពងាយស្រួលប្រើប្រាស់ (Accessibility)</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODAL 1: INTERACTIVE SITEMAP EXPLORER ==================== -->
+  <div class="modal-overlay" id="sitemap-modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-header">
+        <h3 class="modal-title">🗺️ ផែនទីគេហទំព័រសាកលវិទ្យាល័យ (University Website Sitemap - Level 1 to 3)</h3>
+        <button type="button" class="modal-close" id="btn-close-sitemap">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          នេះជារចនាសម្ព័ន្ធព័ត៌មាន (Information Architecture) តាមឋានានុក្រម ៣ កម្រិត (Level 1 Root, Level 2 Sections, Level 3 Child Pages)៖
+        </p>
+        
+        <div class="sitemap-tree">
+          <!-- Level 1 Root -->
+          <div class="tree-root">
+            <span class="tree-node root-node">🏠 ទំព័រដើម (Homepage) <code>/</code></span>
+            
+            <div class="tree-branches">
+              <!-- Branch 1: Admissions -->
+              <div class="tree-branch">
+                <span class="tree-node branch-node">📂 1. ការចុះឈ្មោះ (Admissions) <code>/admissions</code></span>
+                <ul class="tree-leaves">
+                  <li>📄 បរិញ្ញាបត្រ (Undergraduate) <code>/admissions/undergraduate</code></li>
+                  <li>📄 បរិញ្ញាបត្រជាន់ខ្ពស់ (Postgraduate) <code>/admissions/postgraduate</code></li>
+                  <li>📄 អាហារូបករណ៍ (Scholarships) <code>/admissions/scholarships</code></li>
+                  <li>📄 តម្លៃសិក្សា (Tuition) <code>/admissions/tuition</code></li>
+                </ul>
+              </div>
+
+              <!-- Branch 2: Academics -->
+              <div class="tree-branch">
+                <span class="tree-node branch-node">📂 2. មហាវិទ្យាល័យ (Academics) <code>/academics</code></span>
+                <ul class="tree-leaves">
+                  <li>📄 វិទ្យាសាស្ត្រកុំព្យូទ័រ (CS) <code>/academics/computer-science</code></li>
+                  <li>📄 ការរចនាគេហទំព័រ (Web Design) <code>/academics/web-design</code></li>
+                  <li>📄 វិស្វកម្មសូហ្វវែរ (SE) <code>/academics/software-engineering</code></li>
+                  <li>📄 កាលវិភាគសិក្សា (Academic Calendar) <code>/academics/calendar</code></li>
+                </ul>
+              </div>
+
+              <!-- Branch 3: Research -->
+              <div class="tree-branch">
+                <span class="tree-node branch-node">📂 3. ការស្រាវជ្រាវ (Research) <code>/research</code></span>
+                <ul class="tree-leaves">
+                  <li>📄 មន្ទីរពិសោធន៍ AI Lab <code>/research/ai-lab</code></li>
+                  <li>📄 ស្នាដៃបោះពុម្ព (Publications) <code>/research/publications</code></li>
+                  <li>📄 ជំនួយស្រាវជ្រាវ (Grants) <code>/research/grants</code></li>
+                </ul>
+              </div>
+
+              <!-- Branch 4: About Us -->
+              <div class="tree-branch">
+                <span class="tree-node branch-node">📂 4. អំពីសាកលវិទ្យាល័យ (About Us) <code>/about</code></span>
+                <ul class="tree-leaves">
+                  <li>📄 ប្រវត្តិ និងចក្ខុវិស័យ (History &amp; Vision) <code>/about/history</code></li>
+                  <li>📄 គណៈគ្រប់គ្រង (Leadership Team) <code>/about/leadership</code></li>
+                  <li>📄 ព័ត៌មានទាក់ទង (Contact &amp; Map) <code>/about/contact</code></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btn-close-sitemap-footer">បិទផ្ទាំង (Close)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 2: PROJECT REQUIREMENTS SPECIFICATION ==================== -->
+  <div class="modal-overlay" id="req-modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-header">
+        <h3 class="modal-title">📋 តម្រូវការគម្រោងគេហទំព័រ (Website Project Requirements - Topic 2.15)</h3>
+        <button type="button" class="modal-close" id="btn-close-req">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>១. តម្រូវការមុខងារ (Functional Requirements)</h4>
+        <ul class="modal-list">
+          <li><strong>FR-01 (Online Admission System):</strong> និស្សិតអាចបំពេញទម្រង់ពាក្យសុំចុះឈ្មោះចូលរៀន និងភ្ជាប់ឯកសារសញ្ញាបត្រជា PDF បាន។</li>
+          <li><strong>FR-02 (Site Search):</strong> មានប្រអប់ស្វែងរកពាក្យគន្លឹះក្នុងទំព័រ (Search Engine) ស្វែងរកវគ្គសិក្សា និងឈ្មោះសាស្រ្តាចារ្យ។</li>
+          <li><strong>FR-03 (Dynamic Events Calendar):</strong> បង្ហាញកាលវិភាគប្រឡង និងព្រឹត្តិការណ៍នានា ជាមួយមុខងារច្រោះតាមកាលបរិច្ឆេទ។</li>
+          <li><strong>FR-04 (Multi-Language Support):</strong> គាំទ្រការប្តូរភាសាខ្មែរ និងអង់គ្លេសដោយរលូនលើគ្រប់ទំព័រ។</li>
+        </ul>
+
+        <h4>២. តម្រូវការមិនមែនមុខងារ (Non-Functional Requirements)</h4>
+        <ul class="modal-list">
+          <li><strong>NFR-01 (Performance):</strong> ទំព័រត្រូវផ្ទុកចប់ក្នុងរយៈពេលតិចជាង ២.០ វិនាទី (First Contentful Paint &lt; 1.0s)។</li>
+          <li><strong>NFR-02 (Mobile Responsiveness):</strong> គេហទំព័រត្រូវបង្ហាញប្លង់សមរម្យឥតខ្ចោះលើ Mobile (375px+), Tablet (768px+) និង Desktop (1200px+)។</li>
+          <li><strong>NFR-03 (Accessibility - WCAG 2.1 AA):</strong> កម្រិតពណ៌ផ្ទុយ (Color Contrast) អប្បបរមា 4.5:1 និងគាំទ្រការបញ្ជាតាម Keyboard Navigation ពេញលេញ។</li>
+          <li><strong>NFR-04 (Security):</strong> ដំណើរការលើ HTTPS ពិធីការ TLS 1.3 ជាមួយការការពារទម្រង់បែបបទប្រឆាំង CSRF &amp; XSS។</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btn-close-req-footer">បិទផ្ទាំង (Close)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+</body>
+</html>
