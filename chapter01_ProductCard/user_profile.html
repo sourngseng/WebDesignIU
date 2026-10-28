@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Using Google Fonts for a modern sans-serif look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #f4f6f8; /* Soft light gray background */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container for the whole view */
+        .profile-container {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        /* Page Level Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .page-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            font-size: 15px;
+            color: #6b7280;
+        }
+
+        /* The Card */
+        .card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Cover Image / Banner */
+        .card-cover {
+            height: 120px;       
+            object-fit: cover;          
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;            
+        }
+        /* Cover Image / Banner */
+        .card-cover-image {
+            height: 120px;
+            background-image: url('images/cover_background.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Card Body Content */
+        .card-body {
+            padding: 0 24px 32px 24px;
+            position: relative;
+            text-align: center;
+        }
+
+        /* Profile Image */
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            object-fit: cover;
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff;
+        }
+
+        /* Spacer to push content down below the absolute positioned image */
+        .image-spacer {
+            height: 60px;
+        }
+
+        /* User Details */
+        .user-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+
+        .user-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6366f1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        /* Description Paragraphs */
+        .user-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .user-description p {
+            margin-bottom: 10px;
+        }
+
+        .user-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Call to Action Button */
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 20px;
+            background-color: #111827;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            border-radius: 10px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn:hover {
+            background-color: #374151;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        
+        <!-- Page Header -->
+        <header class="page-header">
+            <h1>User Profile</h1>
+            <p>Welcome to your profile!</p>
+        </header>
+
+        <!-- Profile Card -->
+        <main class="card">
+            <!-- Cover Background -->
+            <div class="card-cover-image"></div>
+            
+            <div class="card-body">
+                <!-- Profile Image -->
+                <img src="images/sourng_profile.png" alt="SENG Sourng" class="profile-image">
+                <div class="image-spacer"></div>
+
+                <!-- User Info -->
+                <h2 class="user-name">SENG Sourng</h2>
+                <h3 class="user-title">Software Engineer</h3>
+
+                <!-- Description Texts -->
+                <div class="user-description">
+                    <p>Here you can manage your account settings and personal information.</p>
+                    <p>You can also view your activity and update your preferences.</p>
+                    <p>Feel free to explore and customize your profile to your liking.</p>
+                </div>
+
+                <!-- Action Button -->
+                <a href="#" class="btn">View Detail Profile</a>
+            </div>
+        </main>
+
+    </div>
+
+</body>
+</html>

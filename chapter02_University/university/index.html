@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University Website</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- 1. Header -->
+  <header class="main-header">
+    <div class="logo">
+      <i data-lucide="landmark"></i>
+      <span>UNIVERSITY</span>
+    </div>
+
+    <div class="search-bar">
+      <i data-lucide="search" class="search-icon"></i>
+      <input type="text" placeholder="Search">
+    </div>
+
+    <button class="btn btn-apply">APPLY NOW</button>
+  </header>
+
+  <!-- 2. Navigation Bar -->
+  <nav class="nav-bar">
+    <ul>
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Study</a></li>
+      <li><a href="#">Research</a></li>
+      <li><a href="#">Life</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- 3. Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Shape a<br>Brighter Tomorrow</h1>
+      <p>World-class education for a better future</p>
+      <a href="#" class="btn btn-hero">
+        Explore Our Programmes &rarr;
+      </a>
+    </div>
+
+    <div class="hero-graphic">
+      <svg class="building-svg" viewBox="0 0 540 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sky aura / background arches -->
+        <circle cx="440" cy="270" r="170" fill="#4d94dc" opacity="0.3" />
+        
+        <!-- Trees in background -->
+        <circle cx="390" cy="250" r="32" fill="#2d7778" />
+        <circle cx="530" cy="245" r="38" fill="#2d7778" />
+        <circle cx="415" cy="268" r="24" fill="#388c88" />
+
+        <!-- Cupola / Dome Top -->
+        <path d="M 460 76 A 36 36 0 0 1 532 76 Z" fill="#2b6baf" />
+        <rect x="461" y="76" width="70" height="20" fill="#ffffff" />
+        <line x1="478" y1="79" x2="478" y2="92" stroke="#1c487b" stroke-width="2" stroke-linecap="round" />
+        <line x1="489" y1="79" x2="489" y2="92" stroke="#1c487b" stroke-width="2" stroke-linecap="round" />
+        <line x1="503" y1="79" x2="503" y2="92" stroke="#1c487b" stroke-width="2" stroke-linecap="round" />
+        <line x1="514" y1="79" x2="514" y2="92" stroke="#1c487b" stroke-width="2" stroke-linecap="round" />
+
+        <!-- Portico / Middle Section -->
+        <rect x="450" y="96" width="92" height="180" fill="#ffffff" />
+        <rect x="445" y="96" width="102" height="14" fill="#d8e8f8" />
+        
+        <!-- Main Columns -->
+        <rect x="459" y="112" width="10" height="98" fill="#1b4d84" rx="2" />
+        <rect x="475" y="112" width="10" height="98" fill="#1b4d84" rx="2" />
+        <rect x="491" y="112" width="10" height="98" fill="#1b4d84" rx="2" />
+        <rect x="507" y="112" width="10" height="98" fill="#1b4d84" rx="2" />
+        <rect x="523" y="112" width="10" height="98" fill="#1b4d84" rx="2" />
+
+        <!-- Left Wing Building -->
+        <rect x="398" y="138" width="56" height="138" fill="#ebf3fb" />
+        <!-- Left Wing Windows -->
+        <rect x="406" y="152" width="16" height="28" fill="#1d5c9c" rx="2" />
+        <rect x="430" y="152" width="16" height="28" fill="#1d5c9c" rx="2" />
+        <rect x="406" y="195" width="16" height="34" fill="#1d5c9c" rx="2" />
+        <rect x="430" y="195" width="16" height="34" fill="#1d5c9c" rx="2" />
+
+        <!-- Right Wing Building -->
+        <rect x="538" y="138" width="60" height="138" fill="#ebf3fb" />
+        <rect x="548" y="152" width="16" height="28" fill="#1d5c9c" rx="2" />
+        <rect x="548" y="195" width="16" height="34" fill="#1d5c9c" rx="2" />
+
+        <!-- Central Portal / Entrance -->
+        <rect x="466" y="218" width="60" height="58" fill="#174474" rx="5" />
+
+        <!-- Front Ground Steps -->
+        <rect x="290" y="276" width="300" height="64" fill="#1f588c" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- 4. Content Area -->
+  <div class="content-wrapper">
+    
+    <!-- Left: Featured Cards -->
+    <main class="featured-section">
+      <h2 class="section-title">Featured</h2>
+      
+      <div class="cards-grid">
+        <!-- Study Card -->
+        <div class="card">
+          <div class="card-icon">
+            <i data-lucide="graduation-cap"></i>
+          </div>
+          <h3>Study</h3>
+          <div class="placeholder-lines">
+            <span class="bar full"></span>
+            <span class="bar full"></span>
+            <span class="bar medium"></span>
+          </div>
+        </div>
+
+        <!-- Research Card -->
+        <div class="card">
+          <div class="card-icon">
+            <i data-lucide="flask-conical"></i>
+          </div>
+          <h3>Research</h3>
+          <div class="placeholder-lines">
+            <span class="bar full"></span>
+            <span class="bar full"></span>
+            <span class="bar medium"></span>
+          </div>
+        </div>
+
+        <!-- Student Life Card -->
+        <div class="card">
+          <div class="card-icon">
+            <i data-lucide="users"></i>
+          </div>
+          <h3>Student Life</h3>
+          <div class="placeholder-lines">
+            <span class="bar full"></span>
+            <span class="bar full"></span>
+            <span class="bar medium"></span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Right: Latest News -->
+    <aside class="news-section">
+      <h2 class="section-title">Latest News</h2>
+      
+      <div class="news-list">
+        <!-- News Row 1 -->
+        <div class="news-item">
+          <div class="thumbnail">
+            <i data-lucide="image"></i>
+          </div>
+          <div class="placeholder-lines">
+            <span class="bar full"></span>
+            <span class="bar full"></span>
+            <span class="bar half"></span>
+          </div>
+        </div>
+
+        <!-- News Row 2 -->
+        <div class="news-item">
+          <div class="thumbnail">
+            <i data-lucide="image"></i>
+          </div>
+          <div class="placeholder-lines">
+            <span class="bar full"></span>
+            <span class="bar full"></span>
+            <span class="bar half"></span>
+          </div>
+        </div>
+
+        <!-- News Row 3 -->
+        <div class="news-item">
+          <div class="thumbnail">
+            <i data-lucide="image"></i>
+          </div>
+          <div class="placeholder-lines">
+            <span class="bar full"></span>
+            <span class="bar full"></span>
+            <span class="bar half"></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- 5. Footer -->
+  <footer class="main-footer">
+    <div class="footer-logo">
+      <i data-lucide="landmark"></i>
+      <span>UNIVERSITY</span>
+    </div>
+
+    <ul class="footer-links">
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Terms</a></li>
+      <li><a href="#">Accessibility</a></li>
+      <li><a href="#">Sitemap</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

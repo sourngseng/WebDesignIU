@@ -1,0 +1,228 @@
+/* =========================
+   Global Styles
+   កំណត់ style ទូទៅសម្រាប់ទំព័រទាំងមូល
+========================= */
+
+/* Reset margin និង padding ដើមរបស់ browser ដើម្បីឲ្យ layout គ្រប់គ្រងបានងាយ */
+* {
+    margin: 0;
+    padding: 0;
+    /* ឲ្យ width/height រាប់បញ្ចូល padding និង border ផង */
+    box-sizing: border-box;
+}
+
+body {
+    /* ឲ្យ body មានកម្ពស់យ៉ាងហោចណាស់ស្មើកម្ពស់អេក្រង់ */
+    min-height: 100vh;
+
+    /* ប្រើ flexbox ដើម្បីដាក់ product card នៅកណ្តាលទំព័រ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* ពណ៌ផ្ទៃក្រោយទំព័រ */
+    background: #eef4ff;
+
+    /* កំណត់ font សម្រាប់អត្ថបទទាំងអស់ក្នុង body */
+    font-family: "Kantomruy Pro", sans-serif;
+}
+
+
+/* =========================
+   Product Card
+   កំណត់រូបរាងប្រអប់ card របស់ផលិតផល
+========================= */
+
+.product-card {
+    /* ទទឹងរបស់ card */
+    width: 320px;
+
+    /* ពណ៌ផ្ទៃក្រោយ card */
+    background: #ffffff;
+
+    /* ធ្វើឲ្យជ្រុង card មូល */
+    border-radius: 16px;
+
+    /* លាក់ផ្នែកខាងក្នុងដែលលើសជ្រុងមូល ដូចជា image */
+    overflow: hidden;
+
+    /* បន្ថែមស្រមោលឲ្យ card មើលទៅមានជម្រៅ */
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.10);
+
+    /* ធ្វើឲ្យ effect ពេល hover ផ្លាស់ប្តូរយឺតៗនិងរលូន */
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    /* បង្កើតគម្លាតជុំវិញ card */
+    margin: 20px;
+}
+
+
+/* Hover Effect: effect ពេល mouse ដាក់លើ product card */
+
+.product-card:hover {
+    /* រំកិល card ឡើងលើបន្តិច */
+    transform: translateY(-5px);
+
+    /* បង្កើនស្រមោលពេល hover */
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================
+   Product Image
+   កំណត់ផ្នែករូបភាពផលិតផល
+========================= */
+
+.image-container {
+    /* ឲ្យ badge អាចប្រើ position absolute ផ្អែកលើ container នេះ */
+    position: relative;
+
+    /* ឲ្យ container មានទទឹងពេញ card */
+    width: 100%;
+
+    /* កំណត់កម្ពស់រូបភាព */
+    height: 200px;
+}
+
+.image-container img {
+    /* ឲ្យរូបភាពពេញទទឹង container */
+    width: 100%;
+
+    /* ឲ្យរូបភាពពេញកម្ពស់ container */
+    height: 100%;
+
+    /* ដកចន្លោះតូចៗខាងក្រោមរូបភាពដែល browser អាចបន្ថែម */
+    display: block;
+
+    /* ឲ្យរូបភាពគ្រប container ដោយរក្សាសមាមាត្រ និងកាត់ផ្នែកលើស */
+    object-fit: cover;
+}
+
+
+/* =========================
+   New Badge
+   ស្លាក "New" នៅលើរូបភាព
+========================= */
+
+.badge {
+    /* ដាក់ badge លើ image-container */
+    position: absolute;
+
+    /* គម្លាតពីខាងលើ */
+    top: 16px;
+
+    /* គម្លាតពីខាងស្តាំ */
+    right: 16px;
+
+    /* គម្លាតខាងក្នុង badge */
+    padding: 6px 12px;
+
+    /* ពណ៌ផ្ទៃក្រោយ badge */
+    background: #ff2d55;
+
+    /* ពណ៌អក្សរ */
+    color: white;
+
+    /* ធ្វើឲ្យ badge មានរាងមូល */
+    border-radius: 20px;
+
+    /* ទំហំអក្សរ */
+    font-size: 14px;
+
+    /* ធ្វើឲ្យអក្សរដិត */
+    font-weight: bold;
+}
+
+
+/* =========================
+   Product Content
+   ផ្នែកអត្ថបទ និងប៊ូតុងខាងក្រោមរូបភាព
+========================= */
+
+.content {
+    /* គម្លាតខាងក្នុងរវាង content និងគែម card */
+    padding: 20px;
+}
+
+
+/* Heading: ចំណងជើងផលិតផល */
+
+.title {
+    /* គម្លាតខាងក្រោមចំណងជើង */
+    margin-bottom: 10px;
+
+    /* ពណ៌អក្សរចំណងជើង */
+    color: #16213e;
+
+    /* ទំហំអក្សរចំណងជើង */
+    font-size: 26px;
+}
+
+
+/* Paragraph: អត្ថបទពិពណ៌នាផលិតផល */
+
+.description {
+    /* គម្លាតខាងក្រោម description */
+    margin-bottom: 20px;
+
+    /* ពណ៌អក្សរ description */
+    color: #6b7280;
+
+    /* ទំហំអក្សរ description */
+    font-size: 16px;
+
+    /* កម្ពស់បន្ទាត់ ដើម្បីឲ្យអត្ថបទងាយអាន */
+    line-height: 1.6;
+}
+
+
+/* =========================
+   Button
+   រចនាប៊ូតុងសម្រាប់ action ដូចជា Buy Now ឬ Learn More
+========================= */
+
+.btn {
+    /* ឲ្យ link មានរាងដូចប៊ូតុង ហើយនៅតែស្ថិតក្នុងបន្ទាត់ */
+    display: inline-block;
+
+    /* គម្លាតខាងក្នុងប៊ូតុង */
+    padding: 12px 24px;
+
+    /* ពណ៌ផ្ទៃក្រោយប៊ូតុង */
+    background: #2563eb;
+
+    /* ពណ៌អក្សរប៊ូតុង */
+    color: white;
+
+    /* ធ្វើឲ្យជ្រុងប៊ូតុងមូល */
+    border-radius: 8px;
+
+    /* ដកបន្ទាត់ក្រោម link ចេញ */
+    text-decoration: none;
+
+    /* ទំហំអក្សរប៊ូតុង */
+    font-size: 16px;
+
+    /* ធ្វើឲ្យអក្សរប៊ូតុងដិត */
+    font-weight: bold;
+
+    /* ធ្វើឲ្យការប្តូរ background និង transform ពេល hover រលូន */
+    transition:
+        background 0.3s ease,
+        transform 0.2s ease;
+}
+
+
+/* Button Hover: effect ពេល mouse ដាក់លើប៊ូតុង */
+
+.btn:hover {
+    /* ប្តូរពណ៌ប៊ូតុងឲ្យងងឹតជាងមុន */
+    background: #1d4ed8;
+
+    /* រំកិលប៊ូតុងឡើងលើបន្តិច */
+    transform: translateY(-2px);
+}
