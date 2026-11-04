@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍: ការបង្កើតផែនទីគេហទំព័រសាកលវិទ្យាល័យ (Practical Lab Guide)</title>
+<title>កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍ ជំពូកទី 02៖ ការបង្កើតផែនទីគេហទំព័រ (Create a Website Sitemap)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Siemreap&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   /* ==========================================================================
-     Master Responsive & Reader-Friendly Styling
+     Master Responsive & Modern Lab Practice Styling
      ========================================================================== */
   *, *::before, *::after {
     box-sizing: border-box;
@@ -22,13 +22,15 @@
     --font-code: 'Fira Code', Consolas, Monaco, monospace;
     --color-primary: #0F172A;
     --color-navy: #1E3A8A;
-    --color-blue: #2563EB;
+    --color-blue: #0284C7;
+    --color-blue-dark: #0369A1;
     --color-muted: #64748B;
     --color-bg: #F8FAFC;
     --color-card: #FFFFFF;
     --color-border: #E2E8F0;
     --color-border-dark: #CBD5E1;
-    --color-code-bg: #F8FAFC;
+    --color-code-bg: #0F172A;
+    --color-code-text: #F8FAFC;
     --font-scale: 16px;
   }
 
@@ -52,7 +54,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--color-border);
     padding: 0.6rem 1.25rem;
@@ -60,7 +62,7 @@
   }
 
   .toolbar-container {
-    max-width: 920px;
+    max-width: 960px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -79,12 +81,13 @@
   }
 
   .badge-tag {
-    background: #EEF2FF;
-    color: var(--color-blue);
-    padding: 0.2rem 0.55rem;
+    background: #E0F2FE;
+    color: var(--color-blue-dark);
+    padding: 0.25rem 0.65rem;
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 700;
+    border: 1px solid #BAE6FD;
   }
 
   .toolbar-actions {
@@ -96,7 +99,7 @@
   .btn-tool {
     background: #FFFFFF;
     border: 1px solid var(--color-border-dark);
-    padding: 0.35rem 0.75rem;
+    padding: 0.4rem 0.8rem;
     border-radius: 6px;
     font-size: 0.82rem;
     font-family: inherit;
@@ -106,7 +109,7 @@
     transition: all 0.2s;
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.35rem;
   }
 
   .btn-tool:hover {
@@ -117,45 +120,80 @@
   /* Main Document Container */
   .document-wrapper {
     flex: 1;
-    padding: 1.5rem 0.75rem 3rem 0.75rem;
+    padding: 1.75rem 0.75rem 3.5rem 0.75rem;
     width: 100%;
   }
 
   .page-container {
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
     background: var(--color-card);
     border: 1px solid var(--color-border);
-    border-radius: 12px;
+    border-radius: 14px;
     box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
-    padding: 3rem 2.8rem;
+    padding: 2.75rem 2.5rem;
     transition: padding 0.3s ease;
   }
 
-  /* Typography */
-  h1, h2, h3, h4 {
-    color: var(--color-primary);
+  /* Header Card */
+  .doc-header-card {
+    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+    border: 1px solid #BAE6FD;
+    border-left: 6px solid var(--color-blue);
+    border-radius: 12px;
+    padding: 1.6rem 1.85rem;
+    margin-bottom: 2.25rem;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.06);
+  }
+
+  .doc-header-card .module-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-blue-dark);
+    background: #FFFFFF;
+    border: 1px solid #BAE6FD;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+
+  .doc-header-card .chapter-main-title {
+    font-size: clamp(1.3rem, 3.8vw, 1.75rem);
+    color: #0F172A;
     font-weight: 700;
     line-height: 1.35;
-    margin-top: 1.75rem;
-    margin-bottom: 0.75rem;
+    margin: 0 0 0.4rem 0;
   }
 
-  h1 {
-    font-size: 1.45rem;
+  .doc-header-card .chapter-sub-title {
+    font-size: 1.05rem;
+    color: #334155;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* Typography */
+  h2.section-heading {
+    font-size: 1.3rem;
     color: var(--color-navy);
-    border-bottom: 2px solid #EEF2FF;
-    padding-bottom: 0.4rem;
+    margin-top: 2.25rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 2px solid #E0F2FE;
+    padding-bottom: 0.45rem;
   }
 
-  h2 {
-    font-size: 1.25rem;
-    color: #1E293B;
-  }
-
-  h3 {
-    font-size: 1.1rem;
-    color: var(--color-navy);
+  h3.step-heading {
+    font-size: 1.15rem;
+    color: #0F172A;
+    margin-top: 0;
+    margin-bottom: 0.6rem;
   }
 
   p {
@@ -163,231 +201,193 @@
     text-align: justify;
   }
 
-  strong {
-    font-weight: 700;
-    color: #0F172A;
+  /* Callout Boxes */
+  .callout {
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    margin: 1.25rem 0;
+    border-left: 4px solid;
+    font-size: 0.95rem;
   }
 
-  /* Responsive Lists */
-  ul.bullet-list {
-    margin: 0.5rem 0 1.25rem 1.5rem;
-    list-style-type: disc;
+  .callout-info {
+    background-color: #F0F9FF;
+    border-color: #0284C7;
+    color: #0369A1;
   }
 
-  ul.bullet-list li {
-    margin-bottom: 0.5rem;
-    padding-left: 0.25rem;
+  .callout-tip {
+    background-color: #F0FDF4;
+    border-color: #16A34A;
+    color: #15803D;
   }
 
-  ul.numbered-list {
-    list-style: none !important;
-    margin: 0.5rem 0 1.25rem 0;
-    padding-left: 0;
+  .callout-warning {
+    background-color: #FFFBEB;
+    border-color: #F59E0B;
+    color: #B45309;
   }
 
-  ul.numbered-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
-    margin-bottom: 0.6rem;
-    list-style: none !important;
-  }
-
-  .num-badge {
-    font-weight: 700;
-    color: var(--color-navy);
-    flex-shrink: 0;
-    min-width: 1.8rem;
-    line-height: 1.75;
-  }
-
-  /* Responsive Code Blocks */
-  pre.code-block, pre {
-    font-family: var(--font-code);
-    font-size: 0.92rem;
-    line-height: 1.6;
-    background-color: var(--color-code-bg);
+  /* Directory Tree */
+  .folder-tree {
+    background-color: #F8FAFC;
     border: 1px solid var(--color-border);
     border-left: 4px solid var(--color-blue);
     border-radius: 8px;
     padding: 1rem 1.25rem;
-    margin: 1.25rem 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: pre;
-    color: var(--color-primary);
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 1rem 0 1.5rem 0;
+    color: #1E293B;
   }
 
-  .tag { color: #991B1B; font-weight: 600; }
-  .attr { color: #DC2626; }
-  .str { color: #2563EB; }
-  .comm { color: #16A34A; font-style: italic; }
-  .blue { color: #2563EB; font-weight: 600; }
-
-  /* Responsive Table Container */
-  .table-responsive {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: 1.5rem 0;
-    border-radius: 8px;
-    border: 1px solid var(--color-border);
+  /* Step Cards */
+  .step-card {
     background: #FFFFFF;
-  }
-
-  table, table.data-table {
-    width: 100%;
-    min-width: 550px;
-    border-collapse: collapse;
-    font-size: 0.95rem;
-  }
-
-  table th, table td {
     border: 1px solid var(--color-border);
-    padding: 0.75rem 1rem;
-    vertical-align: middle;
-  }
-
-  table th {
-    background-color: #F1F5F9;
-    font-weight: 700;
-    color: var(--color-navy);
-    text-align: center;
-  }
-
-  table tbody tr:nth-child(even) {
-    background-color: #FBFDFF;
-  }
-
-  table tbody tr:hover {
-    background-color: #F1F5F9;
-  }
-
-  /* Scroll hint on mobile */
-  .scroll-hint {
-    display: none;
-    font-size: 0.75rem;
-    color: var(--color-muted);
-    margin-top: 0.25rem;
-    text-align: right;
-  }
-
-  /* Mobile Responsive Breakpoints */
-  @media screen and (max-width: 768px) {
-    :root {
-      --font-scale: 15px;
-    }
-    .document-wrapper {
-      padding: 0.75rem 0.35rem 2rem 0.35rem;
-    }
-    .page-container {
-      padding: 1.5rem 1.15rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    }
-    h1 { font-size: 1.3rem; }
-    h2 { font-size: 1.15rem; }
-    h3 { font-size: 1.05rem; }
-    p { text-align: left; }
-    .scroll-hint { display: block; }
-  }
-
-  /* Print Stylesheet (Exact University A4 Standard) */
-  @media print {
-    @page {
-      size: A4 portrait;
-      margin-left: 2.5cm;
-      margin-right: 1.5cm;
-      margin-top: 2.5cm;
-      margin-bottom: 2.5cm;
-    }
-    body {
-      background: transparent !important;
-      padding: 0 !important;
-      font-family: 'Khmer OS Siemreap', 'Siemreap', sans-serif !important;
-      font-size: 12pt !important;
-      line-height: 1.15 !important;
-      color: #000000 !important;
-    }
-    .no-print, .reader-toolbar, .scroll-hint {
-      display: none !important;
-    }
-    .document-wrapper {
-      padding: 0 !important;
-      width: 100% !important;
-    }
-    .page-container {
-      max-width: 100% !important;
-      width: 100% !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      border: none !important;
-      box-shadow: none !important;
-      border-radius: 0 !important;
-    }
-    h1, h2, h3 {
-      font-family: 'Khmer OS Muol Light', 'Khmer OS Muol Light-Kh Auto', sans-serif !important;
-      font-size: 12pt !important;
-      line-height: 1.25 !important;
-      border: none !important;
-    }
-    table {
-      min-width: 100% !important;
-    }
-    .table-responsive {
-      border: none !important;
-      overflow: visible !important;
-    }
-    pre.code-block, pre {
-      background: transparent !important;
-      white-space: pre-wrap !important;
-    }
-  }
-
-  /* ==========================================================================
-     Enhanced Mobile & Responsive Layout Styles
-     ========================================================================== */
-  .doc-header-card {
-    background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
-    border: 1px solid #cbd5e1;
-    border-left: 6px solid #2563eb;
     border-radius: 12px;
     padding: 1.5rem 1.75rem;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .doc-header-card.lab-card {
-    border-left-color: #0284c7;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+
+  .step-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   }
-  .doc-header-card .module-badge {
-    display: inline-flex;
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .step-badge {
+    background: linear-gradient(135deg, #0284C7, #0369A1);
+    color: #FFFFFF;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Code Block & Header Bar */
+  .code-block-container {
+    margin: 1.25rem 0 0.5rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #334155;
+    background: var(--color-code-bg);
+  }
+
+  .code-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1E293B;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #334155;
+  }
+
+  .code-file-name {
+    font-family: var(--font-code);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #94A3B8;
+    display: flex;
     align-items: center;
     gap: 0.4rem;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #1e40af;
-    background: #ffffff;
-    border: 1px solid #bfdbfe;
-    padding: 0.35rem 0.85rem;
-    border-radius: 9999px;
-    margin-bottom: 0.75rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   }
-  .doc-header-card .chapter-main-title {
-    font-size: clamp(1.25rem, 3.5vw, 1.65rem);
-    color: #0f172a;
-    font-weight: 700;
-    line-height: 1.4;
-    margin: 0 0 0.4rem 0;
-    border: none !important;
-    padding: 0 !important;
+
+  .btn-copy {
+    background: #334155;
+    border: 1px solid #475569;
+    color: #F8FAFC;
+    padding: 0.3rem 0.75rem;
+    border-radius: 5px;
+    font-size: 0.78rem;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
   }
-  .doc-header-card .chapter-sub-title {
-    font-size: 1rem;
-    color: #475569;
-    font-weight: 500;
+
+  .btn-copy:hover {
+    background: #0284C7;
+    border-color: #38BDF8;
+    color: #FFFFFF;
+  }
+
+  .btn-copy.copied {
+    background: #10B981 !important;
+    border-color: #34D399 !important;
+    color: #FFFFFF !important;
+  }
+
+  pre.code-view {
+    font-family: var(--font-code);
+    font-size: 0.88rem;
+    line-height: 1.65;
+    background-color: var(--color-code-bg);
+    color: var(--color-code-text);
+    padding: 1.15rem 1.25rem;
     margin: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre;
+    max-height: 480px;
+    overflow-y: auto;
+  }
+
+  /* Tabbed Files View in Step 5 */
+  .tab-nav {
+    display: flex;
+    gap: 0.4rem;
+    border-bottom: 2px solid var(--color-border);
+    margin: 1rem 0;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    background: #F1F5F9;
+    border: 1px solid var(--color-border);
+    border-bottom: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px 8px 0 0;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tab-btn:hover {
+    background: #E2E8F0;
+    color: #0F172A;
+  }
+
+  .tab-btn.active {
+    background: #FFFFFF;
+    color: var(--color-blue);
+    border-color: var(--color-border);
+    border-bottom: 2px solid #FFFFFF;
+    margin-bottom: -2px;
+  }
+
+  .tab-pane {
+    display: none;
+  }
+
+  .tab-pane.active {
+    display: block;
   }
 
   /* Responsive Table Wrapper */
@@ -397,88 +397,118 @@
     -webkit-overflow-scrolling: touch;
     margin: 1.25rem 0;
     border-radius: 8px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #E2E8F0;
+    background: #FFFFFF;
   }
-  .table-responsive table, table {
+
+  table.rubric-table {
     width: 100%;
-    min-width: 520px;
+    min-width: 580px;
     border-collapse: collapse;
+    font-size: 0.92rem;
   }
 
-  /* Responsive Code Blocks */
-  pre, pre.code-block, .code-container pre {
-    max-width: 100% !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    white-space: pre !important;
-    word-break: normal !important;
-    font-size: 0.88rem !important;
-    line-height: 1.6 !important;
-    border-radius: 8px !important;
+  table.rubric-table th, table.rubric-table td {
+    border: 1px solid #E2E8F0;
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
   }
 
-  /* Mobile Media Query Breakpoints */
+  table.rubric-table th {
+    background-color: #F8FAFC;
+    font-weight: 700;
+    color: var(--color-navy);
+    text-align: center;
+  }
+
+  table.rubric-table tbody tr:nth-child(even) {
+    background-color: #F8FAFC;
+  }
+
+  /* Toast Notification */
+  .toast-notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #0F172A;
+    color: #FFFFFF;
+    padding: 0.8rem 1.4rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+
+  .toast-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Mobile Media Queries */
   @media screen and (max-width: 768px) {
-    body {
-      font-size: 15px;
+    :root {
+      --font-scale: 15px;
     }
-    .page-container, .document-container, .document-wrapper {
-      padding: 1.25rem 0.85rem !important;
-      max-width: 100% !important;
-      border-radius: 0 !important;
+    .document-wrapper {
+      padding: 0.75rem 0.35rem 2rem 0.35rem;
+    }
+    .page-container {
+      padding: 1.35rem 1rem !important;
+      border-radius: 8px !important;
+      box-shadow: none !important;
       border-left: none !important;
       border-right: none !important;
-      box-shadow: none !important;
     }
     .doc-header-card {
-      padding: 1.15rem 1rem !important;
-      margin-bottom: 1.25rem !important;
+      padding: 1.2rem 1.1rem !important;
       border-radius: 8px !important;
     }
-    .reader-toolbar {
-      padding: 0.5rem 0.75rem !important;
-      position: sticky !important;
-      top: 0 !important;
+    .step-card {
+      padding: 1.15rem 1rem !important;
     }
-    .toolbar-container {
-      flex-wrap: wrap !important;
-      gap: 0.5rem !important;
-    }
-    .toolbar-brand {
-      font-size: 0.8rem !important;
-    }
-    .btn-tool, .tool-btn, .toolbar-btn {
-      padding: 0.35rem 0.55rem !important;
-      font-size: 0.78rem !important;
-      min-height: 36px !important;
-    }
-    h1 { font-size: 1.35rem !important; }
-    h2 { font-size: 1.18rem !important; }
-    h3 { font-size: 1.05rem !important; }
-    p, li {
-      text-align: left !important;
-    }
-    ul.numbered-list li, ol.number-list li {
-      gap: 0.4rem !important;
+    pre.code-view {
+      font-size: 0.82rem !important;
+      padding: 0.85rem 0.95rem !important;
+      max-height: 380px !important;
     }
   }
 
-  @media screen and (max-width: 480px) {
+  /* Print Stylesheet */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin: 2cm 1.5cm;
+    }
+    .reader-toolbar, .btn-copy, .toast-notification, .no-print {
+      display: none !important;
+    }
     body {
-      font-size: 14.5px;
+      background: #FFFFFF !important;
+      color: #000000 !important;
+      font-size: 11pt !important;
     }
-    .doc-header-card .module-badge {
-      font-size: 0.75rem !important;
-      padding: 0.2rem 0.5rem !important;
+    .page-container {
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      max-width: 100% !important;
     }
-    .doc-header-card .chapter-main-title {
-      font-size: 1.15rem !important;
-    }
-    .doc-header-card .chapter-sub-title {
-      font-size: 0.88rem !important;
+    pre.code-view {
+      background: #F8FAFC !important;
+      color: #000000 !important;
+      border: 1px solid #CCCCCC !important;
+      white-space: pre-wrap !important;
+      max-height: none !important;
     }
   }
-
 </style>
 </head>
 <body>
@@ -488,7 +518,7 @@
   <div class="toolbar-container">
     <div class="toolbar-brand">
       <span class="badge-tag">Web Design (Year 3)</span>
-      <span>មន្ទីរពិសោធន៍អនុវត្ត (Practical Lab Guide)</span>
+      <span>មន្ទីរពិសោធន៍អនុវត្ត (Lab Practice Guide)</span>
     </div>
     <div class="toolbar-actions">
       <button class="btn-tool" onclick="changeFontSize(-1)" title="បន្ថយទំហំអក្សរ">A-</button>
@@ -502,136 +532,3807 @@
 <div class="document-wrapper">
   <div class="page-container">
 
-    <div class="doc-header-card lab-card">
-      <div class="module-badge">ម៉ូឌុល 01៖ មូលដ្ឋានគ្រឹះនៃការរចនាគេហទំព័រ និង UI/UX (Web Design Fundamentals & UI/UX)</div>
-      <h1 class="chapter-main-title">ជំពូកទី 2 • កិច្ចការអនុវត្តជាក់ស្តែង (Practical Lab Guide)</h1>
-      <div class="chapter-sub-title">ការបង្កើតផែនទីគេហទំព័រ (Create a Website Sitemap)</div>
+    <!-- Document Header Card (Zero University Mentions) -->
+    <div class="doc-header-card">
+      <div class="module-badge">ម៉ូឌុល 01៖ មូលដ្ឋានគ្រឹះនៃការរចនាគេហទំព័រ និង UI/UX (Web Design Fundamentals &amp; UI/UX)</div>
+      <h1 class="chapter-main-title">ជំពូកទី 02 • កិច្ចការអនុវត្តជាក់ស្តែង (Lab Practice)</h1>
+      <div class="chapter-sub-title">ការអនុវត្ត៖ ការបង្កើតផែនទីគេហទំព័រ (Create a Website Sitemap)</div>
     </div>
 
-    <div class="callout-box">
-      <strong>កម្រិតសិក្សា៖</strong> បរិញ្ញាបត្រឆ្នាំទី ៣ | <strong>រយៈពេលអនុវត្ត៖</strong> ៣ ម៉ោង | <strong>ប្រភេទទម្រង់៖</strong> Step-by-Step Practical Lab
+    <!-- Section 1: Overview & Objectives -->
+    <h2 class="section-heading">១. ព័ត៌មានទូទៅ និងគោលបំណង (Lab Overview & Objectives)</h2>
+    <p>
+      កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍នៃជំពូកទី 02 នេះ ត្រូវបានរៀបចំឡើងដើម្បីផ្ដល់ឱ្យនិស្សិតនូវជំនាញជាក់ស្ដែងក្នុងការសរសេរកូដ <strong>ការបង្កើតផែនទីគេហទំព័រ (Create a Website Sitemap)</strong> ដោយអនុលោមតាមបទដ្ឋានឧស្សាហកម្មវេបទំនើប W3C និង UI/UX Best Practices។
+    </p>
+
+    <div class="callout callout-info">
+      <strong>🎯 គោលបំណងចម្បងនៃការអនុវត្ត៖</strong>
+      <ul style="margin: 0.5rem 0 0 1.25rem;">
+        <li>ស្វែងយល់ និងអនុវត្តជាក់ស្ដែងលើរចនាសម្ព័ន្ធកូដ៖ Website Structure, Sitemap, Header, Navigation, Hero</li>
+        <li>សរសេរកូដស្អាត (Clean Code) មានសណ្តាប់ធ្នាប់ និងឆ្លងកាត់ការផ្ទៀងផ្ទាត់ W3C Validator</li>
+        <li>ធានាភាពស៊ីសង្វាក់គ្នានៃការបង្ហាញលើ Mobile និង Desktop (Responsive Design)</li>
+      </ul>
     </div>
 
-    <h2 class="heading-muol">គោលបំណងនៃការអនុវត្ត (Lab Objectives)</h2>
-    <ul class='numbered-list'>
-      <li><span class='num-badge'>១.</span> <strong>ការវិភាគតម្រូវការអ្នកប្រើប្រាស់៖</strong> ចេះកំណត់ក្រុមទស្សនិកជនគោលដៅ (User Personas &amp; Stakeholders) សម្រាប់គេហទំព័រសាកលវិទ្យាល័យ។</li>
-      <li><span class='num-badge'>២.</span> <strong>Card Sorting &amp; IA៖</strong> អនុវត្តវិធីសាស្ត្រ Card Sorting ដើម្បីចាត់ថ្នាក់ និងរៀបចំស្ថាបត្យកម្មព័ត៌មាន (Information Architecture)។</li>
-      <li><span class='num-badge'>៣.</span> <strong>ការគូសប្លង់ Sitemap៖</strong> បង្កើតផែនទីគេហទំព័រ (Visual Sitemap) តាមឋានានុក្រម ៣ កម្រិត (Level 1 Root, Level 2 Sections, Level 3 Pages) ដោយប្រើឧបករណ៍ឌីជីថល។</li>
-      <li><span class='num-badge'>៤.</span> <strong>ការបំប្លែងទៅជាកូដ Semantic HTML៖</strong> បំប្លែងប្លង់ Sitemap ទៅជាកូដរចនាសម្ព័ន្ធ Semantic HTML Navigation និងរៀបចំទីតាំង Call-to-Action (CTA)។</li>
-      <li><span class='num-badge'>៥.</span> <strong>របាយការណ៍បច្ចេកទេស៖</strong> ចងក្រងជារបាយការណ៍បច្ចេកទេស និងការពាររចនាសម្ព័ន្ធដែលខ្លួនបានបង្កើតឡើង។</li>
-    </ul>
+    <!-- Section 2: Directory Structure -->
+    <h2 class="section-heading">២. រចនាសម្ព័ន្ធ Folder និងឯកសារគម្រោង (Project Directory Structure)</h2>
+    <p>និស្សិតត្រូវបង្កើត Folder គម្រោងថ្មីមួយនៅលើកុំព្យូទ័រ (ឧទាហរណ៍៖ <code>lab-chapter-02/</code>) ដោយរៀបចំរចនាសម្ព័ន្ធឯកសារដូចខាងក្រោម៖</p>
 
-    <h2 class="heading-muol">សម្ភារ និងបរិស្ថានអនុវត្តដែលត្រូវការ (Required Tools &amp; Setup)</h2>
-    <ul>
-      <li><strong>Hardware &amp; Browser:</strong> កុំព្យូទ័រភ្ជាប់អ៊ីនធឺណិត និងកម្មវិធីរុករក Google Chrome / Microsoft Edge។</li>
-      <li><strong>Diagramming Tools:</strong> ឧបករណ៍គូរ Diagram (FigJam, Miro, ឬ draw.io)។</li>
-      <li><strong>Code Editor:</strong> Visual Studio Code (សម្រាប់សរសេរ និងពិនិត្យកូដ HTML/CSS)។</li>
-      <li><strong>Reference Project:</strong> គម្រោងគំរូ «sample_project» ក្នុង Folder ជំពូកទី ២ សម្រាប់ជាឯកសារយោង។</li>
-    </ul>
+    <div class="folder-tree">lab-chapter-02/
+├── index.html            # ឯកសារ HTML មេសម្រាប់រចនាសម្ព័ន្ធទំព័រ
+├── css/
+│   └── style.css         # ឯកសារ CSS សម្រាប់កំណត់ Style, Tokens និង Responsive Rules
+├── js/
+│   └── app.js           # ឯកសារ JavaScript សម្រាប់មុខងារអន្តរកម្ម
+└── images/               # Folder ផ្ទុករូបភាពគម្រោង</div>
 
-    <h2 class="heading-muol">ការណែនាំអនុវត្តជាជំហានៗ (Step-by-Step Lab Instructions)</h2>
+    <!-- Section 3: Step-by-Step Hands-on Practice with FULL CODE -->
+    <h2 class="section-heading">៣. ជំហានអនុវត្តជាក់ស្តែងមួយជំហានម្តងៗ (Step-by-Step with Full Code)</h2>
+    <p>សូមអនុវត្តតាមលំដាប់លំដោយនៃជំហានទាំង ៥ ខាងក្រោម ដោយចម្លង ឬវាយបញ្ចូលកូដទៅតាមឯកសារនីមួយៗ៖</p>
 
-    <h3 class="heading-muol">ជំហានទី ១៖ កំណត់ក្រុមអ្នកប្រើប្រាស់ និងតម្រូវការ (User Personas &amp; User Goals)</h3>
-    <p>គេហទំព័រសាកលវិទ្យាល័យបម្រើឱ្យក្រុមអ្នកប្រើប្រាស់ ៤ ក្រុមខុសៗគ្នា៖</p>
-    <ul class='numbered-list'>
-      <li><span class='num-badge'>១.</span> <strong>និស្សិតអនាគត (Prospective Students):</strong> ត្រូវការស្វែងរកព័ត៌មានអំពី៖ តម្លៃសិក្សា, អាហារូបករណ៍, លក្ខខណ្ឌចុះឈ្មោះ, វគ្គសិក្សា, និងប៊ូតុង Apply Now។</li>
-      <li><span class='num-badge'>២.</span> <strong>និស្សិតបច្ចុប្បន្ន (Current Students):</strong> ត្រូវការស្វែងរកព័ត៌មានអំពី៖ កាលវិភាគប្រឡង, ពិន្ទុ, Student Portal Login, បណ្ណាល័យ, និងសេចក្តីជូនដំណឹង។</li>
-      <li><span class='num-badge'>៣.</span> <strong>សាស្ត្រាចារ្យ និងបុគ្គលិក (Faculty &amp; Staff):</strong> ត្រូវការស្វែងរកព័ត៌មានអំពី៖ ប្រព័ន្ធស្រាវជ្រាវ (Research Grants), វិបផតថលគ្រូ, កាលវិភាគបង្រៀន, និងបញ្ជីឈ្មោះសហការី។</li>
-      <li><span class='num-badge'>៤.</span> <strong>ដៃគូ និងសាធារណជន (Partners &amp; Public):</strong> ត្រូវការស្វែងរកព័ត៌មានអំពី៖ ប្រវត្តិសាកលវិទ្យាល័យ, ព័ត៌មានទាក់ទង, ការងារជ្រើសរើសបុគ្គលិក, និងកិច្ចសហប្រតិបត្តិការ។</li>
-    </ul>
+    <!-- STEP 1 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ១</span>
+        <h3 class="step-heading">ការរៀបចំគ្រោងឆ្អឹង HTML5 ដំបូង (Initial Boilerplate & Skeleton)</h3>
+      </div>
+      <p>
+        បង្កើតឯកសារ <code>index.html</code> រួចសរសេរគ្រោងឆ្អឹង HTML5 ស្តង់ដារ ដោយរួមបញ្ចូល <code>&lt;meta charset="UTF-8"&gt;</code>, <code>&lt;meta name="viewport"&gt;</code>, ការភ្ជាប់ទៅកាន់ Google Fonts (Kantumruy Pro, Siemreap, Fira Code) និងការភ្ជាប់ឯកសារ <code>css/style.css</code>៖
+      </p>
 
-    <h3 class="heading-muol">ជំហានទី ២៖ អនុវត្តវិធីសាស្ត្រ Card Sorting</h3>
-    <p>និស្សិតត្រូវយកប្រធានបទព័ត៌មានចំនួន ១៦ ខាងក្រោម មកធ្វើការចាត់ក្រុម (Categorization) ដោយប្រើប្រាស់ Open Card Sorting៖</p>
-    <div class="callout-box">
-      [Undergraduate Programs, Postgraduate Programs, Scholarships, Tuition Fees, Computer Science, Web Design, Software Engineering, Research Lab, Publications, Student Club, Dormitory, Library, Leadership Team, Campus Map, Contact Form, Job Vacancies]
+      <div class="code-block-container">
+        <div class="code-header-bar">
+          <span class="code-file-name">📄 index.html (គ្រោងឆ្អឹងដំបូង)</span>
+          <button class="btn-copy" onclick="copyCode(this, 'code-step-1')">📋 ចម្លងកូដ (Copy)</button>
+        </div>
+        <pre class="code-view" id="code-step-1"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;km&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;គម្រោងគំរូមេរៀនទី ២: រចនាសម្ព័ន្ធគេហទំព័រ និងដំណើរការរចនា (Website Structure and Design Process) - Bachelor Year 3&quot;&gt;
+  &lt;title&gt;គម្រោងគំរូ: គេហទំព័រវិទ្យាស្ថាន និងឧបករណ៍វិភាគរចនាសម្ព័ន្ធ (Academy Portal &amp; Structure Explorer)&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&amp;family=Moul&amp;family=Fira+Code:wght@400;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;header class=&quot;site-header&quot; id=&quot;site-header&quot;&gt;
+    &lt;!-- Top Utility Bar --&gt;
+    &lt;div class=&quot;utility-bar&quot;&gt;
+      &lt;div class=&quot;container utility-container&quot;&gt;
+        &lt;div class=&quot;utility-left&quot;&gt;
+          &lt;span class=&quot;utility-item&quot;&gt;📞 ទំនាក់ទំនង៖ (+855) 23 888 999&lt;/span&gt;
+          &lt;span class=&quot;utility-item&quot;&gt;✉️ អ៊ីមែល៖ info@cambodia-tech.edu.kh&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;utility-right&quot;&gt;
+          &lt;a href=&quot;#student-portal&quot; class=&quot;utility-link&quot;&gt;🎓 ប្រព័ន្ធព័ត៌មាននិស្សិត (Portal)&lt;/a&gt;
+          &lt;a href=&quot;#library&quot; class=&quot;utility-link&quot;&gt;📚 បណ្ណាល័យឌីជីថល&lt;/a&gt;
+          &lt;span class=&quot;lang-switch&quot;&gt;🌐 &lt;strong&gt;ខ្មែរ&lt;/strong&gt; | &lt;a href=&quot;#en&quot;&gt;EN&lt;/a&gt;&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Main Header Bar --&gt;
+    &lt;div class=&quot;container main-header-container&quot;&gt;
+      &lt;div class=&quot;brand-group&quot;&gt;
+        &lt;a href=&quot;index.html&quot; class=&quot;brand-link&quot; aria-label=&quot;Academy Homepage&quot;&gt;
+          &lt;div class=&quot;brand-logo-icon&quot;&gt;🏛️&lt;/div&gt;
+          &lt;div class=&quot;brand-text&quot;&gt;
+            &lt;span class=&quot;brand-name&quot;&gt;វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល (TechEdu Portal)&lt;/span&gt;
+            &lt;span class=&quot;brand-tagline&quot;&gt;National Academy of Digital Technology&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Quick Search Bar --&gt;
+      &lt;div class=&quot;header-search&quot;&gt;
+        &lt;form class=&quot;search-form&quot; role=&quot;search&quot; onsubmit=&quot;event.preventDefault();&quot;&gt;
+          &lt;input type=&quot;search&quot; placeholder=&quot;ស្វែងរកវគ្គសិក្សា មហាវិទ្យាល័យ ព័ត៌មាន...&quot; aria-label=&quot;Search site content&quot;&gt;
+          &lt;button type=&quot;submit&quot; class=&quot;search-submit&quot; aria-label=&quot;Submit search&quot;&gt;🔍&lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Header Primary CTA --&gt;
+      &lt;div class=&quot;header-action&quot;&gt;
+        &lt;a href=&quot;#admissions&quot; class=&quot;btn btn-cta-primary&quot;&gt;ចុះឈ្មោះចូលរៀន (Apply Now)&lt;/a&gt;
+        &lt;!-- Mobile Menu Toggle Button --&gt;
+        &lt;button type=&quot;button&quot; class=&quot;mobile-nav-toggle&quot; id=&quot;mobile-nav-toggle&quot; aria-label=&quot;Toggle navigation menu&quot;&gt;
+          &lt;span class=&quot;hamburger-bar&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;hamburger-bar&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;hamburger-bar&quot;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- ==================== 2. PRIMARY NAVIGATION (NAV) ==================== --&gt;
+    &lt;nav class=&quot;primary-nav&quot; id=&quot;primary-nav&quot; aria-label=&quot;Primary Navigation&quot;&gt;
+      &lt;div class=&quot;container nav-container&quot;&gt;
+        &lt;ul class=&quot;nav-menu&quot; id=&quot;nav-menu&quot;&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;&lt;a href=&quot;#homepage&quot; class=&quot;nav-link active&quot;&gt;ទំព័រដើម (Home)&lt;/a&gt;&lt;/li&gt;
+          
+          &lt;li class=&quot;nav-item has-dropdown&quot;&gt;
+            &lt;a href=&quot;#admissions&quot; class=&quot;nav-link&quot;&gt;ការចុះឈ្មោះ (Admissions) &lt;span class=&quot;arrow-down&quot;&gt;▾&lt;/span&gt;&lt;/a&gt;
+            &lt;ul class=&quot;dropdown-menu&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;#apply-year1&quot;&gt;ថ្នាក់បរិញ្ញាបត្រ (Undergraduate)&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#apply-master&quot;&gt;ថ្នាក់បរិញ្ញាបត្រជាន់ខ្ពស់ (Postgraduate)&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#scholarships&quot;&gt;អាហារូបករណ៍ (Scholarships)&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#tuition-fees&quot;&gt;តម្លៃសិក្សា (Tuition &amp;amp; Fees)&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+
+          &lt;li class=&quot;nav-item has-dropdown&quot;&gt;
+            &lt;a href=&quot;#academics&quot; class=&quot;nav-link&quot;&gt;មហាវិទ្យាល័យ (Academics) &lt;span class=&quot;arrow-down&quot;&gt;▾&lt;/span&gt;&lt;/a&gt;
+            &lt;ul class=&quot;dropdown-menu&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;#faculty-cs&quot;&gt;វិទ្យាសាស្ត្រកុំព្យូទ័រ (Computer Science)&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#faculty-web&quot;&gt;ការរចនា និងអភិវឌ្ឍវេប (Web Design &amp;amp; Dev)&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#faculty-se&quot;&gt;វិស្វកម្មសូហ្វវែរ (Software Engineering)&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#faculty-cyber&quot;&gt;សន្តិសុខសាយប័រ (Cybersecurity)&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+
+          &lt;li class=&quot;nav-item&quot;&gt;&lt;a href=&quot;#research&quot; class=&quot;nav-link&quot;&gt;ការស្រាវជ្រាវ (Research)&lt;/a&gt;&lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;&lt;a href=&quot;#campus-life&quot; class=&quot;nav-link&quot;&gt;ជីវិតនិស្សិត (Campus Life)&lt;/a&gt;&lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;&lt;a href=&quot;#about&quot; class=&quot;nav-link&quot;&gt;អំពីវិទ្យាស្ថាន (About Us)&lt;/a&gt;&lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;&lt;a href=&quot;#contact&quot; class=&quot;nav-link&quot;&gt;ទំនាក់ទំនង (Contact)&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;!-- ==================== MAIN CONTENT CONTAINER ==================== --&gt;
+  &lt;main class=&quot;main-content&quot; id=&quot;main-content&quot;&gt;
+    &lt;!-- សមាសភាគសំខាន់ៗនៃមេរៀននឹងត្រូវបានបន្ថែមក្នុង ជំហានទី ២ (Core content will be added in Step 2) --&gt;
+    &lt;div class=&quot;container placeholder-box&quot;&gt;
+      &lt;p&gt;សូមស្វាគមន៍មកកាន់កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍៖ ការបង្កើតផែនទីគេហទំព័រ!&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+
+&lt;footer&gt;) ==================== --&gt;
+  &lt;footer class=&quot;site-footer&quot; id=&quot;site-footer&quot;&gt;
+    &lt;div class=&quot;container footer-grid&quot;&gt;
+      &lt;!-- Footer Col 1: Academy Identity --&gt;
+      &lt;div class=&quot;footer-col col-brand&quot;&gt;
+        &lt;div class=&quot;footer-logo&quot;&gt;🏛️ វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល (TechEdu Portal)&lt;/div&gt;
+        &lt;p class=&quot;footer-about&quot;&gt;
+          គ្រឹះស្ថានឧត្តមសិក្សាសាធារណៈឈានមុខគេក្នុងប្រទេសកម្ពុជា ក្នុងការបណ្តុះបណ្តាលធនធានមនុស្សជំនាញបច្ចេកវិទ្យា ឌីជីថល នវានុវត្តន៍ និងវិស្វកម្មសូហ្វវែរ។
+        &lt;/p&gt;
+        &lt;div class=&quot;social-links&quot;&gt;
+          &lt;a href=&quot;#fb&quot; aria-label=&quot;Facebook&quot;&gt;🔵 FB&lt;/a&gt;
+          &lt;a href=&quot;#tg&quot; aria-label=&quot;Telegram&quot;&gt;✈️ TG&lt;/a&gt;
+          &lt;a href=&quot;#yt&quot; aria-label=&quot;YouTube&quot;&gt;🔴 YT&lt;/a&gt;
+          &lt;a href=&quot;#in&quot; aria-label=&quot;LinkedIn&quot;&gt;💼 IN&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Footer Col 2: Mini Sitemap (Admissions) --&gt;
+      &lt;div class=&quot;footer-col&quot;&gt;
+        &lt;h4 class=&quot;footer-heading&quot;&gt;ការចុះឈ្មោះសិក្សា&lt;/h4&gt;
+        &lt;ul class=&quot;footer-links&quot;&gt;
+          &lt;li&gt;&lt;a href=&quot;#undergrad&quot;&gt;ថ្នាក់បរិញ្ញាបត្រ&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#postgrad&quot;&gt;ថ្នាក់បរិញ្ញាបត្រជាន់ខ្ពស់&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#scholarships&quot;&gt;គោលការណ៍អាហារូបករណ៍&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#dormitory&quot;&gt;អន្តេវាសិកដ្ឋាននិស្សិត&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#transfers&quot;&gt;ការផ្ទេរការសិក្សា&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Footer Col 3: Mini Sitemap (Academics) --&gt;
+      &lt;div class=&quot;footer-col&quot;&gt;
+        &lt;h4 class=&quot;footer-heading&quot;&gt;មហាវិទ្យាល័យ&lt;/h4&gt;
+        &lt;ul class=&quot;footer-links&quot;&gt;
+          &lt;li&gt;&lt;a href=&quot;#faculty-cs&quot;&gt;វិទ្យាសាស្ត្រកុំព្យូទ័រ&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#faculty-web&quot;&gt;ការរចនាគេហទំព័រ &amp;amp; UI/UX&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#faculty-se&quot;&gt;វិស្វកម្មសូហ្វវែរ&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#faculty-ds&quot;&gt;វិទ្យាសាស្ត្រទិន្នន័យ &amp;amp; AI&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#research-lab&quot;&gt;មជ្ឈមណ្ឌលស្រាវជ្រាវ R&amp;amp;D&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Footer Col 4: Contact &amp; Legal --&gt;
+      &lt;div class=&quot;footer-col&quot;&gt;
+        &lt;h4 class=&quot;footer-heading&quot;&gt;អាសយដ្ឋាន &amp;amp; ទំនាក់ទំនង&lt;/h4&gt;
+        &lt;address class=&quot;footer-address&quot;&gt;
+          មហាវិថីសហព័ន្ធរុស្ស៊ី សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក រាជធានីភ្នំពេញ&lt;br&gt;
+          ទូរស័ព្ទ៖ (+855) 23 888 999&lt;br&gt;
+          អ៊ីមែល៖ info@cambodia-tech.edu.kh&lt;br&gt;
+          ម៉ោងធ្វើការ៖ ច័ន្ទ - សុក្រ (7:30 AM - 5:30 PM)
+        &lt;/address&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Bottom Copyright &amp; Compliance Bar --&gt;
+    &lt;div class=&quot;footer-bottom&quot;&gt;
+      &lt;div class=&quot;container footer-bottom-container&quot;&gt;
+        &lt;p class=&quot;copyright-text&quot;&gt;
+          &amp;copy; 2026 វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល (TechEdu Portal) (National Academy of Digital Technology). រក្សាសិទ្ធិគ្រប់យ៉ាង។
+        &lt;/p&gt;
+        &lt;div class=&quot;legal-links&quot;&gt;
+          &lt;a href=&quot;#privacy&quot;&gt;គោលការណ៍ឯកជនភាព (Privacy Policy)&lt;/a&gt;
+          &lt;a href=&quot;#terms&quot;&gt;លក្ខខណ្ឌប្រើប្រាស់ (Terms of Service)&lt;/a&gt;
+          &lt;a href=&quot;#sitemap&quot;&gt;ផែនទីគេហទំព័រ (Sitemap)&lt;/a&gt;
+          &lt;a href=&quot;#accessibility&quot;&gt;ភាពងាយស្រួលប្រើប្រាស់ (Accessibility)&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+
+  &lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
     </div>
 
-    <h3 class="heading-muol">ជំហានទី ៣៖ ការគូសប្លង់ 3-Tier Visual Sitemap</h3>
-    <p>ដោយប្រើប្រាស់ FigJam ឬ draw.io សូមគូសប្លង់ Visual Sitemap ឋានានុក្រម ៣ កម្រិត៖</p>
-    <ul>
-      <li><strong>Level 1 (Root):</strong> ទំព័រដើម (Homepage) អាសយដ្ឋាន URL Slug: <code>/</code></li>
-      <li><strong>Level 2 (Main Categories):</strong> Admissions (<code>/admissions</code>), Academics (<code>/academics</code>), Research (<code>/research</code>), Campus Life (<code>/campus-life</code>), About Us (<code>/about</code>)</li>
-      <li><strong>Level 3 (Child Pages):</strong> ទំព័ររងជាក់លាក់នីមួយៗ (យ៉ាងតិច ៣ ទំព័រក្នុងផ្នែកនីមួយៗ)</li>
-    </ul>
+    <!-- STEP 2 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ២</span>
+        <h3 class="step-heading">ការសាងសង់សមាសភាគ HTML ស្នូលនៃមេរៀន (Core Semantic Components)</h3>
+      </div>
+      <p>
+        បញ្ចូលកូដសមាសភាគស្នូលនៃមេរៀនខាងក្រោមនេះទៅក្នុងផ្នែក <code>&lt;main class="main-content"&gt;</code> នៃឯកសារ <code>index.html</code> ដោយជំនួសកន្លែង placeholder៖
+      </p>
 
-    <h3 class="heading-muol">ជំហានទី ៤៖ ការបំប្លែង Sitemap ទៅជាកូដ Semantic HTML Navigation</h3>
-    <p>បើកកម្មវិធី Visual Studio Code រួចសរសេរកូដ Semantic HTML5 បង្កើតប្រព័ន្ធ Navigation Bar ដែលមាន Dropdown Menu ស្របតាម Sitemap៖</p>
-    <pre class="vscode-code">
-<span class="token-comment">&lt;!-- កូដគំរូ Semantic HTML Navigation Bar --&gt;</span>
-<span class="token-tag">&lt;nav</span> <span class="token-attr">class=</span><span class="token-str">"site-nav"</span> <span class="token-attr">aria-label=</span><span class="token-str">"Main Navigation"</span><span class="token-tag">&gt;</span>
-  <span class="token-tag">&lt;ul</span> <span class="token-attr">class=</span><span class="token-str">"nav-list"</span><span class="token-tag">&gt;</span>
-    <span class="token-tag">&lt;li</span> <span class="token-attr">class=</span><span class="token-str">"nav-item dropdown"</span><span class="token-tag">&gt;</span>
-      <span class="token-tag">&lt;a</span> <span class="token-attr">href=</span><span class="token-str">"/admissions"</span><span class="token-tag">&gt;</span>ការចុះឈ្មោះ (Admissions)<span class="token-tag">&lt;/a&gt;</span>
-      <span class="token-tag">&lt;ul</span> <span class="token-attr">class=</span><span class="token-str">"dropdown-menu"</span><span class="token-tag">&gt;</span>
-        <span class="token-tag">&lt;li&gt;&lt;a</span> <span class="token-attr">href=</span><span class="token-str">"/admissions/undergraduate"</span><span class="token-tag">&gt;</span>ថ្នាក់បរិញ្ញាបត្រ<span class="token-tag">&lt;/a&gt;&lt;/li&gt;</span>
-        <span class="token-tag">&lt;li&gt;&lt;a</span> <span class="token-attr">href=</span><span class="token-str">"/admissions/scholarships"</span><span class="token-tag">&gt;</span>អាហារូបករណ៍<span class="token-tag">&lt;/a&gt;&lt;/li&gt;</span>
-      <span class="token-tag">&lt;/ul&gt;</span>
-    <span class="token-tag">&lt;/li&gt;</span>
-  <span class="token-tag">&lt;/ul&gt;</span>
-<span class="token-tag">&lt;/nav&gt;</span>
-    </pre>
+      <div class="code-block-container">
+        <div class="code-header-bar">
+          <span class="code-file-name">📄 index.html (ផ្នែក &lt;main&gt; Core Components)</span>
+          <button class="btn-copy" onclick="copyCode(this, 'code-step-2')">📋 ចម្លងកូដ (Copy)</button>
+        </div>
+        <pre class="code-view" id="code-step-2"><code>) --&gt;
+    &lt;main class=&quot;main-content-area&quot; id=&quot;main-content-area&quot;&gt;
 
-    <h3 class="heading-muol">ជំហានទី ៥៖ ការកំណត់ទីតាំង Call-to-Action (CTA) យុទ្ធសាស្ត្រ</h3>
-    <p>សម្រាប់ទំព័រនីមួយៗក្នុង Sitemap និស្សិតត្រូវកំណត់ Primary CTA និង Secondary CTA ឱ្យបានច្បាស់លាស់។</p>
+      &lt;!-- Section: Featured Faculties --&gt;
+      &lt;section class=&quot;content-section&quot; id=&quot;faculties-section&quot;&gt;
+        &lt;div class=&quot;section-title-wrap&quot;&gt;
+          &lt;span class=&quot;sub-label&quot;&gt;កម្មវិធីសិក្សាឆ្នើម&lt;/span&gt;
+          &lt;h2 class=&quot;section-title&quot;&gt;កម្មវិធីបរិញ្ញាបត្រជំនាញបច្ចេកវិទ្យា (Undergraduate Programs)&lt;/h2&gt;
+          &lt;p class=&quot;section-subtitle&quot;&gt;ជ្រើសរើសជំនាញដែលស័ក្តិសមជាមួយក្តីស្រមៃ និងទេពកោសល្យរបស់អ្នក៖&lt;/p&gt;
+        &lt;/div&gt;
 
-    <h2 class="heading-muol">ទម្រង់របាយការណ៍បច្ចេកទេសរបស់និស្សិត (Student Submission Template)</h2>
-    <div class="table-responsive">
-<table class="data-table">
-      <thead>
-        <tr>
-          <th>Level 2 Section</th>
-          <th>Level 3 Pages (Child Pages)</th>
-          <th>URL Slug</th>
-          <th>Primary Call-to-Action (CTA)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>1. Admissions</strong></td>
-          <td>• Undergraduate<br>• Postgraduate<br>• Scholarships</td>
-          <td>/admissions/undergraduate<br>/admissions/postgraduate<br>/admissions/scholarships</td>
-          <td>«ចុះឈ្មោះឥឡូវនេះ»<br>«ស្នើសុំអាហារូបករណ៍»</td>
-        </tr>
-        <tr>
-          <td><strong>2. Academics</strong></td>
-          <td>• Computer Science<br>• Web Design<br>• Cybersecurity</td>
-          <td>/academics/computer-science<br>/academics/web-design<br>/academics/cybersecurity</td>
-          <td>«ទាញយក Syllabus»<br>«ជួបប្រឹក្សាការសិក្សា»</td>
-        </tr>
-        <tr>
-          <td><strong>3. Research</strong></td>
-          <td>• AI Research Lab<br>• Publications<br>• Innovation Grants</td>
-          <td>/research/ai-lab<br>/research/publications<br>/research/grants</td>
-          <td>«អានស្នាដៃស្រាវជ្រាវ»<br>«ដាក់ពាក្យសុំជំនួយ»</td>
-        </tr>
-        <tr>
-          <td><strong>4. About Us</strong></td>
-          <td>• University History<br>• Leadership Team<br>• Campus Map &amp; Contact</td>
-          <td>/about/history<br>/about/leadership<br>/about/contact</td>
-          <td>«ទាក់ទងមកយើង»<br>«មើលផែនទីសាកលវិទ្យាល័យ»</td>
-        </tr>
-      </tbody>
-    </table>
-</div>
-<div class="scroll-hint">⇄ អូសទៅស្តាំដើម្បីមើលតារាងពេញ (Scroll table horizontally)</div>
+        &lt;div class=&quot;cards-grid&quot;&gt;
+          &lt;!-- Card 1 --&gt;
+          &lt;article class=&quot;academic-card&quot;&gt;
+            &lt;div class=&quot;card-icon&quot;&gt;🎨&lt;/div&gt;
+            &lt;h3 class=&quot;card-title&quot;&gt;ការរចនាគេហទំព័រ និង UI/UX&lt;/h3&gt;
+            &lt;p class=&quot;card-desc&quot;&gt;សិក្សាពីស្ថាបត្យកម្មព័ត៌មាន (IA), Wireframing, Figma Prototyping, Semantic HTML5, CSS3 Grid/Flexbox និង Modern Frontend Interactions។&lt;/p&gt;
+            &lt;div class=&quot;card-meta&quot;&gt;
+              &lt;span&gt;បរិញ្ញាបត្រ ៤ ឆ្នាំ&lt;/span&gt;
+              &lt;a href=&quot;#apply&quot; class=&quot;card-cta&quot;&gt;លម្អិត &amp;amp; ចុះឈ្មោះ &amp;rarr;&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
 
-    <h2 class="heading-muol">តារាងពិន្ទុវាយតម្លៃការអនុវត្ត (Evaluation Rubric — 100 Points)</h2>
-    <ul class='numbered-list'>
-      <li><span class='num-badge'>១.</span> <strong>គុណភាពនៃស្ថាបត្យកម្មព័ត៌មាន IA (២៥ ពិន្ទុ)៖</strong> ចាត់ថ្នាក់ប្រធានបទព័ត៌មានបានត្រឹមត្រូវ សមហេតុផល និងងាយស្រួលយល់ស្របតាមក្បួន Card Sorting។</li>
-      <li><span class='num-badge'>២.</span> <strong>ប្លង់ Visual Sitemap Diagram (២៥ ពិន្ទុ)៖</strong> គូសប្លង់ Sitemap ឋានានុក្រម ៣ កម្រិតបានច្បាស់លាស់ ស្រស់ស្អាត និងអនុលោមតាមក្បួន 3-Click Rule។</li>
-      <li><span class='num-badge'>៣.</span> <strong>កូដ Semantic HTML Navigation (២៥ ពិន្ទុ)៖</strong> សរសេរកូដ Semantic HTML5 (&lt;header&gt;, &lt;nav&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;a&gt;) បានត្រឹមត្រូវតាមស្តង់ដា W3C។</li>
-      <li><span class='num-badge'>៤.</span> <strong>យុទ្ធសាស្ត្រ CTA និងការការពាររបាយការណ៍ (២៥ ពិន្ទុ)៖</strong> កំណត់ Primary/Secondary CTA បានលេចធ្លោ និងរៀបចំរបាយការណ៍បច្ចេកទេសបានពេញលេញ។</li>
-    </ul>
-    
+          &lt;!-- Card 2 --&gt;
+          &lt;article class=&quot;academic-card&quot;&gt;
+            &lt;div class=&quot;card-icon&quot;&gt;💻&lt;/div&gt;
+            &lt;h3 class=&quot;card-title&quot;&gt;វិទ្យាសាស្ត្រកុំព្យូទ័រ (Computer Science)&lt;/h3&gt;
+            &lt;p class=&quot;card-desc&quot;&gt;ផ្តោតលើ Algorithms, Data Structures, Software Architecture, Database Management និង Cloud Computing Systems។&lt;/p&gt;
+            &lt;div class=&quot;card-meta&quot;&gt;
+              &lt;span&gt;បរិញ្ញាបត្រ ៤ ឆ្នាំ&lt;/span&gt;
+              &lt;a href=&quot;#apply&quot; class=&quot;card-cta&quot;&gt;លម្អិត &amp;amp; ចុះឈ្មោះ &amp;rarr;&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
+
+          &lt;!-- Card 3 --&gt;
+          &lt;article class=&quot;academic-card&quot;&gt;
+            &lt;div class=&quot;card-icon&quot;&gt;🔒&lt;/div&gt;
+            &lt;h3 class=&quot;card-title&quot;&gt;សន្តិសុខសាយប័រ (Cybersecurity)&lt;/h3&gt;
+            &lt;p class=&quot;card-desc&quot;&gt;សិក្សាពីការការពារបណ្តាញ Network Security, Web Application Pentesting, Cryptography និងការការពារទិន្នន័យឌីជីថល។&lt;/p&gt;
+            &lt;div class=&quot;card-meta&quot;&gt;
+              &lt;span&gt;បរិញ្ញាបត្រ ៤ ឆ្នាំ&lt;/span&gt;
+              &lt;a href=&quot;#apply&quot; class=&quot;card-cta&quot;&gt;លម្អិត &amp;amp; ចុះឈ្មោះ &amp;rarr;&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;!-- Section: Inverted Pyramid Content Demonstration --&gt;
+      &lt;section class=&quot;content-section&quot; id=&quot;content-structure-demo&quot;&gt;
+        &lt;div class=&quot;section-title-wrap&quot;&gt;
+          &lt;span class=&quot;sub-label&quot;&gt;ទ្រឹស្តីខ្លឹមសារ ២.១២&lt;/span&gt;
+          &lt;h2 class=&quot;section-title&quot;&gt;គំរូពីរ៉ាមីតបញ្ច្រាសនៃខ្លឹមសារ (Inverted Pyramid Model)&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;content-box&quot;&gt;
+          &lt;div class=&quot;pyramid-level level-lead&quot;&gt;
+            &lt;h4&gt;១. ព័ត៌មានស្នូលសំខាន់បំផុត (The Lead / Most Critical Info)&lt;/h4&gt;
+            &lt;p&gt;&lt;strong&gt;តើនរណា? អ្វី? ទីណា? ពេលណា? និងហេតុអ្វី?&lt;/strong&gt; — វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល (TechEdu Portal) ចាប់ផ្តើមទទួលពាក្យសុំអាហារូបករណ៍ ១០០% សម្រាប់សិស្សទូទាំងប្រទេសចាប់ពីថ្ងៃទី ០១ ខែវិច្ឆិកា ឆ្នាំ ២០២៦ នេះតទៅ។&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;pyramid-level level-body&quot;&gt;
+            &lt;h4&gt;២. ព័ត៌មានលម្អិតគាំទ្រ (Important Body Details)&lt;/h4&gt;
+            &lt;p&gt;លក្ខខណ្ឌនៃការជ្រើសរើសរួមមាន៖ សិស្សដែលបានប្រឡងជាប់សញ្ញាបត្រមធ្យមសិក្សាទុតិយភូមិ (បាក់ឌុប) និទ្ទេស A, B, C ឬឆ្លងកាត់ការប្រឡងវាស់ស្ទង់សមត្ថភាពផ្នែកតក្កវិជ្ជា និងភាសាអង់គ្លេស។&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;pyramid-level level-tail&quot;&gt;
+            &lt;h4&gt;៣. ព័ត៌មានបន្ថែម និងប្រវត្តិទូទៅ (Background &amp;amp; General Info)&lt;/h4&gt;
+            &lt;p&gt;ព័ត៌មានអំពីប្រវត្តិនៃការបង្កើតវិទ្យាស្ថាន កិច្ចសហប្រតិបត្តិការជាមួយដៃគូអន្តរជាតិ និងទីតាំងអន្តេវាសិកដ្ឋាននិស្សិត។&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;</code></pre>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ៣</span>
+        <h3 class="step-heading">ការកំណត់ Design Tokens និង Style មូលដ្ឋាន (CSS Tokens & Base Styling)</h3>
+      </div>
+      <p>
+        បង្កើតឯកសារ <code>css/style.css</code> រួចសរសេរកូដកំណត់ <code>:root</code> CSS Variables (Design Tokens សម្រាប់ពណ៌ ពុម្ពអក្សរ គម្លាត), Global Reset <code>*, *::before, *::after</code> និងការតុបតែងសមាសភាគនីមួយៗ៖
+      </p>
+
+      <div class="code-block-container">
+        <div class="code-header-bar">
+          <span class="code-file-name">🎨 css/style.css (Tokens & Component Styling)</span>
+          <button class="btn-copy" onclick="copyCode(this, 'code-step-3')">📋 ចម្លងកូដ (Copy)</button>
+        </div>
+        <pre class="code-view" id="code-step-3"><code>/* ============================================================
+   PROJECT: University Portal &amp; Anatomy Explorer (Chapter 02)
+   AUTHOR: Web Design Curriculum (Bachelor Year 3)
+   PURPOSE: Interactive demonstration of Website Structure &amp; Design Process
+   ============================================================ */
+
+:root {
+  --primary-navy: #0f172a;
+  --primary-blue: #0284c7;
+  --primary-blue-hover: #0369a1;
+  --accent-gold: #f59e0b;
+  --accent-gold-hover: #d97706;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --bg-page: #f8fafc;
+  --bg-white: #ffffff;
+  --border-color: #e2e8f0;
+  --font-body: &#x27;Khmer OS Siemreap&#x27;, &#x27;Kantumruy Pro&#x27;, system-ui, -apple-system, sans-serif;
+  --font-title: &#x27;Khmer OS Muol Light-Kh Auto&#x27;, &#x27;Khmer OS Muol Light&#x27;, &#x27;Moul&#x27;, serif;
+  --font-code: &#x27;Consolas&#x27;, &#x27;Fira Code&#x27;, &#x27;Courier New&#x27;, monospace;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.05);
+  --transition: all 0.25s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-dark);
+  background-color: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: normal;
+  color: var(--primary-navy);
+  line-height: 1.5;
+}
+
+p {
+  margin-bottom: 12px;
+}
+
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-blue-hover);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+code {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ==================== BUTTONS ==================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn-cta-primary {
+  background-color: var(--accent-gold);
+  color: #0f172a;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+}
+
+.btn-cta-primary:hover {
+  background-color: var(--accent-gold-hover);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(245, 158, 11, 0.4);
+}
+
+.btn-hero-primary {
+  background-color: var(--accent-gold);
+  color: #0f172a;
+  font-weight: 700;
+  padding: 12px 24px;
+  font-size: 15px;
+}
+
+.btn-hero-primary:hover {
+  background-color: var(--accent-gold-hover);
+  color: #ffffff;
+}
+
+.btn-hero-secondary {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 24px;
+  font-size: 15px;
+  backdrop-filter: blur(4px);
+}
+
+.btn-hero-secondary:hover {
+  background-color: #ffffff;
+  color: var(--primary-navy);
+}
+
+.btn-secondary {
+  background-color: #f1f5f9;
+  color: var(--primary-navy);
+  border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+}
+
+/* ==================== 1. TOP UTILITY BAR ==================== */
+.utility-bar {
+  background-color: #0f172a;
+  color: #cbd5e1;
+  font-size: 12.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 0;
+}
+
+.utility-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.utility-left {
+  display: flex;
+  gap: 16px;
+}
+
+.utility-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.utility-link {
+  color: #cbd5e1;
+  text-decoration: none;
+}
+
+.utility-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.lang-switch {
+  color: #94a3b8;
+  padding-left: 8px;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.lang-switch a {
+  color: #cbd5e1;
+}
+
+/* ==================== MAIN HEADER BAR ==================== */
+.site-header {
+  background-color: #ffffff;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  transition: var(--transition);
+}
+
+.main-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  gap: 20px;
+}
+
+.brand-group .brand-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.brand-logo-icon {
+  font-size: 36px;
+  line-height: 1;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-title);
+  font-size: 16px;
+  color: var(--primary-navy);
+}
+
+.brand-tagline {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+
+.header-search {
+  flex-grow: 1;
+  max-width: 380px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  background-color: #f1f5f9;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  padding: 4px 12px;
+  transition: var(--transition);
+}
+
+.search-form:focus-within {
+  border-color: var(--primary-blue);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.search-form input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 4px 6px;
+}
+
+.search-submit {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.header-action {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hamburger-bar {
+  width: 22px;
+  height: 2px;
+  background-color: var(--primary-navy);
+  transition: var(--transition);
+}
+
+/* ==================== 2. PRIMARY NAVIGATION ==================== */
+.primary-nav {
+  background-color: var(--primary-navy);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 12px 16px;
+  color: #e2e8f0;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.nav-link:hover, .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.arrow-down {
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  min-width: 240px;
+  box-shadow: var(--shadow-lg);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  list-style: none;
+  border: 1px solid var(--border-color);
+  z-index: 1000;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 18px;
+  color: var(--text-dark);
+  font-size: 13px;
+  text-decoration: none;
+  border-bottom: 1px solid #f1f5f9;
+  transition: var(--transition);
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f8fafc;
+  color: var(--primary-blue);
+  padding-left: 22px;
+}
+
+.nav-item.has-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* ==================== 3. HERO SECTION ==================== */
+.hero-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  color: #ffffff;
+  padding: 60px 0;
+  position: relative;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-tag {
+  display: inline-block;
+  background-color: rgba(245, 158, 11, 0.2);
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.hero-desc {
+  font-size: 15px;
+  color: #e2e8f0;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.hero-stats-strip {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.h-stat-num {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin-right: 6px;
+}
+
+/* Hero Media Card */
+.hero-card-preview {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: var(--shadow-lg);
+}
+
+.preview-badge {
+  display: inline-block;
+  background-color: var(--primary-blue);
+  color: #fff;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.hero-card-preview h3 {
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.hero-card-preview p {
+  font-size: 13.5px;
+  color: #e2e8f0;
+  line-height: 1.6;
+}
+
+.preview-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ==================== BREADCRUMB BAR ==================== */
+.breadcrumb-bar {
+  background-color: #f1f5f9;
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px 0;
+  font-size: 12.5px;
+}
+
+.breadcrumb-list {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-list li + li::before {
+  content: &quot;›&quot;;
+  color: #94a3b8;
+  margin-right: 8px;
+}
+
+.breadcrumb-list li a {
+  color: var(--text-muted);
+}
+
+.breadcrumb-list li a:hover {
+  color: var(--primary-blue);
+}
+
+.breadcrumb-list li[aria-current=&quot;page&quot;] {
+  color: var(--primary-navy);
+  font-weight: 600;
+}
+
+/* ==================== 4. MAIN CONTENT &amp; 5. SIDEBAR LAYOUT ==================== */
+.layout-wrapper {
+  display: grid;
+  grid-template-columns: 2.8fr 1.2fr;
+  gap: 32px;
+  margin-top: 36px;
+  margin-bottom: 50px;
+}
+
+/* Content Sections */
+.content-section {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.section-title-wrap {
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 14px;
+}
+
+.sub-label {
+  font-size: 12px;
+  color: var(--primary-blue);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.section-title {
+  font-size: 18px;
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
+
+.section-subtitle {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* Academic Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.academic-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.academic-card:hover {
+  border-color: var(--primary-blue);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.card-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+  font-size: 12px;
+}
+
+.card-cta {
+  font-weight: 600;
+  color: var(--primary-blue);
+}
+
+/* Inverted Pyramid Demo */
+.content-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pyramid-level {
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--primary-blue);
+}
+
+.level-lead {
+  background-color: #eff6ff;
+  border-left-color: #0284c7;
+}
+
+.level-body {
+  background-color: #f8fafc;
+  border-left-color: #64748b;
+}
+
+.level-tail {
+  background-color: #f1f5f9;
+  border-left-color: #94a3b8;
+}
+
+.pyramid-level h4 {
+  font-size: 13.5px;
+  margin-bottom: 6px;
+  color: var(--primary-navy);
+}
+
+.pyramid-level p {
+  font-size: 13px;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* ==================== 5. SIDEBAR WIDGETS ==================== */
+.site-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sidebar-widget {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+}
+
+.widget-title {
+  font-size: 14.5px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.widget-cta {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-color: #fcd34d;
+}
+
+.widget-cta .widget-title {
+  border-bottom-color: rgba(0,0,0,0.08);
+}
+
+.widget-cta p {
+  font-size: 13px;
+  color: #78350f;
+}
+
+.btn-widget-cta {
+  width: 100%;
+  background-color: #d97706;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.btn-widget-cta:hover {
+  background-color: #b45309;
+}
+
+/* Events List */
+.events-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.event-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.event-date {
+  background-color: #e0f2fe;
+  color: var(--primary-blue);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.event-info strong {
+  display: block;
+  font-size: 13px;
+  color: var(--primary-navy);
+}
+
+.event-info small {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+/* Quick Links */
+.quick-links {
+  list-style: none;
+}
+
+.quick-links li {
+  margin-bottom: 8px;
+}
+
+.quick-links a {
+  font-size: 13px;
+  color: var(--text-dark);
+}
+
+.quick-links a:hover {
+  color: var(--primary-blue);
+  padding-left: 4px;
+}
+
+/* Newsletter Form */
+.widget-newsletter p {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.newsletter-form input {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 12.5px;
+}
+
+.newsletter-form .btn {
+  width: 100%;
+  font-size: 13px;
+}
+
+/* ==================== 6. MEGA FOOTER ==================== */
+.site-footer {
+  background-color: var(--primary-navy);
+  color: #cbd5e1;
+  padding-top: 50px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 36px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo {
+  font-family: var(--font-title);
+  font-size: 15px;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.footer-about {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.social-links a {
+  background: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.social-links a:hover {
+  background: var(--primary-blue);
+  color: #ffffff;
+}
+
+.footer-heading {
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  padding-left: 4px;
+}
+
+.footer-address {
+  font-style: normal;
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.8;
+}
+
+.footer-bottom {
+  background-color: #020617;
+  padding: 18px 0;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.footer-bottom-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.legal-links {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.legal-links a {
+  color: #64748b;
+}
+
+.legal-links a:hover {
+  color: #cbd5e1;
+}
+
+/* ==================== ANATOMY HIGHLIGHTER HUD ==================== */
+.anatomy-hud {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  background-color: #ffffff;
+  border: 2px solid var(--primary-blue);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  z-index: 9999;
+  font-size: 13px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.hud-header {
+  background-color: var(--primary-navy);
+  color: #ffffff;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hud-badge {
+  background-color: var(--accent-gold);
+  color: #0f172a;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.hud-title {
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.hud-btn-minimize {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.hud-body {
+  padding: 14px;
+  background-color: #ffffff;
+}
+
+.hud-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.hud-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.btn-highlight {
+  padding: 6px 8px;
+  font-size: 11.5px;
+  font-family: inherit;
+  background-color: #f1f5f9;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+}
+
+.btn-highlight:hover, .btn-highlight.active {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  border-color: var(--primary-blue);
+}
+
+.btn-reset-hud {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
+  grid-column: span 2;
+  text-align: center;
+}
+
+.btn-reset-hud:hover {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.hud-view-modes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 10px;
+}
+
+.btn-hud-action {
+  background-color: #eff6ff;
+  color: var(--primary-blue);
+  border: 1px solid #bfdbfe;
+  padding: 7px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: inherit;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-hud-action:hover {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+}
+
+/* LIVE HIGHLIGHT OUTLINES */
+.anatomy-highlighted {
+  position: relative !important;
+  outline: 4px dashed #ef4444 !important;
+  outline-offset: 4px !important;
+  transition: all 0.2s ease;
+}
+
+.anatomy-highlight-label {
+  position: absolute;
+  top: -14px;
+  left: 20px;
+  background-color: #ef4444;
+  color: #ffffff;
+  font-family: var(--font-code);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  z-index: 1001;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==================== MODALS ==================== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-dialog {
+  background-color: #ffffff;
+  border-radius: var(--radius-md);
+  max-width: 800px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 16px 20px;
+  background-color: var(--primary-navy);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.modal-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.modal-footer {
+  padding: 12px 20px;
+  background-color: #f8fafc;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-list {
+  padding-left: 20px;
+  font-size: 13.5px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+/* Sitemap Tree Graphic */
+.sitemap-tree {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  font-size: 13px;
+}
+
+.tree-root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tree-node {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.root-node {
+  background-color: #0f172a;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.tree-branches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  padding-left: 10px;
+}
+
+.tree-branch {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.branch-node {
+  background-color: #e0f2fe;
+  color: var(--primary-blue);
+  margin-bottom: 8px;
+}
+
+.tree-leaves {
+  list-style: none;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */</code></pre>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ៤</span>
+        <h3 class="step-heading">ការរៀបចំប្លង់ Responsive និងមុខងារអន្តរកម្ម (Responsive Layout & Interactivity)</h3>
+      </div>
+      <p>
+        បន្ថែម Media Queries ទៅខាងចុងនៃឯកសារ <code>css/style.css</code> ដើម្បីធានាថាគេហទំព័របង្ហាញរូបរាងយ៉ាងស្អាតនៅលើ Tablet និង Mobile Device ព្រមទាំងបន្ថែម JavaScript ទៅក្នុង <code>js/app.js</code> សម្រាប់មុខងារអន្តរកម្ម៖
+      </p>
+
+      <div class="code-block-container">
+        <div class="code-header-bar">
+          <span class="code-file-name">📱 Responsive Media Queries & ⚡ js/app.js</span>
+          <button class="btn-copy" onclick="copyCode(this, 'code-step-4')">📋 ចម្លងកូដ (Copy)</button>
+        </div>
+        <pre class="code-view" id="code-step-4"><code>/* === 1. Responsive Media Queries (css/style.css) === */
+@media (max-width: 992px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+  }
   
+  .layout-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .utility-bar {
+    display: none;
+  }
+
+  .mobile-nav-toggle {
+    display: flex;
+  }
+
+  .primary-nav {
+    display: none;
+  }
+
+  .primary-nav.mobile-open {
+    display: block;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    background-color: #1e293b;
+  }
+
+  .dropdown-menu li a {
+    color: #cbd5e1;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .anatomy-hud {
+    width: 280px;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+/* === 2. Dynamic Interactivity Script (js/app.js) === */
+/**
+ * ============================================================
+ * PROJECT: University Portal &amp; Anatomy Explorer (Chapter 02)
+ * AUTHOR: Web Design Curriculum (Bachelor Year 3)
+ * FILE: js/app.js
+ * ============================================================
+ */
+
+document.addEventListener(&#x27;DOMContentLoaded&#x27;, () =&gt; {
+  initAnatomyHighlighter();
+  initMobileNav();
+  initModals();
+});
+
+/* ============================================================
+   1. ANATOMY HIGHLIGHTER HUD LOGIC
+   ============================================================ */
+function initAnatomyHighlighter() {
+  const hudButtons = document.querySelectorAll(&#x27;.btn-highlight&#x27;);
+  const btnToggleHud = document.getElementById(&#x27;btn-toggle-hud&#x27;);
+  const hudBody = document.getElementById(&#x27;hud-body&#x27;);
+
+  const anatomyElements = {
+    header: {
+      el: document.getElementById(&#x27;site-header&#x27;),
+      label: &#x27;&lt;header&gt; Header Section (Branding, Search &amp; Global Actions)&#x27;
+    },
+    nav: {
+      el: document.getElementById(&#x27;primary-nav&#x27;),
+      label: &#x27;&lt;nav&gt; Primary Navigation Bar (Wayfinding &amp; Dropdowns)&#x27;
+    },
+    hero: {
+      el: document.getElementById(&#x27;hero-section&#x27;),
+      label: &#x27;&lt;section class=&quot;hero&quot;&gt; Value Proposition &amp; Dual CTAs&#x27;
+    },
+    main: {
+      el: document.getElementById(&#x27;main-content-area&#x27;),
+      label: &#x27;&lt;main&gt; Main Content Area (Central Information Body)&#x27;
+    },
+    sidebar: {
+      el: document.getElementById(&#x27;site-sidebar&#x27;),
+      label: &#x27;&lt;aside&gt; Sidebar (Supplementary Links, Events &amp; CTA Widget)&#x27;
+    },
+    footer: {
+      el: document.getElementById(&#x27;site-footer&#x27;),
+      label: &#x27;&lt;footer&gt; Mega Footer (Sitemap, Address, Copyright &amp; Legal)&#x27;
+    }
+  };
+
+  function clearAllHighlights() {
+    document.querySelectorAll(&#x27;.anatomy-highlighted&#x27;).forEach(el =&gt; {
+      el.classList.remove(&#x27;anatomy-highlighted&#x27;);
+      const badge = el.querySelector(&#x27;.anatomy-highlight-label&#x27;);
+      if (badge) badge.remove();
+    });
+    hudButtons.forEach(btn =&gt; btn.classList.remove(&#x27;active&#x27;));
+  }
+
+  function highlightComponent(key) {
+    clearAllHighlights();
+    const item = anatomyElements[key];
+    if (!item || !item.el) return;
+
+    item.el.classList.add(&#x27;anatomy-highlighted&#x27;);
+    
+    // Add semantic badge overlay
+    const badge = document.createElement(&#x27;div&#x27;);
+    badge.className = &#x27;anatomy-highlight-label&#x27;;
+    badge.textContent = item.label;
+    item.el.appendChild(badge);
+
+    // Smooth scroll to the highlighted component
+    item.el.scrollIntoView({ behavior: &#x27;smooth&#x27;, block: &#x27;center&#x27; });
+  }
+
+  function highlightAllComponents() {
+    clearAllHighlights();
+    Object.keys(anatomyElements).forEach(key =&gt; {
+      const item = anatomyElements[key];
+      if (item &amp;&amp; item.el) {
+        item.el.classList.add(&#x27;anatomy-highlighted&#x27;);
+        const badge = document.createElement(&#x27;div&#x27;);
+        badge.className = &#x27;anatomy-highlight-label&#x27;;
+        badge.textContent = item.label;
+        item.el.appendChild(badge);
+      }
+    });
+  }
+
+  hudButtons.forEach(btn =&gt; {
+    btn.addEventListener(&#x27;click&#x27;, () =&gt; {
+      const target = btn.getAttribute(&#x27;data-target&#x27;);
+      hudButtons.forEach(b =&gt; b.classList.remove(&#x27;active&#x27;));
+
+      if (target === &#x27;clear&#x27;) {
+        clearAllHighlights();
+      } else if (target === &#x27;all&#x27;) {
+        btn.classList.add(&#x27;active&#x27;);
+        highlightAllComponents();
+      } else {
+        btn.classList.add(&#x27;active&#x27;);
+        highlightComponent(target);
+      }
+    });
+  });
+
+  // Toggle HUD minimize
+  let isMinimized = false;
+  if (btnToggleHud &amp;&amp; hudBody) {
+    btnToggleHud.addEventListener(&#x27;click&#x27;, () =&gt; {
+      isMinimized = !isMinimized;
+      if (isMinimized) {
+        hudBody.style.display = &#x27;none&#x27;;
+        btnToggleHud.textContent = &#x27;+&#x27;;
+      } else {
+        hudBody.style.display = &#x27;block&#x27;;
+        btnToggleHud.textContent = &#x27;_&#x27;;
+      }
+    });
+  }
+}
+
+/* ============================================================
+   2. MOBILE NAVIGATION LOGIC
+   ============================================================ */
+function initMobileNav() {
+  const toggleBtn = document.getElementById(&#x27;mobile-nav-toggle&#x27;);
+  const primaryNav = document.getElementById(&#x27;primary-nav&#x27;);
+
+  if (toggleBtn &amp;&amp; primaryNav) {
+    toggleBtn.addEventListener(&#x27;click&#x27;, () =&gt; {
+      primaryNav.classList.toggle(&#x27;mobile-open&#x27;);
+    });
+  }
+}
+
+/* ============================================================
+   3. MODALS LOGIC (Sitemap &amp; Requirements)
+   ============================================================ */
+function initModals() {
+  const sitemapModal = document.getElementById(&#x27;sitemap-modal&#x27;);
+  const reqModal = document.getElementById(&#x27;req-modal&#x27;);
+
+  const btnOpenSitemap = document.getElementById(&#x27;btn-open-sitemap-modal&#x27;);
+  const btnCloseSitemap = document.getElementById(&#x27;btn-close-sitemap&#x27;);
+  const btnCloseSitemapFooter = document.getElementById(&#x27;btn-close-sitemap-footer&#x27;);
+
+  const btnOpenReq = document.getElementById(&#x27;btn-open-req-modal&#x27;);
+  const btnCloseReq = document.getElementById(&#x27;btn-close-req&#x27;);
+  const btnCloseReqFooter = document.getElementById(&#x27;btn-close-req-footer&#x27;);
+
+  function openModal(modal) {
+    if (modal) modal.classList.add(&#x27;open&#x27;);
+  }
+
+  function closeModal(modal) {
+    if (modal) modal.classList.remove(&#x27;open&#x27;);
+  }
+
+  if (btnOpenSitemap) btnOpenSitemap.addEventListener(&#x27;click&#x27;, () =&gt; openModal(sitemapModal));
+  if (btnCloseSitemap) btnCloseSitemap.addEventListener(&#x27;click&#x27;, () =&gt; closeModal(sitemapModal));
+  if (btnCloseSitemapFooter) btnCloseSitemapFooter.addEventListener(&#x27;click&#x27;, () =&gt; closeModal(sitemapModal));
+
+  if (btnOpenReq) btnOpenReq.addEventListener(&#x27;click&#x27;, () =&gt; openModal(reqModal));
+  if (btnCloseReq) btnCloseReq.addEventListener(&#x27;click&#x27;, () =&gt; closeModal(reqModal));
+  if (btnCloseReqFooter) btnCloseReqFooter.addEventListener(&#x27;click&#x27;, () =&gt; closeModal(reqModal));
+
+  // Close when clicking outside dialog
+  window.addEventListener(&#x27;click&#x27;, (e) =&gt; {
+    if (e.target === sitemapModal) closeModal(sitemapModal);
+    if (e.target === reqModal) closeModal(reqModal);
+  });
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ៥</span>
+        <h3 class="step-heading">កូដគម្រោងពេញលេញទាំងស្រុង និងការសាកល្បងដំណើរការ (Full Complete Code & Testing)</h3>
+      </div>
+      <p>
+        ខាងក្រោមនេះជាកូដពេញលេញនៃឯកសារនីមួយៗក្នុងគម្រោង។ និស្សិតអាចជ្រើសរើសផ្ទាំង (Tab) ដើម្បីចម្លងកូដឯកសារទាំងស្រុងយកទៅប្រើប្រាស់ និងសាកល្បងដំណើរការជាមួយ <strong>VS Code Live Server</strong> (Right-Click លើ <code>index.html</code> &gt; <em>Open with Live Server</em>)៖
+      </p>
+
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab(this, 'tab-html')">📄 index.html (កូដពេញលេញ)</button>
+        <button class="tab-btn" onclick="switchTab(this, 'tab-css')">🎨 css/style.css (កូដពេញលេញ)</button>
+        <button class="tab-btn" onclick="switchTab(this, 'tab-js')">⚡ js/app.js (កូដពេញលេញ)</button>
+      </div>
+
+      <!-- Tab HTML -->
+      <div id="tab-html" class="tab-pane active">
+        <div class="code-block-container">
+          <div class="code-header-bar">
+            <span class="code-file-name">📄 index.html (Complete Working Code)</span>
+            <button class="btn-copy" onclick="copyCode(this, 'full-code-html')">📋 ចម្លង index.html ទាំងមូល</button>
+          </div>
+          <pre class="code-view" id="full-code-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;km&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;គម្រោងគំរូមេរៀនទី ២: រចនាសម្ព័ន្ធគេហទំព័រ និងដំណើរការរចនា (Website Structure and Design Process) - Bachelor Year 3&quot;&gt;
+  &lt;title&gt;គម្រោងគំរូ: គេហទំព័រវិទ្យាស្ថាន និងឧបករណ៍វិភាគរចនាសម្ព័ន្ធ (Academy Portal &amp; Structure Explorer)&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&amp;family=Moul&amp;family=Fira+Code:wght@400;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;!-- ==================== 1. TOP UTILITY BAR &amp; HEADER ==================== --&gt;
+  &lt;header class=&quot;site-header&quot; id=&quot;site-header&quot;&gt;
+    &lt;!-- Top Utility Bar --&gt;
+    &lt;div class=&quot;utility-bar&quot;&gt;
+      &lt;div class=&quot;container utility-container&quot;&gt;
+        &lt;div class=&quot;utility-left&quot;&gt;
+          &lt;span class=&quot;utility-item&quot;&gt;📞 ទំនាក់ទំនង៖ (+855) 23 888 999&lt;/span&gt;
+          &lt;span class=&quot;utility-item&quot;&gt;✉️ អ៊ីមែល៖ info@cambodia-tech.edu.kh&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;utility-right&quot;&gt;
+          &lt;a href=&quot;#student-portal&quot; class=&quot;utility-link&quot;&gt;🎓 ប្រព័ន្ធព័ត៌មាននិស្សិត (Portal)&lt;/a&gt;
+          &lt;a href=&quot;#library&quot; class=&quot;utility-link&quot;&gt;📚 បណ្ណាល័យឌីជីថល&lt;/a&gt;
+          &lt;span class=&quot;lang-switch&quot;&gt;🌐 &lt;strong&gt;ខ្មែរ&lt;/strong&gt; | &lt;a href=&quot;#en&quot;&gt;EN&lt;/a&gt;&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Main Header Bar --&gt;
+    &lt;div class=&quot;container main-header-container&quot;&gt;
+      &lt;div class=&quot;brand-group&quot;&gt;
+        &lt;a href=&quot;index.html&quot; class=&quot;brand-link&quot; aria-label=&quot;Academy Homepage&quot;&gt;
+          &lt;div class=&quot;brand-logo-icon&quot;&gt;🏛️&lt;/div&gt;
+          &lt;div class=&quot;brand-text&quot;&gt;
+            &lt;span class=&quot;brand-name&quot;&gt;វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល (TechEdu Portal)&lt;/span&gt;
+            &lt;span class=&quot;brand-tagline&quot;&gt;National Academy of Digital Technology&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Quick Search Bar --&gt;
+      &lt;div class=&quot;header-search&quot;&gt;
+        &lt;form class=&quot;search-form&quot; role=&quot;search&quot; onsubmit=&quot;event.preventDefault();&quot;&gt;
+          &lt;input type=&quot;search&quot; placeholder=&quot;ស្វែងរកវគ្គសិក្សា មហាវិទ្យាល័យ ព័ត៌មាន...&quot; aria-label=&quot;Search site content&quot;&gt;
+          &lt;button type=&quot;submit&quot; class=&quot;search-submit&quot; aria-label=&quot;Submit search&quot;&gt;🔍&lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Header Primary CTA --&gt;
+      &lt;div class=&quot;header-action&quot;&gt;
+        &lt;a href=&quot;#admissions&quot; class=&quot;btn btn-cta-primary&quot;&gt;ចុះឈ្មោះចូលរៀន (Apply Now)&lt;/a&gt;
+        &lt;!-- Mobile Menu Toggle Button --&gt;
+        &lt;button type=&quot;button&quot; class=&quot;mobile-nav-toggle&quot; id=&quot;mobile-nav-toggle&quot; aria-label=&quot;Toggle navigation menu&quot;&gt;
+          &lt;span class=&quot;hamburger-bar&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;hamburger-bar&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;hamburger-bar&quot;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- ==================== 2. PRIMARY NAVIGATION (NAV) ==================== --&gt;
+    &lt;nav class=&quot;primary-nav&quot; id=&quot;primary-nav&quot; aria-label=&quot;Primary Navigation&quot;&gt;
+      &lt;div class=&quot;container nav-container&quot;&gt;
+        &lt;ul class=&quot;nav-menu&quot; id=&quot;nav-menu&quot;&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;&lt;a href=&quot;#homepage&quot; class=&quot;nav-link active&quot;&gt;ទំព័រដើម (Home)&lt;/a&gt;&lt;/li&gt;
+          
+          &lt;li class=&quot;nav-item has-dropdown&quot;&gt;
+            &lt;a href=&quot;#admissions&quot; class=&quot;nav-link&quot;&gt;ការចុះឈ្មោះ (Admissions) &lt;span class=&quot;arrow-down&quot;&gt;▾&lt;/span&gt;&lt;/a&gt;
+            &lt;ul class=&quot;dropdown-menu&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;#apply-year1&quot;&gt;ថ្នាក់បរិញ្ញាបត្រ (Undergraduate)&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#apply-master&quot;&gt;ថ្នាក់បរិញ្ញាបត្រជាន់ខ្ពស់ (Postgraduate)&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#scholarships&quot;&gt;អាហារូបករណ៍ (Scholarships)&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#tuition-fees&quot;&gt;តម្លៃសិក្សា (Tuition &amp;amp; Fees)&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+
+          &lt;li class=&quot;nav-item has-dropdown&quot;&gt;
+            &lt;a href=&quot;#academics&quot; class=&quot;nav-link&quot;&gt;មហាវិទ្យាល័យ (Academics) &lt;span class=&quot;arrow-down&quot;&gt;▾&lt;/span&gt;&lt;/a&gt;
+            &lt;ul class=&quot;dropdown-menu&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;#faculty-cs&quot;&gt;វិទ្យាសាស្ត្រកុំព្យូទ័រ (Computer Science)&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#faculty-web&quot;&gt;ការរចនា និងអភិវឌ្ឍវេប (Web Design &amp;amp; Dev)&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#faculty-se&quot;&gt;វិស្វកម្មសូហ្វវែរ (Software Engineering)&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#faculty-cyber&quot;&gt;សន្តិសុខសាយប័រ (Cybersecurity)&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+
+          &lt;li class=&quot;nav-item&quot;&gt;&lt;a href=&quot;#research&quot; class=&quot;nav-link&quot;&gt;ការស្រាវជ្រាវ (Research)&lt;/a&gt;&lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;&lt;a href=&quot;#campus-life&quot; class=&quot;nav-link&quot;&gt;ជីវិតនិស្សិត (Campus Life)&lt;/a&gt;&lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;&lt;a href=&quot;#about&quot; class=&quot;nav-link&quot;&gt;អំពីវិទ្យាស្ថាន (About Us)&lt;/a&gt;&lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;&lt;a href=&quot;#contact&quot; class=&quot;nav-link&quot;&gt;ទំនាក់ទំនង (Contact)&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;!-- ==================== 3. HERO SECTION WITH VALUE PROPOSITION &amp; CTAs ==================== --&gt;
+  &lt;section class=&quot;hero-section&quot; id=&quot;hero-section&quot;&gt;
+    &lt;div class=&quot;container hero-container&quot;&gt;
+      &lt;div class=&quot;hero-content&quot;&gt;
+        &lt;span class=&quot;hero-tag&quot;&gt;🌟 បើកទទួលពាក្យឆ្នាំសិក្សា ២០២៦ - ២០២៧&lt;/span&gt;
+        &lt;h1 class=&quot;hero-title&quot;&gt;កសាងអនាគតឌីជីថលរបស់អ្នកជាមួយជំនាញបច្ចេកវិទ្យាកម្រិតខ្ពស់&lt;/h1&gt;
+        &lt;p class=&quot;hero-desc&quot;&gt;
+          វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល (TechEdu Portal) ផ្តល់ជូននូវកម្មវិធីសិក្សាស្របតាមស្តង់ដាអន្តរជាតិលើមុខវិជ្ជាការរចនាគេហទំព័រ (Web Design), 
+          វិស្វកម្មសូហ្វវែរ និងបញ្ញាសិប្បនិម្មិត ដោយផ្តោតលើការអនុវត្តជាក់ស្តែង ៨០% នៅក្នុងបន្ទប់ពិសោធន៍ទំនើប។
+        &lt;/p&gt;
+        &lt;!-- Strategic Dual Call-to-Actions (CTAs) --&gt;
+        &lt;div class=&quot;hero-actions&quot;&gt;
+          &lt;a href=&quot;#admissions&quot; class=&quot;btn btn-hero-primary&quot;&gt;
+            &lt;span&gt;🚀 ចុះឈ្មោះចូលរៀនឥឡូវនេះ (Primary CTA)&lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a href=&quot;#curriculum&quot; class=&quot;btn btn-hero-secondary&quot;&gt;
+            &lt;span&gt;📄 ទាញយកសៀវភៅកម្មវិធីសិក្សា (Secondary CTA)&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;hero-stats-strip&quot;&gt;
+          &lt;div class=&quot;h-stat&quot;&gt;&lt;span class=&quot;h-stat-num&quot;&gt;98%&lt;/span&gt; និស្សិតមានការងារធ្វើ&lt;/div&gt;
+          &lt;div class=&quot;h-stat&quot;&gt;&lt;span class=&quot;h-stat-num&quot;&gt;25+&lt;/span&gt; ដៃគូឧស្សាហកម្មជាតិ-អន្តរជាតិ&lt;/div&gt;
+          &lt;div class=&quot;h-stat&quot;&gt;&lt;span class=&quot;h-stat-num&quot;&gt;100%&lt;/span&gt; បង្រៀនដោយអនុវត្តផ្ទាល់&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;hero-media&quot;&gt;
+        &lt;div class=&quot;hero-card-preview&quot;&gt;
+          &lt;div class=&quot;preview-badge&quot;&gt;Featured Program&lt;/div&gt;
+          &lt;h3&gt;Bachelor of Web Design &amp;amp; UI/UX&lt;/h3&gt;
+          &lt;p&gt;កម្មវិធីបណ្តុះបណ្តាលបរិញ្ញាបត្រ ៤ ឆ្នាំពេញលេញ បំពាក់ដោយបច្ចេកវិទ្យា Modern Web Technologies, Design Systems &amp;amp; Frameworks។&lt;/p&gt;
+          &lt;div class=&quot;preview-footer&quot;&gt;
+            &lt;span&gt;⏱️ រយៈពេល៖ ៤ ឆ្នាំ&lt;/span&gt;
+            &lt;span&gt;📍 រាជធានីភ្នំពេញ&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;!-- ==================== BREADCRUMB NAVIGATION ==================== --&gt;
+  &lt;nav class=&quot;breadcrumb-bar&quot; aria-label=&quot;Breadcrumb Navigation&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;ol class=&quot;breadcrumb-list&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#home&quot;&gt;ទំព័រដើម&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#academics&quot;&gt;មហាវិទ្យាល័យ&lt;/a&gt;&lt;/li&gt;
+        &lt;li aria-current=&quot;page&quot;&gt;មហាវិទ្យាល័យវិទ្យាសាស្ត្រកុំព្យូទ័រ និងការរចនាគេហទំព័រ&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;!-- ==================== 4. MAIN CONTENT &amp; 5. SIDEBAR LAYOUT ==================== --&gt;
+  &lt;div class=&quot;container layout-wrapper&quot;&gt;
+    &lt;!-- MAIN CONTENT (&lt;main&gt;) --&gt;
+    &lt;main class=&quot;main-content-area&quot; id=&quot;main-content-area&quot;&gt;
+
+      &lt;!-- Section: Featured Faculties --&gt;
+      &lt;section class=&quot;content-section&quot; id=&quot;faculties-section&quot;&gt;
+        &lt;div class=&quot;section-title-wrap&quot;&gt;
+          &lt;span class=&quot;sub-label&quot;&gt;កម្មវិធីសិក្សាឆ្នើម&lt;/span&gt;
+          &lt;h2 class=&quot;section-title&quot;&gt;កម្មវិធីបរិញ្ញាបត្រជំនាញបច្ចេកវិទ្យា (Undergraduate Programs)&lt;/h2&gt;
+          &lt;p class=&quot;section-subtitle&quot;&gt;ជ្រើសរើសជំនាញដែលស័ក្តិសមជាមួយក្តីស្រមៃ និងទេពកោសល្យរបស់អ្នក៖&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;cards-grid&quot;&gt;
+          &lt;!-- Card 1 --&gt;
+          &lt;article class=&quot;academic-card&quot;&gt;
+            &lt;div class=&quot;card-icon&quot;&gt;🎨&lt;/div&gt;
+            &lt;h3 class=&quot;card-title&quot;&gt;ការរចនាគេហទំព័រ និង UI/UX&lt;/h3&gt;
+            &lt;p class=&quot;card-desc&quot;&gt;សិក្សាពីស្ថាបត្យកម្មព័ត៌មាន (IA), Wireframing, Figma Prototyping, Semantic HTML5, CSS3 Grid/Flexbox និង Modern Frontend Interactions។&lt;/p&gt;
+            &lt;div class=&quot;card-meta&quot;&gt;
+              &lt;span&gt;បរិញ្ញាបត្រ ៤ ឆ្នាំ&lt;/span&gt;
+              &lt;a href=&quot;#apply&quot; class=&quot;card-cta&quot;&gt;លម្អិត &amp;amp; ចុះឈ្មោះ &amp;rarr;&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
+
+          &lt;!-- Card 2 --&gt;
+          &lt;article class=&quot;academic-card&quot;&gt;
+            &lt;div class=&quot;card-icon&quot;&gt;💻&lt;/div&gt;
+            &lt;h3 class=&quot;card-title&quot;&gt;វិទ្យាសាស្ត្រកុំព្យូទ័រ (Computer Science)&lt;/h3&gt;
+            &lt;p class=&quot;card-desc&quot;&gt;ផ្តោតលើ Algorithms, Data Structures, Software Architecture, Database Management និង Cloud Computing Systems។&lt;/p&gt;
+            &lt;div class=&quot;card-meta&quot;&gt;
+              &lt;span&gt;បរិញ្ញាបត្រ ៤ ឆ្នាំ&lt;/span&gt;
+              &lt;a href=&quot;#apply&quot; class=&quot;card-cta&quot;&gt;លម្អិត &amp;amp; ចុះឈ្មោះ &amp;rarr;&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
+
+          &lt;!-- Card 3 --&gt;
+          &lt;article class=&quot;academic-card&quot;&gt;
+            &lt;div class=&quot;card-icon&quot;&gt;🔒&lt;/div&gt;
+            &lt;h3 class=&quot;card-title&quot;&gt;សន្តិសុខសាយប័រ (Cybersecurity)&lt;/h3&gt;
+            &lt;p class=&quot;card-desc&quot;&gt;សិក្សាពីការការពារបណ្តាញ Network Security, Web Application Pentesting, Cryptography និងការការពារទិន្នន័យឌីជីថល។&lt;/p&gt;
+            &lt;div class=&quot;card-meta&quot;&gt;
+              &lt;span&gt;បរិញ្ញាបត្រ ៤ ឆ្នាំ&lt;/span&gt;
+              &lt;a href=&quot;#apply&quot; class=&quot;card-cta&quot;&gt;លម្អិត &amp;amp; ចុះឈ្មោះ &amp;rarr;&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;!-- Section: Inverted Pyramid Content Demonstration --&gt;
+      &lt;section class=&quot;content-section&quot; id=&quot;content-structure-demo&quot;&gt;
+        &lt;div class=&quot;section-title-wrap&quot;&gt;
+          &lt;span class=&quot;sub-label&quot;&gt;ទ្រឹស្តីខ្លឹមសារ ២.១២&lt;/span&gt;
+          &lt;h2 class=&quot;section-title&quot;&gt;គំរូពីរ៉ាមីតបញ្ច្រាសនៃខ្លឹមសារ (Inverted Pyramid Model)&lt;/h2&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;content-box&quot;&gt;
+          &lt;div class=&quot;pyramid-level level-lead&quot;&gt;
+            &lt;h4&gt;១. ព័ត៌មានស្នូលសំខាន់បំផុត (The Lead / Most Critical Info)&lt;/h4&gt;
+            &lt;p&gt;&lt;strong&gt;តើនរណា? អ្វី? ទីណា? ពេលណា? និងហេតុអ្វី?&lt;/strong&gt; — វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល (TechEdu Portal) ចាប់ផ្តើមទទួលពាក្យសុំអាហារូបករណ៍ ១០០% សម្រាប់សិស្សទូទាំងប្រទេសចាប់ពីថ្ងៃទី ០១ ខែវិច្ឆិកា ឆ្នាំ ២០២៦ នេះតទៅ។&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;pyramid-level level-body&quot;&gt;
+            &lt;h4&gt;២. ព័ត៌មានលម្អិតគាំទ្រ (Important Body Details)&lt;/h4&gt;
+            &lt;p&gt;លក្ខខណ្ឌនៃការជ្រើសរើសរួមមាន៖ សិស្សដែលបានប្រឡងជាប់សញ្ញាបត្រមធ្យមសិក្សាទុតិយភូមិ (បាក់ឌុប) និទ្ទេស A, B, C ឬឆ្លងកាត់ការប្រឡងវាស់ស្ទង់សមត្ថភាពផ្នែកតក្កវិជ្ជា និងភាសាអង់គ្លេស។&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;pyramid-level level-tail&quot;&gt;
+            &lt;h4&gt;៣. ព័ត៌មានបន្ថែម និងប្រវត្តិទូទៅ (Background &amp;amp; General Info)&lt;/h4&gt;
+            &lt;p&gt;ព័ត៌មានអំពីប្រវត្តិនៃការបង្កើតវិទ្យាស្ថាន កិច្ចសហប្រតិបត្តិការជាមួយដៃគូអន្តរជាតិ និងទីតាំងអន្តេវាសិកដ្ឋាននិស្សិត។&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+    &lt;/main&gt;
+
+    &lt;!-- SIDEBAR (&lt;aside&gt;) --&gt;
+    &lt;aside class=&quot;site-sidebar&quot; id=&quot;site-sidebar&quot; aria-label=&quot;Secondary Sidebar&quot;&gt;
+      &lt;!-- Widget 1: Quick Action CTA Box --&gt;
+      &lt;div class=&quot;sidebar-widget widget-cta&quot;&gt;
+        &lt;h3 class=&quot;widget-title&quot;&gt;📢 ការចុះឈ្មោះរហ័ស&lt;/h3&gt;
+        &lt;p&gt;កុំឱ្យឱកាសអាហារូបករណ៍កន្លងផុតទៅ! បំពេញទម្រង់សុំប្រឹក្សាការសិក្សាដោយឥតគិតថ្លៃឥឡូវនេះ៖&lt;/p&gt;
+        &lt;a href=&quot;#consultation&quot; class=&quot;btn btn-widget-cta&quot;&gt;ស្នើសុំការប្រឹក្សា (Free Advice)&lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Widget 2: Academic Calendar &amp; Events --&gt;
+      &lt;div class=&quot;sidebar-widget&quot;&gt;
+        &lt;h3 class=&quot;widget-title&quot;&gt;📅 កាលវិភាគព្រឹត្តិការណ៍&lt;/h3&gt;
+        &lt;ul class=&quot;events-list&quot;&gt;
+          &lt;li class=&quot;event-item&quot;&gt;
+            &lt;span class=&quot;event-date&quot;&gt;15 វិច្ឆិកា&lt;/span&gt;
+            &lt;div class=&quot;event-info&quot;&gt;
+              &lt;strong&gt;ពិព័រណ៍បច្ចេកវិទ្យា Open House&lt;/strong&gt;
+              &lt;small&gt;សាលសន្និសីទធំ | ម៉ោង 8:00 AM&lt;/small&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;event-item&quot;&gt;
+            &lt;span class=&quot;event-date&quot;&gt;01 ធ្នូ&lt;/span&gt;
+            &lt;div class=&quot;event-info&quot;&gt;
+              &lt;strong&gt;ការប្រឡងវាស់ស្ទង់សមត្ថភាព&lt;/strong&gt;
+              &lt;small&gt;អគារ A បន្ទប់ Lab 3&lt;/small&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;event-item&quot;&gt;
+            &lt;span class=&quot;event-date&quot;&gt;10 មករា&lt;/span&gt;
+            &lt;div class=&quot;event-info&quot;&gt;
+              &lt;strong&gt;ពិធីបើកបវេសនកាលថ្មី&lt;/strong&gt;
+              &lt;small&gt;បរិវេណវិទ្យាស្ថាន&lt;/small&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Widget 3: Table of Contents / Quick Links --&gt;
+      &lt;div class=&quot;sidebar-widget&quot;&gt;
+        &lt;h3 class=&quot;widget-title&quot;&gt;🔗 តំណភ្ជាប់សំខាន់ៗ&lt;/h3&gt;
+        &lt;ul class=&quot;quick-links&quot;&gt;
+          &lt;li&gt;&lt;a href=&quot;#downloads&quot;&gt;📥 ទាញយកពាក្យសុំចូលរៀន (.PDF)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#student-handbook&quot;&gt;📖 សៀវភៅណែនាំនិស្សិតឆ្នាំ ២០២៦&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#faq&quot;&gt;❓ សំណួរដែលសួរញឹកញាប់ (FAQ)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#map&quot;&gt;🗺️ ផែនទីបរិវេណវិទ្យាស្ថាន&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Widget 4: Newsletter Subscription --&gt;
+      &lt;div class=&quot;sidebar-widget widget-newsletter&quot;&gt;
+        &lt;h3 class=&quot;widget-title&quot;&gt;✉️ ព្រឹត្តិបត្រព័ត៌មាន&lt;/h3&gt;
+        &lt;p&gt;ជាវព័ត៌មានអាហារូបករណ៍ និងព្រឹត្តិការណ៍ថ្មីៗមុនគេ៖&lt;/p&gt;
+        &lt;form class=&quot;newsletter-form&quot; onsubmit=&quot;event.preventDefault(); alert(&#x27;អរគុណសម្រាប់ការជាវព្រឹត្តិបត្រព័ត៌មាន!&#x27;);&quot;&gt;
+          &lt;input type=&quot;email&quot; placeholder=&quot;បញ្ចូលអ៊ីមែលរបស់អ្នក...&quot; required&gt;
+          &lt;button type=&quot;submit&quot; class=&quot;btn btn-secondary&quot;&gt;ជាវឥឡូវនេះ&lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/aside&gt;
+  &lt;/div&gt;
+
+  &lt;!-- ==================== 6. MEGA FOOTER (&lt;footer&gt;) ==================== --&gt;
+  &lt;footer class=&quot;site-footer&quot; id=&quot;site-footer&quot;&gt;
+    &lt;div class=&quot;container footer-grid&quot;&gt;
+      &lt;!-- Footer Col 1: Academy Identity --&gt;
+      &lt;div class=&quot;footer-col col-brand&quot;&gt;
+        &lt;div class=&quot;footer-logo&quot;&gt;🏛️ វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល (TechEdu Portal)&lt;/div&gt;
+        &lt;p class=&quot;footer-about&quot;&gt;
+          គ្រឹះស្ថានឧត្តមសិក្សាសាធារណៈឈានមុខគេក្នុងប្រទេសកម្ពុជា ក្នុងការបណ្តុះបណ្តាលធនធានមនុស្សជំនាញបច្ចេកវិទ្យា ឌីជីថល នវានុវត្តន៍ និងវិស្វកម្មសូហ្វវែរ។
+        &lt;/p&gt;
+        &lt;div class=&quot;social-links&quot;&gt;
+          &lt;a href=&quot;#fb&quot; aria-label=&quot;Facebook&quot;&gt;🔵 FB&lt;/a&gt;
+          &lt;a href=&quot;#tg&quot; aria-label=&quot;Telegram&quot;&gt;✈️ TG&lt;/a&gt;
+          &lt;a href=&quot;#yt&quot; aria-label=&quot;YouTube&quot;&gt;🔴 YT&lt;/a&gt;
+          &lt;a href=&quot;#in&quot; aria-label=&quot;LinkedIn&quot;&gt;💼 IN&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Footer Col 2: Mini Sitemap (Admissions) --&gt;
+      &lt;div class=&quot;footer-col&quot;&gt;
+        &lt;h4 class=&quot;footer-heading&quot;&gt;ការចុះឈ្មោះសិក្សា&lt;/h4&gt;
+        &lt;ul class=&quot;footer-links&quot;&gt;
+          &lt;li&gt;&lt;a href=&quot;#undergrad&quot;&gt;ថ្នាក់បរិញ្ញាបត្រ&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#postgrad&quot;&gt;ថ្នាក់បរិញ្ញាបត្រជាន់ខ្ពស់&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#scholarships&quot;&gt;គោលការណ៍អាហារូបករណ៍&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#dormitory&quot;&gt;អន្តេវាសិកដ្ឋាននិស្សិត&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#transfers&quot;&gt;ការផ្ទេរការសិក្សា&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Footer Col 3: Mini Sitemap (Academics) --&gt;
+      &lt;div class=&quot;footer-col&quot;&gt;
+        &lt;h4 class=&quot;footer-heading&quot;&gt;មហាវិទ្យាល័យ&lt;/h4&gt;
+        &lt;ul class=&quot;footer-links&quot;&gt;
+          &lt;li&gt;&lt;a href=&quot;#faculty-cs&quot;&gt;វិទ្យាសាស្ត្រកុំព្យូទ័រ&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#faculty-web&quot;&gt;ការរចនាគេហទំព័រ &amp;amp; UI/UX&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#faculty-se&quot;&gt;វិស្វកម្មសូហ្វវែរ&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#faculty-ds&quot;&gt;វិទ្យាសាស្ត្រទិន្នន័យ &amp;amp; AI&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#research-lab&quot;&gt;មជ្ឈមណ្ឌលស្រាវជ្រាវ R&amp;amp;D&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Footer Col 4: Contact &amp; Legal --&gt;
+      &lt;div class=&quot;footer-col&quot;&gt;
+        &lt;h4 class=&quot;footer-heading&quot;&gt;អាសយដ្ឋាន &amp;amp; ទំនាក់ទំនង&lt;/h4&gt;
+        &lt;address class=&quot;footer-address&quot;&gt;
+          មហាវិថីសហព័ន្ធរុស្ស៊ី សង្កាត់ទឹកល្អក់១ ខណ្ឌទួលគោក រាជធានីភ្នំពេញ&lt;br&gt;
+          ទូរស័ព្ទ៖ (+855) 23 888 999&lt;br&gt;
+          អ៊ីមែល៖ info@cambodia-tech.edu.kh&lt;br&gt;
+          ម៉ោងធ្វើការ៖ ច័ន្ទ - សុក្រ (7:30 AM - 5:30 PM)
+        &lt;/address&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Bottom Copyright &amp; Compliance Bar --&gt;
+    &lt;div class=&quot;footer-bottom&quot;&gt;
+      &lt;div class=&quot;container footer-bottom-container&quot;&gt;
+        &lt;p class=&quot;copyright-text&quot;&gt;
+          &amp;copy; 2026 វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល (TechEdu Portal) (National Academy of Digital Technology). រក្សាសិទ្ធិគ្រប់យ៉ាង។
+        &lt;/p&gt;
+        &lt;div class=&quot;legal-links&quot;&gt;
+          &lt;a href=&quot;#privacy&quot;&gt;គោលការណ៍ឯកជនភាព (Privacy Policy)&lt;/a&gt;
+          &lt;a href=&quot;#terms&quot;&gt;លក្ខខណ្ឌប្រើប្រាស់ (Terms of Service)&lt;/a&gt;
+          &lt;a href=&quot;#sitemap&quot;&gt;ផែនទីគេហទំព័រ (Sitemap)&lt;/a&gt;
+          &lt;a href=&quot;#accessibility&quot;&gt;ភាពងាយស្រួលប្រើប្រាស់ (Accessibility)&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+
+  &lt;!-- ==================== MODAL 1: INTERACTIVE SITEMAP EXPLORER ==================== --&gt;
+  &lt;div class=&quot;modal-overlay&quot; id=&quot;sitemap-modal&quot; aria-hidden=&quot;true&quot;&gt;
+    &lt;div class=&quot;modal-dialog modal-lg&quot;&gt;
+      &lt;div class=&quot;modal-header&quot;&gt;
+        &lt;h3 class=&quot;modal-title&quot;&gt;🗺️ ផែនទីគេហទំព័រវិទ្យាស្ថាន (Academy Website Sitemap - Level 1 to 3)&lt;/h3&gt;
+        &lt;button type=&quot;button&quot; class=&quot;modal-close&quot; id=&quot;btn-close-sitemap&quot;&gt;&amp;times;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;modal-body&quot;&gt;
+        &lt;p class=&quot;modal-desc&quot;&gt;
+          នេះជារចនាសម្ព័ន្ធព័ត៌មាន (Information Architecture) តាមឋានានុក្រម ៣ កម្រិត (Level 1 Root, Level 2 Sections, Level 3 Child Pages)៖
+        &lt;/p&gt;
+        
+        &lt;div class=&quot;sitemap-tree&quot;&gt;
+          &lt;!-- Level 1 Root --&gt;
+          &lt;div class=&quot;tree-root&quot;&gt;
+            &lt;span class=&quot;tree-node root-node&quot;&gt;🏠 ទំព័រដើម (Homepage) &lt;code&gt;/&lt;/code&gt;&lt;/span&gt;
+            
+            &lt;div class=&quot;tree-branches&quot;&gt;
+              &lt;!-- Branch 1: Admissions --&gt;
+              &lt;div class=&quot;tree-branch&quot;&gt;
+                &lt;span class=&quot;tree-node branch-node&quot;&gt;📂 1. ការចុះឈ្មោះ (Admissions) &lt;code&gt;/admissions&lt;/code&gt;&lt;/span&gt;
+                &lt;ul class=&quot;tree-leaves&quot;&gt;
+                  &lt;li&gt;📄 បរិញ្ញាបត្រ (Undergraduate) &lt;code&gt;/admissions/undergraduate&lt;/code&gt;&lt;/li&gt;
+                  &lt;li&gt;📄 បរិញ្ញាបត្រជាន់ខ្ពស់ (Postgraduate) &lt;code&gt;/admissions/postgraduate&lt;/code&gt;&lt;/li&gt;
+                  &lt;li&gt;📄 អាហារូបករណ៍ (Scholarships) &lt;code&gt;/admissions/scholarships&lt;/code&gt;&lt;/li&gt;
+                  &lt;li&gt;📄 តម្លៃសិក្សា (Tuition) &lt;code&gt;/admissions/tuition&lt;/code&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Branch 2: Academics --&gt;
+              &lt;div class=&quot;tree-branch&quot;&gt;
+                &lt;span class=&quot;tree-node branch-node&quot;&gt;📂 2. មហាវិទ្យាល័យ (Academics) &lt;code&gt;/academics&lt;/code&gt;&lt;/span&gt;
+                &lt;ul class=&quot;tree-leaves&quot;&gt;
+                  &lt;li&gt;📄 វិទ្យាសាស្ត្រកុំព្យូទ័រ (CS) &lt;code&gt;/academics/computer-science&lt;/code&gt;&lt;/li&gt;
+                  &lt;li&gt;📄 ការរចនាគេហទំព័រ (Web Design) &lt;code&gt;/academics/web-design&lt;/code&gt;&lt;/li&gt;
+                  &lt;li&gt;📄 វិស្វកម្មសូហ្វវែរ (SE) &lt;code&gt;/academics/software-engineering&lt;/code&gt;&lt;/li&gt;
+                  &lt;li&gt;📄 កាលវិភាគសិក្សា (Academic Calendar) &lt;code&gt;/academics/calendar&lt;/code&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Branch 3: Research --&gt;
+              &lt;div class=&quot;tree-branch&quot;&gt;
+                &lt;span class=&quot;tree-node branch-node&quot;&gt;📂 3. ការស្រាវជ្រាវ (Research) &lt;code&gt;/research&lt;/code&gt;&lt;/span&gt;
+                &lt;ul class=&quot;tree-leaves&quot;&gt;
+                  &lt;li&gt;📄 មន្ទីរពិសោធន៍ AI Lab &lt;code&gt;/research/ai-lab&lt;/code&gt;&lt;/li&gt;
+                  &lt;li&gt;📄 ស្នាដៃបោះពុម្ព (Publications) &lt;code&gt;/research/publications&lt;/code&gt;&lt;/li&gt;
+                  &lt;li&gt;📄 ជំនួយស្រាវជ្រាវ (Grants) &lt;code&gt;/research/grants&lt;/code&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/div&gt;
+
+              &lt;!-- Branch 4: About Us --&gt;
+              &lt;div class=&quot;tree-branch&quot;&gt;
+                &lt;span class=&quot;tree-node branch-node&quot;&gt;📂 4. អំពីវិទ្យាស្ថាន (About Us) &lt;code&gt;/about&lt;/code&gt;&lt;/span&gt;
+                &lt;ul class=&quot;tree-leaves&quot;&gt;
+                  &lt;li&gt;📄 ប្រវត្តិ និងចក្ខុវិស័យ (History &amp;amp; Vision) &lt;code&gt;/about/history&lt;/code&gt;&lt;/li&gt;
+                  &lt;li&gt;📄 គណៈគ្រប់គ្រង (Leadership Team) &lt;code&gt;/about/leadership&lt;/code&gt;&lt;/li&gt;
+                  &lt;li&gt;📄 ព័ត៌មានទាក់ទង (Contact &amp;amp; Map) &lt;code&gt;/about/contact&lt;/code&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;modal-footer&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; id=&quot;btn-close-sitemap-footer&quot;&gt;បិទផ្ទាំង (Close)&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- ==================== MODAL 2: PROJECT REQUIREMENTS SPECIFICATION ==================== --&gt;
+  &lt;div class=&quot;modal-overlay&quot; id=&quot;req-modal&quot; aria-hidden=&quot;true&quot;&gt;
+    &lt;div class=&quot;modal-dialog modal-lg&quot;&gt;
+      &lt;div class=&quot;modal-header&quot;&gt;
+        &lt;h3 class=&quot;modal-title&quot;&gt;📋 តម្រូវការគម្រោងគេហទំព័រ (Website Project Requirements - Topic 2.15)&lt;/h3&gt;
+        &lt;button type=&quot;button&quot; class=&quot;modal-close&quot; id=&quot;btn-close-req&quot;&gt;&amp;times;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;modal-body&quot;&gt;
+        &lt;h4&gt;១. តម្រូវការមុខងារ (Functional Requirements)&lt;/h4&gt;
+        &lt;ul class=&quot;modal-list&quot;&gt;
+          &lt;li&gt;&lt;strong&gt;FR-01 (Online Admission System):&lt;/strong&gt; និស្សិតអាចបំពេញទម្រង់ពាក្យសុំចុះឈ្មោះចូលរៀន និងភ្ជាប់ឯកសារសញ្ញាបត្រជា PDF បាន។&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;FR-02 (Site Search):&lt;/strong&gt; មានប្រអប់ស្វែងរកពាក្យគន្លឹះក្នុងទំព័រ (Search Engine) ស្វែងរកវគ្គសិក្សា និងឈ្មោះសាស្រ្តាចារ្យ។&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;FR-03 (Dynamic Events Calendar):&lt;/strong&gt; បង្ហាញកាលវិភាគប្រឡង និងព្រឹត្តិការណ៍នានា ជាមួយមុខងារច្រោះតាមកាលបរិច្ឆេទ។&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;FR-04 (Multi-Language Support):&lt;/strong&gt; គាំទ្រការប្តូរភាសាខ្មែរ និងអង់គ្លេសដោយរលូនលើគ្រប់ទំព័រ។&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;h4&gt;២. តម្រូវការមិនមែនមុខងារ (Non-Functional Requirements)&lt;/h4&gt;
+        &lt;ul class=&quot;modal-list&quot;&gt;
+          &lt;li&gt;&lt;strong&gt;NFR-01 (Performance):&lt;/strong&gt; ទំព័រត្រូវផ្ទុកចប់ក្នុងរយៈពេលតិចជាង ២.០ វិនាទី (First Contentful Paint &amp;lt; 1.0s)។&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;NFR-02 (Mobile Responsiveness):&lt;/strong&gt; គេហទំព័រត្រូវបង្ហាញប្លង់សមរម្យឥតខ្ចោះលើ Mobile (375px+), Tablet (768px+) និង Desktop (1200px+)។&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;NFR-03 (Accessibility - WCAG 2.1 AA):&lt;/strong&gt; កម្រិតពណ៌ផ្ទុយ (Color Contrast) អប្បបរមា 4.5:1 និងគាំទ្រការបញ្ជាតាម Keyboard Navigation ពេញលេញ។&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;NFR-04 (Security):&lt;/strong&gt; ដំណើរការលើ HTTPS ពិធីការ TLS 1.3 ជាមួយការការពារទម្រង់បែបបទប្រឆាំង CSRF &amp;amp; XSS។&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;modal-footer&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; id=&quot;btn-close-req-footer&quot;&gt;បិទផ្ទាំង (Close)&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- JavaScript --&gt;
+  &lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Tab CSS -->
+      <div id="tab-css" class="tab-pane">
+        <div class="code-block-container">
+          <div class="code-header-bar">
+            <span class="code-file-name">🎨 css/style.css (Complete Working Code)</span>
+            <button class="btn-copy" onclick="copyCode(this, 'full-code-css')">📋 ចម្លង style.css ទាំងមូល</button>
+          </div>
+          <pre class="code-view" id="full-code-css"><code>/* ============================================================
+   PROJECT: University Portal &amp; Anatomy Explorer (Chapter 02)
+   AUTHOR: Web Design Curriculum (Bachelor Year 3)
+   PURPOSE: Interactive demonstration of Website Structure &amp; Design Process
+   ============================================================ */
+
+:root {
+  --primary-navy: #0f172a;
+  --primary-blue: #0284c7;
+  --primary-blue-hover: #0369a1;
+  --accent-gold: #f59e0b;
+  --accent-gold-hover: #d97706;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --bg-page: #f8fafc;
+  --bg-white: #ffffff;
+  --border-color: #e2e8f0;
+  --font-body: &#x27;Khmer OS Siemreap&#x27;, &#x27;Kantumruy Pro&#x27;, system-ui, -apple-system, sans-serif;
+  --font-title: &#x27;Khmer OS Muol Light-Kh Auto&#x27;, &#x27;Khmer OS Muol Light&#x27;, &#x27;Moul&#x27;, serif;
+  --font-code: &#x27;Consolas&#x27;, &#x27;Fira Code&#x27;, &#x27;Courier New&#x27;, monospace;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.05);
+  --transition: all 0.25s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-dark);
+  background-color: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: normal;
+  color: var(--primary-navy);
+  line-height: 1.5;
+}
+
+p {
+  margin-bottom: 12px;
+}
+
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-blue-hover);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+code {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ==================== BUTTONS ==================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn-cta-primary {
+  background-color: var(--accent-gold);
+  color: #0f172a;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+}
+
+.btn-cta-primary:hover {
+  background-color: var(--accent-gold-hover);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(245, 158, 11, 0.4);
+}
+
+.btn-hero-primary {
+  background-color: var(--accent-gold);
+  color: #0f172a;
+  font-weight: 700;
+  padding: 12px 24px;
+  font-size: 15px;
+}
+
+.btn-hero-primary:hover {
+  background-color: var(--accent-gold-hover);
+  color: #ffffff;
+}
+
+.btn-hero-secondary {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 24px;
+  font-size: 15px;
+  backdrop-filter: blur(4px);
+}
+
+.btn-hero-secondary:hover {
+  background-color: #ffffff;
+  color: var(--primary-navy);
+}
+
+.btn-secondary {
+  background-color: #f1f5f9;
+  color: var(--primary-navy);
+  border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+}
+
+/* ==================== 1. TOP UTILITY BAR ==================== */
+.utility-bar {
+  background-color: #0f172a;
+  color: #cbd5e1;
+  font-size: 12.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 0;
+}
+
+.utility-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.utility-left {
+  display: flex;
+  gap: 16px;
+}
+
+.utility-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.utility-link {
+  color: #cbd5e1;
+  text-decoration: none;
+}
+
+.utility-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.lang-switch {
+  color: #94a3b8;
+  padding-left: 8px;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.lang-switch a {
+  color: #cbd5e1;
+}
+
+/* ==================== MAIN HEADER BAR ==================== */
+.site-header {
+  background-color: #ffffff;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  transition: var(--transition);
+}
+
+.main-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  gap: 20px;
+}
+
+.brand-group .brand-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.brand-logo-icon {
+  font-size: 36px;
+  line-height: 1;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-title);
+  font-size: 16px;
+  color: var(--primary-navy);
+}
+
+.brand-tagline {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+
+.header-search {
+  flex-grow: 1;
+  max-width: 380px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  background-color: #f1f5f9;
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  padding: 4px 12px;
+  transition: var(--transition);
+}
+
+.search-form:focus-within {
+  border-color: var(--primary-blue);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.search-form input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 4px 6px;
+}
+
+.search-submit {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.header-action {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hamburger-bar {
+  width: 22px;
+  height: 2px;
+  background-color: var(--primary-navy);
+  transition: var(--transition);
+}
+
+/* ==================== 2. PRIMARY NAVIGATION ==================== */
+.primary-nav {
+  background-color: var(--primary-navy);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 12px 16px;
+  color: #e2e8f0;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.nav-link:hover, .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.arrow-down {
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  min-width: 240px;
+  box-shadow: var(--shadow-lg);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  list-style: none;
+  border: 1px solid var(--border-color);
+  z-index: 1000;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 18px;
+  color: var(--text-dark);
+  font-size: 13px;
+  text-decoration: none;
+  border-bottom: 1px solid #f1f5f9;
+  transition: var(--transition);
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f8fafc;
+  color: var(--primary-blue);
+  padding-left: 22px;
+}
+
+.nav-item.has-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* ==================== 3. HERO SECTION ==================== */
+.hero-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  color: #ffffff;
+  padding: 60px 0;
+  position: relative;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-tag {
+  display: inline-block;
+  background-color: rgba(245, 158, 11, 0.2);
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.hero-desc {
+  font-size: 15px;
+  color: #e2e8f0;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.hero-stats-strip {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.h-stat-num {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin-right: 6px;
+}
+
+/* Hero Media Card */
+.hero-card-preview {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: var(--shadow-lg);
+}
+
+.preview-badge {
+  display: inline-block;
+  background-color: var(--primary-blue);
+  color: #fff;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.hero-card-preview h3 {
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.hero-card-preview p {
+  font-size: 13.5px;
+  color: #e2e8f0;
+  line-height: 1.6;
+}
+
+.preview-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ==================== BREADCRUMB BAR ==================== */
+.breadcrumb-bar {
+  background-color: #f1f5f9;
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px 0;
+  font-size: 12.5px;
+}
+
+.breadcrumb-list {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-list li + li::before {
+  content: &quot;›&quot;;
+  color: #94a3b8;
+  margin-right: 8px;
+}
+
+.breadcrumb-list li a {
+  color: var(--text-muted);
+}
+
+.breadcrumb-list li a:hover {
+  color: var(--primary-blue);
+}
+
+.breadcrumb-list li[aria-current=&quot;page&quot;] {
+  color: var(--primary-navy);
+  font-weight: 600;
+}
+
+/* ==================== 4. MAIN CONTENT &amp; 5. SIDEBAR LAYOUT ==================== */
+.layout-wrapper {
+  display: grid;
+  grid-template-columns: 2.8fr 1.2fr;
+  gap: 32px;
+  margin-top: 36px;
+  margin-bottom: 50px;
+}
+
+/* Content Sections */
+.content-section {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.section-title-wrap {
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 14px;
+}
+
+.sub-label {
+  font-size: 12px;
+  color: var(--primary-blue);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.section-title {
+  font-size: 18px;
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
+
+.section-subtitle {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* Academic Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.academic-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.academic-card:hover {
+  border-color: var(--primary-blue);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.card-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+  font-size: 12px;
+}
+
+.card-cta {
+  font-weight: 600;
+  color: var(--primary-blue);
+}
+
+/* Inverted Pyramid Demo */
+.content-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pyramid-level {
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--primary-blue);
+}
+
+.level-lead {
+  background-color: #eff6ff;
+  border-left-color: #0284c7;
+}
+
+.level-body {
+  background-color: #f8fafc;
+  border-left-color: #64748b;
+}
+
+.level-tail {
+  background-color: #f1f5f9;
+  border-left-color: #94a3b8;
+}
+
+.pyramid-level h4 {
+  font-size: 13.5px;
+  margin-bottom: 6px;
+  color: var(--primary-navy);
+}
+
+.pyramid-level p {
+  font-size: 13px;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* ==================== 5. SIDEBAR WIDGETS ==================== */
+.site-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sidebar-widget {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+}
+
+.widget-title {
+  font-size: 14.5px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.widget-cta {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-color: #fcd34d;
+}
+
+.widget-cta .widget-title {
+  border-bottom-color: rgba(0,0,0,0.08);
+}
+
+.widget-cta p {
+  font-size: 13px;
+  color: #78350f;
+}
+
+.btn-widget-cta {
+  width: 100%;
+  background-color: #d97706;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.btn-widget-cta:hover {
+  background-color: #b45309;
+}
+
+/* Events List */
+.events-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.event-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.event-date {
+  background-color: #e0f2fe;
+  color: var(--primary-blue);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.event-info strong {
+  display: block;
+  font-size: 13px;
+  color: var(--primary-navy);
+}
+
+.event-info small {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+/* Quick Links */
+.quick-links {
+  list-style: none;
+}
+
+.quick-links li {
+  margin-bottom: 8px;
+}
+
+.quick-links a {
+  font-size: 13px;
+  color: var(--text-dark);
+}
+
+.quick-links a:hover {
+  color: var(--primary-blue);
+  padding-left: 4px;
+}
+
+/* Newsletter Form */
+.widget-newsletter p {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.newsletter-form input {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 12.5px;
+}
+
+.newsletter-form .btn {
+  width: 100%;
+  font-size: 13px;
+}
+
+/* ==================== 6. MEGA FOOTER ==================== */
+.site-footer {
+  background-color: var(--primary-navy);
+  color: #cbd5e1;
+  padding-top: 50px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 36px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo {
+  font-family: var(--font-title);
+  font-size: 15px;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.footer-about {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.social-links a {
+  background: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.social-links a:hover {
+  background: var(--primary-blue);
+  color: #ffffff;
+}
+
+.footer-heading {
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  padding-left: 4px;
+}
+
+.footer-address {
+  font-style: normal;
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.8;
+}
+
+.footer-bottom {
+  background-color: #020617;
+  padding: 18px 0;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.footer-bottom-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.legal-links {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.legal-links a {
+  color: #64748b;
+}
+
+.legal-links a:hover {
+  color: #cbd5e1;
+}
+
+/* ==================== ANATOMY HIGHLIGHTER HUD ==================== */
+.anatomy-hud {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  background-color: #ffffff;
+  border: 2px solid var(--primary-blue);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  z-index: 9999;
+  font-size: 13px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.hud-header {
+  background-color: var(--primary-navy);
+  color: #ffffff;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hud-badge {
+  background-color: var(--accent-gold);
+  color: #0f172a;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.hud-title {
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.hud-btn-minimize {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.hud-body {
+  padding: 14px;
+  background-color: #ffffff;
+}
+
+.hud-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.hud-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.btn-highlight {
+  padding: 6px 8px;
+  font-size: 11.5px;
+  font-family: inherit;
+  background-color: #f1f5f9;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+}
+
+.btn-highlight:hover, .btn-highlight.active {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  border-color: var(--primary-blue);
+}
+
+.btn-reset-hud {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
+  grid-column: span 2;
+  text-align: center;
+}
+
+.btn-reset-hud:hover {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.hud-view-modes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 10px;
+}
+
+.btn-hud-action {
+  background-color: #eff6ff;
+  color: var(--primary-blue);
+  border: 1px solid #bfdbfe;
+  padding: 7px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: inherit;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-hud-action:hover {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+}
+
+/* LIVE HIGHLIGHT OUTLINES */
+.anatomy-highlighted {
+  position: relative !important;
+  outline: 4px dashed #ef4444 !important;
+  outline-offset: 4px !important;
+  transition: all 0.2s ease;
+}
+
+.anatomy-highlight-label {
+  position: absolute;
+  top: -14px;
+  left: 20px;
+  background-color: #ef4444;
+  color: #ffffff;
+  font-family: var(--font-code);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  z-index: 1001;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==================== MODALS ==================== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-dialog {
+  background-color: #ffffff;
+  border-radius: var(--radius-md);
+  max-width: 800px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 16px 20px;
+  background-color: var(--primary-navy);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.modal-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.modal-footer {
+  padding: 12px 20px;
+  background-color: #f8fafc;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-list {
+  padding-left: 20px;
+  font-size: 13.5px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+/* Sitemap Tree Graphic */
+.sitemap-tree {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  font-size: 13px;
+}
+
+.tree-root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tree-node {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.root-node {
+  background-color: #0f172a;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.tree-branches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  padding-left: 10px;
+}
+
+.tree-branch {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.branch-node {
+  background-color: #e0f2fe;
+  color: var(--primary-blue);
+  margin-bottom: 8px;
+}
+
+.tree-leaves {
+  list-style: none;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 992px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .layout-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .utility-bar {
+    display: none;
+  }
+
+  .mobile-nav-toggle {
+    display: flex;
+  }
+
+  .primary-nav {
+    display: none;
+  }
+
+  .primary-nav.mobile-open {
+    display: block;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    background-color: #1e293b;
+  }
+
+  .dropdown-menu li a {
+    color: #cbd5e1;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .anatomy-hud {
+    width: 280px;
+    bottom: 10px;
+    right: 10px;
+  }
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- Tab JS -->
+      <div id="tab-js" class="tab-pane">
+        <div class="code-block-container">
+          <div class="code-header-bar">
+            <span class="code-file-name">⚡ js/app.js (Complete Working Code)</span>
+            <button class="btn-copy" onclick="copyCode(this, 'full-code-js')">📋 ចម្លង app.js ទាំងមូល</button>
+          </div>
+          <pre class="code-view" id="full-code-js"><code>/**
+ * ============================================================
+ * PROJECT: University Portal &amp; Anatomy Explorer (Chapter 02)
+ * AUTHOR: Web Design Curriculum (Bachelor Year 3)
+ * FILE: js/app.js
+ * ============================================================
+ */
+
+document.addEventListener(&#x27;DOMContentLoaded&#x27;, () =&gt; {
+  initAnatomyHighlighter();
+  initMobileNav();
+  initModals();
+});
+
+/* ============================================================
+   1. ANATOMY HIGHLIGHTER HUD LOGIC
+   ============================================================ */
+function initAnatomyHighlighter() {
+  const hudButtons = document.querySelectorAll(&#x27;.btn-highlight&#x27;);
+  const btnToggleHud = document.getElementById(&#x27;btn-toggle-hud&#x27;);
+  const hudBody = document.getElementById(&#x27;hud-body&#x27;);
+
+  const anatomyElements = {
+    header: {
+      el: document.getElementById(&#x27;site-header&#x27;),
+      label: &#x27;&lt;header&gt; Header Section (Branding, Search &amp; Global Actions)&#x27;
+    },
+    nav: {
+      el: document.getElementById(&#x27;primary-nav&#x27;),
+      label: &#x27;&lt;nav&gt; Primary Navigation Bar (Wayfinding &amp; Dropdowns)&#x27;
+    },
+    hero: {
+      el: document.getElementById(&#x27;hero-section&#x27;),
+      label: &#x27;&lt;section class=&quot;hero&quot;&gt; Value Proposition &amp; Dual CTAs&#x27;
+    },
+    main: {
+      el: document.getElementById(&#x27;main-content-area&#x27;),
+      label: &#x27;&lt;main&gt; Main Content Area (Central Information Body)&#x27;
+    },
+    sidebar: {
+      el: document.getElementById(&#x27;site-sidebar&#x27;),
+      label: &#x27;&lt;aside&gt; Sidebar (Supplementary Links, Events &amp; CTA Widget)&#x27;
+    },
+    footer: {
+      el: document.getElementById(&#x27;site-footer&#x27;),
+      label: &#x27;&lt;footer&gt; Mega Footer (Sitemap, Address, Copyright &amp; Legal)&#x27;
+    }
+  };
+
+  function clearAllHighlights() {
+    document.querySelectorAll(&#x27;.anatomy-highlighted&#x27;).forEach(el =&gt; {
+      el.classList.remove(&#x27;anatomy-highlighted&#x27;);
+      const badge = el.querySelector(&#x27;.anatomy-highlight-label&#x27;);
+      if (badge) badge.remove();
+    });
+    hudButtons.forEach(btn =&gt; btn.classList.remove(&#x27;active&#x27;));
+  }
+
+  function highlightComponent(key) {
+    clearAllHighlights();
+    const item = anatomyElements[key];
+    if (!item || !item.el) return;
+
+    item.el.classList.add(&#x27;anatomy-highlighted&#x27;);
+    
+    // Add semantic badge overlay
+    const badge = document.createElement(&#x27;div&#x27;);
+    badge.className = &#x27;anatomy-highlight-label&#x27;;
+    badge.textContent = item.label;
+    item.el.appendChild(badge);
+
+    // Smooth scroll to the highlighted component
+    item.el.scrollIntoView({ behavior: &#x27;smooth&#x27;, block: &#x27;center&#x27; });
+  }
+
+  function highlightAllComponents() {
+    clearAllHighlights();
+    Object.keys(anatomyElements).forEach(key =&gt; {
+      const item = anatomyElements[key];
+      if (item &amp;&amp; item.el) {
+        item.el.classList.add(&#x27;anatomy-highlighted&#x27;);
+        const badge = document.createElement(&#x27;div&#x27;);
+        badge.className = &#x27;anatomy-highlight-label&#x27;;
+        badge.textContent = item.label;
+        item.el.appendChild(badge);
+      }
+    });
+  }
+
+  hudButtons.forEach(btn =&gt; {
+    btn.addEventListener(&#x27;click&#x27;, () =&gt; {
+      const target = btn.getAttribute(&#x27;data-target&#x27;);
+      hudButtons.forEach(b =&gt; b.classList.remove(&#x27;active&#x27;));
+
+      if (target === &#x27;clear&#x27;) {
+        clearAllHighlights();
+      } else if (target === &#x27;all&#x27;) {
+        btn.classList.add(&#x27;active&#x27;);
+        highlightAllComponents();
+      } else {
+        btn.classList.add(&#x27;active&#x27;);
+        highlightComponent(target);
+      }
+    });
+  });
+
+  // Toggle HUD minimize
+  let isMinimized = false;
+  if (btnToggleHud &amp;&amp; hudBody) {
+    btnToggleHud.addEventListener(&#x27;click&#x27;, () =&gt; {
+      isMinimized = !isMinimized;
+      if (isMinimized) {
+        hudBody.style.display = &#x27;none&#x27;;
+        btnToggleHud.textContent = &#x27;+&#x27;;
+      } else {
+        hudBody.style.display = &#x27;block&#x27;;
+        btnToggleHud.textContent = &#x27;_&#x27;;
+      }
+    });
+  }
+}
+
+/* ============================================================
+   2. MOBILE NAVIGATION LOGIC
+   ============================================================ */
+function initMobileNav() {
+  const toggleBtn = document.getElementById(&#x27;mobile-nav-toggle&#x27;);
+  const primaryNav = document.getElementById(&#x27;primary-nav&#x27;);
+
+  if (toggleBtn &amp;&amp; primaryNav) {
+    toggleBtn.addEventListener(&#x27;click&#x27;, () =&gt; {
+      primaryNav.classList.toggle(&#x27;mobile-open&#x27;);
+    });
+  }
+}
+
+/* ============================================================
+   3. MODALS LOGIC (Sitemap &amp; Requirements)
+   ============================================================ */
+function initModals() {
+  const sitemapModal = document.getElementById(&#x27;sitemap-modal&#x27;);
+  const reqModal = document.getElementById(&#x27;req-modal&#x27;);
+
+  const btnOpenSitemap = document.getElementById(&#x27;btn-open-sitemap-modal&#x27;);
+  const btnCloseSitemap = document.getElementById(&#x27;btn-close-sitemap&#x27;);
+  const btnCloseSitemapFooter = document.getElementById(&#x27;btn-close-sitemap-footer&#x27;);
+
+  const btnOpenReq = document.getElementById(&#x27;btn-open-req-modal&#x27;);
+  const btnCloseReq = document.getElementById(&#x27;btn-close-req&#x27;);
+  const btnCloseReqFooter = document.getElementById(&#x27;btn-close-req-footer&#x27;);
+
+  function openModal(modal) {
+    if (modal) modal.classList.add(&#x27;open&#x27;);
+  }
+
+  function closeModal(modal) {
+    if (modal) modal.classList.remove(&#x27;open&#x27;);
+  }
+
+  if (btnOpenSitemap) btnOpenSitemap.addEventListener(&#x27;click&#x27;, () =&gt; openModal(sitemapModal));
+  if (btnCloseSitemap) btnCloseSitemap.addEventListener(&#x27;click&#x27;, () =&gt; closeModal(sitemapModal));
+  if (btnCloseSitemapFooter) btnCloseSitemapFooter.addEventListener(&#x27;click&#x27;, () =&gt; closeModal(sitemapModal));
+
+  if (btnOpenReq) btnOpenReq.addEventListener(&#x27;click&#x27;, () =&gt; openModal(reqModal));
+  if (btnCloseReq) btnCloseReq.addEventListener(&#x27;click&#x27;, () =&gt; closeModal(reqModal));
+  if (btnCloseReqFooter) btnCloseReqFooter.addEventListener(&#x27;click&#x27;, () =&gt; closeModal(reqModal));
+
+  // Close when clicking outside dialog
+  window.addEventListener(&#x27;click&#x27;, (e) =&gt; {
+    if (e.target === sitemapModal) closeModal(sitemapModal);
+    if (e.target === reqModal) closeModal(reqModal);
+  });
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Self-Check Quality Checklist -->
+    <h2 class="section-heading">៤. បញ្ជីផ្ទៀងផ្ទាត់គុណភាពកូដ (Self-Check Quality Checklist)</h2>
+    <div class="callout callout-tip">
+      <p><strong>មុនពេលបញ្ជូនកិច្ចការ សូមផ្ទៀងផ្ទាត់ចំណុចខាងក្រោម៖</strong></p>
+      <ul style="margin: 0.5rem 0 0 1.25rem;">
+        <li>[ ] ឯកសារ <code>index.html</code> ដំណើរការត្រឹមត្រូវជាមួយ Live Server ដោយគ្មាន Error ក្នុង Console</li>
+        <li>[ ] រចនាសម្ព័ន្ធកូដប្រើប្រាស់ Semantic Tags ត្រឹមត្រូវ (header, nav, main, section, footer)</li>
+        <li>[ ] ឆ្លងកាត់ការត្រួតពិនិត្យលើ W3C Validator (<a href="https://validator.w3.org" target="_blank" rel="noopener">validator.w3.org</a>) ដោយគ្មាន Error</li>
+        <li>[ ] ប្លង់គេហទំព័របង្ហាញសមាមាត្រត្រឹមត្រូវទាំងលើទូរស័ព្ទដៃ (Mobile View) និងកុំព្យូទ័រ (Desktop View)</li>
+        <li>[ ] រូបភាព និងតំណភ្ជាប់ទាំងអស់ដំណើរការត្រឹមត្រូវ (No Broken Links / Images)</li>
+      </ul>
+    </div>
+
+    <!-- Section 5: 100-Point Rubric -->
+    <h2 class="section-heading">៥. តារាងពិន្ទុវាយតម្លៃ ១០០ ពិន្ទុ (100-Point Evaluation Rubric)</h2>
+    <div class="table-responsive">
+      <table class="rubric-table">
+        <thead>
+          <tr>
+            <th style="width: 25%;">លក្ខណៈវិនិច្ឆ័យ (Criteria)</th>
+            <th style="width: 15%;">ទម្ងន់ពិន្ទុ</th>
+            <th style="width: 60%;">សូចនាករវាស់វែងសមត្ថភាព (Performance Indicators)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>១. រចនាសម្ព័ន្ធកូដ & HTML5 Semantics</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">២៥ ពិន្ទុ</td>
+            <td>ប្រើប្រាស់ Semantic Elements ត្រឹមត្រូវតាមស្ដង់ដារ W3C, DOCTYPE, ឋានានុក្រម Headings (H1-H6) ច្បាស់លាស់ និងរៀបចំ Indentation ស្អាតបាត។</td>
+          </tr>
+          <tr>
+            <td><strong>២. រចនាប័ទ្ម CSS & Responsive Design</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">២៥ ពិន្ទុ</td>
+            <td>ប្រើប្រាស់ CSS Variables (:root), Box Model, Flexbox/Grid បានត្រឹមត្រូវ និងមាន Media Queries គាំទ្រការបង្ហាញលើ Mobile បានយ៉ាងរលូន។</td>
+          </tr>
+          <tr>
+            <td><strong>៣. ភាពត្រឹមត្រូវនៃមុខងារអនុវត្ត</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">២៥ ពិន្ទុ</td>
+            <td>សមាសភាគស្នូលនៃមេរៀន (ការបង្កើតផែនទីគេហទំព័រ) ដំណើរការពេញលេញ គ្មាន Error និងឆ្លើយតបទៅនឹងគោលបំណងនៃមន្ទីរពិសោធន៍។</td>
+          </tr>
+          <tr>
+            <td><strong>៤. សោភ័ណភាព UI/UX & ភាពងាយស្រួល</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">១៥ ពិន្ទុ</td>
+            <td>ការជ្រើសរើសកម្រិតពណ៌ផ្ទុយត្រឹមត្រូវតាម WCAG, ការរៀបចំគម្លាត Spacing ស្មើដៃ និងទំហំអក្សរងាយស្រួលអានលើគ្រប់ឧបករណ៍។</td>
+          </tr>
+          <tr>
+            <td><strong>៥. វិន័យកូដ និងការរៀបចំឯកសារគម្រោង</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">១០ ពិន្ទុ</td>
+            <td>រៀបចំ Folder តាមស្តង់ដារវិជ្ជាជីវៈ (css, js, images), ការដាក់ឈ្មោះឯកសារជាអក្សរតូចគ្មានដកឃ្លា និងមាន Comments ពន្យល់កូដច្បាស់លាស់។</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </div>
 
+<!-- Floating Toast Notification -->
+<div id="toastNotification" class="toast-notification">
+  <span>✅</span>
+  <span id="toastMsg">បានចម្លងកូដដោយជោគជ័យ!</span>
+</div>
+
+<!-- Interactive Scripts -->
 <script>
-  let currentScale = 16;
+  // Font Size Adjuster
+  let currentFontScale = 16;
   function changeFontSize(delta) {
-    currentScale = Math.min(22, Math.max(13, currentScale + delta));
-    document.documentElement.style.setProperty('--font-scale', currentScale + 'px');
+    currentFontScale = Math.max(13, Math.min(22, currentFontScale + delta));
+    document.documentElement.style.setProperty('--font-scale', currentFontScale + 'px');
+  }
+
+  // Copy Code Functionality
+  function copyCode(btn, elementId) {
+    const codeEl = document.getElementById(elementId);
+    if (!codeEl) return;
+    
+    const textToCopy = codeEl.innerText || codeEl.textContent;
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '✅ ចម្លងរួចរាល់!';
+      btn.classList.add('copied');
+      showToast('បានចម្លងកូដដោយជោគជ័យ!');
+      
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('copied');
+      }, 2500);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+      showToast('មិនអាចចម្លងកូដបានទេ សូមសាកល្បងម្តងទៀត');
+    });
+  }
+
+  // Show Toast
+  function showToast(msg) {
+    const toast = document.getElementById('toastNotification');
+    const toastMsg = document.getElementById('toastMsg');
+    if (!toast || !toastMsg) return;
+    toastMsg.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2800);
+  }
+
+  // Tab Switching
+  function switchTab(btn, tabId) {
+    const card = btn.closest('.step-card') || document;
+    card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    card.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    
+    btn.classList.add('active');
+    const targetPane = document.getElementById(tabId);
+    if (targetPane) targetPane.classList.add('active');
   }
 </script>
 

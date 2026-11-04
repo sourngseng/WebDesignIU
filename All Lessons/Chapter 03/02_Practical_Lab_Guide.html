@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍: ការបង្កើតលំហូរអ្នកប្រើប្រាស់ E-Commerce (Practical Lab Guide)</title>
+<title>កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍ ជំពូកទី 03៖ ការបង្កើតលំហូរអ្នកប្រើប្រាស់សម្រាប់គេហទំព័រ E-Commerce (Create a User Flow for an E-Commerce Website)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Siemreap&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   /* ==========================================================================
-     Master Responsive & Reader-Friendly Styling
+     Master Responsive & Modern Lab Practice Styling
      ========================================================================== */
   *, *::before, *::after {
     box-sizing: border-box;
@@ -22,13 +22,15 @@
     --font-code: 'Fira Code', Consolas, Monaco, monospace;
     --color-primary: #0F172A;
     --color-navy: #1E3A8A;
-    --color-blue: #2563EB;
+    --color-blue: #0284C7;
+    --color-blue-dark: #0369A1;
     --color-muted: #64748B;
     --color-bg: #F8FAFC;
     --color-card: #FFFFFF;
     --color-border: #E2E8F0;
     --color-border-dark: #CBD5E1;
-    --color-code-bg: #F8FAFC;
+    --color-code-bg: #0F172A;
+    --color-code-text: #F8FAFC;
     --font-scale: 16px;
   }
 
@@ -52,7 +54,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--color-border);
     padding: 0.6rem 1.25rem;
@@ -60,7 +62,7 @@
   }
 
   .toolbar-container {
-    max-width: 920px;
+    max-width: 960px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -79,12 +81,13 @@
   }
 
   .badge-tag {
-    background: #EEF2FF;
-    color: var(--color-blue);
-    padding: 0.2rem 0.55rem;
+    background: #E0F2FE;
+    color: var(--color-blue-dark);
+    padding: 0.25rem 0.65rem;
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 700;
+    border: 1px solid #BAE6FD;
   }
 
   .toolbar-actions {
@@ -96,7 +99,7 @@
   .btn-tool {
     background: #FFFFFF;
     border: 1px solid var(--color-border-dark);
-    padding: 0.35rem 0.75rem;
+    padding: 0.4rem 0.8rem;
     border-radius: 6px;
     font-size: 0.82rem;
     font-family: inherit;
@@ -106,7 +109,7 @@
     transition: all 0.2s;
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.35rem;
   }
 
   .btn-tool:hover {
@@ -117,45 +120,80 @@
   /* Main Document Container */
   .document-wrapper {
     flex: 1;
-    padding: 1.5rem 0.75rem 3rem 0.75rem;
+    padding: 1.75rem 0.75rem 3.5rem 0.75rem;
     width: 100%;
   }
 
   .page-container {
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
     background: var(--color-card);
     border: 1px solid var(--color-border);
-    border-radius: 12px;
+    border-radius: 14px;
     box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
-    padding: 3rem 2.8rem;
+    padding: 2.75rem 2.5rem;
     transition: padding 0.3s ease;
   }
 
-  /* Typography */
-  h1, h2, h3, h4 {
-    color: var(--color-primary);
+  /* Header Card */
+  .doc-header-card {
+    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+    border: 1px solid #BAE6FD;
+    border-left: 6px solid var(--color-blue);
+    border-radius: 12px;
+    padding: 1.6rem 1.85rem;
+    margin-bottom: 2.25rem;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.06);
+  }
+
+  .doc-header-card .module-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-blue-dark);
+    background: #FFFFFF;
+    border: 1px solid #BAE6FD;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+
+  .doc-header-card .chapter-main-title {
+    font-size: clamp(1.3rem, 3.8vw, 1.75rem);
+    color: #0F172A;
     font-weight: 700;
     line-height: 1.35;
-    margin-top: 1.75rem;
-    margin-bottom: 0.75rem;
+    margin: 0 0 0.4rem 0;
   }
 
-  h1 {
-    font-size: 1.45rem;
+  .doc-header-card .chapter-sub-title {
+    font-size: 1.05rem;
+    color: #334155;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* Typography */
+  h2.section-heading {
+    font-size: 1.3rem;
     color: var(--color-navy);
-    border-bottom: 2px solid #EEF2FF;
-    padding-bottom: 0.4rem;
+    margin-top: 2.25rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 2px solid #E0F2FE;
+    padding-bottom: 0.45rem;
   }
 
-  h2 {
-    font-size: 1.25rem;
-    color: #1E293B;
-  }
-
-  h3 {
-    font-size: 1.1rem;
-    color: var(--color-navy);
+  h3.step-heading {
+    font-size: 1.15rem;
+    color: #0F172A;
+    margin-top: 0;
+    margin-bottom: 0.6rem;
   }
 
   p {
@@ -163,231 +201,193 @@
     text-align: justify;
   }
 
-  strong {
-    font-weight: 700;
-    color: #0F172A;
+  /* Callout Boxes */
+  .callout {
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    margin: 1.25rem 0;
+    border-left: 4px solid;
+    font-size: 0.95rem;
   }
 
-  /* Responsive Lists */
-  ul.bullet-list {
-    margin: 0.5rem 0 1.25rem 1.5rem;
-    list-style-type: disc;
+  .callout-info {
+    background-color: #F0F9FF;
+    border-color: #0284C7;
+    color: #0369A1;
   }
 
-  ul.bullet-list li {
-    margin-bottom: 0.5rem;
-    padding-left: 0.25rem;
+  .callout-tip {
+    background-color: #F0FDF4;
+    border-color: #16A34A;
+    color: #15803D;
   }
 
-  ul.numbered-list {
-    list-style: none !important;
-    margin: 0.5rem 0 1.25rem 0;
-    padding-left: 0;
+  .callout-warning {
+    background-color: #FFFBEB;
+    border-color: #F59E0B;
+    color: #B45309;
   }
 
-  ul.numbered-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
-    margin-bottom: 0.6rem;
-    list-style: none !important;
-  }
-
-  .num-badge {
-    font-weight: 700;
-    color: var(--color-navy);
-    flex-shrink: 0;
-    min-width: 1.8rem;
-    line-height: 1.75;
-  }
-
-  /* Responsive Code Blocks */
-  pre.code-block, pre {
-    font-family: var(--font-code);
-    font-size: 0.92rem;
-    line-height: 1.6;
-    background-color: var(--color-code-bg);
+  /* Directory Tree */
+  .folder-tree {
+    background-color: #F8FAFC;
     border: 1px solid var(--color-border);
     border-left: 4px solid var(--color-blue);
     border-radius: 8px;
     padding: 1rem 1.25rem;
-    margin: 1.25rem 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: pre;
-    color: var(--color-primary);
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 1rem 0 1.5rem 0;
+    color: #1E293B;
   }
 
-  .tag { color: #991B1B; font-weight: 600; }
-  .attr { color: #DC2626; }
-  .str { color: #2563EB; }
-  .comm { color: #16A34A; font-style: italic; }
-  .blue { color: #2563EB; font-weight: 600; }
-
-  /* Responsive Table Container */
-  .table-responsive {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: 1.5rem 0;
-    border-radius: 8px;
-    border: 1px solid var(--color-border);
+  /* Step Cards */
+  .step-card {
     background: #FFFFFF;
-  }
-
-  table, table.data-table {
-    width: 100%;
-    min-width: 550px;
-    border-collapse: collapse;
-    font-size: 0.95rem;
-  }
-
-  table th, table td {
     border: 1px solid var(--color-border);
-    padding: 0.75rem 1rem;
-    vertical-align: middle;
-  }
-
-  table th {
-    background-color: #F1F5F9;
-    font-weight: 700;
-    color: var(--color-navy);
-    text-align: center;
-  }
-
-  table tbody tr:nth-child(even) {
-    background-color: #FBFDFF;
-  }
-
-  table tbody tr:hover {
-    background-color: #F1F5F9;
-  }
-
-  /* Scroll hint on mobile */
-  .scroll-hint {
-    display: none;
-    font-size: 0.75rem;
-    color: var(--color-muted);
-    margin-top: 0.25rem;
-    text-align: right;
-  }
-
-  /* Mobile Responsive Breakpoints */
-  @media screen and (max-width: 768px) {
-    :root {
-      --font-scale: 15px;
-    }
-    .document-wrapper {
-      padding: 0.75rem 0.35rem 2rem 0.35rem;
-    }
-    .page-container {
-      padding: 1.5rem 1.15rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    }
-    h1 { font-size: 1.3rem; }
-    h2 { font-size: 1.15rem; }
-    h3 { font-size: 1.05rem; }
-    p { text-align: left; }
-    .scroll-hint { display: block; }
-  }
-
-  /* Print Stylesheet (Exact University A4 Standard) */
-  @media print {
-    @page {
-      size: A4 portrait;
-      margin-left: 2.5cm;
-      margin-right: 1.5cm;
-      margin-top: 2.5cm;
-      margin-bottom: 2.5cm;
-    }
-    body {
-      background: transparent !important;
-      padding: 0 !important;
-      font-family: 'Khmer OS Siemreap', 'Siemreap', sans-serif !important;
-      font-size: 12pt !important;
-      line-height: 1.15 !important;
-      color: #000000 !important;
-    }
-    .no-print, .reader-toolbar, .scroll-hint {
-      display: none !important;
-    }
-    .document-wrapper {
-      padding: 0 !important;
-      width: 100% !important;
-    }
-    .page-container {
-      max-width: 100% !important;
-      width: 100% !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      border: none !important;
-      box-shadow: none !important;
-      border-radius: 0 !important;
-    }
-    h1, h2, h3 {
-      font-family: 'Khmer OS Muol Light', 'Khmer OS Muol Light-Kh Auto', sans-serif !important;
-      font-size: 12pt !important;
-      line-height: 1.25 !important;
-      border: none !important;
-    }
-    table {
-      min-width: 100% !important;
-    }
-    .table-responsive {
-      border: none !important;
-      overflow: visible !important;
-    }
-    pre.code-block, pre {
-      background: transparent !important;
-      white-space: pre-wrap !important;
-    }
-  }
-
-  /* ==========================================================================
-     Enhanced Mobile & Responsive Layout Styles
-     ========================================================================== */
-  .doc-header-card {
-    background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
-    border: 1px solid #cbd5e1;
-    border-left: 6px solid #2563eb;
     border-radius: 12px;
     padding: 1.5rem 1.75rem;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .doc-header-card.lab-card {
-    border-left-color: #0284c7;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+
+  .step-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   }
-  .doc-header-card .module-badge {
-    display: inline-flex;
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .step-badge {
+    background: linear-gradient(135deg, #0284C7, #0369A1);
+    color: #FFFFFF;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Code Block & Header Bar */
+  .code-block-container {
+    margin: 1.25rem 0 0.5rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #334155;
+    background: var(--color-code-bg);
+  }
+
+  .code-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1E293B;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #334155;
+  }
+
+  .code-file-name {
+    font-family: var(--font-code);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #94A3B8;
+    display: flex;
     align-items: center;
     gap: 0.4rem;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #1e40af;
-    background: #ffffff;
-    border: 1px solid #bfdbfe;
-    padding: 0.35rem 0.85rem;
-    border-radius: 9999px;
-    margin-bottom: 0.75rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   }
-  .doc-header-card .chapter-main-title {
-    font-size: clamp(1.25rem, 3.5vw, 1.65rem);
-    color: #0f172a;
-    font-weight: 700;
-    line-height: 1.4;
-    margin: 0 0 0.4rem 0;
-    border: none !important;
-    padding: 0 !important;
+
+  .btn-copy {
+    background: #334155;
+    border: 1px solid #475569;
+    color: #F8FAFC;
+    padding: 0.3rem 0.75rem;
+    border-radius: 5px;
+    font-size: 0.78rem;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
   }
-  .doc-header-card .chapter-sub-title {
-    font-size: 1rem;
-    color: #475569;
-    font-weight: 500;
+
+  .btn-copy:hover {
+    background: #0284C7;
+    border-color: #38BDF8;
+    color: #FFFFFF;
+  }
+
+  .btn-copy.copied {
+    background: #10B981 !important;
+    border-color: #34D399 !important;
+    color: #FFFFFF !important;
+  }
+
+  pre.code-view {
+    font-family: var(--font-code);
+    font-size: 0.88rem;
+    line-height: 1.65;
+    background-color: var(--color-code-bg);
+    color: var(--color-code-text);
+    padding: 1.15rem 1.25rem;
     margin: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre;
+    max-height: 480px;
+    overflow-y: auto;
+  }
+
+  /* Tabbed Files View in Step 5 */
+  .tab-nav {
+    display: flex;
+    gap: 0.4rem;
+    border-bottom: 2px solid var(--color-border);
+    margin: 1rem 0;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    background: #F1F5F9;
+    border: 1px solid var(--color-border);
+    border-bottom: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px 8px 0 0;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tab-btn:hover {
+    background: #E2E8F0;
+    color: #0F172A;
+  }
+
+  .tab-btn.active {
+    background: #FFFFFF;
+    color: var(--color-blue);
+    border-color: var(--color-border);
+    border-bottom: 2px solid #FFFFFF;
+    margin-bottom: -2px;
+  }
+
+  .tab-pane {
+    display: none;
+  }
+
+  .tab-pane.active {
+    display: block;
   }
 
   /* Responsive Table Wrapper */
@@ -397,88 +397,118 @@
     -webkit-overflow-scrolling: touch;
     margin: 1.25rem 0;
     border-radius: 8px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #E2E8F0;
+    background: #FFFFFF;
   }
-  .table-responsive table, table {
+
+  table.rubric-table {
     width: 100%;
-    min-width: 520px;
+    min-width: 580px;
     border-collapse: collapse;
+    font-size: 0.92rem;
   }
 
-  /* Responsive Code Blocks */
-  pre, pre.code-block, .code-container pre {
-    max-width: 100% !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    white-space: pre !important;
-    word-break: normal !important;
-    font-size: 0.88rem !important;
-    line-height: 1.6 !important;
-    border-radius: 8px !important;
+  table.rubric-table th, table.rubric-table td {
+    border: 1px solid #E2E8F0;
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
   }
 
-  /* Mobile Media Query Breakpoints */
+  table.rubric-table th {
+    background-color: #F8FAFC;
+    font-weight: 700;
+    color: var(--color-navy);
+    text-align: center;
+  }
+
+  table.rubric-table tbody tr:nth-child(even) {
+    background-color: #F8FAFC;
+  }
+
+  /* Toast Notification */
+  .toast-notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #0F172A;
+    color: #FFFFFF;
+    padding: 0.8rem 1.4rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+
+  .toast-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Mobile Media Queries */
   @media screen and (max-width: 768px) {
-    body {
-      font-size: 15px;
+    :root {
+      --font-scale: 15px;
     }
-    .page-container, .document-container, .document-wrapper {
-      padding: 1.25rem 0.85rem !important;
-      max-width: 100% !important;
-      border-radius: 0 !important;
+    .document-wrapper {
+      padding: 0.75rem 0.35rem 2rem 0.35rem;
+    }
+    .page-container {
+      padding: 1.35rem 1rem !important;
+      border-radius: 8px !important;
+      box-shadow: none !important;
       border-left: none !important;
       border-right: none !important;
-      box-shadow: none !important;
     }
     .doc-header-card {
-      padding: 1.15rem 1rem !important;
-      margin-bottom: 1.25rem !important;
+      padding: 1.2rem 1.1rem !important;
       border-radius: 8px !important;
     }
-    .reader-toolbar {
-      padding: 0.5rem 0.75rem !important;
-      position: sticky !important;
-      top: 0 !important;
+    .step-card {
+      padding: 1.15rem 1rem !important;
     }
-    .toolbar-container {
-      flex-wrap: wrap !important;
-      gap: 0.5rem !important;
-    }
-    .toolbar-brand {
-      font-size: 0.8rem !important;
-    }
-    .btn-tool, .tool-btn, .toolbar-btn {
-      padding: 0.35rem 0.55rem !important;
-      font-size: 0.78rem !important;
-      min-height: 36px !important;
-    }
-    h1 { font-size: 1.35rem !important; }
-    h2 { font-size: 1.18rem !important; }
-    h3 { font-size: 1.05rem !important; }
-    p, li {
-      text-align: left !important;
-    }
-    ul.numbered-list li, ol.number-list li {
-      gap: 0.4rem !important;
+    pre.code-view {
+      font-size: 0.82rem !important;
+      padding: 0.85rem 0.95rem !important;
+      max-height: 380px !important;
     }
   }
 
-  @media screen and (max-width: 480px) {
+  /* Print Stylesheet */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin: 2cm 1.5cm;
+    }
+    .reader-toolbar, .btn-copy, .toast-notification, .no-print {
+      display: none !important;
+    }
     body {
-      font-size: 14.5px;
+      background: #FFFFFF !important;
+      color: #000000 !important;
+      font-size: 11pt !important;
     }
-    .doc-header-card .module-badge {
-      font-size: 0.75rem !important;
-      padding: 0.2rem 0.5rem !important;
+    .page-container {
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      max-width: 100% !important;
     }
-    .doc-header-card .chapter-main-title {
-      font-size: 1.15rem !important;
-    }
-    .doc-header-card .chapter-sub-title {
-      font-size: 0.88rem !important;
+    pre.code-view {
+      background: #F8FAFC !important;
+      color: #000000 !important;
+      border: 1px solid #CCCCCC !important;
+      white-space: pre-wrap !important;
+      max-height: none !important;
     }
   }
-
 </style>
 </head>
 <body>
@@ -488,7 +518,7 @@
   <div class="toolbar-container">
     <div class="toolbar-brand">
       <span class="badge-tag">Web Design (Year 3)</span>
-      <span>មន្ទីរពិសោធន៍អនុវត្ត (Practical Lab Guide)</span>
+      <span>មន្ទីរពិសោធន៍អនុវត្ត (Lab Practice Guide)</span>
     </div>
     <div class="toolbar-actions">
       <button class="btn-tool" onclick="changeFontSize(-1)" title="បន្ថយទំហំអក្សរ">A-</button>
@@ -502,113 +532,4354 @@
 <div class="document-wrapper">
   <div class="page-container">
 
-    <div class="doc-header-card lab-card">
-      <div class="module-badge">ម៉ូឌុល 01៖ មូលដ្ឋានគ្រឹះនៃការរចនាគេហទំព័រ និង UI/UX (Web Design Fundamentals & UI/UX)</div>
-      <h1 class="chapter-main-title">ជំពូកទី 3 • កិច្ចការអនុវត្តជាក់ស្តែង (Practical Lab Guide)</h1>
-      <div class="chapter-sub-title">ការបង្កើតលំហូរអ្នកប្រើប្រាស់សម្រាប់គេហទំព័រ E-Commerce (Create a User Flow for an E-Commerce Website)</div>
+    <!-- Document Header Card (Zero University Mentions) -->
+    <div class="doc-header-card">
+      <div class="module-badge">ម៉ូឌុល 01៖ មូលដ្ឋានគ្រឹះនៃការរចនាគេហទំព័រ និង UI/UX (Web Design Fundamentals &amp; UI/UX)</div>
+      <h1 class="chapter-main-title">ជំពូកទី 03 • កិច្ចការអនុវត្តជាក់ស្តែង (Lab Practice)</h1>
+      <div class="chapter-sub-title">ការអនុវត្ត៖ ការបង្កើតលំហូរអ្នកប្រើប្រាស់សម្រាប់គេហទំព័រ E-Commerce (Create a User Flow for an E-Commerce Website)</div>
     </div>
 
-    <div class="callout-box">
-      <strong>កម្រិតសិក្សា៖</strong> បរិញ្ញាបត្រឆ្នាំទី ៣ | <strong>រយៈពេលអនុវត្ត៖</strong> ៣ ម៉ោង | <strong>ប្រភេទទម្រង់៖</strong> Step-by-Step Practical Lab
+    <!-- Section 1: Overview & Objectives -->
+    <h2 class="section-heading">១. ព័ត៌មានទូទៅ និងគោលបំណង (Lab Overview & Objectives)</h2>
+    <p>
+      កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍នៃជំពូកទី 03 នេះ ត្រូវបានរៀបចំឡើងដើម្បីផ្ដល់ឱ្យនិស្សិតនូវជំនាញជាក់ស្ដែងក្នុងការសរសេរកូដ <strong>ការបង្កើតលំហូរអ្នកប្រើប្រាស់សម្រាប់គេហទំព័រ E-Commerce (Create a User Flow for an E-Commerce Website)</strong> ដោយអនុលោមតាមបទដ្ឋានឧស្សាហកម្មវេបទំនើប W3C និង UI/UX Best Practices។
+    </p>
+
+    <div class="callout callout-info">
+      <strong>🎯 គោលបំណងចម្បងនៃការអនុវត្ត៖</strong>
+      <ul style="margin: 0.5rem 0 0 1.25rem;">
+        <li>ស្វែងយល់ និងអនុវត្តជាក់ស្ដែងលើរចនាសម្ព័ន្ធកូដ៖ UI, UX, User Flow, User Journey, Usability</li>
+        <li>សរសេរកូដស្អាត (Clean Code) មានសណ្តាប់ធ្នាប់ និងឆ្លងកាត់ការផ្ទៀងផ្ទាត់ W3C Validator</li>
+        <li>ធានាភាពស៊ីសង្វាក់គ្នានៃការបង្ហាញលើ Mobile និង Desktop (Responsive Design)</li>
+      </ul>
     </div>
 
-    <h2 class="heading-muol">គោលបំណងនៃការអនុវត្ត (Lab Objectives)</h2>
-    <ul class='numbered-list'>
-      <li><span class='num-badge'>១.</span> <strong>ស្វែងយល់ User Flow៖</strong> យល់ច្បាស់ពីតួនាទីរបស់ User Flow ក្នុងការរចនាបទពិសោធអ្នកប្រើប្រាស់លើគេហទំព័រពាណិជ្ជកម្មអេឡិចត្រូនិក។</li>
-      <li><span class='num-badge'>២.</span> <strong>Happy Path vs Edge Cases៖</strong> កំណត់ផ្លូវជោគជ័យ (Happy Path) និងផ្លូវជំនួស/កំហុស (Alternate &amp; Error Paths) ក្នុង Checkout Flow។</li>
-      <li><span class='num-badge'>៣.</span> <strong>គំនូសបំព្រួញ Diagram៖</strong> ប្រើប្រាស់ឧបករណ៍ឌីជីថល (FigJam / Miro / draw.io) ដើម្បីគូរគំនូសបំព្រួញ User Flow Diagram តាមស្តង់ដាអន្តរជាតិ។</li>
-      <li><span class='num-badge'>៤.</span> <strong>ការបង្ការកំហុស និង Feedback៖</strong> អនុវត្តគោលការណ៍ Error Prevention, Inline Validation, និង Feedback ក្នុងគ្រប់ជំហាននៃលំហូរ។</li>
-      <li><span class='num-badge'>៥.</span> <strong>របាយការណ៍បច្ចេកទេស៖</strong> ចងក្រងជារបាយការណ៍បច្ចេកទេស និងការពារគម្រោងអនុវត្តរបស់ខ្លួន។</li>
-    </ul>
+    <!-- Section 2: Directory Structure -->
+    <h2 class="section-heading">២. រចនាសម្ព័ន្ធ Folder និងឯកសារគម្រោង (Project Directory Structure)</h2>
+    <p>និស្សិតត្រូវបង្កើត Folder គម្រោងថ្មីមួយនៅលើកុំព្យូទ័រ (ឧទាហរណ៍៖ <code>lab-chapter-03/</code>) ដោយរៀបចំរចនាសម្ព័ន្ធឯកសារដូចខាងក្រោម៖</p>
 
-    <h2 class="heading-muol">ការណែនាំអនុវត្តជាជំហានៗ (Step-by-Step Lab Instructions)</h2>
+    <div class="folder-tree">lab-chapter-03/
+├── index.html            # ឯកសារ HTML មេសម្រាប់រចនាសម្ព័ន្ធទំព័រ
+├── css/
+│   └── style.css         # ឯកសារ CSS សម្រាប់កំណត់ Style, Tokens និង Responsive Rules
+├── js/
+│   └── app.js           # ឯកសារ JavaScript សម្រាប់មុខងារអន្តរកម្ម
+└── images/               # Folder ផ្ទុករូបភាពគម្រោង</div>
 
-    <h3 class="heading-muol">ជំហានទី ១៖ កំណត់ User Persona និងគោលបំណងទិញទំនិញ</h3>
-    <ul>
-      <li><strong>Persona Profile:</strong> ឈ្មោះ៖ សុខ សុវណ្ណ | អាយុ៖ ២១ ឆ្នាំ | មុខរបរ៖ និស្សិតឆ្នាំទី ៣ ផ្នែក IT។</li>
-      <li><strong>User Goal:</strong> ត្រូវការទិញកុំព្យូទ័រ Laptop ថ្មីសម្រាប់រៀនសរសេរកូដ ដោយប្រើ Voucher បញ្ចុះតម្លៃនិស្សិត និងទូទាត់ប្រាក់តាម Bakong KHQR។</li>
-    </ul>
+    <!-- Section 3: Step-by-Step Hands-on Practice with FULL CODE -->
+    <h2 class="section-heading">៣. ជំហានអនុវត្តជាក់ស្តែងមួយជំហានម្តងៗ (Step-by-Step with Full Code)</h2>
+    <p>សូមអនុវត្តតាមលំដាប់លំដោយនៃជំហានទាំង ៥ ខាងក្រោម ដោយចម្លង ឬវាយបញ្ចូលកូដទៅតាមឯកសារនីមួយៗ៖</p>
 
-    <h3 class="heading-muol">ជំហានទី ២៖ វិភាគកិច្ចការ (Task Analysis) និងកំណត់លំដាប់លំហូរ</h3>
-    <ol>
-      <li><strong>Product Details:</strong> ជ្រើសរើសពណ៌ ទំហំ Storage និងចុច Add to Cart។</li>
-      <li><strong>Cart Review:</strong> ពិនិត្យតម្លៃ បញ្ចូលកូដ Voucher និងពិនិត្យតម្លៃសរុប។</li>
-      <li><strong>Shipping Details:</strong> បំពេញអាសយដ្ឋានដឹកជញ្ជូនជាមួយ Inline Real-time Validation។</li>
-      <li><strong>Payment Method:</strong> ជ្រើសរើសវិធីសាស្ត្រ Bakong KHQR និងស្កេនទូទាត់។</li>
-      <li><strong>Order Success:</strong> ទទួលបានវិក្កយបត្រអេឡិចត្រូនិក និងលេខកូដ Order ID។</li>
-    </ol>
+    <!-- STEP 1 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ១</span>
+        <h3 class="step-heading">ការរៀបចំគ្រោងឆ្អឹង HTML5 ដំបូង (Initial Boilerplate & Skeleton)</h3>
+      </div>
+      <p>
+        បង្កើតឯកសារ <code>index.html</code> រួចសរសេរគ្រោងឆ្អឹង HTML5 ស្តង់ដារ ដោយរួមបញ្ចូល <code>&lt;meta charset="UTF-8"&gt;</code>, <code>&lt;meta name="viewport"&gt;</code>, ការភ្ជាប់ទៅកាន់ Google Fonts (Kantumruy Pro, Siemreap, Fira Code) និងការភ្ជាប់ឯកសារ <code>css/style.css</code>៖
+      </p>
 
-    <h3 class="heading-muol">ជំហានទី ៣៖ ការគូសប្លង់ User Flow Diagram តាមស្តង់ដា</h3>
-    <div class="callout-box">
-      [Start: ចូលទស្សនា] &rarr; [Action: ជ្រើសរើស Options] &rarr; [Action: Add to Cart] &rarr; &lt;Decision: មាន Voucher?&gt; &rarr; [Action: បំពេញអាសយដ្ឋាន] &rarr; &lt;Decision: ត្រឹមត្រូវ?&gt; &rarr; [Action: ស្កេន Bakong KHQR] &rarr; [End: វិក្កយបត្រជោគជ័យ]
+      <div class="code-block-container">
+        <div class="code-header-bar">
+          <span class="code-file-name">📄 index.html (គ្រោងឆ្អឹងដំបូង)</span>
+          <button class="btn-copy" onclick="copyCode(this, 'code-step-1')">📋 ចម្លងកូដ (Copy)</button>
+        </div>
+        <pre class="code-view" id="code-step-1"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;km&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;គម្រោងគំរូមេរៀនទី ៣: មូលដ្ឋានគ្រឹះ UI និង UX (UI and UX Fundamentals) - Bachelor Year 3&quot;&gt;
+  &lt;title&gt;គម្រោងគំរូ: លំហូរអ្នកប្រើប្រាស់ពាណិជ្ជកម្មអេឡិចត្រូនិក (E-Commerce UX Flow Simulator)&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&amp;family=Moul&amp;family=Fira+Code:wght@400;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;header class=&quot;app-header&quot;&gt;
+    &lt;div class=&quot;container header-flex&quot;&gt;
+      &lt;div class=&quot;brand&quot;&gt;
+        &lt;span class=&quot;brand-logo&quot;&gt;🛍️&lt;/span&gt;
+        &lt;div&gt;
+          &lt;h1 class=&quot;brand-name&quot;&gt;Cambodia TechStore&lt;/h1&gt;
+          &lt;p class=&quot;brand-sub&quot;&gt;ឧបករណ៍ពិសោធន៍លំហូរទិញទំនិញ (E-Commerce UX Flow)&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;header-badges&quot;&gt;
+        &lt;span class=&quot;ux-badge&quot;&gt;&lt;span class=&quot;dot green&quot;&gt;&lt;/span&gt; UX Optimized&lt;/span&gt;
+        &lt;span class=&quot;ux-badge&quot;&gt;&lt;span class=&quot;dot blue&quot;&gt;&lt;/span&gt; 5-Stage Stepped Checkout&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;!-- ==================== MAIN CONTENT CONTAINER ==================== --&gt;
+  &lt;main class=&quot;main-content&quot; id=&quot;main-content&quot;&gt;
+    &lt;!-- សមាសភាគសំខាន់ៗនៃមេរៀននឹងត្រូវបានបន្ថែមក្នុង ជំហានទី ២ (Core content will be added in Step 2) --&gt;
+    &lt;div class=&quot;container placeholder-box&quot;&gt;
+      &lt;p&gt;សូមស្វាគមន៍មកកាន់កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍៖ ការបង្កើតលំហូរអ្នកប្រើប្រាស់សម្រាប់គេហទំព័រ E-Commerce!&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+
+&lt;footer class=&quot;app-footer&quot;&gt;
+    &lt;div class=&quot;container footer-content&quot;&gt;
+      &lt;p&gt;&amp;copy; 2026 Web Design Curriculum — Module 01 Chapter 03: UI and UX Fundamentals.&lt;/p&gt;
+      &lt;p&gt;រៀបចំឡើងសម្រាប់ការបង្រៀន និងអនុវត្តជាក់ស្តែងក្នុងបន្ទប់ពិសោធន៍កុំព្យូទ័រ។&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+
+  &lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
     </div>
 
-    <h3 class="heading-muol">ជំហានទី ៤៖ អនុវត្ត និងត្រួតពិនិត្យគោលការណ៍ UI/UX ក្នុងគម្រោងគំរូ</h3>
-    <p>បើកឯកសារ <code>sample_project/index.html</code> រួចធ្វើតេស្ត៖</p>
-    <ul class='numbered-list'>
-      <li><span class='num-badge'>១.</span> <strong>Error Prevention Test:</strong> សាកល្បងចុច «សម្អាតកន្ត្រក» ដើម្បីសង្កេតមើលផ្ទាំង Confirmation Alert។</li>
-      <li><span class='num-badge'>២.</span> <strong>Form Validation Test:</strong> វាយបញ្ចូលទិន្នន័យខុសទម្រង់ ដើម្បីសង្កេតមើល Inline Real-time Error Message។</li>
-      <li><span class='num-badge'>៣.</span> <strong>Feedback Test:</strong> បញ្ចូលកូដ 'STUDENT2026' ដើម្បីមើលការគណនាតម្លៃ និង Toast Feedback ពណ៌បៃតង។</li>
-    </ul>
+    <!-- STEP 2 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ២</span>
+        <h3 class="step-heading">ការសាងសង់សមាសភាគ HTML ស្នូលនៃមេរៀន (Core Semantic Components)</h3>
+      </div>
+      <p>
+        បញ្ចូលកូដសមាសភាគស្នូលនៃមេរៀនខាងក្រោមនេះទៅក្នុងផ្នែក <code>&lt;main class="main-content"&gt;</code> នៃឯកសារ <code>index.html</code> ដោយជំនួសកន្លែង placeholder៖
+      </p>
 
-    <h2 class="heading-muol">ទម្រង់របាយការណ៍បច្ចេកទេសរបស់និស្សិត (Student Submission Template)</h2>
+      <div class="code-block-container">
+        <div class="code-header-bar">
+          <span class="code-file-name">📄 index.html (ផ្នែក &lt;main&gt; Core Components)</span>
+          <button class="btn-copy" onclick="copyCode(this, 'code-step-2')">📋 ចម្លងកូដ (Copy)</button>
+        </div>
+        <pre class="code-view" id="code-step-2"><code>&lt;!-- STEP 1: PRODUCT SELECTION &amp; CONFIGURATION --&gt;
+    &lt;section class=&quot;flow-screen active&quot; id=&quot;screen-step-1&quot;&gt;
+      &lt;div class=&quot;screen-header&quot;&gt;
+        &lt;span class=&quot;step-indicator&quot;&gt;ជំហាន ១ នៃ ៥&lt;/span&gt;
+        &lt;h2&gt;ជ្រើសរើសផលិតផល និងលក្ខណៈសម្បត្តិ (Product Details &amp;amp; Options)&lt;/h2&gt;
+        &lt;p&gt;គោលការណ៍ UI/UX៖ កាត់បន្ថយការភាន់ច្រឡំដោយផ្តល់ជម្រើសពណ៌ រូបភាព និងតម្លៃច្បាស់លាស់។&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;product-showcase&quot;&gt;
+        &lt;div class=&quot;product-gallery&quot;&gt;
+          &lt;div class=&quot;main-image-box&quot; id=&quot;product-img-box&quot;&gt;
+            &lt;span class=&quot;product-icon-large&quot;&gt;💻&lt;/span&gt;
+            &lt;span class=&quot;product-color-tag&quot; id=&quot;current-color-badge&quot;&gt;ពណ៌៖ Space Gray&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;thumbnail-row&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;thumb-btn active&quot; data-color=&quot;Space Gray&quot; data-img=&quot;💻&quot;&gt;Space Gray&lt;/button&gt;
+            &lt;button type=&quot;button&quot; class=&quot;thumb-btn&quot; data-color=&quot;Silver&quot; data-img=&quot;🖥️&quot;&gt;Silver&lt;/button&gt;
+            &lt;button type=&quot;button&quot; class=&quot;thumb-btn&quot; data-color=&quot;Midnight Blue&quot; data-img=&quot;📱&quot;&gt;Midnight&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;product-details&quot;&gt;
+          &lt;span class=&quot;product-category&quot;&gt;Ultrabook Pro 2026&lt;/span&gt;
+          &lt;h3 class=&quot;product-title&quot;&gt;TechPro Laptop 15-inch (M3 Chip, 16GB RAM, 512GB SSD)&lt;/h3&gt;
+          &lt;div class=&quot;product-rating&quot;&gt;
+            &lt;span class=&quot;stars&quot;&gt;⭐⭐⭐⭐⭐&lt;/span&gt;
+            &lt;span class=&quot;rating-count&quot;&gt;(4.9/5 ផ្អែកលើការវាយតម្លៃ ២៤០ នាក់)&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;product-pricing&quot;&gt;
+            &lt;span class=&quot;price-current&quot;&gt;$1,199.00&lt;/span&gt;
+            &lt;span class=&quot;price-original&quot;&gt;$1,350.00&lt;/span&gt;
+            &lt;span class=&quot;discount-pill&quot;&gt;ចុះតម្លៃ ១១%&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;p class=&quot;product-desc&quot;&gt;
+            ម៉ាស៊ីនកុំព្យូទ័រយួរដៃសម្រាប់និស្សិតវិទ្យាសាស្ត្រកុំព្យូទ័រ និងអ្នករចនាគេហទំព័រអាជីព។ ថ្មកាន់បាន ១៨ ម៉ោង អេក្រង់ Retina ស្រាល និងងាយស្រួលយកតាមខ្លួន។
+          &lt;/p&gt;
+
+          &lt;!-- Configuration Controls --&gt;
+          &lt;div class=&quot;config-group&quot;&gt;
+            &lt;label class=&quot;config-label&quot;&gt;ជ្រើសរើសទំហំផ្ទុក Storage៖&lt;/label&gt;
+            &lt;div class=&quot;radio-chips&quot;&gt;
+              &lt;label class=&quot;chip-option&quot;&gt;
+                &lt;input type=&quot;radio&quot; name=&quot;storage&quot; value=&quot;512GB&quot; checked&gt;
+                &lt;span&gt;512GB SSD (ស្តង់ដារ)&lt;/span&gt;
+              &lt;/label&gt;
+              &lt;label class=&quot;chip-option&quot;&gt;
+                &lt;input type=&quot;radio&quot; name=&quot;storage&quot; value=&quot;1TB&quot;&gt;
+                &lt;span&gt;1TB SSD (+$150)&lt;/span&gt;
+              &lt;/label&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;config-group&quot;&gt;
+            &lt;label class=&quot;config-label&quot;&gt;ចំនួន (Quantity)៖&lt;/label&gt;
+            &lt;div class=&quot;qty-stepper&quot;&gt;
+              &lt;button type=&quot;button&quot; id=&quot;btn-qty-minus&quot; aria-label=&quot;Decrease quantity&quot;&gt;-&lt;/button&gt;
+              &lt;input type=&quot;number&quot; id=&quot;input-qty&quot; value=&quot;1&quot; min=&quot;1&quot; max=&quot;5&quot; readonly&gt;
+              &lt;button type=&quot;button&quot; id=&quot;btn-qty-plus&quot; aria-label=&quot;Increase quantity&quot;&gt;+&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Primary CTA Button --&gt;
+          &lt;div class=&quot;action-row&quot;&gt;
+            &lt;button type=&quot;button&quot; id=&quot;btn-add-to-cart&quot; class=&quot;btn btn-primary-cta&quot;&gt;
+              🛒 បន្ថែមទៅក្នុងកន្ត្រក និងបន្ត (Add to Cart &amp;amp; Proceed)
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- STEP 2: CART REVIEW &amp; SUMMARY --&gt;
+    &lt;section class=&quot;flow-screen&quot; id=&quot;screen-step-2&quot;&gt;
+      &lt;div class=&quot;screen-header&quot;&gt;
+        &lt;span class=&quot;step-indicator&quot;&gt;ជំហាន ២ នៃ ៥&lt;/span&gt;
+        &lt;h2&gt;ពិនិត្យកន្ត្រកទំនិញ (Shopping Cart Review)&lt;/h2&gt;
+        &lt;p&gt;គោលការណ៍ UI/UX៖ ផ្តល់ភាពច្បាស់លាស់លើតម្លៃទំនិញ ពន្ធ និងថ្លៃដឹកជញ្ជូន មុនពេលឈានចូលទៅកាន់ការបំពេញទម្រង់។&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;cart-layout&quot;&gt;
+        &lt;div class=&quot;cart-items-card&quot;&gt;
+          &lt;div class=&quot;cart-item&quot;&gt;
+            &lt;div class=&quot;item-icon&quot;&gt;💻&lt;/div&gt;
+            &lt;div class=&quot;item-info&quot;&gt;
+              &lt;h4 id=&quot;cart-item-title&quot;&gt;TechPro Laptop 15-inch&lt;/h4&gt;
+              &lt;p class=&quot;item-specs&quot; id=&quot;cart-item-specs&quot;&gt;ពណ៌៖ Space Gray | 512GB SSD&lt;/p&gt;
+              &lt;span class=&quot;item-price&quot; id=&quot;cart-item-unit-price&quot;&gt;$1,199.00&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-quantity&quot;&gt;
+              &lt;span&gt;ចំនួន៖ &lt;strong id=&quot;cart-qty-display&quot;&gt;1&lt;/strong&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-total&quot;&gt;
+              &lt;span id=&quot;cart-item-subtotal&quot;&gt;$1,199.00&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;cart-coupon-box&quot;&gt;
+            &lt;label for=&quot;coupon-input&quot;&gt;លេខកូដបញ្ចុះតម្លៃ (Voucher Code)៖&lt;/label&gt;
+            &lt;div class=&quot;coupon-row&quot;&gt;
+              &lt;input type=&quot;text&quot; id=&quot;coupon-input&quot; placeholder=&quot;វាយពាក្យ &#x27;STUDENT2026&#x27; ដើម្បីបញ្ចុះ 10%&quot;&gt;
+              &lt;button type=&quot;button&quot; id=&quot;btn-apply-coupon&quot; class=&quot;btn btn-secondary&quot;&gt;អនុវត្ត&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;span id=&quot;coupon-feedback&quot; class=&quot;feedback-msg&quot;&gt;&lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Error Prevention Safe Button --&gt;
+          &lt;div class=&quot;cart-safeguard&quot;&gt;
+            &lt;button type=&quot;button&quot; id=&quot;btn-clear-cart&quot; class=&quot;btn-text-danger&quot;&gt;🗑️ សម្អាតកន្ត្រក (មានប្រព័ន្ធ Error Prevention Confirm)&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Summary &amp; Next Step --&gt;
+        &lt;aside class=&quot;cart-summary-card&quot;&gt;
+          &lt;h3 class=&quot;summary-title&quot;&gt;សង្ខេបការបញ្ជាទិញ (Order Summary)&lt;/h3&gt;
+          &lt;div class=&quot;summary-line&quot;&gt;
+            &lt;span&gt;តម្លៃទំនិញសរុប&lt;/span&gt;
+            &lt;span id=&quot;sum-items&quot;&gt;$1,199.00&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;summary-line&quot;&gt;
+            &lt;span&gt;ការបញ្ចុះតម្លៃ (Discount)&lt;/span&gt;
+            &lt;span id=&quot;sum-discount&quot; class=&quot;text-green&quot;&gt;-$0.00&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;summary-line&quot;&gt;
+            &lt;span&gt;ថ្លៃដឹកជញ្ជូន (Delivery)&lt;/span&gt;
+            &lt;span class=&quot;text-green&quot;&gt;ឥតគិតថ្លៃ (Free)&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;summary-total-line&quot;&gt;
+            &lt;span&gt;ទឹកប្រាក់ត្រូវទូទាត់&lt;/span&gt;
+            &lt;span id=&quot;sum-total&quot;&gt;$1,199.00&lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;flow-nav-buttons&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary btn-back&quot; data-to=&quot;1&quot;&gt;&amp;larr; ត្រឡប់ក្រោយ&lt;/button&gt;
+            &lt;button type=&quot;button&quot; id=&quot;btn-proceed-to-shipping&quot; class=&quot;btn btn-primary-cta&quot;&gt;
+              បន្តទៅបំពេញអាសយដ្ឋាន &amp;rarr;
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/aside&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- STEP 3: CUSTOMER &amp; SHIPPING INFORMATION (ERROR PREVENTION &amp; FEEDBACK) --&gt;
+    &lt;section class=&quot;flow-screen&quot; id=&quot;screen-step-3&quot;&gt;
+      &lt;div class=&quot;screen-header&quot;&gt;
+        &lt;span class=&quot;step-indicator&quot;&gt;ជំហាន ៣ នៃ ៥&lt;/span&gt;
+        &lt;h2&gt;ព័ត៌មានអតិថិជន និងអាសយដ្ឋានដឹកជញ្ជូន (Shipping Address)&lt;/h2&gt;
+        &lt;p&gt;គោលការណ៍ UI/UX៖ ការផ្ទៀងផ្ទាត់ទម្រង់បែបបទភ្លាមៗ (Inline Real-time Validation) ដើម្បីបង្ការកំហុស (Error Prevention)។&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;shipping-layout&quot;&gt;
+        &lt;form id=&quot;shipping-form&quot; class=&quot;shipping-card&quot; novalidate&gt;
+          &lt;div class=&quot;form-row&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;label for=&quot;cust-name&quot;&gt;ឈ្មោះពេញរបស់អ្នក (Full Name) &lt;span class=&quot;req&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+              &lt;input type=&quot;text&quot; id=&quot;cust-name&quot; placeholder=&quot;ឧទាហរណ៍៖ សុខ សុវណ្ណ&quot; required&gt;
+              &lt;span class=&quot;field-error&quot; id=&quot;err-name&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;label for=&quot;cust-phone&quot;&gt;លេខទូរស័ព្ទ (Phone Number) &lt;span class=&quot;req&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+              &lt;input type=&quot;tel&quot; id=&quot;cust-phone&quot; placeholder=&quot;ឧទាហរណ៍៖ 012 345 678&quot; required&gt;
+              &lt;span class=&quot;field-error&quot; id=&quot;err-phone&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;cust-email&quot;&gt;អាសយដ្ឋានអ៊ីមែល (Email) &lt;span class=&quot;req&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+            &lt;input type=&quot;email&quot; id=&quot;cust-email&quot; placeholder=&quot;student@example.com&quot; required&gt;
+            &lt;span class=&quot;field-error&quot; id=&quot;err-email&quot;&gt;&lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;form-row&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;label for=&quot;cust-city&quot;&gt;រាជធានី / ខេត្ត (City / Province) &lt;span class=&quot;req&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+              &lt;select id=&quot;cust-city&quot; required&gt;
+                &lt;option value=&quot;&quot;&gt;-- សូមជ្រើសរើស --&lt;/option&gt;
+                &lt;option value=&quot;Phnom Penh&quot; selected&gt;រាជធានីភ្នំពេញ (Phnom Penh)&lt;/option&gt;
+                &lt;option value=&quot;Siem Reap&quot;&gt;ខេត្តសៀមរាប (Siem Reap)&lt;/option&gt;
+                &lt;option value=&quot;Battambang&quot;&gt;ខេត្តបាត់ដំបង (Battambang)&lt;/option&gt;
+                &lt;option value=&quot;Kandal&quot;&gt;ខេត្តកណ្តាល (Kandal)&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;label for=&quot;cust-address&quot;&gt;អាសយដ្ឋានផ្ទះ និងផ្លូវ (Street Address) &lt;span class=&quot;req&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+              &lt;input type=&quot;text&quot; id=&quot;cust-address&quot; placeholder=&quot;ផ្ទះលេខ 123 ផ្លូវ 271...&quot; required&gt;
+              &lt;span class=&quot;field-error&quot; id=&quot;err-address&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;flow-nav-buttons&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary btn-back&quot; data-to=&quot;2&quot;&gt;&amp;larr; កែប្រែកន្ត្រកទំនិញ&lt;/button&gt;
+            &lt;button type=&quot;submit&quot; id=&quot;btn-proceed-to-payment&quot; class=&quot;btn btn-primary-cta&quot;&gt;
+              បន្តទៅការទូទាត់ប្រាក់ &amp;rarr;
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+
+        &lt;div class=&quot;shipping-info-aside&quot;&gt;
+          &lt;div class=&quot;info-badge-card&quot;&gt;
+            &lt;h4&gt;🛡️ ការធានា និងសុវត្ថិភាពទិន្នន័យ&lt;/h4&gt;
+            &lt;p&gt;ព័ត៌មានរបស់អ្នកត្រូវបានការពារដោយសុវត្ថិភាពតាមពិធីការ HTTPS និងមិនត្រូវបានចែករំលែកទៅកាន់ភាគីទីបីឡើយ។&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;info-badge-card&quot;&gt;
+            &lt;h4&gt;🚚 ពេលវេលាដឹកជញ្ជូន&lt;/h4&gt;
+            &lt;p&gt;ភ្នំពេញ៖ ២៤ ម៉ោង | បណ្តាខេត្ត៖ ៤៨ ម៉ោង ដោយឥតគិតថ្លៃ។&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- STEP 4: PAYMENT METHOD (BAKONG KHQR &amp; CARDS) --&gt;
+    &lt;section class=&quot;flow-screen&quot; id=&quot;screen-step-4&quot;&gt;
+      &lt;div class=&quot;screen-header&quot;&gt;
+        &lt;span class=&quot;step-indicator&quot;&gt;ជំហាន ៤ នៃ ៥&lt;/span&gt;
+        &lt;h2&gt;ជ្រើសរើសវិធីសាស្ត្រទូទាត់ប្រាក់ (Payment Method)&lt;/h2&gt;
+        &lt;p&gt;គោលការណ៍ UI/UX៖ បង្កើនទំនុកចិត្ត (Trust &amp;amp; Transparency) ជាមួយវិធីសាស្ត្រទូទាត់ដែលធ្លាប់ស្គាល់។&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;payment-layout&quot;&gt;
+        &lt;div class=&quot;payment-methods-card&quot;&gt;
+          &lt;div class=&quot;payment-option selected&quot; data-method=&quot;khqr&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;pay-method&quot; id=&quot;pay-khqr&quot; checked&gt;
+            &lt;label for=&quot;pay-khqr&quot;&gt;
+              &lt;span class=&quot;pay-title&quot;&gt;🇰🇭 ស្កេនទូទាត់តាម Bakong KHQR (គ្រប់ធនាគារក្នុងស្រុក)&lt;/span&gt;
+              &lt;span class=&quot;pay-desc&quot;&gt;ស្កេនភ្លាមៗតាម ABA, Wing, Acleda, Sathapana ដោយគ្មានកម្រៃសេវា។&lt;/span&gt;
+            &lt;/label&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;payment-option&quot; data-method=&quot;card&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;pay-method&quot; id=&quot;pay-card&quot;&gt;
+            &lt;label for=&quot;pay-card&quot;&gt;
+              &lt;span class=&quot;pay-title&quot;&gt;💳 កាតឥណទាន ឬឥណពន្ធ (Visa / MasterCard)&lt;/span&gt;
+              &lt;span class=&quot;pay-desc&quot;&gt;ទូទាត់ប្រកបដោយសុវត្ថិភាពតាមប្រព័ន្ធ 3D Secure Verification។&lt;/span&gt;
+            &lt;/label&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Dynamic Payment View Area --&gt;
+          &lt;div class=&quot;payment-box-dynamic&quot; id=&quot;khqr-box&quot;&gt;
+            &lt;div class=&quot;khqr-graphic&quot;&gt;
+              &lt;div class=&quot;khqr-header&quot;&gt;BAKONG KHQR&lt;/div&gt;
+              &lt;div class=&quot;khqr-qr-mock&quot;&gt;
+                &lt;span style=&quot;font-size: 64px;&quot;&gt;🏁&lt;/span&gt;
+                &lt;p&gt;ស្កេនទូទាត់តាម App ធនាគារ&lt;/p&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;khqr-amount&quot; id=&quot;khqr-amount-display&quot;&gt;$1,199.00&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;p class=&quot;khqr-timer&quot;&gt;⏳ សុពលភាពកូដ KHQR នៅសល់៖ &lt;strong id=&quot;qr-timer&quot;&gt;05:00&lt;/strong&gt; នាទី&lt;/p&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;flow-nav-buttons&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary btn-back&quot; data-to=&quot;3&quot;&gt;&amp;larr; កែប្រែអាសយដ្ឋាន&lt;/button&gt;
+            &lt;button type=&quot;button&quot; id=&quot;btn-confirm-payment&quot; class=&quot;btn btn-primary-cta&quot;&gt;
+              🔒 បញ្ជាក់ការទូទាត់ និងបញ្ចប់ការបញ្ជាទិញ
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;payment-summary-card&quot;&gt;
+          &lt;h3&gt;សង្ខេបចុងក្រោយ&lt;/h3&gt;
+          &lt;div class=&quot;summary-line&quot;&gt;
+            &lt;span&gt;អ្នកទទួល៖&lt;/span&gt;
+            &lt;strong id=&quot;final-cust-name&quot;&gt;សុខ សុវណ្ណ&lt;/strong&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;summary-line&quot;&gt;
+            &lt;span&gt;ទូរស័ព្ទ៖&lt;/span&gt;
+            &lt;strong id=&quot;final-cust-phone&quot;&gt;012 345 678&lt;/strong&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;summary-line&quot;&gt;
+            &lt;span&gt;ទីតាំង៖&lt;/span&gt;
+            &lt;strong id=&quot;final-cust-city&quot;&gt;រាជធានីភ្នំពេញ&lt;/strong&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;summary-total-line&quot;&gt;
+            &lt;span&gt;ទឹកប្រាក់សរុប៖&lt;/span&gt;
+            &lt;strong id=&quot;final-total&quot;&gt;$1,199.00&lt;/strong&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- STEP 5: SUCCESS CONFIRMATION &amp; RECEIPT --&gt;
+    &lt;section class=&quot;flow-screen&quot; id=&quot;screen-step-5&quot;&gt;
+      &lt;div class=&quot;success-card&quot;&gt;
+        &lt;div class=&quot;success-icon&quot;&gt;🎉&lt;/div&gt;
+        &lt;h2&gt;ការបញ្ជាទិញបានជោគជ័យ! (Order Placed Successfully)&lt;/h2&gt;
+        &lt;p class=&quot;success-lead&quot;&gt;
+          សូមអរគុណសម្រាប់ការគាំទ្រ! លេខកូដបញ្ជាទិញរបស់អ្នកគឺ៖ &lt;strong id=&quot;order-id&quot;&gt;#ORD-2026-9842&lt;/strong&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;success-sub&quot;&gt;
+          យើងខ្ញុំបានផ្ញើវិក្កយបត្រអេឡិចត្រូនិកទៅកាន់អ៊ីមែលរបស់អ្នករួចរាល់ហើយ។ អ្នកដឹកជញ្ជូននឹងទាក់ទងមកអ្នកក្នុងពេលឆាប់ៗនេះ។
+        &lt;/p&gt;
+
+        &lt;div class=&quot;receipt-box&quot;&gt;
+          &lt;div class=&quot;receipt-row&quot;&gt;
+            &lt;span&gt;កាលបរិច្ឆេទ៖&lt;/span&gt;
+            &lt;span id=&quot;receipt-date&quot;&gt;26 តុលា 2026&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;receipt-row&quot;&gt;
+            &lt;span&gt;ទំនិញ៖&lt;/span&gt;
+            &lt;span id=&quot;receipt-item&quot;&gt;TechPro Laptop 15-inch&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;receipt-row&quot;&gt;
+            &lt;span&gt;វិធីសាស្ត្រទូទាត់៖&lt;/span&gt;
+            &lt;span&gt;Bakong KHQR (Paid 200 OK)&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;receipt-row total&quot;&gt;
+            &lt;span&gt;ទឹកប្រាក់បានទូទាត់៖&lt;/span&gt;
+            &lt;span id=&quot;receipt-amount&quot;&gt;$1,199.00&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;success-actions&quot;&gt;
+          &lt;button type=&quot;button&quot; id=&quot;btn-restart-flow&quot; class=&quot;btn btn-primary-cta&quot;&gt;🔄 សាកល្បងលំហូរ User Flow ម្តងទៀត&lt;/button&gt;
+          &lt;a href=&quot;#view-diagram&quot; id=&quot;btn-show-flow-modal-2&quot; class=&quot;btn btn-secondary&quot;&gt;🗺️ ពិនិត្យ User Flow Diagram&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;</code></pre>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ៣</span>
+        <h3 class="step-heading">ការកំណត់ Design Tokens និង Style មូលដ្ឋាន (CSS Tokens & Base Styling)</h3>
+      </div>
+      <p>
+        បង្កើតឯកសារ <code>css/style.css</code> រួចសរសេរកូដកំណត់ <code>:root</code> CSS Variables (Design Tokens សម្រាប់ពណ៌ ពុម្ពអក្សរ គម្លាត), Global Reset <code>*, *::before, *::after</code> និងការតុបតែងសមាសភាគនីមួយៗ៖
+      </p>
+
+      <div class="code-block-container">
+        <div class="code-header-bar">
+          <span class="code-file-name">🎨 css/style.css (Tokens & Component Styling)</span>
+          <button class="btn-copy" onclick="copyCode(this, 'code-step-3')">📋 ចម្លងកូដ (Copy)</button>
+        </div>
+        <pre class="code-view" id="code-step-3"><code>/* ============================================================
+   PROJECT: E-Commerce UX Flow Simulator (Chapter 03)
+   AUTHOR: Web Design Curriculum (Bachelor Year 3)
+   PURPOSE: Interactive demonstration of UI/UX Fundamentals
+   ============================================================ */
+
+:root {
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-dark: #0f172a;
+  --accent-gold: #f59e0b;
+  --accent-gold-hover: #d97706;
+  --success: #10b981;
+  --danger: #ef4444;
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --border: #e2e8f0;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --font-body: &#x27;Khmer OS Siemreap&#x27;, &#x27;Kantumruy Pro&#x27;, system-ui, sans-serif;
+  --font-title: &#x27;Khmer OS Muol Light-Kh Auto&#x27;, &#x27;Khmer OS Muol Light&#x27;, &#x27;Moul&#x27;, serif;
+  --font-code: &#x27;Consolas&#x27;, &#x27;Fira Code&#x27;, &#x27;Courier New&#x27;, monospace;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+  --transition: all 0.25s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-dark);
+  background-color: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: normal;
+  color: var(--primary-dark);
+  line-height: 1.5;
+}
+
+p {
+  margin-bottom: 12px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ==================== BUTTONS ==================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn-primary-cta {
+  background-color: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(2, 132, 199, 0.3);
+}
+
+.btn-primary-cta:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(2, 132, 199, 0.4);
+}
+
+.btn-secondary {
+  background-color: #f1f5f9;
+  color: var(--primary-dark);
+  border-color: var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+}
+
+.btn-text-danger {
+  background: transparent;
+  border: none;
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 13px;
+  font-family: inherit;
+  padding: 6px 0;
+  text-decoration: underline;
+}
+
+.btn-text-danger:hover {
+  color: #b91c1c;
+}
+
+/* ==================== HEADER ==================== */
+.app-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  font-size: 32px;
+}
+
+.brand-name {
+  font-size: 17px;
+}
+
+.brand-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.header-badges {
+  display: flex;
+  gap: 8px;
+}
+
+.ux-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f1f5f9;
+  border: 1px solid var(--border);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.dot.green { background-color: var(--success); }
+.dot.blue { background-color: var(--primary); }
+
+/* ==================== PROGRESS STEPS BAR ==================== */
+.flow-progress-bar {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  position: relative;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.progress-steps::before {
+  content: &quot;&quot;;
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  right: 30px;
+  height: 3px;
+  background-color: #e2e8f0;
+  z-index: 1;
+}
+
+.step-item {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid #cbd5e1;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  transition: var(--transition);
+}
+
+.step-text {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.step-item.active .step-num {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.2);
+}
+
+.step-item.active .step-text {
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+.step-item.completed .step-num {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: #ffffff;
+}
+
+/* ==================== MAIN SCREENS ==================== */
+.app-main {
+  margin-top: 32px;
+  margin-bottom: 60px;
+}
+
+.flow-screen {
+  display: none;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.flow-screen.active {
+  display: block;
+}
+
+.screen-header {
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+
+.step-indicator {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.screen-header h2 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.screen-header p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* ==================== 1. PRODUCT SCREEN ==================== */
+.product-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 36px;
+}
+
+.product-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.main-image-box {
+  background-color: #f1f5f9;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.product-icon-large {
+  font-size: 80px;
+}
+
+.product-color-tag {
+  position: absolute;
+  bottom: 12px;
+  font-size: 12px;
+  background: rgba(15, 23, 42, 0.7);
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+.thumbnail-row {
+  display: flex;
+  gap: 10px;
+}
+
+.thumb-btn {
+  flex: 1;
+  padding: 8px;
+  font-size: 12px;
+  font-family: inherit;
+  background-color: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.thumb-btn.active, .thumb-btn:hover {
+  border-color: var(--primary);
+  background-color: #e0f2fe;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-category {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.product-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.product-pricing {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.price-current {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.price-original {
+  font-size: 16px;
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.discount-pill {
+  background-color: #fee2e2;
+  color: var(--danger);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.product-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.config-group {
+  margin-bottom: 16px;
+}
+
+.config-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.radio-chips {
+  display: flex;
+  gap: 10px;
+}
+
+.chip-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13px;
+  background: #f8fafc;
+}
+
+.qty-stepper {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.qty-stepper button {
+  width: 36px;
+  height: 36px;
+  background-color: #f1f5f9;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.qty-stepper input {
+  width: 48px;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.action-row {
+  margin-top: 24px;
+}
+
+.action-row .btn-primary-cta {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+}
+
+/* ==================== 2. CART SCREEN ==================== */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr;
+  gap: 28px;
+}
+
+.cart-items-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.item-icon {
+  font-size: 44px;
+  background: #f1f5f9;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.item-info {
+  flex-grow: 1;
+}
+
+.item-info h4 {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.item-specs {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.item-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.item-total {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.cart-coupon-box {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border);
+}
+
+.cart-coupon-box label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.coupon-row {
+  display: flex;
+  gap: 8px;
+}
+
+.coupon-row input {
+  flex-grow: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.feedback-msg {
+  display: block;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.cart-safeguard {
+  margin-top: 16px;
+}
+
+.cart-summary-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-title {
+  font-size: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+}
+
+.text-green {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.summary-total-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 2px solid #cbd5e1;
+}
+
+.flow-nav-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.flow-nav-buttons .btn {
+  flex: 1;
+}
+
+/* ==================== 3. SHIPPING SCREEN ==================== */
+.shipping-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+}
+
+.shipping-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  background-color: #ffffff;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.req {
+  color: var(--danger);
+}
+
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 13px;
+  transition: var(--transition);
+}
+
+.form-group input:focus, .form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.form-group input.invalid, .form-group select.invalid {
+  border-color: var(--danger);
+  background-color: #fef2f2;
+}
+
+.field-error {
+  display: block;
+  font-size: 11.5px;
+  color: var(--danger);
+  margin-top: 3px;
+  min-height: 16px;
+}
+
+.shipping-info-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info-badge-card {
+  background-color: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+}
+
+.info-badge-card h4 {
+  font-size: 13.5px;
+  margin-bottom: 6px;
+}
+
+.info-badge-card p {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* ==================== 4. PAYMENT SCREEN ==================== */
+.payment-layout {
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr;
+  gap: 28px;
+}
+
+.payment-methods-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.payment-option.selected {
+  border-color: var(--primary);
+  background-color: #f0f9ff;
+}
+
+.pay-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.pay-desc {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.payment-box-dynamic {
+  background-color: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.khqr-graphic {
+  background-color: #ffffff;
+  border: 2px solid #dc2626;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 16px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.khqr-header {
+  font-weight: 900;
+  color: #dc2626;
+  font-size: 16px;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.khqr-qr-mock {
+  padding: 12px 0;
+}
+
+.khqr-qr-mock p {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.khqr-amount {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-top: 6px;
+}
+
+.khqr-timer {
+  font-size: 13px;
+  color: #b45309;
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.payment-summary-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  background-color: #f8fafc;
+  height: fit-content;
+}
+
+.payment-summary-card h3 {
+  font-size: 16px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ==================== 5. SUCCESS SCREEN ==================== */
+.success-card {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px 10px;
+}
+
+.success-icon {
+  font-size: 64px;
+  margin-bottom: 14px;
+}
+
+.success-card h2 {
+  font-size: 22px;
+  color: var(--success);
+  margin-bottom: 10px;
+}
+
+.success-lead {
+  font-size: 16px;
+  color: var(--primary-dark);
+  margin-bottom: 8px;
+}
+
+.success-sub {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.receipt-box {
+  background-color: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  margin-bottom: 8px;
+}
+
+.receipt-row.total {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+
+.success-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ==================== TOAST NOTIFICATION ==================== */
+.toast-feedback {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  z-index: 10000;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.toast-feedback.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==================== UX PRINCIPLES HUD ==================== */
+.ux-inspector-hud {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  background-color: #ffffff;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  z-index: 9999;
+  font-size: 13px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.hud-top {
+  background-color: var(--primary-dark);
+  color: #ffffff;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hud-tag {
+  background-color: var(--accent-gold);
+  color: #0f172a;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.hud-title {
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.hud-btn-toggle {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.hud-content {
+  padding: 14px;
+}
+
+.hud-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.hud-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.hud-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+
+.btn-hud-flow {
+  width: 100%;
+  background-color: #eff6ff;
+  color: var(--primary);
+  border: 1px solid #bfdbfe;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 8px;
+}
+
+.btn-hud-flow:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+/* ==================== USER FLOW DIAGRAM MODAL ==================== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-dialog {
+  background-color: #ffffff;
+  border-radius: var(--radius-md);
+  max-width: 700px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 14px 20px;
+  background-color: var(--primary-dark);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.modal-footer {
+  padding: 12px 20px;
+  background-color: #f8fafc;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Diagram Visual Nodes */
+.diagram-flow-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.flow-node {
+  background-color: #ffffff;
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 12.5px;
+  min-width: 260px;
+  box-shadow: var(--shadow-sm);
+}
+
+.node-start {
+  background-color: #e0f2fe;
+  border-color: #0284c7;
+}
+
+.node-end {
+  background-color: #d1fae5;
+  border-color: #10b981;
+}
+
+.node-decision {
+  background-color: #fef3c7;
+  border-color: #f59e0b;
+  border-style: dashed;
+}
+
+.flow-arrow {
+  font-size: 18px;
+  color: #94a3b8;
+}
+
+.decision-branches {
+  display: flex;
+  gap: 16px;
+  font-size: 11.5px;
+}
+
+.badge-yes {
+  background-color: #d1fae5;
+  color: #065f46;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.badge-no {
+  background-color: #fee2e2;
+  color: #991b1b;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* ==================== FOOTER ==================== */
+.app-footer {
+  background-color: #0f172a;
+  color: #94a3b8;
+  padding: 24px 0;
+  text-align: center;
+  font-size: 12.5px;
+}
+
+.footer-content p {
+  margin-bottom: 4px;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */</code></pre>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ៤</span>
+        <h3 class="step-heading">ការរៀបចំប្លង់ Responsive និងមុខងារអន្តរកម្ម (Responsive Layout & Interactivity)</h3>
+      </div>
+      <p>
+        បន្ថែម Media Queries ទៅខាងចុងនៃឯកសារ <code>css/style.css</code> ដើម្បីធានាថាគេហទំព័របង្ហាញរូបរាងយ៉ាងស្អាតនៅលើ Tablet និង Mobile Device ព្រមទាំងបន្ថែម JavaScript ទៅក្នុង <code>js/app.js</code> សម្រាប់មុខងារអន្តរកម្ម៖
+      </p>
+
+      <div class="code-block-container">
+        <div class="code-header-bar">
+          <span class="code-file-name">📱 Responsive Media Queries & ⚡ js/app.js</span>
+          <button class="btn-copy" onclick="copyCode(this, 'code-step-4')">📋 ចម្លងកូដ (Copy)</button>
+        </div>
+        <pre class="code-view" id="code-step-4"><code>/* === 1. Responsive Media Queries (css/style.css) === */
+@media (max-width: 850px) {
+  .product-showcase, .cart-layout, .shipping-layout, .payment-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-steps .step-text {
+    display: none;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .ux-inspector-hud {
+    width: 270px;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+/* === 2. Dynamic Interactivity Script (js/app.js) === */
+/**
+ * ============================================================
+ * PROJECT: E-Commerce UX Flow Simulator (Chapter 03)
+ * AUTHOR: Web Design Curriculum (Bachelor Year 3)
+ * FILE: js/app.js
+ * ============================================================
+ */
+
+document.addEventListener(&#x27;DOMContentLoaded&#x27;, () =&gt; {
+  initUserFlowController();
+  initProductConfigurator();
+  initCartAndCoupon();
+  initFormValidation();
+  initPaymentAndCountdown();
+  initModalsAndHUD();
+});
+
+/* State Management */
+const appState = {
+  currentStep: 1,
+  selectedColor: &#x27;Space Gray&#x27;,
+  selectedStorage: &#x27;512GB&#x27;,
+  basePrice: 1199.00,
+  storageExtra: 0,
+  quantity: 1,
+  discount: 0,
+  discountPercent: 0,
+  customer: {
+    name: &#x27;សុខ សុវណ្ណ&#x27;,
+    phone: &#x27;012 345 678&#x27;,
+    email: &#x27;student@example.com&#x27;,
+    city: &#x27;Phnom Penh&#x27;,
+    address: &#x27;ផ្ទះលេខ 123 ផ្លូវ 271&#x27;
+  }
+};
+
+/* ============================================================
+   1. USER FLOW CONTROLLER (5 STEPS)
+   ============================================================ */
+function initUserFlowController() {
+  const stepItems = document.querySelectorAll(&#x27;.step-item&#x27;);
+  const screens = document.querySelectorAll(&#x27;.flow-screen&#x27;);
+
+  window.goToStep = function(stepNum) {
+    if (stepNum &lt; 1 || stepNum &gt; 5) return;
+    appState.currentStep = stepNum;
+
+    // Update screens
+    screens.forEach(s =&gt; s.classList.remove(&#x27;active&#x27;));
+    const targetScreen = document.getElementById(`screen-step-${stepNum}`);
+    if (targetScreen) targetScreen.classList.add(&#x27;active&#x27;);
+
+    // Update progress bar
+    stepItems.forEach(item =&gt; {
+      const itemStep = parseInt(item.getAttribute(&#x27;data-step&#x27;), 10);
+      item.classList.remove(&#x27;active&#x27;, &#x27;completed&#x27;);
+      if (itemStep === stepNum) {
+        item.classList.add(&#x27;active&#x27;);
+      } else if (itemStep &lt; stepNum) {
+        item.classList.add(&#x27;completed&#x27;);
+      }
+    });
+
+    // Scroll to top of main
+    window.scrollTo({ top: 120, behavior: &#x27;smooth&#x27; });
+
+    // Toast Feedback
+    showToast(`កំពុងស្ថិតនៅជំហានទី ${stepNum}៖ ${getStepTitle(stepNum)}`);
+  };
+
+  function getStepTitle(num) {
+    const titles = {
+      1: &#x27;ជ្រើសរើសផលិតផល&#x27;,
+      2: &#x27;ពិនិត្យកន្ត្រកទំនិញ&#x27;,
+      3: &#x27;អាសយដ្ឋានដឹកជញ្ជូន&#x27;,
+      4: &#x27;ការទូទាត់ប្រាក់ (Payment)&#x27;,
+      5: &#x27;ការបញ្ជាទិញជោគជ័យ&#x27;
+    };
+    return titles[num] || &#x27;&#x27;;
+  }
+
+  // Handle Back Buttons
+  document.querySelectorAll(&#x27;.btn-back&#x27;).forEach(btn =&gt; {
+    btn.addEventListener(&#x27;click&#x27;, () =&gt; {
+      const toStep = parseInt(btn.getAttribute(&#x27;data-to&#x27;), 10);
+      goToStep(toStep);
+    });
+  });
+
+  // Step 1 Add to Cart -&gt; Step 2
+  const btnAddToCart = document.getElementById(&#x27;btn-add-to-cart&#x27;);
+  if (btnAddToCart) {
+    btnAddToCart.addEventListener(&#x27;click&#x27;, () =&gt; {
+      updateCartSummaryUI();
+      goToStep(2);
+    });
+  }
+
+  // Step 2 Proceed to Shipping -&gt; Step 3
+  const btnProceedShipping = document.getElementById(&#x27;btn-proceed-to-shipping&#x27;);
+  if (btnProceedShipping) {
+    btnProceedShipping.addEventListener(&#x27;click&#x27;, () =&gt; {
+      goToStep(3);
+    });
+  }
+
+  // Step 5 Restart Flow
+  const btnRestart = document.getElementById(&#x27;btn-restart-flow&#x27;);
+  if (btnRestart) {
+    btnRestart.addEventListener(&#x27;click&#x27;, () =&gt; {
+      goToStep(1);
+    });
+  }
+}
+
+/* ============================================================
+   2. PRODUCT CONFIGURATOR (STEP 1)
+   ============================================================ */
+function initProductConfigurator() {
+  const thumbBtns = document.querySelectorAll(&#x27;.thumb-btn&#x27;);
+  const colorBadge = document.getElementById(&#x27;current-color-badge&#x27;);
+  const mainIcon = document.querySelector(&#x27;.product-icon-large&#x27;);
+  const storageRadios = document.querySelectorAll(&#x27;input[name=&quot;storage&quot;]&#x27;);
+  const btnMinus = document.getElementById(&#x27;btn-qty-minus&#x27;);
+  const btnPlus = document.getElementById(&#x27;btn-qty-plus&#x27;);
+  const inputQty = document.getElementById(&#x27;input-qty&#x27;);
+  const priceDisplay = document.querySelector(&#x27;.price-current&#x27;);
+
+  function updatePriceDisplay() {
+    const unitPrice = appState.basePrice + appState.storageExtra;
+    priceDisplay.textContent = `$${unitPrice.toFixed(2)}`;
+  }
+
+  // Color Switcher
+  thumbBtns.forEach(btn =&gt; {
+    btn.addEventListener(&#x27;click&#x27;, () =&gt; {
+      thumbBtns.forEach(b =&gt; b.classList.remove(&#x27;active&#x27;));
+      btn.classList.add(&#x27;active&#x27;);
+
+      const color = btn.getAttribute(&#x27;data-color&#x27;);
+      const img = btn.getAttribute(&#x27;data-img&#x27;);
+      appState.selectedColor = color;
+      colorBadge.textContent = `ពណ៌៖ ${color}`;
+      mainIcon.textContent = img;
+      showToast(`បានជ្រើសរើសពណ៌៖ ${color}`);
+    });
+  });
+
+  // Storage selection
+  storageRadios.forEach(radio =&gt; {
+    radio.addEventListener(&#x27;change&#x27;, () =&gt; {
+      if (radio.value === &#x27;1TB&#x27;) {
+        appState.storageExtra = 150;
+        appState.selectedStorage = &#x27;1TB&#x27;;
+      } else {
+        appState.storageExtra = 0;
+        appState.selectedStorage = &#x27;512GB&#x27;;
+      }
+      updatePriceDisplay();
+      showToast(`បានជ្រើសរើសទំហំផ្ទុក៖ ${appState.selectedStorage}`);
+    });
+  });
+
+  // Quantity stepper
+  if (btnMinus &amp;&amp; btnPlus &amp;&amp; inputQty) {
+    btnMinus.addEventListener(&#x27;click&#x27;, () =&gt; {
+      if (appState.quantity &gt; 1) {
+        appState.quantity--;
+        inputQty.value = appState.quantity;
+      }
+    });
+
+    btnPlus.addEventListener(&#x27;click&#x27;, () =&gt; {
+      if (appState.quantity &lt; 5) {
+        appState.quantity++;
+        inputQty.value = appState.quantity;
+      } else {
+        showToast(&#x27;បរិមាណអតិបរមាគឺ ៥ គ្រឿងសម្រាប់ម្នាក់!&#x27;);
+      }
+    });
+  }
+}
+
+/* ============================================================
+   3. CART &amp; COUPON (STEP 2)
+   ============================================================ */
+function initCartAndCoupon() {
+  const couponInput = document.getElementById(&#x27;coupon-input&#x27;);
+  const btnApplyCoupon = document.getElementById(&#x27;btn-apply-coupon&#x27;);
+  const couponFeedback = document.getElementById(&#x27;coupon-feedback&#x27;);
+  const btnClearCart = document.getElementById(&#x27;btn-clear-cart&#x27;);
+
+  window.updateCartSummaryUI = function() {
+    const unitPrice = appState.basePrice + appState.storageExtra;
+    const subtotal = unitPrice * appState.quantity;
+    const discountAmount = subtotal * appState.discountPercent;
+    const total = subtotal - discountAmount;
+
+    // Update Cart Screen UI
+    document.getElementById(&#x27;cart-item-specs&#x27;).textContent = `ពណ៌៖ ${appState.selectedColor} | ${appState.selectedStorage} SSD`;
+    document.getElementById(&#x27;cart-item-unit-price&#x27;).textContent = `$${unitPrice.toFixed(2)}`;
+    document.getElementById(&#x27;cart-qty-display&#x27;).textContent = appState.quantity;
+    document.getElementById(&#x27;cart-item-subtotal&#x27;).textContent = `$${subtotal.toFixed(2)}`;
+
+    document.getElementById(&#x27;sum-items&#x27;).textContent = `$${subtotal.toFixed(2)}`;
+    document.getElementById(&#x27;sum-discount&#x27;).textContent = `-$${discountAmount.toFixed(2)}`;
+    document.getElementById(&#x27;sum-total&#x27;).textContent = `$${total.toFixed(2)}`;
+
+    // Update Payment Screen UI
+    document.getElementById(&#x27;khqr-amount-display&#x27;).textContent = `$${total.toFixed(2)}`;
+    document.getElementById(&#x27;final-total&#x27;).textContent = `$${total.toFixed(2)}`;
+    document.getElementById(&#x27;receipt-amount&#x27;).textContent = `$${total.toFixed(2)}`;
+  };
+
+  if (btnApplyCoupon &amp;&amp; couponInput &amp;&amp; couponFeedback) {
+    btnApplyCoupon.addEventListener(&#x27;click&#x27;, () =&gt; {
+      const code = couponInput.value.trim().toUpperCase();
+      if (code === &#x27;STUDENT2026&#x27;) {
+        appState.discountPercent = 0.10; // 10%
+        couponFeedback.textContent = &#x27;✅ លេខកូដត្រឹមត្រូវ! អ្នកទទួលបានការបញ្ចុះតម្លៃ ១០%។&#x27;;
+        couponFeedback.style.color = &#x27;#10b981&#x27;;
+        updateCartSummaryUI();
+        showToast(&#x27;ទទួលបានការបញ្ចុះតម្លៃ ១០% ដោយជោគជ័យ!&#x27;);
+      } else if (code === &#x27;&#x27;) {
+        couponFeedback.textContent = &#x27;⚠️ សូមវាយបញ្ចូលលេខកូដ!&#x27;;
+        couponFeedback.style.color = &#x27;#ef4444&#x27;;
+      } else {
+        couponFeedback.textContent = &#x27;❌ លេខកូដមិនត្រឹមត្រូវ ឬផុតកំណត់!&#x27;;
+        couponFeedback.style.color = &#x27;#ef4444&#x27;;
+      }
+    });
+  }
+
+  // Error Prevention Principle (Confirm dialog before destructive action)
+  if (btnClearCart) {
+    btnClearCart.addEventListener(&#x27;click&#x27;, () =&gt; {
+      const userConfirmed = confirm(&#x27;តើអ្នកពិតជាចង់សម្អាតកន្ត្រកទំនិញមែនទេ? (Error Prevention: ការពារការចុចច្រឡំ)&#x27;);
+      if (userConfirmed) {
+        appState.quantity = 1;
+        appState.discountPercent = 0;
+        document.getElementById(&#x27;input-qty&#x27;).value = 1;
+        updateCartSummaryUI();
+        showToast(&#x27;កន្ត្រកទំនិញត្រូវបានកំណត់ឡើងវិញ។&#x27;);
+        goToStep(1);
+      }
+    });
+  }
+}
+
+/* ============================================================
+   4. FORM VALIDATION &amp; ERROR PREVENTION (STEP 3)
+   ============================================================ */
+function initFormValidation() {
+  const form = document.getElementById(&#x27;shipping-form&#x27;);
+  const inputName = document.getElementById(&#x27;cust-name&#x27;);
+  const inputPhone = document.getElementById(&#x27;cust-phone&#x27;);
+  const inputEmail = document.getElementById(&#x27;cust-email&#x27;);
+  const inputCity = document.getElementById(&#x27;cust-city&#x27;);
+  const inputAddress = document.getElementById(&#x27;cust-address&#x27;);
+
+  const errName = document.getElementById(&#x27;err-name&#x27;);
+  const errPhone = document.getElementById(&#x27;err-phone&#x27;);
+  const errEmail = document.getElementById(&#x27;err-email&#x27;);
+  const errAddress = document.getElementById(&#x27;err-address&#x27;);
+
+  function validateField(input, errElement, condition, errorMsg) {
+    if (!condition) {
+      input.classList.add(&#x27;invalid&#x27;);
+      errElement.textContent = errorMsg;
+      return false;
+    } else {
+      input.classList.remove(&#x27;invalid&#x27;);
+      errElement.textContent = &#x27;&#x27;;
+      return true;
+    }
+  }
+
+  // Real-time Inline Validations
+  inputName.addEventListener(&#x27;input&#x27;, () =&gt; {
+    validateField(inputName, errName, inputName.value.trim().length &gt;= 3, &#x27;ឈ្មោះត្រូវមានយ៉ាងតិច ៣ តួអក្សរ!&#x27;);
+  });
+
+  inputPhone.addEventListener(&#x27;input&#x27;, () =&gt; {
+    const phoneRegex = /^[0-9]{8,11}$/;
+    validateField(inputPhone, errPhone, phoneRegex.test(inputPhone.value.trim()), &#x27;លេខទូរស័ព្ទត្រូវតែជាលេខ ៨ ដល់ ១១ ខ្ទង់!&#x27;);
+  });
+
+  inputEmail.addEventListener(&#x27;input&#x27;, () =&gt; {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    validateField(inputEmail, errEmail, emailRegex.test(inputEmail.value.trim()), &#x27;ទម្រង់អ៊ីមែលមិនត្រឹមត្រូវ (ឧ. user@domain.com)!&#x27;);
+  });
+
+  inputAddress.addEventListener(&#x27;input&#x27;, () =&gt; {
+    validateField(inputAddress, errAddress, inputAddress.value.trim().length &gt;= 5, &#x27;សូមបំពេញអាសយដ្ឋានឱ្យបានលម្អិត!&#x27;);
+  });
+
+  // Form Submit
+  if (form) {
+    form.addEventListener(&#x27;submit&#x27;, (e) =&gt; {
+      e.preventDefault();
+
+      const isNameValid = validateField(inputName, errName, inputName.value.trim().length &gt;= 3, &#x27;សូមបញ្ចូលឈ្មោះពេញរបស់អ្នក!&#x27;);
+      const isPhoneValid = validateField(inputPhone, errPhone, /^[0-9]{8,11}$/.test(inputPhone.value.trim()), &#x27;សូមបញ្ចូលលេខទូរស័ព្ទត្រឹមត្រូវ!&#x27;);
+      const isEmailValid = validateField(inputEmail, errEmail, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputEmail.value.trim()), &#x27;សូមបញ្ចូលអ៊ីមែលត្រឹមត្រូវ!&#x27;);
+      const isAddressValid = validateField(inputAddress, errAddress, inputAddress.value.trim().length &gt;= 5, &#x27;សូមបញ្ចូលអាសយដ្ឋានដឹកជញ្ជូន!&#x27;);
+
+      if (isNameValid &amp;&amp; isPhoneValid &amp;&amp; isEmailValid &amp;&amp; isAddressValid) {
+        // Save to state
+        appState.customer.name = inputName.value.trim();
+        appState.customer.phone = inputPhone.value.trim();
+        appState.customer.email = inputEmail.value.trim();
+        appState.customer.city = inputCity.value;
+        appState.customer.address = inputAddress.value.trim();
+
+        // Update step 4 UI
+        document.getElementById(&#x27;final-cust-name&#x27;).textContent = appState.customer.name;
+        document.getElementById(&#x27;final-cust-phone&#x27;).textContent = appState.customer.phone;
+        document.getElementById(&#x27;final-cust-city&#x27;).textContent = `${appState.customer.address}, ${appState.customer.city}`;
+
+        showToast(&#x27;ព័ត៌មានដឹកជញ្ជូនត្រឹមត្រូវ! កំពុងបន្តទៅទូទាត់ប្រាក់...&#x27;);
+        goToStep(4);
+      } else {
+        showToast(&#x27;⚠️ សូមពិនិត្យមើលកំហុសក្នុងទម្រង់បែបបទ (Error Prevention)!&#x27;);
+      }
+    });
+  }
+}
+
+/* ============================================================
+   5. PAYMENT &amp; COUNTDOWN TIMER (STEP 4)
+   ============================================================ */
+function initPaymentAndCountdown() {
+  const payOptions = document.querySelectorAll(&#x27;.payment-option&#x27;);
+  const btnConfirmPayment = document.getElementById(&#x27;btn-confirm-payment&#x27;);
+  const timerDisplay = document.getElementById(&#x27;qr-timer&#x27;);
+  let countdownSeconds = 300; // 5 minutes
+
+  // Toggle payment method selection
+  payOptions.forEach(opt =&gt; {
+    opt.addEventListener(&#x27;click&#x27;, () =&gt; {
+      payOptions.forEach(o =&gt; o.classList.remove(&#x27;selected&#x27;));
+      opt.classList.add(&#x27;selected&#x27;);
+      const radio = opt.querySelector(&#x27;input[type=&quot;radio&quot;]&#x27;);
+      if (radio) radio.checked = true;
+
+      const method = opt.getAttribute(&#x27;data-method&#x27;);
+      if (method === &#x27;khqr&#x27;) {
+        document.getElementById(&#x27;khqr-box&#x27;).style.display = &#x27;block&#x27;;
+        showToast(&#x27;បានជ្រើសរើសវិធីសាស្ត្រ Bakong KHQR&#x27;);
+      } else {
+        document.getElementById(&#x27;khqr-box&#x27;).style.display = &#x27;none&#x27;;
+        showToast(&#x27;បានជ្រើសរើសវិធីសាស្ត្រ Visa / MasterCard&#x27;);
+      }
+    });
+  });
+
+  // Countdown simulation
+  setInterval(() =&gt; {
+    if (countdownSeconds &gt; 0) {
+      countdownSeconds--;
+      const mins = Math.floor(countdownSeconds / 60);
+      const secs = countdownSeconds % 60;
+      if (timerDisplay) {
+        timerDisplay.textContent = `${String(mins).padStart(2, &#x27;0&#x27;)}:${String(secs).padStart(2, &#x27;0&#x27;)}`;
+      }
+    }
+  }, 1000);
+
+  // Confirm payment
+  if (btnConfirmPayment) {
+    btnConfirmPayment.addEventListener(&#x27;click&#x27;, () =&gt; {
+      btnConfirmPayment.innerHTML = &#x27;⏳ កំពុងដំណើរការទូទាត់...&#x27;;
+      btnConfirmPayment.disabled = true;
+
+      setTimeout(() =&gt; {
+        btnConfirmPayment.innerHTML = &#x27;🔒 បញ្ជាក់ការទូទាត់ និងបញ្ចប់ការបញ្ជាទិញ&#x27;;
+        btnConfirmPayment.disabled = false;
+
+        // Generate receipt values
+        document.getElementById(&#x27;order-id&#x27;).textContent = `#ORD-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+        document.getElementById(&#x27;receipt-date&#x27;).textContent = new Date().toLocaleDateString(&#x27;km-KH&#x27;, { dateStyle: &#x27;long&#x27; });
+        document.getElementById(&#x27;receipt-item&#x27;).textContent = `TechPro Laptop (${appState.selectedColor}, ${appState.selectedStorage}) x ${appState.quantity}`;
+
+        goToStep(5);
+        showToast(&#x27;🎉 ការទូទាត់ជោគជ័យ! បញ្ជាទិញបានសម្រេច។&#x27;);
+      }, 1200);
+    });
+  }
+}
+
+/* ============================================================
+   6. MODALS &amp; TOAST FEEDBACK
+   ============================================================ */
+function initModalsAndHUD() {
+  const toast = document.getElementById(&#x27;toast-notification&#x27;);
+  const toastText = document.getElementById(&#x27;toast-text&#x27;);
+
+  window.showToast = function(msg) {
+    if (!toast || !toastText) return;
+    toastText.textContent = msg;
+    toast.classList.add(&#x27;show&#x27;);
+    setTimeout(() =&gt; {
+      toast.classList.remove(&#x27;show&#x27;);
+    }, 3200);
+  };
+
+  // Flow Diagram Modal
+  const flowModal = document.getElementById(&#x27;flow-modal&#x27;);
+  const btnOpenFlow1 = document.getElementById(&#x27;btn-view-userflow-diagram&#x27;);
+  const btnOpenFlow2 = document.getElementById(&#x27;btn-show-flow-modal-2&#x27;);
+  const btnCloseFlow = document.getElementById(&#x27;btn-close-flow-modal&#x27;);
+  const btnCloseFlowFooter = document.getElementById(&#x27;btn-close-flow-footer&#x27;);
+
+  function openFlowModal() {
+    if (flowModal) flowModal.classList.add(&#x27;open&#x27;);
+  }
+
+  function closeFlowModal() {
+    if (flowModal) flowModal.classList.remove(&#x27;open&#x27;);
+  }
+
+  if (btnOpenFlow1) btnOpenFlow1.addEventListener(&#x27;click&#x27;, openFlowModal);
+  if (btnOpenFlow2) btnOpenFlow2.addEventListener(&#x27;click&#x27;, openFlowModal);
+  if (btnCloseFlow) btnCloseFlow.addEventListener(&#x27;click&#x27;, closeFlowModal);
+  if (btnCloseFlowFooter) btnCloseFlowFooter.addEventListener(&#x27;click&#x27;, closeFlowModal);
+
+  window.addEventListener(&#x27;click&#x27;, (e) =&gt; {
+    if (e.target === flowModal) closeFlowModal();
+  });
+
+  // Toggle HUD minimize
+  const btnToggleHud = document.getElementById(&#x27;btn-toggle-hud&#x27;);
+  const hudContent = document.getElementById(&#x27;hud-content&#x27;);
+  let hudMinimized = false;
+
+  if (btnToggleHud &amp;&amp; hudContent) {
+    btnToggleHud.addEventListener(&#x27;click&#x27;, () =&gt; {
+      hudMinimized = !hudMinimized;
+      if (hudMinimized) {
+        hudContent.style.display = &#x27;none&#x27;;
+        btnToggleHud.textContent = &#x27;+&#x27;;
+      } else {
+        hudContent.style.display = &#x27;block&#x27;;
+        btnToggleHud.textContent = &#x27;_&#x27;;
+      }
+    });
+  }
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ៥</span>
+        <h3 class="step-heading">កូដគម្រោងពេញលេញទាំងស្រុង និងការសាកល្បងដំណើរការ (Full Complete Code & Testing)</h3>
+      </div>
+      <p>
+        ខាងក្រោមនេះជាកូដពេញលេញនៃឯកសារនីមួយៗក្នុងគម្រោង។ និស្សិតអាចជ្រើសរើសផ្ទាំង (Tab) ដើម្បីចម្លងកូដឯកសារទាំងស្រុងយកទៅប្រើប្រាស់ និងសាកល្បងដំណើរការជាមួយ <strong>VS Code Live Server</strong> (Right-Click លើ <code>index.html</code> &gt; <em>Open with Live Server</em>)៖
+      </p>
+
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab(this, 'tab-html')">📄 index.html (កូដពេញលេញ)</button>
+        <button class="tab-btn" onclick="switchTab(this, 'tab-css')">🎨 css/style.css (កូដពេញលេញ)</button>
+        <button class="tab-btn" onclick="switchTab(this, 'tab-js')">⚡ js/app.js (កូដពេញលេញ)</button>
+      </div>
+
+      <!-- Tab HTML -->
+      <div id="tab-html" class="tab-pane active">
+        <div class="code-block-container">
+          <div class="code-header-bar">
+            <span class="code-file-name">📄 index.html (Complete Working Code)</span>
+            <button class="btn-copy" onclick="copyCode(this, 'full-code-html')">📋 ចម្លង index.html ទាំងមូល</button>
+          </div>
+          <pre class="code-view" id="full-code-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;km&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;គម្រោងគំរូមេរៀនទី ៣: មូលដ្ឋានគ្រឹះ UI និង UX (UI and UX Fundamentals) - Bachelor Year 3&quot;&gt;
+  &lt;title&gt;គម្រោងគំរូ: លំហូរអ្នកប្រើប្រាស់ពាណិជ្ជកម្មអេឡិចត្រូនិក (E-Commerce UX Flow Simulator)&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&amp;family=Moul&amp;family=Fira+Code:wght@400;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;!-- ==================== UI/UX PRINCIPLES INSPECTOR HUD ==================== --&gt;
+  &lt;!-- ==================== HEADER ==================== --&gt;
+  &lt;header class=&quot;app-header&quot;&gt;
+    &lt;div class=&quot;container header-flex&quot;&gt;
+      &lt;div class=&quot;brand&quot;&gt;
+        &lt;span class=&quot;brand-logo&quot;&gt;🛍️&lt;/span&gt;
+        &lt;div&gt;
+          &lt;h1 class=&quot;brand-name&quot;&gt;Cambodia TechStore&lt;/h1&gt;
+          &lt;p class=&quot;brand-sub&quot;&gt;ឧបករណ៍ពិសោធន៍លំហូរទិញទំនិញ (E-Commerce UX Flow)&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;header-badges&quot;&gt;
+        &lt;span class=&quot;ux-badge&quot;&gt;&lt;span class=&quot;dot green&quot;&gt;&lt;/span&gt; UX Optimized&lt;/span&gt;
+        &lt;span class=&quot;ux-badge&quot;&gt;&lt;span class=&quot;dot blue&quot;&gt;&lt;/span&gt; 5-Stage Stepped Checkout&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;!-- ==================== USER FLOW STEP PROGRESS BAR ==================== --&gt;
+  &lt;nav class=&quot;flow-progress-bar&quot; aria-label=&quot;Checkout Progress&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;ol class=&quot;progress-steps&quot; id=&quot;progress-steps&quot;&gt;
+        &lt;li class=&quot;step-item active&quot; data-step=&quot;1&quot;&gt;
+          &lt;span class=&quot;step-num&quot;&gt;1&lt;/span&gt;
+          &lt;span class=&quot;step-text&quot;&gt;ជ្រើសរើសផលិតផល&lt;/span&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;step-item&quot; data-step=&quot;2&quot;&gt;
+          &lt;span class=&quot;step-num&quot;&gt;2&lt;/span&gt;
+          &lt;span class=&quot;step-text&quot;&gt;កន្ត្រកទំនិញ&lt;/span&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;step-item&quot; data-step=&quot;3&quot;&gt;
+          &lt;span class=&quot;step-num&quot;&gt;3&lt;/span&gt;
+          &lt;span class=&quot;step-text&quot;&gt;អាសយដ្ឋានដឹកជញ្ជូន&lt;/span&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;step-item&quot; data-step=&quot;4&quot;&gt;
+          &lt;span class=&quot;step-num&quot;&gt;4&lt;/span&gt;
+          &lt;span class=&quot;step-text&quot;&gt;ការទូទាត់ប្រាក់&lt;/span&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;step-item&quot; data-step=&quot;5&quot;&gt;
+          &lt;span class=&quot;step-num&quot;&gt;5&lt;/span&gt;
+          &lt;span class=&quot;step-text&quot;&gt;ជោគជ័យ&lt;/span&gt;
+        &lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;!-- ==================== MAIN CONTENT: 5 INTERACTIVE STEPS ==================== --&gt;
+  &lt;main class=&quot;container app-main&quot;&gt;
+
+    &lt;!-- STEP 1: PRODUCT SELECTION &amp; CONFIGURATION --&gt;
+    &lt;section class=&quot;flow-screen active&quot; id=&quot;screen-step-1&quot;&gt;
+      &lt;div class=&quot;screen-header&quot;&gt;
+        &lt;span class=&quot;step-indicator&quot;&gt;ជំហាន ១ នៃ ៥&lt;/span&gt;
+        &lt;h2&gt;ជ្រើសរើសផលិតផល និងលក្ខណៈសម្បត្តិ (Product Details &amp;amp; Options)&lt;/h2&gt;
+        &lt;p&gt;គោលការណ៍ UI/UX៖ កាត់បន្ថយការភាន់ច្រឡំដោយផ្តល់ជម្រើសពណ៌ រូបភាព និងតម្លៃច្បាស់លាស់។&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;product-showcase&quot;&gt;
+        &lt;div class=&quot;product-gallery&quot;&gt;
+          &lt;div class=&quot;main-image-box&quot; id=&quot;product-img-box&quot;&gt;
+            &lt;span class=&quot;product-icon-large&quot;&gt;💻&lt;/span&gt;
+            &lt;span class=&quot;product-color-tag&quot; id=&quot;current-color-badge&quot;&gt;ពណ៌៖ Space Gray&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;thumbnail-row&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;thumb-btn active&quot; data-color=&quot;Space Gray&quot; data-img=&quot;💻&quot;&gt;Space Gray&lt;/button&gt;
+            &lt;button type=&quot;button&quot; class=&quot;thumb-btn&quot; data-color=&quot;Silver&quot; data-img=&quot;🖥️&quot;&gt;Silver&lt;/button&gt;
+            &lt;button type=&quot;button&quot; class=&quot;thumb-btn&quot; data-color=&quot;Midnight Blue&quot; data-img=&quot;📱&quot;&gt;Midnight&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;product-details&quot;&gt;
+          &lt;span class=&quot;product-category&quot;&gt;Ultrabook Pro 2026&lt;/span&gt;
+          &lt;h3 class=&quot;product-title&quot;&gt;TechPro Laptop 15-inch (M3 Chip, 16GB RAM, 512GB SSD)&lt;/h3&gt;
+          &lt;div class=&quot;product-rating&quot;&gt;
+            &lt;span class=&quot;stars&quot;&gt;⭐⭐⭐⭐⭐&lt;/span&gt;
+            &lt;span class=&quot;rating-count&quot;&gt;(4.9/5 ផ្អែកលើការវាយតម្លៃ ២៤០ នាក់)&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;product-pricing&quot;&gt;
+            &lt;span class=&quot;price-current&quot;&gt;$1,199.00&lt;/span&gt;
+            &lt;span class=&quot;price-original&quot;&gt;$1,350.00&lt;/span&gt;
+            &lt;span class=&quot;discount-pill&quot;&gt;ចុះតម្លៃ ១១%&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;p class=&quot;product-desc&quot;&gt;
+            ម៉ាស៊ីនកុំព្យូទ័រយួរដៃសម្រាប់និស្សិតវិទ្យាសាស្ត្រកុំព្យូទ័រ និងអ្នករចនាគេហទំព័រអាជីព។ ថ្មកាន់បាន ១៨ ម៉ោង អេក្រង់ Retina ស្រាល និងងាយស្រួលយកតាមខ្លួន។
+          &lt;/p&gt;
+
+          &lt;!-- Configuration Controls --&gt;
+          &lt;div class=&quot;config-group&quot;&gt;
+            &lt;label class=&quot;config-label&quot;&gt;ជ្រើសរើសទំហំផ្ទុក Storage៖&lt;/label&gt;
+            &lt;div class=&quot;radio-chips&quot;&gt;
+              &lt;label class=&quot;chip-option&quot;&gt;
+                &lt;input type=&quot;radio&quot; name=&quot;storage&quot; value=&quot;512GB&quot; checked&gt;
+                &lt;span&gt;512GB SSD (ស្តង់ដារ)&lt;/span&gt;
+              &lt;/label&gt;
+              &lt;label class=&quot;chip-option&quot;&gt;
+                &lt;input type=&quot;radio&quot; name=&quot;storage&quot; value=&quot;1TB&quot;&gt;
+                &lt;span&gt;1TB SSD (+$150)&lt;/span&gt;
+              &lt;/label&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;config-group&quot;&gt;
+            &lt;label class=&quot;config-label&quot;&gt;ចំនួន (Quantity)៖&lt;/label&gt;
+            &lt;div class=&quot;qty-stepper&quot;&gt;
+              &lt;button type=&quot;button&quot; id=&quot;btn-qty-minus&quot; aria-label=&quot;Decrease quantity&quot;&gt;-&lt;/button&gt;
+              &lt;input type=&quot;number&quot; id=&quot;input-qty&quot; value=&quot;1&quot; min=&quot;1&quot; max=&quot;5&quot; readonly&gt;
+              &lt;button type=&quot;button&quot; id=&quot;btn-qty-plus&quot; aria-label=&quot;Increase quantity&quot;&gt;+&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Primary CTA Button --&gt;
+          &lt;div class=&quot;action-row&quot;&gt;
+            &lt;button type=&quot;button&quot; id=&quot;btn-add-to-cart&quot; class=&quot;btn btn-primary-cta&quot;&gt;
+              🛒 បន្ថែមទៅក្នុងកន្ត្រក និងបន្ត (Add to Cart &amp;amp; Proceed)
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- STEP 2: CART REVIEW &amp; SUMMARY --&gt;
+    &lt;section class=&quot;flow-screen&quot; id=&quot;screen-step-2&quot;&gt;
+      &lt;div class=&quot;screen-header&quot;&gt;
+        &lt;span class=&quot;step-indicator&quot;&gt;ជំហាន ២ នៃ ៥&lt;/span&gt;
+        &lt;h2&gt;ពិនិត្យកន្ត្រកទំនិញ (Shopping Cart Review)&lt;/h2&gt;
+        &lt;p&gt;គោលការណ៍ UI/UX៖ ផ្តល់ភាពច្បាស់លាស់លើតម្លៃទំនិញ ពន្ធ និងថ្លៃដឹកជញ្ជូន មុនពេលឈានចូលទៅកាន់ការបំពេញទម្រង់។&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;cart-layout&quot;&gt;
+        &lt;div class=&quot;cart-items-card&quot;&gt;
+          &lt;div class=&quot;cart-item&quot;&gt;
+            &lt;div class=&quot;item-icon&quot;&gt;💻&lt;/div&gt;
+            &lt;div class=&quot;item-info&quot;&gt;
+              &lt;h4 id=&quot;cart-item-title&quot;&gt;TechPro Laptop 15-inch&lt;/h4&gt;
+              &lt;p class=&quot;item-specs&quot; id=&quot;cart-item-specs&quot;&gt;ពណ៌៖ Space Gray | 512GB SSD&lt;/p&gt;
+              &lt;span class=&quot;item-price&quot; id=&quot;cart-item-unit-price&quot;&gt;$1,199.00&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-quantity&quot;&gt;
+              &lt;span&gt;ចំនួន៖ &lt;strong id=&quot;cart-qty-display&quot;&gt;1&lt;/strong&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item-total&quot;&gt;
+              &lt;span id=&quot;cart-item-subtotal&quot;&gt;$1,199.00&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;cart-coupon-box&quot;&gt;
+            &lt;label for=&quot;coupon-input&quot;&gt;លេខកូដបញ្ចុះតម្លៃ (Voucher Code)៖&lt;/label&gt;
+            &lt;div class=&quot;coupon-row&quot;&gt;
+              &lt;input type=&quot;text&quot; id=&quot;coupon-input&quot; placeholder=&quot;វាយពាក្យ &#x27;STUDENT2026&#x27; ដើម្បីបញ្ចុះ 10%&quot;&gt;
+              &lt;button type=&quot;button&quot; id=&quot;btn-apply-coupon&quot; class=&quot;btn btn-secondary&quot;&gt;អនុវត្ត&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;span id=&quot;coupon-feedback&quot; class=&quot;feedback-msg&quot;&gt;&lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Error Prevention Safe Button --&gt;
+          &lt;div class=&quot;cart-safeguard&quot;&gt;
+            &lt;button type=&quot;button&quot; id=&quot;btn-clear-cart&quot; class=&quot;btn-text-danger&quot;&gt;🗑️ សម្អាតកន្ត្រក (មានប្រព័ន្ធ Error Prevention Confirm)&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Summary &amp; Next Step --&gt;
+        &lt;aside class=&quot;cart-summary-card&quot;&gt;
+          &lt;h3 class=&quot;summary-title&quot;&gt;សង្ខេបការបញ្ជាទិញ (Order Summary)&lt;/h3&gt;
+          &lt;div class=&quot;summary-line&quot;&gt;
+            &lt;span&gt;តម្លៃទំនិញសរុប&lt;/span&gt;
+            &lt;span id=&quot;sum-items&quot;&gt;$1,199.00&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;summary-line&quot;&gt;
+            &lt;span&gt;ការបញ្ចុះតម្លៃ (Discount)&lt;/span&gt;
+            &lt;span id=&quot;sum-discount&quot; class=&quot;text-green&quot;&gt;-$0.00&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;summary-line&quot;&gt;
+            &lt;span&gt;ថ្លៃដឹកជញ្ជូន (Delivery)&lt;/span&gt;
+            &lt;span class=&quot;text-green&quot;&gt;ឥតគិតថ្លៃ (Free)&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;summary-total-line&quot;&gt;
+            &lt;span&gt;ទឹកប្រាក់ត្រូវទូទាត់&lt;/span&gt;
+            &lt;span id=&quot;sum-total&quot;&gt;$1,199.00&lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;flow-nav-buttons&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary btn-back&quot; data-to=&quot;1&quot;&gt;&amp;larr; ត្រឡប់ក្រោយ&lt;/button&gt;
+            &lt;button type=&quot;button&quot; id=&quot;btn-proceed-to-shipping&quot; class=&quot;btn btn-primary-cta&quot;&gt;
+              បន្តទៅបំពេញអាសយដ្ឋាន &amp;rarr;
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/aside&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- STEP 3: CUSTOMER &amp; SHIPPING INFORMATION (ERROR PREVENTION &amp; FEEDBACK) --&gt;
+    &lt;section class=&quot;flow-screen&quot; id=&quot;screen-step-3&quot;&gt;
+      &lt;div class=&quot;screen-header&quot;&gt;
+        &lt;span class=&quot;step-indicator&quot;&gt;ជំហាន ៣ នៃ ៥&lt;/span&gt;
+        &lt;h2&gt;ព័ត៌មានអតិថិជន និងអាសយដ្ឋានដឹកជញ្ជូន (Shipping Address)&lt;/h2&gt;
+        &lt;p&gt;គោលការណ៍ UI/UX៖ ការផ្ទៀងផ្ទាត់ទម្រង់បែបបទភ្លាមៗ (Inline Real-time Validation) ដើម្បីបង្ការកំហុស (Error Prevention)។&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;shipping-layout&quot;&gt;
+        &lt;form id=&quot;shipping-form&quot; class=&quot;shipping-card&quot; novalidate&gt;
+          &lt;div class=&quot;form-row&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;label for=&quot;cust-name&quot;&gt;ឈ្មោះពេញរបស់អ្នក (Full Name) &lt;span class=&quot;req&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+              &lt;input type=&quot;text&quot; id=&quot;cust-name&quot; placeholder=&quot;ឧទាហរណ៍៖ សុខ សុវណ្ណ&quot; required&gt;
+              &lt;span class=&quot;field-error&quot; id=&quot;err-name&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;label for=&quot;cust-phone&quot;&gt;លេខទូរស័ព្ទ (Phone Number) &lt;span class=&quot;req&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+              &lt;input type=&quot;tel&quot; id=&quot;cust-phone&quot; placeholder=&quot;ឧទាហរណ៍៖ 012 345 678&quot; required&gt;
+              &lt;span class=&quot;field-error&quot; id=&quot;err-phone&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;cust-email&quot;&gt;អាសយដ្ឋានអ៊ីមែល (Email) &lt;span class=&quot;req&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+            &lt;input type=&quot;email&quot; id=&quot;cust-email&quot; placeholder=&quot;student@example.com&quot; required&gt;
+            &lt;span class=&quot;field-error&quot; id=&quot;err-email&quot;&gt;&lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;form-row&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;label for=&quot;cust-city&quot;&gt;រាជធានី / ខេត្ត (City / Province) &lt;span class=&quot;req&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+              &lt;select id=&quot;cust-city&quot; required&gt;
+                &lt;option value=&quot;&quot;&gt;-- សូមជ្រើសរើស --&lt;/option&gt;
+                &lt;option value=&quot;Phnom Penh&quot; selected&gt;រាជធានីភ្នំពេញ (Phnom Penh)&lt;/option&gt;
+                &lt;option value=&quot;Siem Reap&quot;&gt;ខេត្តសៀមរាប (Siem Reap)&lt;/option&gt;
+                &lt;option value=&quot;Battambang&quot;&gt;ខេត្តបាត់ដំបង (Battambang)&lt;/option&gt;
+                &lt;option value=&quot;Kandal&quot;&gt;ខេត្តកណ្តាល (Kandal)&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;label for=&quot;cust-address&quot;&gt;អាសយដ្ឋានផ្ទះ និងផ្លូវ (Street Address) &lt;span class=&quot;req&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+              &lt;input type=&quot;text&quot; id=&quot;cust-address&quot; placeholder=&quot;ផ្ទះលេខ 123 ផ្លូវ 271...&quot; required&gt;
+              &lt;span class=&quot;field-error&quot; id=&quot;err-address&quot;&gt;&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;flow-nav-buttons&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary btn-back&quot; data-to=&quot;2&quot;&gt;&amp;larr; កែប្រែកន្ត្រកទំនិញ&lt;/button&gt;
+            &lt;button type=&quot;submit&quot; id=&quot;btn-proceed-to-payment&quot; class=&quot;btn btn-primary-cta&quot;&gt;
+              បន្តទៅការទូទាត់ប្រាក់ &amp;rarr;
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+
+        &lt;div class=&quot;shipping-info-aside&quot;&gt;
+          &lt;div class=&quot;info-badge-card&quot;&gt;
+            &lt;h4&gt;🛡️ ការធានា និងសុវត្ថិភាពទិន្នន័យ&lt;/h4&gt;
+            &lt;p&gt;ព័ត៌មានរបស់អ្នកត្រូវបានការពារដោយសុវត្ថិភាពតាមពិធីការ HTTPS និងមិនត្រូវបានចែករំលែកទៅកាន់ភាគីទីបីឡើយ។&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;info-badge-card&quot;&gt;
+            &lt;h4&gt;🚚 ពេលវេលាដឹកជញ្ជូន&lt;/h4&gt;
+            &lt;p&gt;ភ្នំពេញ៖ ២៤ ម៉ោង | បណ្តាខេត្ត៖ ៤៨ ម៉ោង ដោយឥតគិតថ្លៃ។&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- STEP 4: PAYMENT METHOD (BAKONG KHQR &amp; CARDS) --&gt;
+    &lt;section class=&quot;flow-screen&quot; id=&quot;screen-step-4&quot;&gt;
+      &lt;div class=&quot;screen-header&quot;&gt;
+        &lt;span class=&quot;step-indicator&quot;&gt;ជំហាន ៤ នៃ ៥&lt;/span&gt;
+        &lt;h2&gt;ជ្រើសរើសវិធីសាស្ត្រទូទាត់ប្រាក់ (Payment Method)&lt;/h2&gt;
+        &lt;p&gt;គោលការណ៍ UI/UX៖ បង្កើនទំនុកចិត្ត (Trust &amp;amp; Transparency) ជាមួយវិធីសាស្ត្រទូទាត់ដែលធ្លាប់ស្គាល់។&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;payment-layout&quot;&gt;
+        &lt;div class=&quot;payment-methods-card&quot;&gt;
+          &lt;div class=&quot;payment-option selected&quot; data-method=&quot;khqr&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;pay-method&quot; id=&quot;pay-khqr&quot; checked&gt;
+            &lt;label for=&quot;pay-khqr&quot;&gt;
+              &lt;span class=&quot;pay-title&quot;&gt;🇰🇭 ស្កេនទូទាត់តាម Bakong KHQR (គ្រប់ធនាគារក្នុងស្រុក)&lt;/span&gt;
+              &lt;span class=&quot;pay-desc&quot;&gt;ស្កេនភ្លាមៗតាម ABA, Wing, Acleda, Sathapana ដោយគ្មានកម្រៃសេវា។&lt;/span&gt;
+            &lt;/label&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;payment-option&quot; data-method=&quot;card&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;pay-method&quot; id=&quot;pay-card&quot;&gt;
+            &lt;label for=&quot;pay-card&quot;&gt;
+              &lt;span class=&quot;pay-title&quot;&gt;💳 កាតឥណទាន ឬឥណពន្ធ (Visa / MasterCard)&lt;/span&gt;
+              &lt;span class=&quot;pay-desc&quot;&gt;ទូទាត់ប្រកបដោយសុវត្ថិភាពតាមប្រព័ន្ធ 3D Secure Verification។&lt;/span&gt;
+            &lt;/label&gt;
+          &lt;/div&gt;
+
+          &lt;!-- Dynamic Payment View Area --&gt;
+          &lt;div class=&quot;payment-box-dynamic&quot; id=&quot;khqr-box&quot;&gt;
+            &lt;div class=&quot;khqr-graphic&quot;&gt;
+              &lt;div class=&quot;khqr-header&quot;&gt;BAKONG KHQR&lt;/div&gt;
+              &lt;div class=&quot;khqr-qr-mock&quot;&gt;
+                &lt;span style=&quot;font-size: 64px;&quot;&gt;🏁&lt;/span&gt;
+                &lt;p&gt;ស្កេនទូទាត់តាម App ធនាគារ&lt;/p&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;khqr-amount&quot; id=&quot;khqr-amount-display&quot;&gt;$1,199.00&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;p class=&quot;khqr-timer&quot;&gt;⏳ សុពលភាពកូដ KHQR នៅសល់៖ &lt;strong id=&quot;qr-timer&quot;&gt;05:00&lt;/strong&gt; នាទី&lt;/p&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;flow-nav-buttons&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary btn-back&quot; data-to=&quot;3&quot;&gt;&amp;larr; កែប្រែអាសយដ្ឋាន&lt;/button&gt;
+            &lt;button type=&quot;button&quot; id=&quot;btn-confirm-payment&quot; class=&quot;btn btn-primary-cta&quot;&gt;
+              🔒 បញ្ជាក់ការទូទាត់ និងបញ្ចប់ការបញ្ជាទិញ
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;payment-summary-card&quot;&gt;
+          &lt;h3&gt;សង្ខេបចុងក្រោយ&lt;/h3&gt;
+          &lt;div class=&quot;summary-line&quot;&gt;
+            &lt;span&gt;អ្នកទទួល៖&lt;/span&gt;
+            &lt;strong id=&quot;final-cust-name&quot;&gt;សុខ សុវណ្ណ&lt;/strong&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;summary-line&quot;&gt;
+            &lt;span&gt;ទូរស័ព្ទ៖&lt;/span&gt;
+            &lt;strong id=&quot;final-cust-phone&quot;&gt;012 345 678&lt;/strong&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;summary-line&quot;&gt;
+            &lt;span&gt;ទីតាំង៖&lt;/span&gt;
+            &lt;strong id=&quot;final-cust-city&quot;&gt;រាជធានីភ្នំពេញ&lt;/strong&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;summary-total-line&quot;&gt;
+            &lt;span&gt;ទឹកប្រាក់សរុប៖&lt;/span&gt;
+            &lt;strong id=&quot;final-total&quot;&gt;$1,199.00&lt;/strong&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- STEP 5: SUCCESS CONFIRMATION &amp; RECEIPT --&gt;
+    &lt;section class=&quot;flow-screen&quot; id=&quot;screen-step-5&quot;&gt;
+      &lt;div class=&quot;success-card&quot;&gt;
+        &lt;div class=&quot;success-icon&quot;&gt;🎉&lt;/div&gt;
+        &lt;h2&gt;ការបញ្ជាទិញបានជោគជ័យ! (Order Placed Successfully)&lt;/h2&gt;
+        &lt;p class=&quot;success-lead&quot;&gt;
+          សូមអរគុណសម្រាប់ការគាំទ្រ! លេខកូដបញ្ជាទិញរបស់អ្នកគឺ៖ &lt;strong id=&quot;order-id&quot;&gt;#ORD-2026-9842&lt;/strong&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;success-sub&quot;&gt;
+          យើងខ្ញុំបានផ្ញើវិក្កយបត្រអេឡិចត្រូនិកទៅកាន់អ៊ីមែលរបស់អ្នករួចរាល់ហើយ។ អ្នកដឹកជញ្ជូននឹងទាក់ទងមកអ្នកក្នុងពេលឆាប់ៗនេះ។
+        &lt;/p&gt;
+
+        &lt;div class=&quot;receipt-box&quot;&gt;
+          &lt;div class=&quot;receipt-row&quot;&gt;
+            &lt;span&gt;កាលបរិច្ឆេទ៖&lt;/span&gt;
+            &lt;span id=&quot;receipt-date&quot;&gt;26 តុលា 2026&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;receipt-row&quot;&gt;
+            &lt;span&gt;ទំនិញ៖&lt;/span&gt;
+            &lt;span id=&quot;receipt-item&quot;&gt;TechPro Laptop 15-inch&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;receipt-row&quot;&gt;
+            &lt;span&gt;វិធីសាស្ត្រទូទាត់៖&lt;/span&gt;
+            &lt;span&gt;Bakong KHQR (Paid 200 OK)&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;receipt-row total&quot;&gt;
+            &lt;span&gt;ទឹកប្រាក់បានទូទាត់៖&lt;/span&gt;
+            &lt;span id=&quot;receipt-amount&quot;&gt;$1,199.00&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;success-actions&quot;&gt;
+          &lt;button type=&quot;button&quot; id=&quot;btn-restart-flow&quot; class=&quot;btn btn-primary-cta&quot;&gt;🔄 សាកល្បងលំហូរ User Flow ម្តងទៀត&lt;/button&gt;
+          &lt;a href=&quot;#view-diagram&quot; id=&quot;btn-show-flow-modal-2&quot; class=&quot;btn btn-secondary&quot;&gt;🗺️ ពិនិត្យ User Flow Diagram&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+  &lt;/main&gt;
+
+  &lt;!-- ==================== TOAST FEEDBACK NOTIFICATION ==================== --&gt;
+  &lt;div id=&quot;toast-notification&quot; class=&quot;toast-feedback&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot;&gt;
+    &lt;span class=&quot;toast-icon&quot;&gt;ℹ️&lt;/span&gt;
+    &lt;span class=&quot;toast-message&quot; id=&quot;toast-text&quot;&gt;ការជូនដំណឹង...&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;!-- ==================== USER FLOW DIAGRAM MODAL ==================== --&gt;
+  &lt;div class=&quot;modal-overlay&quot; id=&quot;flow-modal&quot; aria-hidden=&quot;true&quot;&gt;
+    &lt;div class=&quot;modal-dialog modal-lg&quot;&gt;
+      &lt;div class=&quot;modal-header&quot;&gt;
+        &lt;h3 class=&quot;modal-title&quot;&gt;🗺️ គំនូសបំព្រួញលំហូរអ្នកប្រើប្រាស់ (E-Commerce User Flow Diagram)&lt;/h3&gt;
+        &lt;button type=&quot;button&quot; class=&quot;modal-close&quot; id=&quot;btn-close-flow-modal&quot;&gt;&amp;times;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;modal-body&quot;&gt;
+        &lt;p class=&quot;modal-desc&quot;&gt;
+          គំនូសបំព្រួញនេះបង្ហាញពីគ្រប់ដំណាក់កាលនៃកិច្ចការរបស់អ្នកទស្សនា ចាប់ពីការចូលទស្សនាដំបូង រហូតដល់ការទទួលបានវិក្កយបត្រ (End-to-End Task Flow)៖
+        &lt;/p&gt;
+
+        &lt;div class=&quot;diagram-flow-wrapper&quot;&gt;
+          &lt;div class=&quot;flow-node node-start&quot;&gt;
+            &lt;strong&gt;[Start]&lt;/strong&gt;&lt;br&gt;ចូលទស្សនាទំព័រផលិតផល
+          &lt;/div&gt;
+          &lt;div class=&quot;flow-arrow&quot;&gt;&amp;darr;&lt;/div&gt;
+          &lt;div class=&quot;flow-node&quot;&gt;
+            &lt;strong&gt;[Action]&lt;/strong&gt;&lt;br&gt;ជ្រើសរើសពណ៌ ទំហំ Storage &amp;amp; ចំនួន
+          &lt;/div&gt;
+          &lt;div class=&quot;flow-arrow&quot;&gt;&amp;darr;&lt;/div&gt;
+          &lt;div class=&quot;flow-node&quot;&gt;
+            &lt;strong&gt;[Action]&lt;/strong&gt;&lt;br&gt;ចុច «បន្ថែមទៅក្នុងកន្ត្រក»
+          &lt;/div&gt;
+          &lt;div class=&quot;flow-arrow&quot;&gt;&amp;darr;&lt;/div&gt;
+          &lt;div class=&quot;flow-node node-decision&quot;&gt;
+            &lt;strong&gt;&amp;lt;Decision&amp;gt;&lt;/strong&gt;&lt;br&gt;តើមានលេខកូដបញ្ចុះតម្លៃដែរឬទេ?
+          &lt;/div&gt;
+          &lt;div class=&quot;decision-branches&quot;&gt;
+            &lt;div class=&quot;branch&quot;&gt;
+              &lt;span class=&quot;badge-yes&quot;&gt;បាទ/ចាស (Yes)&lt;/span&gt; &amp;rarr; បញ្ចូលកូដ &amp;amp; បញ្ចុះ 10%
+            &lt;/div&gt;
+            &lt;div class=&quot;branch&quot;&gt;
+              &lt;span class=&quot;badge-no&quot;&gt;ទេ (No)&lt;/span&gt; &amp;rarr; រក្សាតម្លៃធម្មតា
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;flow-arrow&quot;&gt;&amp;darr;&lt;/div&gt;
+          &lt;div class=&quot;flow-node&quot;&gt;
+            &lt;strong&gt;[Action]&lt;/strong&gt;&lt;br&gt;បំពេញទម្រង់អាសយដ្ឋានដឹកជញ្ជូន
+          &lt;/div&gt;
+          &lt;div class=&quot;flow-arrow&quot;&gt;&amp;darr;&lt;/div&gt;
+          &lt;div class=&quot;flow-node node-decision&quot;&gt;
+            &lt;strong&gt;&amp;lt;Validation Check&amp;gt;&lt;/strong&gt;&lt;br&gt;តើទិន្នន័យត្រឹមត្រូវគ្រប់ប្រឡោះ?
+          &lt;/div&gt;
+          &lt;div class=&quot;decision-branches&quot;&gt;
+            &lt;div class=&quot;branch&quot;&gt;
+              &lt;span class=&quot;badge-no&quot;&gt;ខ្វះ/ខុស&lt;/span&gt; &amp;rarr; បង្ហាញ Inline Error (Error Prevention)
+            &lt;/div&gt;
+            &lt;div class=&quot;branch&quot;&gt;
+              &lt;span class=&quot;badge-yes&quot;&gt;ត្រឹមត្រូវ&lt;/span&gt; &amp;rarr; បើកសិទ្ធិចូលទៅកាន់ Payment
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;flow-arrow&quot;&gt;&amp;darr;&lt;/div&gt;
+          &lt;div class=&quot;flow-node&quot;&gt;
+            &lt;strong&gt;[Action]&lt;/strong&gt;&lt;br&gt;ជ្រើសរើស Bakong KHQR រួចស្កេនទូទាត់
+          &lt;/div&gt;
+          &lt;div class=&quot;flow-arrow&quot;&gt;&amp;darr;&lt;/div&gt;
+          &lt;div class=&quot;flow-node node-end&quot;&gt;
+            &lt;strong&gt;[Goal Reached]&lt;/strong&gt;&lt;br&gt;បង្ហាញវិក្កយបត្រជោគជ័យ (Order Confirmation)
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;modal-footer&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; id=&quot;btn-close-flow-footer&quot;&gt;បិទផ្ទាំង (Close)&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer class=&quot;app-footer&quot;&gt;
+    &lt;div class=&quot;container footer-content&quot;&gt;
+      &lt;p&gt;&amp;copy; 2026 Web Design Curriculum — Module 01 Chapter 03: UI and UX Fundamentals.&lt;/p&gt;
+      &lt;p&gt;រៀបចំឡើងសម្រាប់ការបង្រៀន និងអនុវត្តជាក់ស្តែងក្នុងបន្ទប់ពិសោធន៍កុំព្យូទ័រ។&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+
+  &lt;!-- Script --&gt;
+  &lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Tab CSS -->
+      <div id="tab-css" class="tab-pane">
+        <div class="code-block-container">
+          <div class="code-header-bar">
+            <span class="code-file-name">🎨 css/style.css (Complete Working Code)</span>
+            <button class="btn-copy" onclick="copyCode(this, 'full-code-css')">📋 ចម្លង style.css ទាំងមូល</button>
+          </div>
+          <pre class="code-view" id="full-code-css"><code>/* ============================================================
+   PROJECT: E-Commerce UX Flow Simulator (Chapter 03)
+   AUTHOR: Web Design Curriculum (Bachelor Year 3)
+   PURPOSE: Interactive demonstration of UI/UX Fundamentals
+   ============================================================ */
+
+:root {
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-dark: #0f172a;
+  --accent-gold: #f59e0b;
+  --accent-gold-hover: #d97706;
+  --success: #10b981;
+  --danger: #ef4444;
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --border: #e2e8f0;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --font-body: &#x27;Khmer OS Siemreap&#x27;, &#x27;Kantumruy Pro&#x27;, system-ui, sans-serif;
+  --font-title: &#x27;Khmer OS Muol Light-Kh Auto&#x27;, &#x27;Khmer OS Muol Light&#x27;, &#x27;Moul&#x27;, serif;
+  --font-code: &#x27;Consolas&#x27;, &#x27;Fira Code&#x27;, &#x27;Courier New&#x27;, monospace;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+  --transition: all 0.25s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-dark);
+  background-color: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: normal;
+  color: var(--primary-dark);
+  line-height: 1.5;
+}
+
+p {
+  margin-bottom: 12px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ==================== BUTTONS ==================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn-primary-cta {
+  background-color: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(2, 132, 199, 0.3);
+}
+
+.btn-primary-cta:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(2, 132, 199, 0.4);
+}
+
+.btn-secondary {
+  background-color: #f1f5f9;
+  color: var(--primary-dark);
+  border-color: var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+}
+
+.btn-text-danger {
+  background: transparent;
+  border: none;
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 13px;
+  font-family: inherit;
+  padding: 6px 0;
+  text-decoration: underline;
+}
+
+.btn-text-danger:hover {
+  color: #b91c1c;
+}
+
+/* ==================== HEADER ==================== */
+.app-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  font-size: 32px;
+}
+
+.brand-name {
+  font-size: 17px;
+}
+
+.brand-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.header-badges {
+  display: flex;
+  gap: 8px;
+}
+
+.ux-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f1f5f9;
+  border: 1px solid var(--border);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.dot.green { background-color: var(--success); }
+.dot.blue { background-color: var(--primary); }
+
+/* ==================== PROGRESS STEPS BAR ==================== */
+.flow-progress-bar {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  position: relative;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.progress-steps::before {
+  content: &quot;&quot;;
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  right: 30px;
+  height: 3px;
+  background-color: #e2e8f0;
+  z-index: 1;
+}
+
+.step-item {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid #cbd5e1;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  transition: var(--transition);
+}
+
+.step-text {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.step-item.active .step-num {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.2);
+}
+
+.step-item.active .step-text {
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+.step-item.completed .step-num {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: #ffffff;
+}
+
+/* ==================== MAIN SCREENS ==================== */
+.app-main {
+  margin-top: 32px;
+  margin-bottom: 60px;
+}
+
+.flow-screen {
+  display: none;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.flow-screen.active {
+  display: block;
+}
+
+.screen-header {
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+
+.step-indicator {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.screen-header h2 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.screen-header p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* ==================== 1. PRODUCT SCREEN ==================== */
+.product-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 36px;
+}
+
+.product-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.main-image-box {
+  background-color: #f1f5f9;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.product-icon-large {
+  font-size: 80px;
+}
+
+.product-color-tag {
+  position: absolute;
+  bottom: 12px;
+  font-size: 12px;
+  background: rgba(15, 23, 42, 0.7);
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+.thumbnail-row {
+  display: flex;
+  gap: 10px;
+}
+
+.thumb-btn {
+  flex: 1;
+  padding: 8px;
+  font-size: 12px;
+  font-family: inherit;
+  background-color: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.thumb-btn.active, .thumb-btn:hover {
+  border-color: var(--primary);
+  background-color: #e0f2fe;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-category {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.product-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.product-pricing {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.price-current {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.price-original {
+  font-size: 16px;
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.discount-pill {
+  background-color: #fee2e2;
+  color: var(--danger);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.product-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.config-group {
+  margin-bottom: 16px;
+}
+
+.config-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.radio-chips {
+  display: flex;
+  gap: 10px;
+}
+
+.chip-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13px;
+  background: #f8fafc;
+}
+
+.qty-stepper {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.qty-stepper button {
+  width: 36px;
+  height: 36px;
+  background-color: #f1f5f9;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.qty-stepper input {
+  width: 48px;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.action-row {
+  margin-top: 24px;
+}
+
+.action-row .btn-primary-cta {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+}
+
+/* ==================== 2. CART SCREEN ==================== */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr;
+  gap: 28px;
+}
+
+.cart-items-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.item-icon {
+  font-size: 44px;
+  background: #f1f5f9;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.item-info {
+  flex-grow: 1;
+}
+
+.item-info h4 {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.item-specs {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.item-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.item-total {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.cart-coupon-box {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border);
+}
+
+.cart-coupon-box label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.coupon-row {
+  display: flex;
+  gap: 8px;
+}
+
+.coupon-row input {
+  flex-grow: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.feedback-msg {
+  display: block;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.cart-safeguard {
+  margin-top: 16px;
+}
+
+.cart-summary-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-title {
+  font-size: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+}
+
+.text-green {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.summary-total-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 2px solid #cbd5e1;
+}
+
+.flow-nav-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.flow-nav-buttons .btn {
+  flex: 1;
+}
+
+/* ==================== 3. SHIPPING SCREEN ==================== */
+.shipping-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+}
+
+.shipping-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  background-color: #ffffff;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.req {
+  color: var(--danger);
+}
+
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 13px;
+  transition: var(--transition);
+}
+
+.form-group input:focus, .form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.form-group input.invalid, .form-group select.invalid {
+  border-color: var(--danger);
+  background-color: #fef2f2;
+}
+
+.field-error {
+  display: block;
+  font-size: 11.5px;
+  color: var(--danger);
+  margin-top: 3px;
+  min-height: 16px;
+}
+
+.shipping-info-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info-badge-card {
+  background-color: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+}
+
+.info-badge-card h4 {
+  font-size: 13.5px;
+  margin-bottom: 6px;
+}
+
+.info-badge-card p {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* ==================== 4. PAYMENT SCREEN ==================== */
+.payment-layout {
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr;
+  gap: 28px;
+}
+
+.payment-methods-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.payment-option.selected {
+  border-color: var(--primary);
+  background-color: #f0f9ff;
+}
+
+.pay-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.pay-desc {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.payment-box-dynamic {
+  background-color: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.khqr-graphic {
+  background-color: #ffffff;
+  border: 2px solid #dc2626;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 16px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.khqr-header {
+  font-weight: 900;
+  color: #dc2626;
+  font-size: 16px;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.khqr-qr-mock {
+  padding: 12px 0;
+}
+
+.khqr-qr-mock p {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.khqr-amount {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-top: 6px;
+}
+
+.khqr-timer {
+  font-size: 13px;
+  color: #b45309;
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.payment-summary-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  background-color: #f8fafc;
+  height: fit-content;
+}
+
+.payment-summary-card h3 {
+  font-size: 16px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ==================== 5. SUCCESS SCREEN ==================== */
+.success-card {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px 10px;
+}
+
+.success-icon {
+  font-size: 64px;
+  margin-bottom: 14px;
+}
+
+.success-card h2 {
+  font-size: 22px;
+  color: var(--success);
+  margin-bottom: 10px;
+}
+
+.success-lead {
+  font-size: 16px;
+  color: var(--primary-dark);
+  margin-bottom: 8px;
+}
+
+.success-sub {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.receipt-box {
+  background-color: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  margin-bottom: 8px;
+}
+
+.receipt-row.total {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+
+.success-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ==================== TOAST NOTIFICATION ==================== */
+.toast-feedback {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  z-index: 10000;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.toast-feedback.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==================== UX PRINCIPLES HUD ==================== */
+.ux-inspector-hud {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  background-color: #ffffff;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  z-index: 9999;
+  font-size: 13px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.hud-top {
+  background-color: var(--primary-dark);
+  color: #ffffff;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hud-tag {
+  background-color: var(--accent-gold);
+  color: #0f172a;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.hud-title {
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.hud-btn-toggle {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.hud-content {
+  padding: 14px;
+}
+
+.hud-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.hud-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.hud-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+
+.btn-hud-flow {
+  width: 100%;
+  background-color: #eff6ff;
+  color: var(--primary);
+  border: 1px solid #bfdbfe;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 8px;
+}
+
+.btn-hud-flow:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+/* ==================== USER FLOW DIAGRAM MODAL ==================== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-dialog {
+  background-color: #ffffff;
+  border-radius: var(--radius-md);
+  max-width: 700px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.modal-header {
+  padding: 14px 20px;
+  background-color: var(--primary-dark);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.modal-footer {
+  padding: 12px 20px;
+  background-color: #f8fafc;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Diagram Visual Nodes */
+.diagram-flow-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.flow-node {
+  background-color: #ffffff;
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 12.5px;
+  min-width: 260px;
+  box-shadow: var(--shadow-sm);
+}
+
+.node-start {
+  background-color: #e0f2fe;
+  border-color: #0284c7;
+}
+
+.node-end {
+  background-color: #d1fae5;
+  border-color: #10b981;
+}
+
+.node-decision {
+  background-color: #fef3c7;
+  border-color: #f59e0b;
+  border-style: dashed;
+}
+
+.flow-arrow {
+  font-size: 18px;
+  color: #94a3b8;
+}
+
+.decision-branches {
+  display: flex;
+  gap: 16px;
+  font-size: 11.5px;
+}
+
+.badge-yes {
+  background-color: #d1fae5;
+  color: #065f46;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.badge-no {
+  background-color: #fee2e2;
+  color: #991b1b;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* ==================== FOOTER ==================== */
+.app-footer {
+  background-color: #0f172a;
+  color: #94a3b8;
+  padding: 24px 0;
+  text-align: center;
+  font-size: 12.5px;
+}
+
+.footer-content p {
+  margin-bottom: 4px;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 850px) {
+  .product-showcase, .cart-layout, .shipping-layout, .payment-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-steps .step-text {
+    display: none;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .ux-inspector-hud {
+    width: 270px;
+    bottom: 10px;
+    right: 10px;
+  }
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- Tab JS -->
+      <div id="tab-js" class="tab-pane">
+        <div class="code-block-container">
+          <div class="code-header-bar">
+            <span class="code-file-name">⚡ js/app.js (Complete Working Code)</span>
+            <button class="btn-copy" onclick="copyCode(this, 'full-code-js')">📋 ចម្លង app.js ទាំងមូល</button>
+          </div>
+          <pre class="code-view" id="full-code-js"><code>/**
+ * ============================================================
+ * PROJECT: E-Commerce UX Flow Simulator (Chapter 03)
+ * AUTHOR: Web Design Curriculum (Bachelor Year 3)
+ * FILE: js/app.js
+ * ============================================================
+ */
+
+document.addEventListener(&#x27;DOMContentLoaded&#x27;, () =&gt; {
+  initUserFlowController();
+  initProductConfigurator();
+  initCartAndCoupon();
+  initFormValidation();
+  initPaymentAndCountdown();
+  initModalsAndHUD();
+});
+
+/* State Management */
+const appState = {
+  currentStep: 1,
+  selectedColor: &#x27;Space Gray&#x27;,
+  selectedStorage: &#x27;512GB&#x27;,
+  basePrice: 1199.00,
+  storageExtra: 0,
+  quantity: 1,
+  discount: 0,
+  discountPercent: 0,
+  customer: {
+    name: &#x27;សុខ សុវណ្ណ&#x27;,
+    phone: &#x27;012 345 678&#x27;,
+    email: &#x27;student@example.com&#x27;,
+    city: &#x27;Phnom Penh&#x27;,
+    address: &#x27;ផ្ទះលេខ 123 ផ្លូវ 271&#x27;
+  }
+};
+
+/* ============================================================
+   1. USER FLOW CONTROLLER (5 STEPS)
+   ============================================================ */
+function initUserFlowController() {
+  const stepItems = document.querySelectorAll(&#x27;.step-item&#x27;);
+  const screens = document.querySelectorAll(&#x27;.flow-screen&#x27;);
+
+  window.goToStep = function(stepNum) {
+    if (stepNum &lt; 1 || stepNum &gt; 5) return;
+    appState.currentStep = stepNum;
+
+    // Update screens
+    screens.forEach(s =&gt; s.classList.remove(&#x27;active&#x27;));
+    const targetScreen = document.getElementById(`screen-step-${stepNum}`);
+    if (targetScreen) targetScreen.classList.add(&#x27;active&#x27;);
+
+    // Update progress bar
+    stepItems.forEach(item =&gt; {
+      const itemStep = parseInt(item.getAttribute(&#x27;data-step&#x27;), 10);
+      item.classList.remove(&#x27;active&#x27;, &#x27;completed&#x27;);
+      if (itemStep === stepNum) {
+        item.classList.add(&#x27;active&#x27;);
+      } else if (itemStep &lt; stepNum) {
+        item.classList.add(&#x27;completed&#x27;);
+      }
+    });
+
+    // Scroll to top of main
+    window.scrollTo({ top: 120, behavior: &#x27;smooth&#x27; });
+
+    // Toast Feedback
+    showToast(`កំពុងស្ថិតនៅជំហានទី ${stepNum}៖ ${getStepTitle(stepNum)}`);
+  };
+
+  function getStepTitle(num) {
+    const titles = {
+      1: &#x27;ជ្រើសរើសផលិតផល&#x27;,
+      2: &#x27;ពិនិត្យកន្ត្រកទំនិញ&#x27;,
+      3: &#x27;អាសយដ្ឋានដឹកជញ្ជូន&#x27;,
+      4: &#x27;ការទូទាត់ប្រាក់ (Payment)&#x27;,
+      5: &#x27;ការបញ្ជាទិញជោគជ័យ&#x27;
+    };
+    return titles[num] || &#x27;&#x27;;
+  }
+
+  // Handle Back Buttons
+  document.querySelectorAll(&#x27;.btn-back&#x27;).forEach(btn =&gt; {
+    btn.addEventListener(&#x27;click&#x27;, () =&gt; {
+      const toStep = parseInt(btn.getAttribute(&#x27;data-to&#x27;), 10);
+      goToStep(toStep);
+    });
+  });
+
+  // Step 1 Add to Cart -&gt; Step 2
+  const btnAddToCart = document.getElementById(&#x27;btn-add-to-cart&#x27;);
+  if (btnAddToCart) {
+    btnAddToCart.addEventListener(&#x27;click&#x27;, () =&gt; {
+      updateCartSummaryUI();
+      goToStep(2);
+    });
+  }
+
+  // Step 2 Proceed to Shipping -&gt; Step 3
+  const btnProceedShipping = document.getElementById(&#x27;btn-proceed-to-shipping&#x27;);
+  if (btnProceedShipping) {
+    btnProceedShipping.addEventListener(&#x27;click&#x27;, () =&gt; {
+      goToStep(3);
+    });
+  }
+
+  // Step 5 Restart Flow
+  const btnRestart = document.getElementById(&#x27;btn-restart-flow&#x27;);
+  if (btnRestart) {
+    btnRestart.addEventListener(&#x27;click&#x27;, () =&gt; {
+      goToStep(1);
+    });
+  }
+}
+
+/* ============================================================
+   2. PRODUCT CONFIGURATOR (STEP 1)
+   ============================================================ */
+function initProductConfigurator() {
+  const thumbBtns = document.querySelectorAll(&#x27;.thumb-btn&#x27;);
+  const colorBadge = document.getElementById(&#x27;current-color-badge&#x27;);
+  const mainIcon = document.querySelector(&#x27;.product-icon-large&#x27;);
+  const storageRadios = document.querySelectorAll(&#x27;input[name=&quot;storage&quot;]&#x27;);
+  const btnMinus = document.getElementById(&#x27;btn-qty-minus&#x27;);
+  const btnPlus = document.getElementById(&#x27;btn-qty-plus&#x27;);
+  const inputQty = document.getElementById(&#x27;input-qty&#x27;);
+  const priceDisplay = document.querySelector(&#x27;.price-current&#x27;);
+
+  function updatePriceDisplay() {
+    const unitPrice = appState.basePrice + appState.storageExtra;
+    priceDisplay.textContent = `$${unitPrice.toFixed(2)}`;
+  }
+
+  // Color Switcher
+  thumbBtns.forEach(btn =&gt; {
+    btn.addEventListener(&#x27;click&#x27;, () =&gt; {
+      thumbBtns.forEach(b =&gt; b.classList.remove(&#x27;active&#x27;));
+      btn.classList.add(&#x27;active&#x27;);
+
+      const color = btn.getAttribute(&#x27;data-color&#x27;);
+      const img = btn.getAttribute(&#x27;data-img&#x27;);
+      appState.selectedColor = color;
+      colorBadge.textContent = `ពណ៌៖ ${color}`;
+      mainIcon.textContent = img;
+      showToast(`បានជ្រើសរើសពណ៌៖ ${color}`);
+    });
+  });
+
+  // Storage selection
+  storageRadios.forEach(radio =&gt; {
+    radio.addEventListener(&#x27;change&#x27;, () =&gt; {
+      if (radio.value === &#x27;1TB&#x27;) {
+        appState.storageExtra = 150;
+        appState.selectedStorage = &#x27;1TB&#x27;;
+      } else {
+        appState.storageExtra = 0;
+        appState.selectedStorage = &#x27;512GB&#x27;;
+      }
+      updatePriceDisplay();
+      showToast(`បានជ្រើសរើសទំហំផ្ទុក៖ ${appState.selectedStorage}`);
+    });
+  });
+
+  // Quantity stepper
+  if (btnMinus &amp;&amp; btnPlus &amp;&amp; inputQty) {
+    btnMinus.addEventListener(&#x27;click&#x27;, () =&gt; {
+      if (appState.quantity &gt; 1) {
+        appState.quantity--;
+        inputQty.value = appState.quantity;
+      }
+    });
+
+    btnPlus.addEventListener(&#x27;click&#x27;, () =&gt; {
+      if (appState.quantity &lt; 5) {
+        appState.quantity++;
+        inputQty.value = appState.quantity;
+      } else {
+        showToast(&#x27;បរិមាណអតិបរមាគឺ ៥ គ្រឿងសម្រាប់ម្នាក់!&#x27;);
+      }
+    });
+  }
+}
+
+/* ============================================================
+   3. CART &amp; COUPON (STEP 2)
+   ============================================================ */
+function initCartAndCoupon() {
+  const couponInput = document.getElementById(&#x27;coupon-input&#x27;);
+  const btnApplyCoupon = document.getElementById(&#x27;btn-apply-coupon&#x27;);
+  const couponFeedback = document.getElementById(&#x27;coupon-feedback&#x27;);
+  const btnClearCart = document.getElementById(&#x27;btn-clear-cart&#x27;);
+
+  window.updateCartSummaryUI = function() {
+    const unitPrice = appState.basePrice + appState.storageExtra;
+    const subtotal = unitPrice * appState.quantity;
+    const discountAmount = subtotal * appState.discountPercent;
+    const total = subtotal - discountAmount;
+
+    // Update Cart Screen UI
+    document.getElementById(&#x27;cart-item-specs&#x27;).textContent = `ពណ៌៖ ${appState.selectedColor} | ${appState.selectedStorage} SSD`;
+    document.getElementById(&#x27;cart-item-unit-price&#x27;).textContent = `$${unitPrice.toFixed(2)}`;
+    document.getElementById(&#x27;cart-qty-display&#x27;).textContent = appState.quantity;
+    document.getElementById(&#x27;cart-item-subtotal&#x27;).textContent = `$${subtotal.toFixed(2)}`;
+
+    document.getElementById(&#x27;sum-items&#x27;).textContent = `$${subtotal.toFixed(2)}`;
+    document.getElementById(&#x27;sum-discount&#x27;).textContent = `-$${discountAmount.toFixed(2)}`;
+    document.getElementById(&#x27;sum-total&#x27;).textContent = `$${total.toFixed(2)}`;
+
+    // Update Payment Screen UI
+    document.getElementById(&#x27;khqr-amount-display&#x27;).textContent = `$${total.toFixed(2)}`;
+    document.getElementById(&#x27;final-total&#x27;).textContent = `$${total.toFixed(2)}`;
+    document.getElementById(&#x27;receipt-amount&#x27;).textContent = `$${total.toFixed(2)}`;
+  };
+
+  if (btnApplyCoupon &amp;&amp; couponInput &amp;&amp; couponFeedback) {
+    btnApplyCoupon.addEventListener(&#x27;click&#x27;, () =&gt; {
+      const code = couponInput.value.trim().toUpperCase();
+      if (code === &#x27;STUDENT2026&#x27;) {
+        appState.discountPercent = 0.10; // 10%
+        couponFeedback.textContent = &#x27;✅ លេខកូដត្រឹមត្រូវ! អ្នកទទួលបានការបញ្ចុះតម្លៃ ១០%។&#x27;;
+        couponFeedback.style.color = &#x27;#10b981&#x27;;
+        updateCartSummaryUI();
+        showToast(&#x27;ទទួលបានការបញ្ចុះតម្លៃ ១០% ដោយជោគជ័យ!&#x27;);
+      } else if (code === &#x27;&#x27;) {
+        couponFeedback.textContent = &#x27;⚠️ សូមវាយបញ្ចូលលេខកូដ!&#x27;;
+        couponFeedback.style.color = &#x27;#ef4444&#x27;;
+      } else {
+        couponFeedback.textContent = &#x27;❌ លេខកូដមិនត្រឹមត្រូវ ឬផុតកំណត់!&#x27;;
+        couponFeedback.style.color = &#x27;#ef4444&#x27;;
+      }
+    });
+  }
+
+  // Error Prevention Principle (Confirm dialog before destructive action)
+  if (btnClearCart) {
+    btnClearCart.addEventListener(&#x27;click&#x27;, () =&gt; {
+      const userConfirmed = confirm(&#x27;តើអ្នកពិតជាចង់សម្អាតកន្ត្រកទំនិញមែនទេ? (Error Prevention: ការពារការចុចច្រឡំ)&#x27;);
+      if (userConfirmed) {
+        appState.quantity = 1;
+        appState.discountPercent = 0;
+        document.getElementById(&#x27;input-qty&#x27;).value = 1;
+        updateCartSummaryUI();
+        showToast(&#x27;កន្ត្រកទំនិញត្រូវបានកំណត់ឡើងវិញ។&#x27;);
+        goToStep(1);
+      }
+    });
+  }
+}
+
+/* ============================================================
+   4. FORM VALIDATION &amp; ERROR PREVENTION (STEP 3)
+   ============================================================ */
+function initFormValidation() {
+  const form = document.getElementById(&#x27;shipping-form&#x27;);
+  const inputName = document.getElementById(&#x27;cust-name&#x27;);
+  const inputPhone = document.getElementById(&#x27;cust-phone&#x27;);
+  const inputEmail = document.getElementById(&#x27;cust-email&#x27;);
+  const inputCity = document.getElementById(&#x27;cust-city&#x27;);
+  const inputAddress = document.getElementById(&#x27;cust-address&#x27;);
+
+  const errName = document.getElementById(&#x27;err-name&#x27;);
+  const errPhone = document.getElementById(&#x27;err-phone&#x27;);
+  const errEmail = document.getElementById(&#x27;err-email&#x27;);
+  const errAddress = document.getElementById(&#x27;err-address&#x27;);
+
+  function validateField(input, errElement, condition, errorMsg) {
+    if (!condition) {
+      input.classList.add(&#x27;invalid&#x27;);
+      errElement.textContent = errorMsg;
+      return false;
+    } else {
+      input.classList.remove(&#x27;invalid&#x27;);
+      errElement.textContent = &#x27;&#x27;;
+      return true;
+    }
+  }
+
+  // Real-time Inline Validations
+  inputName.addEventListener(&#x27;input&#x27;, () =&gt; {
+    validateField(inputName, errName, inputName.value.trim().length &gt;= 3, &#x27;ឈ្មោះត្រូវមានយ៉ាងតិច ៣ តួអក្សរ!&#x27;);
+  });
+
+  inputPhone.addEventListener(&#x27;input&#x27;, () =&gt; {
+    const phoneRegex = /^[0-9]{8,11}$/;
+    validateField(inputPhone, errPhone, phoneRegex.test(inputPhone.value.trim()), &#x27;លេខទូរស័ព្ទត្រូវតែជាលេខ ៨ ដល់ ១១ ខ្ទង់!&#x27;);
+  });
+
+  inputEmail.addEventListener(&#x27;input&#x27;, () =&gt; {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    validateField(inputEmail, errEmail, emailRegex.test(inputEmail.value.trim()), &#x27;ទម្រង់អ៊ីមែលមិនត្រឹមត្រូវ (ឧ. user@domain.com)!&#x27;);
+  });
+
+  inputAddress.addEventListener(&#x27;input&#x27;, () =&gt; {
+    validateField(inputAddress, errAddress, inputAddress.value.trim().length &gt;= 5, &#x27;សូមបំពេញអាសយដ្ឋានឱ្យបានលម្អិត!&#x27;);
+  });
+
+  // Form Submit
+  if (form) {
+    form.addEventListener(&#x27;submit&#x27;, (e) =&gt; {
+      e.preventDefault();
+
+      const isNameValid = validateField(inputName, errName, inputName.value.trim().length &gt;= 3, &#x27;សូមបញ្ចូលឈ្មោះពេញរបស់អ្នក!&#x27;);
+      const isPhoneValid = validateField(inputPhone, errPhone, /^[0-9]{8,11}$/.test(inputPhone.value.trim()), &#x27;សូមបញ្ចូលលេខទូរស័ព្ទត្រឹមត្រូវ!&#x27;);
+      const isEmailValid = validateField(inputEmail, errEmail, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputEmail.value.trim()), &#x27;សូមបញ្ចូលអ៊ីមែលត្រឹមត្រូវ!&#x27;);
+      const isAddressValid = validateField(inputAddress, errAddress, inputAddress.value.trim().length &gt;= 5, &#x27;សូមបញ្ចូលអាសយដ្ឋានដឹកជញ្ជូន!&#x27;);
+
+      if (isNameValid &amp;&amp; isPhoneValid &amp;&amp; isEmailValid &amp;&amp; isAddressValid) {
+        // Save to state
+        appState.customer.name = inputName.value.trim();
+        appState.customer.phone = inputPhone.value.trim();
+        appState.customer.email = inputEmail.value.trim();
+        appState.customer.city = inputCity.value;
+        appState.customer.address = inputAddress.value.trim();
+
+        // Update step 4 UI
+        document.getElementById(&#x27;final-cust-name&#x27;).textContent = appState.customer.name;
+        document.getElementById(&#x27;final-cust-phone&#x27;).textContent = appState.customer.phone;
+        document.getElementById(&#x27;final-cust-city&#x27;).textContent = `${appState.customer.address}, ${appState.customer.city}`;
+
+        showToast(&#x27;ព័ត៌មានដឹកជញ្ជូនត្រឹមត្រូវ! កំពុងបន្តទៅទូទាត់ប្រាក់...&#x27;);
+        goToStep(4);
+      } else {
+        showToast(&#x27;⚠️ សូមពិនិត្យមើលកំហុសក្នុងទម្រង់បែបបទ (Error Prevention)!&#x27;);
+      }
+    });
+  }
+}
+
+/* ============================================================
+   5. PAYMENT &amp; COUNTDOWN TIMER (STEP 4)
+   ============================================================ */
+function initPaymentAndCountdown() {
+  const payOptions = document.querySelectorAll(&#x27;.payment-option&#x27;);
+  const btnConfirmPayment = document.getElementById(&#x27;btn-confirm-payment&#x27;);
+  const timerDisplay = document.getElementById(&#x27;qr-timer&#x27;);
+  let countdownSeconds = 300; // 5 minutes
+
+  // Toggle payment method selection
+  payOptions.forEach(opt =&gt; {
+    opt.addEventListener(&#x27;click&#x27;, () =&gt; {
+      payOptions.forEach(o =&gt; o.classList.remove(&#x27;selected&#x27;));
+      opt.classList.add(&#x27;selected&#x27;);
+      const radio = opt.querySelector(&#x27;input[type=&quot;radio&quot;]&#x27;);
+      if (radio) radio.checked = true;
+
+      const method = opt.getAttribute(&#x27;data-method&#x27;);
+      if (method === &#x27;khqr&#x27;) {
+        document.getElementById(&#x27;khqr-box&#x27;).style.display = &#x27;block&#x27;;
+        showToast(&#x27;បានជ្រើសរើសវិធីសាស្ត្រ Bakong KHQR&#x27;);
+      } else {
+        document.getElementById(&#x27;khqr-box&#x27;).style.display = &#x27;none&#x27;;
+        showToast(&#x27;បានជ្រើសរើសវិធីសាស្ត្រ Visa / MasterCard&#x27;);
+      }
+    });
+  });
+
+  // Countdown simulation
+  setInterval(() =&gt; {
+    if (countdownSeconds &gt; 0) {
+      countdownSeconds--;
+      const mins = Math.floor(countdownSeconds / 60);
+      const secs = countdownSeconds % 60;
+      if (timerDisplay) {
+        timerDisplay.textContent = `${String(mins).padStart(2, &#x27;0&#x27;)}:${String(secs).padStart(2, &#x27;0&#x27;)}`;
+      }
+    }
+  }, 1000);
+
+  // Confirm payment
+  if (btnConfirmPayment) {
+    btnConfirmPayment.addEventListener(&#x27;click&#x27;, () =&gt; {
+      btnConfirmPayment.innerHTML = &#x27;⏳ កំពុងដំណើរការទូទាត់...&#x27;;
+      btnConfirmPayment.disabled = true;
+
+      setTimeout(() =&gt; {
+        btnConfirmPayment.innerHTML = &#x27;🔒 បញ្ជាក់ការទូទាត់ និងបញ្ចប់ការបញ្ជាទិញ&#x27;;
+        btnConfirmPayment.disabled = false;
+
+        // Generate receipt values
+        document.getElementById(&#x27;order-id&#x27;).textContent = `#ORD-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+        document.getElementById(&#x27;receipt-date&#x27;).textContent = new Date().toLocaleDateString(&#x27;km-KH&#x27;, { dateStyle: &#x27;long&#x27; });
+        document.getElementById(&#x27;receipt-item&#x27;).textContent = `TechPro Laptop (${appState.selectedColor}, ${appState.selectedStorage}) x ${appState.quantity}`;
+
+        goToStep(5);
+        showToast(&#x27;🎉 ការទូទាត់ជោគជ័យ! បញ្ជាទិញបានសម្រេច។&#x27;);
+      }, 1200);
+    });
+  }
+}
+
+/* ============================================================
+   6. MODALS &amp; TOAST FEEDBACK
+   ============================================================ */
+function initModalsAndHUD() {
+  const toast = document.getElementById(&#x27;toast-notification&#x27;);
+  const toastText = document.getElementById(&#x27;toast-text&#x27;);
+
+  window.showToast = function(msg) {
+    if (!toast || !toastText) return;
+    toastText.textContent = msg;
+    toast.classList.add(&#x27;show&#x27;);
+    setTimeout(() =&gt; {
+      toast.classList.remove(&#x27;show&#x27;);
+    }, 3200);
+  };
+
+  // Flow Diagram Modal
+  const flowModal = document.getElementById(&#x27;flow-modal&#x27;);
+  const btnOpenFlow1 = document.getElementById(&#x27;btn-view-userflow-diagram&#x27;);
+  const btnOpenFlow2 = document.getElementById(&#x27;btn-show-flow-modal-2&#x27;);
+  const btnCloseFlow = document.getElementById(&#x27;btn-close-flow-modal&#x27;);
+  const btnCloseFlowFooter = document.getElementById(&#x27;btn-close-flow-footer&#x27;);
+
+  function openFlowModal() {
+    if (flowModal) flowModal.classList.add(&#x27;open&#x27;);
+  }
+
+  function closeFlowModal() {
+    if (flowModal) flowModal.classList.remove(&#x27;open&#x27;);
+  }
+
+  if (btnOpenFlow1) btnOpenFlow1.addEventListener(&#x27;click&#x27;, openFlowModal);
+  if (btnOpenFlow2) btnOpenFlow2.addEventListener(&#x27;click&#x27;, openFlowModal);
+  if (btnCloseFlow) btnCloseFlow.addEventListener(&#x27;click&#x27;, closeFlowModal);
+  if (btnCloseFlowFooter) btnCloseFlowFooter.addEventListener(&#x27;click&#x27;, closeFlowModal);
+
+  window.addEventListener(&#x27;click&#x27;, (e) =&gt; {
+    if (e.target === flowModal) closeFlowModal();
+  });
+
+  // Toggle HUD minimize
+  const btnToggleHud = document.getElementById(&#x27;btn-toggle-hud&#x27;);
+  const hudContent = document.getElementById(&#x27;hud-content&#x27;);
+  let hudMinimized = false;
+
+  if (btnToggleHud &amp;&amp; hudContent) {
+    btnToggleHud.addEventListener(&#x27;click&#x27;, () =&gt; {
+      hudMinimized = !hudMinimized;
+      if (hudMinimized) {
+        hudContent.style.display = &#x27;none&#x27;;
+        btnToggleHud.textContent = &#x27;+&#x27;;
+      } else {
+        hudContent.style.display = &#x27;block&#x27;;
+        btnToggleHud.textContent = &#x27;_&#x27;;
+      }
+    });
+  }
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Self-Check Quality Checklist -->
+    <h2 class="section-heading">៤. បញ្ជីផ្ទៀងផ្ទាត់គុណភាពកូដ (Self-Check Quality Checklist)</h2>
+    <div class="callout callout-tip">
+      <p><strong>មុនពេលបញ្ជូនកិច្ចការ សូមផ្ទៀងផ្ទាត់ចំណុចខាងក្រោម៖</strong></p>
+      <ul style="margin: 0.5rem 0 0 1.25rem;">
+        <li>[ ] ឯកសារ <code>index.html</code> ដំណើរការត្រឹមត្រូវជាមួយ Live Server ដោយគ្មាន Error ក្នុង Console</li>
+        <li>[ ] រចនាសម្ព័ន្ធកូដប្រើប្រាស់ Semantic Tags ត្រឹមត្រូវ (header, nav, main, section, footer)</li>
+        <li>[ ] ឆ្លងកាត់ការត្រួតពិនិត្យលើ W3C Validator (<a href="https://validator.w3.org" target="_blank" rel="noopener">validator.w3.org</a>) ដោយគ្មាន Error</li>
+        <li>[ ] ប្លង់គេហទំព័របង្ហាញសមាមាត្រត្រឹមត្រូវទាំងលើទូរស័ព្ទដៃ (Mobile View) និងកុំព្យូទ័រ (Desktop View)</li>
+        <li>[ ] រូបភាព និងតំណភ្ជាប់ទាំងអស់ដំណើរការត្រឹមត្រូវ (No Broken Links / Images)</li>
+      </ul>
+    </div>
+
+    <!-- Section 5: 100-Point Rubric -->
+    <h2 class="section-heading">៥. តារាងពិន្ទុវាយតម្លៃ ១០០ ពិន្ទុ (100-Point Evaluation Rubric)</h2>
     <div class="table-responsive">
-<table class="data-table">
-      <thead>
-        <tr>
-          <th>ដំណាក់កាលលំហូរ (Flow Step)</th>
-          <th>សកម្មភាពអ្នកប្រើ (User Action)</th>
-          <th>ការឆ្លើយតបប្រព័ន្ធ (System Feedback)</th>
-          <th>ការបង្ការកំហុស (Error Prevention)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Step 1: Product Config</strong></td>
-          <td>ជ្រើសរើសពណ៌ និងទំហំ Storage</td>
-          <td>ផ្លាស់ប្តូររូបភាព និងតម្លៃភ្លាមៗ</td>
-          <td>កម្រិតបរិមាណអតិបរមា ៥ គ្រឿង</td>
-        </tr>
-        <tr>
-          <td><strong>Step 2: Cart Review</strong></td>
-          <td>បញ្ចូលលេខកូដ 'STUDENT2026'</td>
-          <td>បង្ហាញ Toast បញ្ចុះតម្លៃ ១០% ភ្លាមៗ</td>
-          <td>សួរ Confirmation មុនសម្អាតកន្ត្រក</td>
-        </tr>
-        <tr>
-          <td><strong>Step 3: Shipping Form</strong></td>
-          <td>វាយបញ្ចូលឈ្មោះ លេខទូរស័ព្ទ អ៊ីមែល</td>
-          <td>បង្ហាញ Inline Error ក្រហមពេលវាយខុស</td>
-          <td>មិនអនុញ្ញាតឱ្យបន្តបើទម្រង់មិនត្រឹមត្រូវ</td>
-        </tr>
-        <tr>
-          <td><strong>Step 4: Payment</strong></td>
-          <td>ស្កេនទូទាត់ Bakong KHQR</td>
-          <td>បង្ហាញ Countdown Timer ០៥:០០ នាទី</td>
-          <td>ទប់ស្កាត់ការចុច Submit ផ្ទួនៗ (Disabled)</td>
-        </tr>
-      </tbody>
-    </table>
-</div>
-<div class="scroll-hint">⇄ អូសទៅស្តាំដើម្បីមើលតារាងពេញ (Scroll table horizontally)</div>
+      <table class="rubric-table">
+        <thead>
+          <tr>
+            <th style="width: 25%;">លក្ខណៈវិនិច្ឆ័យ (Criteria)</th>
+            <th style="width: 15%;">ទម្ងន់ពិន្ទុ</th>
+            <th style="width: 60%;">សូចនាករវាស់វែងសមត្ថភាព (Performance Indicators)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>១. រចនាសម្ព័ន្ធកូដ & HTML5 Semantics</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">២៥ ពិន្ទុ</td>
+            <td>ប្រើប្រាស់ Semantic Elements ត្រឹមត្រូវតាមស្ដង់ដារ W3C, DOCTYPE, ឋានានុក្រម Headings (H1-H6) ច្បាស់លាស់ និងរៀបចំ Indentation ស្អាតបាត។</td>
+          </tr>
+          <tr>
+            <td><strong>២. រចនាប័ទ្ម CSS & Responsive Design</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">២៥ ពិន្ទុ</td>
+            <td>ប្រើប្រាស់ CSS Variables (:root), Box Model, Flexbox/Grid បានត្រឹមត្រូវ និងមាន Media Queries គាំទ្រការបង្ហាញលើ Mobile បានយ៉ាងរលូន។</td>
+          </tr>
+          <tr>
+            <td><strong>៣. ភាពត្រឹមត្រូវនៃមុខងារអនុវត្ត</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">២៥ ពិន្ទុ</td>
+            <td>សមាសភាគស្នូលនៃមេរៀន (ការបង្កើតលំហូរអ្នកប្រើប្រាស់សម្រាប់គេហទំព័រ E-Commerce) ដំណើរការពេញលេញ គ្មាន Error និងឆ្លើយតបទៅនឹងគោលបំណងនៃមន្ទីរពិសោធន៍។</td>
+          </tr>
+          <tr>
+            <td><strong>៤. សោភ័ណភាព UI/UX & ភាពងាយស្រួល</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">១៥ ពិន្ទុ</td>
+            <td>ការជ្រើសរើសកម្រិតពណ៌ផ្ទុយត្រឹមត្រូវតាម WCAG, ការរៀបចំគម្លាត Spacing ស្មើដៃ និងទំហំអក្សរងាយស្រួលអានលើគ្រប់ឧបករណ៍។</td>
+          </tr>
+          <tr>
+            <td><strong>៥. វិន័យកូដ និងការរៀបចំឯកសារគម្រោង</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">១០ ពិន្ទុ</td>
+            <td>រៀបចំ Folder តាមស្តង់ដារវិជ្ជាជីវៈ (css, js, images), ការដាក់ឈ្មោះឯកសារជាអក្សរតូចគ្មានដកឃ្លា និងមាន Comments ពន្យល់កូដច្បាស់លាស់។</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-    <h2 class="heading-muol">តារាងពិន្ទុវាយតម្លៃការអនុវត្ត (Evaluation Rubric — 100 Points)</h2>
-    <ul class='numbered-list'>
-      <li><span class='num-badge'>១.</span> <strong>ការវិភាគតម្រូវការ និង Persona (២៥ ពិន្ទុ)៖</strong> កំណត់ User Persona និងវិភាគ Task Analysis បានត្រឹមត្រូវពេញលេញ។</li>
-      <li><span class='num-badge'>២.</span> <strong>គុណភាពនៃ User Flow Diagram (២៥ ពិន្ទុ)៖</strong> គូសប្លង់ User Flow Diagram ៥ ដំណាក់កាលច្បាស់លាស់ ត្រឹមត្រូវតាមស្តង់ដានិមិត្តសញ្ញា។</li>
-      <li><span class='num-badge'>៣.</span> <strong>ការរចនា Feedback &amp; Micro-interactions (២៥ ពិន្ទុ)៖</strong> បង្កប់នូវយន្តការ Feedback, Toast Notifications, និង Loading State បានត្រឹមត្រូវ។</li>
-      <li><span class='num-badge'>៤.</span> <strong>យុទ្ធសាស្ត្រ Error Prevention (២៥ ពិន្ទុ)៖</strong> មានយន្តការបង្ការកំហុស Inline Real-time Form Validation និង Confirmation Safeguards។</li>
-    </ul>
-    
-  
   </div>
 </div>
 
+<!-- Floating Toast Notification -->
+<div id="toastNotification" class="toast-notification">
+  <span>✅</span>
+  <span id="toastMsg">បានចម្លងកូដដោយជោគជ័យ!</span>
+</div>
+
+<!-- Interactive Scripts -->
 <script>
-  let currentScale = 16;
+  // Font Size Adjuster
+  let currentFontScale = 16;
   function changeFontSize(delta) {
-    currentScale = Math.min(22, Math.max(13, currentScale + delta));
-    document.documentElement.style.setProperty('--font-scale', currentScale + 'px');
+    currentFontScale = Math.max(13, Math.min(22, currentFontScale + delta));
+    document.documentElement.style.setProperty('--font-scale', currentFontScale + 'px');
+  }
+
+  // Copy Code Functionality
+  function copyCode(btn, elementId) {
+    const codeEl = document.getElementById(elementId);
+    if (!codeEl) return;
+    
+    const textToCopy = codeEl.innerText || codeEl.textContent;
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '✅ ចម្លងរួចរាល់!';
+      btn.classList.add('copied');
+      showToast('បានចម្លងកូដដោយជោគជ័យ!');
+      
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('copied');
+      }, 2500);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+      showToast('មិនអាចចម្លងកូដបានទេ សូមសាកល្បងម្តងទៀត');
+    });
+  }
+
+  // Show Toast
+  function showToast(msg) {
+    const toast = document.getElementById('toastNotification');
+    const toastMsg = document.getElementById('toastMsg');
+    if (!toast || !toastMsg) return;
+    toastMsg.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2800);
+  }
+
+  // Tab Switching
+  function switchTab(btn, tabId) {
+    const card = btn.closest('.step-card') || document;
+    card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    card.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    
+    btn.classList.add('active');
+    const targetPane = document.getElementById(tabId);
+    if (targetPane) targetPane.classList.add('active');
   }
 </script>
 

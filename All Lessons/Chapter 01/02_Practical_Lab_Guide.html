@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍: ការវិភាគគេហទំព័រអាជីពចំនួន ៣ (Practical Lab Guide)</title>
+<title>កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍ ជំពូកទី 01៖ ការវិភាគគេហទំព័រអាជីពចំនួន ៣ (Analyze Three Professional Websites)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Siemreap&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   /* ==========================================================================
-     Master Responsive & Reader-Friendly Styling
+     Master Responsive & Modern Lab Practice Styling
      ========================================================================== */
   *, *::before, *::after {
     box-sizing: border-box;
@@ -22,13 +22,15 @@
     --font-code: 'Fira Code', Consolas, Monaco, monospace;
     --color-primary: #0F172A;
     --color-navy: #1E3A8A;
-    --color-blue: #2563EB;
+    --color-blue: #0284C7;
+    --color-blue-dark: #0369A1;
     --color-muted: #64748B;
     --color-bg: #F8FAFC;
     --color-card: #FFFFFF;
     --color-border: #E2E8F0;
     --color-border-dark: #CBD5E1;
-    --color-code-bg: #F8FAFC;
+    --color-code-bg: #0F172A;
+    --color-code-text: #F8FAFC;
     --font-scale: 16px;
   }
 
@@ -52,7 +54,7 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--color-border);
     padding: 0.6rem 1.25rem;
@@ -60,7 +62,7 @@
   }
 
   .toolbar-container {
-    max-width: 920px;
+    max-width: 960px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -79,12 +81,13 @@
   }
 
   .badge-tag {
-    background: #EEF2FF;
-    color: var(--color-blue);
-    padding: 0.2rem 0.55rem;
+    background: #E0F2FE;
+    color: var(--color-blue-dark);
+    padding: 0.25rem 0.65rem;
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 700;
+    border: 1px solid #BAE6FD;
   }
 
   .toolbar-actions {
@@ -96,7 +99,7 @@
   .btn-tool {
     background: #FFFFFF;
     border: 1px solid var(--color-border-dark);
-    padding: 0.35rem 0.75rem;
+    padding: 0.4rem 0.8rem;
     border-radius: 6px;
     font-size: 0.82rem;
     font-family: inherit;
@@ -106,7 +109,7 @@
     transition: all 0.2s;
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.35rem;
   }
 
   .btn-tool:hover {
@@ -117,45 +120,80 @@
   /* Main Document Container */
   .document-wrapper {
     flex: 1;
-    padding: 1.5rem 0.75rem 3rem 0.75rem;
+    padding: 1.75rem 0.75rem 3.5rem 0.75rem;
     width: 100%;
   }
 
   .page-container {
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
     background: var(--color-card);
     border: 1px solid var(--color-border);
-    border-radius: 12px;
+    border-radius: 14px;
     box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
-    padding: 3rem 2.8rem;
+    padding: 2.75rem 2.5rem;
     transition: padding 0.3s ease;
   }
 
-  /* Typography */
-  h1, h2, h3, h4 {
-    color: var(--color-primary);
+  /* Header Card */
+  .doc-header-card {
+    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+    border: 1px solid #BAE6FD;
+    border-left: 6px solid var(--color-blue);
+    border-radius: 12px;
+    padding: 1.6rem 1.85rem;
+    margin-bottom: 2.25rem;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.06);
+  }
+
+  .doc-header-card .module-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-blue-dark);
+    background: #FFFFFF;
+    border: 1px solid #BAE6FD;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+
+  .doc-header-card .chapter-main-title {
+    font-size: clamp(1.3rem, 3.8vw, 1.75rem);
+    color: #0F172A;
     font-weight: 700;
     line-height: 1.35;
-    margin-top: 1.75rem;
-    margin-bottom: 0.75rem;
+    margin: 0 0 0.4rem 0;
   }
 
-  h1 {
-    font-size: 1.45rem;
+  .doc-header-card .chapter-sub-title {
+    font-size: 1.05rem;
+    color: #334155;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* Typography */
+  h2.section-heading {
+    font-size: 1.3rem;
     color: var(--color-navy);
-    border-bottom: 2px solid #EEF2FF;
-    padding-bottom: 0.4rem;
+    margin-top: 2.25rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 2px solid #E0F2FE;
+    padding-bottom: 0.45rem;
   }
 
-  h2 {
-    font-size: 1.25rem;
-    color: #1E293B;
-  }
-
-  h3 {
-    font-size: 1.1rem;
-    color: var(--color-navy);
+  h3.step-heading {
+    font-size: 1.15rem;
+    color: #0F172A;
+    margin-top: 0;
+    margin-bottom: 0.6rem;
   }
 
   p {
@@ -163,231 +201,193 @@
     text-align: justify;
   }
 
-  strong {
-    font-weight: 700;
-    color: #0F172A;
+  /* Callout Boxes */
+  .callout {
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    margin: 1.25rem 0;
+    border-left: 4px solid;
+    font-size: 0.95rem;
   }
 
-  /* Responsive Lists */
-  ul.bullet-list {
-    margin: 0.5rem 0 1.25rem 1.5rem;
-    list-style-type: disc;
+  .callout-info {
+    background-color: #F0F9FF;
+    border-color: #0284C7;
+    color: #0369A1;
   }
 
-  ul.bullet-list li {
-    margin-bottom: 0.5rem;
-    padding-left: 0.25rem;
+  .callout-tip {
+    background-color: #F0FDF4;
+    border-color: #16A34A;
+    color: #15803D;
   }
 
-  ul.numbered-list {
-    list-style: none !important;
-    margin: 0.5rem 0 1.25rem 0;
-    padding-left: 0;
+  .callout-warning {
+    background-color: #FFFBEB;
+    border-color: #F59E0B;
+    color: #B45309;
   }
 
-  ul.numbered-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
-    margin-bottom: 0.6rem;
-    list-style: none !important;
-  }
-
-  .num-badge {
-    font-weight: 700;
-    color: var(--color-navy);
-    flex-shrink: 0;
-    min-width: 1.8rem;
-    line-height: 1.75;
-  }
-
-  /* Responsive Code Blocks */
-  pre.code-block, pre {
-    font-family: var(--font-code);
-    font-size: 0.92rem;
-    line-height: 1.6;
-    background-color: var(--color-code-bg);
+  /* Directory Tree */
+  .folder-tree {
+    background-color: #F8FAFC;
     border: 1px solid var(--color-border);
     border-left: 4px solid var(--color-blue);
     border-radius: 8px;
     padding: 1rem 1.25rem;
-    margin: 1.25rem 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: pre;
-    color: var(--color-primary);
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 1rem 0 1.5rem 0;
+    color: #1E293B;
   }
 
-  .tag { color: #991B1B; font-weight: 600; }
-  .attr { color: #DC2626; }
-  .str { color: #2563EB; }
-  .comm { color: #16A34A; font-style: italic; }
-  .blue { color: #2563EB; font-weight: 600; }
-
-  /* Responsive Table Container */
-  .table-responsive {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: 1.5rem 0;
-    border-radius: 8px;
-    border: 1px solid var(--color-border);
+  /* Step Cards */
+  .step-card {
     background: #FFFFFF;
-  }
-
-  table, table.data-table {
-    width: 100%;
-    min-width: 550px;
-    border-collapse: collapse;
-    font-size: 0.95rem;
-  }
-
-  table th, table td {
     border: 1px solid var(--color-border);
-    padding: 0.75rem 1rem;
-    vertical-align: middle;
-  }
-
-  table th {
-    background-color: #F1F5F9;
-    font-weight: 700;
-    color: var(--color-navy);
-    text-align: center;
-  }
-
-  table tbody tr:nth-child(even) {
-    background-color: #FBFDFF;
-  }
-
-  table tbody tr:hover {
-    background-color: #F1F5F9;
-  }
-
-  /* Scroll hint on mobile */
-  .scroll-hint {
-    display: none;
-    font-size: 0.75rem;
-    color: var(--color-muted);
-    margin-top: 0.25rem;
-    text-align: right;
-  }
-
-  /* Mobile Responsive Breakpoints */
-  @media screen and (max-width: 768px) {
-    :root {
-      --font-scale: 15px;
-    }
-    .document-wrapper {
-      padding: 0.75rem 0.35rem 2rem 0.35rem;
-    }
-    .page-container {
-      padding: 1.5rem 1.15rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    }
-    h1 { font-size: 1.3rem; }
-    h2 { font-size: 1.15rem; }
-    h3 { font-size: 1.05rem; }
-    p { text-align: left; }
-    .scroll-hint { display: block; }
-  }
-
-  /* Print Stylesheet (Exact University A4 Standard) */
-  @media print {
-    @page {
-      size: A4 portrait;
-      margin-left: 2.5cm;
-      margin-right: 1.5cm;
-      margin-top: 2.5cm;
-      margin-bottom: 2.5cm;
-    }
-    body {
-      background: transparent !important;
-      padding: 0 !important;
-      font-family: 'Khmer OS Siemreap', 'Siemreap', sans-serif !important;
-      font-size: 12pt !important;
-      line-height: 1.15 !important;
-      color: #000000 !important;
-    }
-    .no-print, .reader-toolbar, .scroll-hint {
-      display: none !important;
-    }
-    .document-wrapper {
-      padding: 0 !important;
-      width: 100% !important;
-    }
-    .page-container {
-      max-width: 100% !important;
-      width: 100% !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      border: none !important;
-      box-shadow: none !important;
-      border-radius: 0 !important;
-    }
-    h1, h2, h3 {
-      font-family: 'Khmer OS Muol Light', 'Khmer OS Muol Light-Kh Auto', sans-serif !important;
-      font-size: 12pt !important;
-      line-height: 1.25 !important;
-      border: none !important;
-    }
-    table {
-      min-width: 100% !important;
-    }
-    .table-responsive {
-      border: none !important;
-      overflow: visible !important;
-    }
-    pre.code-block, pre {
-      background: transparent !important;
-      white-space: pre-wrap !important;
-    }
-  }
-
-  /* ==========================================================================
-     Enhanced Mobile & Responsive Layout Styles
-     ========================================================================== */
-  .doc-header-card {
-    background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
-    border: 1px solid #cbd5e1;
-    border-left: 6px solid #2563eb;
     border-radius: 12px;
     padding: 1.5rem 1.75rem;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .doc-header-card.lab-card {
-    border-left-color: #0284c7;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+
+  .step-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   }
-  .doc-header-card .module-badge {
-    display: inline-flex;
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .step-badge {
+    background: linear-gradient(135deg, #0284C7, #0369A1);
+    color: #FFFFFF;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Code Block & Header Bar */
+  .code-block-container {
+    margin: 1.25rem 0 0.5rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #334155;
+    background: var(--color-code-bg);
+  }
+
+  .code-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1E293B;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #334155;
+  }
+
+  .code-file-name {
+    font-family: var(--font-code);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #94A3B8;
+    display: flex;
     align-items: center;
     gap: 0.4rem;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #1e40af;
-    background: #ffffff;
-    border: 1px solid #bfdbfe;
-    padding: 0.35rem 0.85rem;
-    border-radius: 9999px;
-    margin-bottom: 0.75rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   }
-  .doc-header-card .chapter-main-title {
-    font-size: clamp(1.25rem, 3.5vw, 1.65rem);
-    color: #0f172a;
-    font-weight: 700;
-    line-height: 1.4;
-    margin: 0 0 0.4rem 0;
-    border: none !important;
-    padding: 0 !important;
+
+  .btn-copy {
+    background: #334155;
+    border: 1px solid #475569;
+    color: #F8FAFC;
+    padding: 0.3rem 0.75rem;
+    border-radius: 5px;
+    font-size: 0.78rem;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
   }
-  .doc-header-card .chapter-sub-title {
-    font-size: 1rem;
-    color: #475569;
-    font-weight: 500;
+
+  .btn-copy:hover {
+    background: #0284C7;
+    border-color: #38BDF8;
+    color: #FFFFFF;
+  }
+
+  .btn-copy.copied {
+    background: #10B981 !important;
+    border-color: #34D399 !important;
+    color: #FFFFFF !important;
+  }
+
+  pre.code-view {
+    font-family: var(--font-code);
+    font-size: 0.88rem;
+    line-height: 1.65;
+    background-color: var(--color-code-bg);
+    color: var(--color-code-text);
+    padding: 1.15rem 1.25rem;
     margin: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre;
+    max-height: 480px;
+    overflow-y: auto;
+  }
+
+  /* Tabbed Files View in Step 5 */
+  .tab-nav {
+    display: flex;
+    gap: 0.4rem;
+    border-bottom: 2px solid var(--color-border);
+    margin: 1rem 0;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    background: #F1F5F9;
+    border: 1px solid var(--color-border);
+    border-bottom: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px 8px 0 0;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tab-btn:hover {
+    background: #E2E8F0;
+    color: #0F172A;
+  }
+
+  .tab-btn.active {
+    background: #FFFFFF;
+    color: var(--color-blue);
+    border-color: var(--color-border);
+    border-bottom: 2px solid #FFFFFF;
+    margin-bottom: -2px;
+  }
+
+  .tab-pane {
+    display: none;
+  }
+
+  .tab-pane.active {
+    display: block;
   }
 
   /* Responsive Table Wrapper */
@@ -397,88 +397,118 @@
     -webkit-overflow-scrolling: touch;
     margin: 1.25rem 0;
     border-radius: 8px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #E2E8F0;
+    background: #FFFFFF;
   }
-  .table-responsive table, table {
+
+  table.rubric-table {
     width: 100%;
-    min-width: 520px;
+    min-width: 580px;
     border-collapse: collapse;
+    font-size: 0.92rem;
   }
 
-  /* Responsive Code Blocks */
-  pre, pre.code-block, .code-container pre {
-    max-width: 100% !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    white-space: pre !important;
-    word-break: normal !important;
-    font-size: 0.88rem !important;
-    line-height: 1.6 !important;
-    border-radius: 8px !important;
+  table.rubric-table th, table.rubric-table td {
+    border: 1px solid #E2E8F0;
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
   }
 
-  /* Mobile Media Query Breakpoints */
+  table.rubric-table th {
+    background-color: #F8FAFC;
+    font-weight: 700;
+    color: var(--color-navy);
+    text-align: center;
+  }
+
+  table.rubric-table tbody tr:nth-child(even) {
+    background-color: #F8FAFC;
+  }
+
+  /* Toast Notification */
+  .toast-notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #0F172A;
+    color: #FFFFFF;
+    padding: 0.8rem 1.4rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+
+  .toast-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Mobile Media Queries */
   @media screen and (max-width: 768px) {
-    body {
-      font-size: 15px;
+    :root {
+      --font-scale: 15px;
     }
-    .page-container, .document-container, .document-wrapper {
-      padding: 1.25rem 0.85rem !important;
-      max-width: 100% !important;
-      border-radius: 0 !important;
+    .document-wrapper {
+      padding: 0.75rem 0.35rem 2rem 0.35rem;
+    }
+    .page-container {
+      padding: 1.35rem 1rem !important;
+      border-radius: 8px !important;
+      box-shadow: none !important;
       border-left: none !important;
       border-right: none !important;
-      box-shadow: none !important;
     }
     .doc-header-card {
-      padding: 1.15rem 1rem !important;
-      margin-bottom: 1.25rem !important;
+      padding: 1.2rem 1.1rem !important;
       border-radius: 8px !important;
     }
-    .reader-toolbar {
-      padding: 0.5rem 0.75rem !important;
-      position: sticky !important;
-      top: 0 !important;
+    .step-card {
+      padding: 1.15rem 1rem !important;
     }
-    .toolbar-container {
-      flex-wrap: wrap !important;
-      gap: 0.5rem !important;
-    }
-    .toolbar-brand {
-      font-size: 0.8rem !important;
-    }
-    .btn-tool, .tool-btn, .toolbar-btn {
-      padding: 0.35rem 0.55rem !important;
-      font-size: 0.78rem !important;
-      min-height: 36px !important;
-    }
-    h1 { font-size: 1.35rem !important; }
-    h2 { font-size: 1.18rem !important; }
-    h3 { font-size: 1.05rem !important; }
-    p, li {
-      text-align: left !important;
-    }
-    ul.numbered-list li, ol.number-list li {
-      gap: 0.4rem !important;
+    pre.code-view {
+      font-size: 0.82rem !important;
+      padding: 0.85rem 0.95rem !important;
+      max-height: 380px !important;
     }
   }
 
-  @media screen and (max-width: 480px) {
+  /* Print Stylesheet */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin: 2cm 1.5cm;
+    }
+    .reader-toolbar, .btn-copy, .toast-notification, .no-print {
+      display: none !important;
+    }
     body {
-      font-size: 14.5px;
+      background: #FFFFFF !important;
+      color: #000000 !important;
+      font-size: 11pt !important;
     }
-    .doc-header-card .module-badge {
-      font-size: 0.75rem !important;
-      padding: 0.2rem 0.5rem !important;
+    .page-container {
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      max-width: 100% !important;
     }
-    .doc-header-card .chapter-main-title {
-      font-size: 1.15rem !important;
-    }
-    .doc-header-card .chapter-sub-title {
-      font-size: 0.88rem !important;
+    pre.code-view {
+      background: #F8FAFC !important;
+      color: #000000 !important;
+      border: 1px solid #CCCCCC !important;
+      white-space: pre-wrap !important;
+      max-height: none !important;
     }
   }
-
 </style>
 </head>
 <body>
@@ -488,7 +518,7 @@
   <div class="toolbar-container">
     <div class="toolbar-brand">
       <span class="badge-tag">Web Design (Year 3)</span>
-      <span>មន្ទីរពិសោធន៍អនុវត្ត (Practical Lab Guide)</span>
+      <span>មន្ទីរពិសោធន៍អនុវត្ត (Lab Practice Guide)</span>
     </div>
     <div class="toolbar-actions">
       <button class="btn-tool" onclick="changeFontSize(-1)" title="បន្ថយទំហំអក្សរ">A-</button>
@@ -502,175 +532,3613 @@
 <div class="document-wrapper">
   <div class="page-container">
 
-    <div class="doc-header-card lab-card">
-      <div class="module-badge">ម៉ូឌុល 01៖ មូលដ្ឋានគ្រឹះនៃការរចនាគេហទំព័រ និង UI/UX (Web Design Fundamentals & UI/UX)</div>
-      <h1 class="chapter-main-title">ជំពូកទី 1 • កិច្ចការអនុវត្តជាក់ស្តែង (Practical Lab Guide)</h1>
-      <div class="chapter-sub-title">ការវិភាគគេហទំព័រអាជីពចំនួន ៣ (Analyze Three Professional Websites)</div>
+    <!-- Document Header Card (Zero University Mentions) -->
+    <div class="doc-header-card">
+      <div class="module-badge">ម៉ូឌុល 01៖ មូលដ្ឋានគ្រឹះនៃការរចនាគេហទំព័រ និង UI/UX (Web Design Fundamentals &amp; UI/UX)</div>
+      <h1 class="chapter-main-title">ជំពូកទី 01 • កិច្ចការអនុវត្តជាក់ស្តែង (Lab Practice)</h1>
+      <div class="chapter-sub-title">ការអនុវត្ត៖ ការវិភាគគេហទំព័រអាជីពចំនួន ៣ (Analyze Three Professional Websites)</div>
     </div>
 
-    <div class="callout-box">
-      <strong>កម្រិតសិក្សា៖</strong> បរិញ្ញាបត្រឆ្នាំទី ៣ | <strong>រយៈពេលអនុវត្ត៖</strong> ៣ ម៉ោង | <strong>ប្រភេទទម្រង់៖</strong> Step-by-Step Practical Lab
+    <!-- Section 1: Overview & Objectives -->
+    <h2 class="section-heading">១. ព័ត៌មានទូទៅ និងគោលបំណង (Lab Overview & Objectives)</h2>
+    <p>
+      កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍នៃជំពូកទី 01 នេះ ត្រូវបានរៀបចំឡើងដើម្បីផ្ដល់ឱ្យនិស្សិតនូវជំនាញជាក់ស្ដែងក្នុងការសរសេរកូដ <strong>ការវិភាគគេហទំព័រអាជីពចំនួន ៣ (Analyze Three Professional Websites)</strong> ដោយអនុលោមតាមបទដ្ឋានឧស្សាហកម្មវេបទំនើប W3C និង UI/UX Best Practices។
+    </p>
+
+    <div class="callout callout-info">
+      <strong>🎯 គោលបំណងចម្បងនៃការអនុវត្ត៖</strong>
+      <ul style="margin: 0.5rem 0 0 1.25rem;">
+        <li>ស្វែងយល់ និងអនុវត្តជាក់ស្ដែងលើរចនាសម្ព័ន្ធកូដ៖ Web Design, HTML, CSS, JavaScript, Client-Server</li>
+        <li>សរសេរកូដស្អាត (Clean Code) មានសណ្តាប់ធ្នាប់ និងឆ្លងកាត់ការផ្ទៀងផ្ទាត់ W3C Validator</li>
+        <li>ធានាភាពស៊ីសង្វាក់គ្នានៃការបង្ហាញលើ Mobile និង Desktop (Responsive Design)</li>
+      </ul>
     </div>
 
-    <h2 class="heading-muol">គោលបំណងនៃការអនុវត្ត (Lab Objectives)</h2>
-    <ul class="numbered-list">
-      <li><span class="num-badge">១.</span> <strong>ជំនាញ DevTools៖</strong> ប្រើប្រាស់ Browser Developer Tools (F12) លើ Google Chrome ឬ Microsoft Edge ក្នុងការត្រួតពិនិត្យកូដប្រភពគេហទំព័រផ្ទាល់។</li>
-      <li><span class="num-badge">២.</span> <strong>ការវិភាគរចនាសម្ព័ន្ធ៖</strong> ស្វែងយល់ជាក់ស្តែងពីរបៀបដែលគេហទំព័រអាជីពរៀបចំ Semantic HTML, CSS Stylesheet, និង JavaScript Assets។</li>
-      <li><span class="num-badge">៣.</span> <strong>ការវាស់វែង Network៖</strong> វាស់វែងល្បឿនផ្ទុកទំព័រ (Load Time), ចំនួន HTTP Requests, ទំហំទិន្នន័យ (Transferred Size) និង Status Codes លើ Network Panel។</li>
-      <li><span class="num-badge">៤.</span> <strong>ការធ្វើតេស្ត Responsive៖</strong> វាយតម្លៃសមត្ថភាពសម្របតាមទំហំអេក្រង់ (Responsive Design) លើទូរស័ព្ទ Tablet និងកុំព្យូទ័រលើតុ។</li>
-      <li><span class="num-badge">៥.</span> <strong>របាយការណ៍បច្ចេកទេស៖</strong> ចងក្រងជារបាយការណ៍បច្ចេកទេស និងតារាងប្រៀបធៀបតាមស្តង់ដាវិស្វកម្មគេហទំព័រ។</li>
-    </ul>
+    <!-- Section 2: Directory Structure -->
+    <h2 class="section-heading">២. រចនាសម្ព័ន្ធ Folder និងឯកសារគម្រោង (Project Directory Structure)</h2>
+    <p>និស្សិតត្រូវបង្កើត Folder គម្រោងថ្មីមួយនៅលើកុំព្យូទ័រ (ឧទាហរណ៍៖ <code>lab-chapter-01/</code>) ដោយរៀបចំរចនាសម្ព័ន្ធឯកសារដូចខាងក្រោម៖</p>
 
-    <h2 class="heading-muol">សម្ភារ និងបរិស្ថានអនុវត្តដែលត្រូវការ (Required Tools &amp; Setup)</h2>
-    <ul>
-      <li><strong>Hardware:</strong> កុំព្យូទ័រដែលមានប្រព័ន្ធប្រតិបត្តិការ Windows / macOS / Linux និងភ្ជាប់អ៊ីនធឺណិត។</li>
-      <li><strong>Web Browser:</strong> Google Chrome (កំណែ 110+) ឬ Microsoft Edge (កំណែ Chromium-based)។</li>
-      <li><strong>Code Editor:</strong> Visual Studio Code (សម្រាប់កត់ត្រា និងបើកកូដគំរូ)។</li>
-      <li><strong>Sample Project:</strong> គម្រោងគំរូ «sample_project» ដែលមាននៅក្នុង Folder មេរៀន។</li>
-    </ul>
+    <div class="folder-tree">lab-chapter-01/
+├── index.html            # ឯកសារ HTML មេសម្រាប់រចនាសម្ព័ន្ធទំព័រ
+├── css/
+│   └── style.css         # ឯកសារ CSS សម្រាប់កំណត់ Style, Tokens និង Responsive Rules
+├── js/
+│   └── app.js           # ឯកសារ JavaScript សម្រាប់មុខងារអន្តរកម្ម
+└── images/               # Folder ផ្ទុករូបភាពគម្រោង</div>
 
-    <h2 class="heading-muol">ការណែនាំអនុវត្តជាជំហានៗ (Step-by-Step Lab Instructions)</h2>
+    <!-- Section 3: Step-by-Step Hands-on Practice with FULL CODE -->
+    <h2 class="section-heading">៣. ជំហានអនុវត្តជាក់ស្តែងមួយជំហានម្តងៗ (Step-by-Step with Full Code)</h2>
+    <p>សូមអនុវត្តតាមលំដាប់លំដោយនៃជំហានទាំង ៥ ខាងក្រោម ដោយចម្លង ឬវាយបញ្ចូលកូដទៅតាមឯកសារនីមួយៗ៖</p>
 
-    <h3 class="heading-muol">ជំហានទី ១៖ កម្តៅសាច់ដុំជាមួយ Browser DevTools (DevTools Warm-Up)</h3>
-    <p>១. បើក Browser Google Chrome ឬ Microsoft Edge រួចបើកឯកសារ <code>sample_project/index.html</code> នៅក្នុងម៉ាស៊ីនរបស់អ្នក។</p>
-    <p>២. ចុចគ្រាប់ចុច <code>F12</code> ឬបន្សំគ្រាប់ចុច <code>Ctrl + Shift + I</code> នៅលើក្តារចុច (Keyboard)។</p>
-    <p><strong>៣. ការអនុវត្តលើផ្ទាំង Elements៖</strong></p>
-    <ul>
-      <li><strong>ក. ត្រួតពិនិត្យ Element:</strong> ចុចលើរូបសញ្ញាព្រួញជ្រើសរើស (Inspect element icon នៅជ្រុងខាងឆ្វេងលើបំផុតនៃ DevTools) រួចយកទៅចុចលើចំណងជើង «Web Tech Explorer» ក្នុងទំព័រ។</li>
-      <li><strong>ខ. កែប្រែអត្ថបទផ្ទាល់ (Live Text Editing):</strong> នៅលើផ្ទាំង Elements ចុចកណ្ដុរពីរដងលើអត្ថបទចំណងជើង រួចប្តូរទៅជាឈ្មោះផ្ទាល់ខ្លួនរបស់អ្នក។ សង្កេតមើលការផ្លាស់ប្តូរភ្លាមៗលើអេក្រង់។</li>
-      <li><strong>គ. កែប្រែពណ៌ CSS ផ្ទាល់ (Live CSS Editing):</strong> នៅផ្ទាំង Styles (ខាងស្តាំ) រកមើល property <code>color</code> រួចចុចប្តូរពណ៌។ សង្កេតមើលថាតើហេតុអ្វីបានជាការកែប្រែនេះបាត់ទៅវិញនៅពេលយើង Refresh ទំព័រ (F5)។</li>
-    </ul>
-    <p><strong>៤. ការអនុវត្តលើផ្ទាំង Console៖</strong></p>
-    <ul>
-      <li><strong>ក. បញ្ជាកូដ:</strong> ចូលទៅកាន់ផ្ទាំង Console រួចវាយបញ្ចូល៖ <code>console.log("Hello Web Design Year 3!");</code> រួចចុច Enter។</li>
-      <li><strong>ខ. ប្តូរចំណងជើង Tab:</strong> វាយបញ្ចូល៖ <code>document.title = "My Custom Title";</code> រួចពិនិត្យមើលចំណងជើងនៅលើ Tab នៃ Browser របស់អ្នក។</li>
-    </ul>
-    <p><strong>៥. ការអនុវត្តលើ Responsive Device Toolbar៖</strong></p>
-    <ul>
-      <li><strong>ក. បើក Device Mode:</strong> ចុចលើរូបសញ្ញាទូរស័ព្ទ/Tablet (Toggle device toolbar - <code>Ctrl + Shift + M</code>)។</li>
-      <li><strong>ខ. ពិនិត្យការសម្របខ្លួន:</strong> ជ្រើសរើសទំហំឧបករណ៍ «iPhone 14 Pro» និង «iPad Air» រួចសង្កេតមើលប្លង់ Layout ថាតើវាសម្របខ្លួនយ៉ាងដូចម្តេច។</li>
-    </ul>
+    <!-- STEP 1 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ១</span>
+        <h3 class="step-heading">ការរៀបចំគ្រោងឆ្អឹង HTML5 ដំបូង (Initial Boilerplate & Skeleton)</h3>
+      </div>
+      <p>
+        បង្កើតឯកសារ <code>index.html</code> រួចសរសេរគ្រោងឆ្អឹង HTML5 ស្តង់ដារ ដោយរួមបញ្ចូល <code>&lt;meta charset="UTF-8"&gt;</code>, <code>&lt;meta name="viewport"&gt;</code>, ការភ្ជាប់ទៅកាន់ Google Fonts (Kantumruy Pro, Siemreap, Fira Code) និងការភ្ជាប់ឯកសារ <code>css/style.css</code>៖
+      </p>
 
-    <h3 class="heading-muol">ជំហានទី ២៖ ជ្រើសរើស និងវិភាគគេហទំព័រអាជីពចំនួន ៣ (Site Selection &amp; Audit)</h3>
-    <p>និស្សិតម្នាក់ៗត្រូវជ្រើសរើសគេហទំព័រអាជីពចំនួន ៣ ដែលមានប្រភេទខុសគ្នាដាច់ស្រឡះ ដើម្បីធ្វើការវិភាគ៖</p>
-    <ul>
-      <li><strong>គេហទំព័រទី ១ (Static / Portfolio Website):</strong> ជ្រើសរើសគេហទំព័ររបស់ Developer ឬ Designer អាជីពម្នាក់ (ឧទាហរណ៍៖ leerob.io, bruno-simon.com, ឬ portfolio ផ្ទាល់ខ្លួន)។</li>
-      <li><strong>គេហទំព័រទី ២ (Corporate / Dynamic Media Portal):</strong> ជ្រើសរើសគេហទំព័រស្ថាប័នធំ ឬសារព័ត៌មានអន្តរជាតិ (ឧទាហរណ៍៖ apple.com, bbc.com, ឬ wikipedia.org)។</li>
-      <li><strong>គេហទំព័រទី ៣ (E-Commerce / Complex Web App):</strong> ជ្រើសរើសគេហទំព័រពាណិជ្ជកម្មអេឡិចត្រូនិក ឬ Web App (ឧទាហរណ៍៖ amazon.com, canva.com, ឬ figma.com)។</li>
-    </ul>
+      <div class="code-block-container">
+        <div class="code-header-bar">
+          <span class="code-file-name">📄 index.html (គ្រោងឆ្អឹងដំបូង)</span>
+          <button class="btn-copy" onclick="copyCode(this, 'code-step-1')">📋 ចម្លងកូដ (Copy)</button>
+        </div>
+        <pre class="code-view" id="code-step-1"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;km&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;គម្រោងគំរូមេរៀនទី ១: សេចក្តីផ្តើមអំពីការរចនាគេហទំព័រ (Introduction to Web Design) - Bachelor Year 3&quot;&gt;
+  &lt;title&gt;គម្រោងគំរូ: ការស្វែងយល់បច្ចេកវិទ្យាវេប (Web Tech Explorer)&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;600;700&amp;family=Moul&amp;family=Fira+Code:wght@400;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
-    <h3 class="heading-muol">ជំហានទី ៣៖ ការប្រមូលទិន្នន័យបច្ចេកទេសជាក់ស្តែងតាម Network Panel</h3>
-    <p>សម្រាប់គេហទំព័រនីមួយៗក្នុងចំណោមទាំង ៣ សូមអនុវត្តតាមលំដាប់លំដោយដូចខាងក្រោម៖</p>
-    <ul class="numbered-list">
-      <li><span class="num-badge">១.</span> <strong>របៀបស្អាត:</strong> បើកគេហទំព័រនោះក្នុង Incognito Window (ដើម្បីកុំឱ្យជាប់ Cache ឬ Extension នានា)។</li>
-      <li><span class="num-badge">២.</span> <strong>បិទ Cache:</strong> បើក DevTools រួចចុចចូលផ្ទាំង Network។ គូសធីកលើប្រអប់ «Disable cache»។</li>
-      <li><span class="num-badge">៣.</span> <strong>ទាញយកឡើងវិញ:</strong> ចុចគ្រាប់ចុច <code>Ctrl + F5</code> (Hard Reload) ដើម្បីទាញយកទិន្នន័យថ្មីទាំងអស់ពី Server។</li>
-      <li><span class="num-badge">៤.</span> <strong>កត់ត្រាទិន្នន័យ:</strong> សង្កេតមើលរបាយការណ៍សង្ខេបនៅរបារខាងក្រោមនៃ Network Panel រួចកត់ត្រា៖ ចំនួន Requests សរុប, ទំហំ Transferred (ទិន្នន័យបង្ហាប់), ទំហំ Resources (ទិន្នន័យពិត), និងរយៈពេល Finish / Load Time។</li>
-      <li><span class="num-badge">៥.</span> <strong>វិភាគធនធាន:</strong> ត្រួតពិនិត្យប្រភេទធនធាន (Filter by Doc, CSS, JS, Img) ដើម្បីដឹងថាតើទំហំធ្ងន់បំផុតបណ្តាលមកពីអ្វី (រូបភាព ឬ JavaScript)។</li>
-    </ul>
+&lt;header class=&quot;main-header&quot;&gt;
+    &lt;div class=&quot;header-container&quot;&gt;
+      &lt;div class=&quot;brand&quot;&gt;
+        &lt;span class=&quot;brand-badge&quot;&gt;Module 01 • Chapter 01&lt;/span&gt;
+        &lt;h1 class=&quot;brand-title&quot;&gt;Web Tech Explorer&lt;/h1&gt;
+        &lt;p class=&quot;brand-subtitle&quot;&gt;កម្មវិធីសិក្សា និងពិសោធន៍ជាក់ស្តែងអំពីស្ថាបត្យកម្មគេហទំព័រ&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;nav class=&quot;main-nav&quot; aria-label=&quot;Main Navigation&quot;&gt;
+        &lt;a href=&quot;#triad-lab&quot; class=&quot;nav-link active&quot;&gt;1. សសរស្តម្ភទាំងបី (HTML/CSS/JS)&lt;/a&gt;
+        &lt;a href=&quot;#how-web-works&quot; class=&quot;nav-link&quot;&gt;2. យន្តការដំណើរការវេប&lt;/a&gt;
+        &lt;a href=&quot;#website-types&quot; class=&quot;nav-link&quot;&gt;3. ប្រភេទគេហទំព័រទាំង ៦&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
 
-    <h3 class="heading-muol">ជំហានទី ៤៖ ការវាយតម្លៃគុណភាពតាមរយៈ Lighthouse Audit</h3>
-    <p>១. នៅលើ DevTools ចូលទៅកាន់ផ្ទាំង «Lighthouse»។</p>
-    <p>២. ជ្រើសរើស Mode: Navigation | Device: Mobile (ឬ Desktop) | Categories: គូសធីកទាំងអស់ (Performance, Accessibility, Best Practices, SEO)។</p>
-    <p>៣. ចុចប៊ូតុង «Analyze page load» រួចរង់ចាំប្រព័ន្ធដំណើរការប្រហែល ៣០ ទៅ ៦០ វិនាទី។</p>
-    <p>៤. កត់ត្រាពិន្ទុទាំង ៤ និងចំណុចខ្វះខាតធំៗដែល Lighthouse បានផ្តល់អនុសាសន៍។</p>
+  &lt;!-- ==================== MAIN CONTENT CONTAINER ==================== --&gt;
+  &lt;main class=&quot;main-content&quot; id=&quot;main-content&quot;&gt;
+    &lt;!-- សមាសភាគសំខាន់ៗនៃមេរៀននឹងត្រូវបានបន្ថែមក្នុង ជំហានទី ២ (Core content will be added in Step 2) --&gt;
+    &lt;div class=&quot;container placeholder-box&quot;&gt;
+      &lt;p&gt;សូមស្វាគមន៍មកកាន់កិច្ចការអនុវត្តបន្ទប់ពិសោធន៍៖ ការវិភាគគេហទំព័រអាជីពចំនួន ៣!&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
 
-    <h2 class="heading-muol">ទម្រង់របាយការណ៍បច្ចេកទេសរបស់និស្សិត (Student Technical Report Template)</h2>
-    <p>និស្សិតត្រូវបំពេញព័ត៌មានខាងក្រោមចូលទៅក្នុងរបាយការណ៍អនុវត្តជាក់ស្តែងរបស់ខ្លួន៖</p>
+&lt;footer class=&quot;main-footer&quot;&gt;
+    &lt;div class=&quot;footer-container&quot;&gt;
+      &lt;div class=&quot;footer-col&quot;&gt;
+        &lt;h4&gt;វិទ្យាសាស្ត្រកុំព្យូទ័រ និងបច្ចេកវិទ្យាព័ត៌មាន&lt;/h4&gt;
+        &lt;p&gt;មុខវិជ្ជា៖ ការរចនាគេហទំព័រ (Web Design - Bachelor Year 3)&lt;/p&gt;
+        &lt;p&gt;ម៉ូឌុល ០១: Web Design Fundamentals &amp; UI/UX&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;footer-col&quot;&gt;
+        &lt;h4&gt;ឯកសារយោង និងស្តង់ដាអន្តរជាតិ&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;World Wide Web Consortium (W3C)&lt;/li&gt;
+          &lt;li&gt;Mozilla Developer Network (MDN Web Docs)&lt;/li&gt;
+          &lt;li&gt;Google Web Fundamentals &amp; Lighthouse Audit&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;footer-col&quot;&gt;
+        &lt;h4&gt;ការណែនាំការអនុវត្ត&lt;/h4&gt;
+        &lt;p&gt;ប្រើប្រាស់បន្សំគ្រាប់ចុច &lt;code&gt;F12&lt;/code&gt; ឬ &lt;code&gt;Ctrl + Shift + I&lt;/code&gt; នៅលើ Browser របស់អ្នក ដើម្បីពិនិត្យកូដប្រភពនៃគម្រោងគំរូនេះ។&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;footer-bottom&quot;&gt;
+      &lt;p&gt;&amp;copy; 2026 Web Design Curriculum — Bachelor Degree Program. All technical terms preserved.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
 
-    <div class="table-responsive">
-<table class="data-table">
-      <thead>
-        <tr>
-          <th>សូចនាករបច្ចេកទេស (Metrics)</th>
-          <th>គេហទំព័រទី ១ (Portfolio)</th>
-          <th>គេហទំព័រទី ២ (Corporate)</th>
-          <th>គេហទំព័រទី ៣ (E-Commerce)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>ឈ្មោះ URL គេហទំព័រ</strong></td>
-          <td>https://...</td>
-          <td>https://...</td>
-          <td>https://...</td>
-        </tr>
-        <tr>
-          <td><strong>ប្រភេទស្ថាបត្យកម្ម</strong></td>
-          <td>Static / SSR</td>
-          <td>Dynamic / CMS</td>
-          <td>Web App / SPA</td>
-        </tr>
-        <tr>
-          <td><strong>ចំនួន HTTP Requests សរុប</strong></td>
-          <td>_____ requests</td>
-          <td>_____ requests</td>
-          <td>_____ requests</td>
-        </tr>
-        <tr>
-          <td><strong>ទំហំ Transferred Size</strong></td>
-          <td>_____ KB / MB</td>
-          <td>_____ KB / MB</td>
-          <td>_____ KB / MB</td>
-        </tr>
-        <tr>
-          <td><strong>រយៈពេលផ្ទុកចប់ (Load Time)</strong></td>
-          <td>_____ s / ms</td>
-          <td>_____ s / ms</td>
-          <td>_____ s / ms</td>
-        </tr>
-        <tr>
-          <td><strong>ចំនួនឯកសារ CSS ខាងក្រៅ</strong></td>
-          <td>_____ files</td>
-          <td>_____ files</td>
-          <td>_____ files</td>
-        </tr>
-        <tr>
-          <td><strong>ចំនួនឯកសារ JavaScript</strong></td>
-          <td>_____ files</td>
-          <td>_____ files</td>
-          <td>_____ files</td>
-        </tr>
-        <tr>
-          <td><strong>ពិន្ទុ Performance (Lighthouse)</strong></td>
-          <td>_____ / 100</td>
-          <td>_____ / 100</td>
-          <td>_____ / 100</td>
-        </tr>
-        <tr>
-          <td><strong>ពិន្ទុ Accessibility (Lighthouse)</strong></td>
-          <td>_____ / 100</td>
-          <td>_____ / 100</td>
-          <td>_____ / 100</td>
-        </tr>
-        <tr>
-          <td><strong>សមត្ថភាព Responsive Mobile</strong></td>
-          <td>ល្អឥតខ្ចោះ / មធ្យម</td>
-          <td>ល្អឥតខ្ចោះ / មធ្យម</td>
-          <td>ល្អឥតខ្ចោះ / មធ្យម</td>
-        </tr>
-      </tbody>
-    </table>
-</div>
-<div class="scroll-hint">⇄ អូសទៅស្តាំដើម្បីមើលតារាងពេញ (Scroll table horizontally)</div>
+  &lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </div>
 
-    <h2 class="heading-muol">តារាងពិន្ទុវាយតម្លៃការអនុវត្ត (Evaluation Rubric — 100 Points)</h2>
-    <ul class="numbered-list">
-      <li><span class="num-badge">១.</span> <strong>ភាពត្រឹមត្រូវនៃទិន្នន័យ DevTools (២៥ ពិន្ទុ)៖</strong> ជ្រើសរើសគេហទំព័រត្រូវតាម ៣ ប្រភេទខុសគ្នា និងប្រមូលទិន្នន័យ Requests, Size, Load Time បានត្រឹមត្រូវពេញលេញ។</li>
-      <li><span class="num-badge">២.</span> <strong>ការវិភាគរចនាសម្ព័ន្ធកូដ (២៥ ពិន្ទុ)៖</strong> យល់ដឹងច្បាស់ពីតួនាទីរបស់ DOM Elements, CSS Stylesheet, និង Console Errors លើគេហទំព័រនីមួយៗ។</li>
-      <li><span class="num-badge">៣.</span> <strong>ការវាយតម្លៃ Lighthouse &amp; Responsive (២៥ ពិន្ទុ)៖</strong> ដំណើរការ Lighthouse និងពន្យល់ពីមូលហេតុដែលនាំឱ្យពិន្ទុ Performance ឬ Accessibility ខ្ពស់ ឬទាប។</li>
-      <li><span class="num-badge">៤.</span> <strong>សេចក្តីសន្និដ្ឋាន និងការរៀបចំរបាយការណ៍ (២៥ ពិន្ទុ)៖</strong> សរសេរអធិប្បាយ និងទាញសេចក្តីសន្និដ្ឋានប្រៀបធៀបរវាងគេហទំព័រទាំង ៣ ប្រកបដោយភាពចាស់ទុំ និងវិជ្ជាជីវៈ។</li>
-    </ul>
-    
+    <!-- STEP 2 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ២</span>
+        <h3 class="step-heading">ការសាងសង់សមាសភាគ HTML ស្នូលនៃមេរៀន (Core Semantic Components)</h3>
+      </div>
+      <p>
+        បញ្ចូលកូដសមាសភាគស្នូលនៃមេរៀនខាងក្រោមនេះទៅក្នុងផ្នែក <code>&lt;main class="main-content"&gt;</code> នៃឯកសារ <code>index.html</code> ដោយជំនួសកន្លែង placeholder៖
+      </p>
+
+      <div class="code-block-container">
+        <div class="code-header-bar">
+          <span class="code-file-name">📄 index.html (ផ្នែក &lt;main&gt; Core Components)</span>
+          <button class="btn-copy" onclick="copyCode(this, 'code-step-2')">📋 ចម្លងកូដ (Copy)</button>
+        </div>
+        <pre class="code-view" id="code-step-2"><code>&lt;!-- HERO BANNER --&gt;
+    &lt;section class=&quot;hero-section&quot;&gt;
+      &lt;div class=&quot;hero-card&quot;&gt;
+        &lt;h2&gt;សូមស្វាគមន៍មកកាន់មេរៀនទី ១: សេចក្តីផ្តើមអំពីការរចនាគេហទំព័រ&lt;/h2&gt;
+        &lt;p&gt;
+          គេហទំព័រទំនើបកើតឡើងពីការរួមបញ្ចូលគ្នាយ៉ាងចុះសម្រុងរវាង &lt;strong&gt;HTML&lt;/strong&gt; (រចនាសម្ព័ន្ធ), 
+          &lt;strong&gt;CSS&lt;/strong&gt; (សោភ័ណភាព) និង &lt;strong&gt;JavaScript&lt;/strong&gt; (អន្តរកម្ម) 
+          នៅលើស្ថាបត្យកម្ម &lt;strong&gt;Client-Server&lt;/strong&gt; តាមរយៈពិធីការ &lt;strong&gt;HTTP/HTTPS&lt;/strong&gt;។
+        &lt;/p&gt;
+        &lt;div class=&quot;hero-stats&quot;&gt;
+          &lt;div class=&quot;stat-item&quot;&gt;
+            &lt;span class=&quot;stat-number&quot;&gt;1991&lt;/span&gt;
+            &lt;span class=&quot;stat-label&quot;&gt;កំណើតនៃ Web (Tim Berners-Lee)&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;stat-item&quot;&gt;
+            &lt;span class=&quot;stat-number&quot;&gt;3 សសរស្តម្ភ&lt;/span&gt;
+            &lt;span class=&quot;stat-label&quot;&gt;HTML + CSS + JavaScript&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;stat-item&quot;&gt;
+            &lt;span class=&quot;stat-number&quot;&gt;6 ប្រភេទ&lt;/span&gt;
+            &lt;span class=&quot;stat-label&quot;&gt;ប្រភេទគេហទំព័រសំខាន់ៗ&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;stat-item&quot;&gt;
+            &lt;span class=&quot;stat-number&quot;&gt;DevTools&lt;/span&gt;
+            &lt;span class=&quot;stat-label&quot;&gt;ឧបករណ៍ត្រួតពិនិត្យ F12&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- SECTION 1: THE WEB TRIAD LAB --&gt;
+    &lt;section id=&quot;triad-lab&quot; class=&quot;section-card&quot;&gt;
+      &lt;div class=&quot;section-header&quot;&gt;
+        &lt;span class=&quot;section-tag&quot;&gt;ពិសោធន៍ជាក់ស្តែង ១.៦&lt;/span&gt;
+        &lt;h2&gt;បន្ទប់ពិសោធន៍សសរស្តម្ភទាំងបី (The Web Triad Laboratory)&lt;/h2&gt;
+        &lt;p&gt;សាកល្បងបើក/បិទ បច្ចេកវិទ្យានីមួយៗ ដើម្បីយល់ពីតួនាទីជាក់ស្តែងរបស់ HTML, CSS និង JavaScript៖&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Controls --&gt;
+      &lt;div class=&quot;triad-controls&quot;&gt;
+        &lt;label class=&quot;toggle-control&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; id=&quot;toggle-html&quot; checked disabled&gt;
+          &lt;span class=&quot;toggle-track&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;toggle-label&quot;&gt;&lt;strong&gt;HTML5&lt;/strong&gt; (គ្រោងឆ្អឹង/រចនាសម្ព័ន្ធ) - &lt;em&gt;ចាំបាច់&lt;/em&gt;&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;label class=&quot;toggle-control&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; id=&quot;toggle-css&quot; checked&gt;
+          &lt;span class=&quot;toggle-track&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;toggle-label&quot;&gt;&lt;strong&gt;CSS3&lt;/strong&gt; (ស្បែក និងសម្លៀកបំពាក់/Styling)&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;label class=&quot;toggle-control&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; id=&quot;toggle-js&quot; checked&gt;
+          &lt;span class=&quot;toggle-track&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;toggle-label&quot;&gt;&lt;strong&gt;JavaScript&lt;/strong&gt; (ប្រព័ន្ធប្រសាទ និងអន្តរកម្ម/Behavior)&lt;/span&gt;
+        &lt;/label&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Preview Sandbox --&gt;
+      &lt;div class=&quot;sandbox-container&quot;&gt;
+        &lt;div class=&quot;sandbox-header&quot;&gt;
+          &lt;div class=&quot;sandbox-dots&quot;&gt;
+            &lt;span class=&quot;dot red&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;dot yellow&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;dot green&quot;&gt;&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;span class=&quot;sandbox-title&quot;&gt;លទ្ធផលបង្ហាញផ្ទាល់ (Live Sandbox Preview)&lt;/span&gt;
+          &lt;span id=&quot;sandbox-status-badge&quot; class=&quot;badge&quot;&gt;ស្ថានភាព: ដំណើរការពេញលេញ&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;sandbox-view&quot; class=&quot;sandbox-view css-enabled js-enabled&quot;&gt;
+          &lt;article class=&quot;demo-card&quot; id=&quot;demo-product-card&quot;&gt;
+            &lt;div class=&quot;demo-badge&quot;&gt;Featured Course&lt;/div&gt;
+            &lt;img src=&quot;data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;400&#x27; height=&#x27;200&#x27; viewBox=&#x27;0 0 400 200&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;200&#x27; fill=&#x27;%231e293b&#x27;/&gt;&lt;text x=&#x27;50%25&#x27; y=&#x27;50%25&#x27; dominant-baseline=&#x27;middle&#x27; text-anchor=&#x27;middle&#x27; fill=&#x27;%2338bdf8&#x27; font-size=&#x27;20&#x27; font-family=&#x27;sans-serif&#x27;&gt;Web Design Course (Year 3)&lt;/text&gt;&lt;/svg&gt;&quot; alt=&quot;Web Design Graphic&quot; class=&quot;demo-image&quot;&gt;
+            &lt;div class=&quot;demo-body&quot;&gt;
+              &lt;h3 class=&quot;demo-title&quot;&gt;ការរចនាគេហទំព័រអាជីព (Bachelor Web Design)&lt;/h3&gt;
+              &lt;p class=&quot;demo-desc&quot;&gt;
+                រៀនពីមូលដ្ឋានគ្រឹះ UI/UX, Semantic HTML5, CSS3 Grid/Flexbox និងទំនើបកម្ម Frontend សម្រាប់និស្សិតឆ្នាំទី ៣។
+              &lt;/p&gt;
+              &lt;div class=&quot;demo-meta&quot;&gt;
+                &lt;span class=&quot;price&quot;&gt;$0.00 (Free Education)&lt;/span&gt;
+                &lt;span class=&quot;rating&quot;&gt;⭐⭐⭐⭐⭐ (4.9/5)&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;demo-actions&quot;&gt;
+                &lt;button type=&quot;button&quot; id=&quot;btn-interactive&quot; class=&quot;btn btn-primary&quot;&gt;ចុចទីនេះដើម្បីសាកល្បង JS&lt;/button&gt;
+                &lt;button type=&quot;button&quot; id=&quot;btn-reset-demo&quot; class=&quot;btn btn-secondary&quot;&gt;កំណត់ឡើងវិញ&lt;/button&gt;
+              &lt;/div&gt;
+              &lt;div id=&quot;demo-output&quot; class=&quot;demo-output&quot;&gt;
+                ចុចប៊ូតុងខាងលើដើម្បីមើលសកម្មភាព JavaScript...
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Role explanation matrix --&gt;
+        &lt;div class=&quot;triad-explanation&quot;&gt;
+          &lt;div class=&quot;col-exp html-box&quot;&gt;
+            &lt;h4&gt;🦴 HTML (HyperText Markup Language)&lt;/h4&gt;
+            &lt;p&gt;កំណត់អត្ថន័យ និងរចនាសម្ព័ន្ធនៃទិន្នន័យ (ចំណងជើង, កថាខណ្ឌ, រូបភាព, ប៊ូតុង)។ បើគ្មាន HTML គឺគ្មានអ្វីបង្ហាញទាំងអស់។&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col-exp css-box&quot;&gt;
+            &lt;h4&gt;🎨 CSS (Cascading Style Sheets)&lt;/h4&gt;
+            &lt;p&gt;គ្រប់គ្រងការតុបតែង រូបរាង ពណ៌ ពុម្ពអក្សរ គម្លាត និងប្លង់សម្របតាមអេក្រង់ (Responsive Layout)។&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col-exp js-box&quot;&gt;
+            &lt;h4&gt;⚡ JavaScript&lt;/h4&gt;
+            &lt;p&gt;បន្ថែមភាពរស់រវើក ការឆ្លើយតបព្រឹត្តិការណ៍ (Event Handling), ការគណនា និងការទាញទិន្នន័យពី Server ដោយមិនចាំបាច់ Reload ទំព័រ។&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- SECTION 2: HOW THE WEB WORKS SIMULATOR --&gt;
+    &lt;section id=&quot;how-web-works&quot; class=&quot;section-card&quot;&gt;
+      &lt;div class=&quot;section-header&quot;&gt;
+        &lt;span class=&quot;section-tag&quot;&gt;យន្តការបច្ចេកវិទ្យា ១.៧ &amp; ១.៨&lt;/span&gt;
+        &lt;h2&gt;យន្តការដំណើរការនៃគេហទំព័រ (How a Website Works Visualizer)&lt;/h2&gt;
+        &lt;p&gt;តើមានអ្វីកើតឡើងនៅពេលអ្នកវាយបញ្ចូលអាសយដ្ឋាន URL ឧទាហរណ៍ &lt;code&gt;https://www.example.com&lt;/code&gt; រួចចុច Enter?&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;simulator-wrapper&quot;&gt;
+        &lt;!-- Interactive Step Selector --&gt;
+        &lt;div class=&quot;step-buttons&quot;&gt;
+          &lt;button class=&quot;step-btn active&quot; data-step=&quot;1&quot;&gt;ជំហាន ១: បញ្ចូល URL&lt;/button&gt;
+          &lt;button class=&quot;step-btn&quot; data-step=&quot;2&quot;&gt;ជំហាន ២: ស្វែងរក DNS Lookup&lt;/button&gt;
+          &lt;button class=&quot;step-btn&quot; data-step=&quot;3&quot;&gt;ជំហាន ៣: TCP &amp; SSL Handshake&lt;/button&gt;
+          &lt;button class=&quot;step-btn&quot; data-step=&quot;4&quot;&gt;ជំហាន ៤: ផ្ញើ HTTP GET Request&lt;/button&gt;
+          &lt;button class=&quot;step-btn&quot; data-step=&quot;5&quot;&gt;ជំហាន ៥: Server Response 200 OK&lt;/button&gt;
+          &lt;button class=&quot;step-btn&quot; data-step=&quot;6&quot;&gt;ជំហាន ៦: Browser Parsing &amp; Rendering&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Visual Flow Diagram --&gt;
+        &lt;div class=&quot;flow-stage&quot;&gt;
+          &lt;div class=&quot;node-box client-node&quot; id=&quot;node-client&quot;&gt;
+            &lt;div class=&quot;node-icon&quot;&gt;💻&lt;/div&gt;
+            &lt;div class=&quot;node-title&quot;&gt;Client Browser&lt;/div&gt;
+            &lt;div class=&quot;node-desc&quot;&gt;Chrome / Edge / Safari&lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;connection-line&quot;&gt;
+            &lt;div id=&quot;packet-animation&quot; class=&quot;data-packet&quot;&gt;HTTP&lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;node-box dns-node&quot; id=&quot;node-dns&quot;&gt;
+            &lt;div class=&quot;node-icon&quot;&gt;🌐&lt;/div&gt;
+            &lt;div class=&quot;node-title&quot;&gt;DNS Server&lt;/div&gt;
+            &lt;div class=&quot;node-desc&quot;&gt;Phonebook: IP Address&lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;connection-line&quot;&gt;&lt;/div&gt;
+
+          &lt;div class=&quot;node-box server-node&quot; id=&quot;node-server&quot;&gt;
+            &lt;div class=&quot;node-icon&quot;&gt;🖥️&lt;/div&gt;
+            &lt;div class=&quot;node-title&quot;&gt;Web Server&lt;/div&gt;
+            &lt;div class=&quot;node-desc&quot;&gt;Nginx / Apache / Node.js&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Detail Explanation Box --&gt;
+        &lt;div class=&quot;step-detail-card&quot; id=&quot;step-detail-card&quot;&gt;
+          &lt;h3 id=&quot;step-title&quot;&gt;ជំហានទី ១: អ្នកប្រើប្រាស់វាយបញ្ចូល URL (User Enters URL)&lt;/h3&gt;
+          &lt;p id=&quot;step-desc&quot;&gt;
+            អ្នកប្រើប្រាស់បើក Web Browser រួចវាយបញ្ចូលអាសយដ្ឋាន URL (Uniform Resource Locator) ដូចជា &lt;code&gt;https://www.example.com/index.html&lt;/code&gt;។ Browser នឹងបំបែក URL ជាផ្នែកៗ៖ Protocol (HTTPS), Domain Name (www.example.com) និង Resource Path (/index.html)។
+          &lt;/p&gt;
+          &lt;div class=&quot;step-tech-specs&quot; id=&quot;step-specs&quot;&gt;
+            &lt;span&gt;&lt;strong&gt;Protocol:&lt;/strong&gt; HTTPS (Port 443)&lt;/span&gt;
+            &lt;span&gt;&lt;strong&gt;Domain:&lt;/strong&gt; www.example.com&lt;/span&gt;
+            &lt;span&gt;&lt;strong&gt;Target:&lt;/strong&gt; Client Request Initiation&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- SECTION 3: TYPES OF WEBSITES --&gt;
+    &lt;section id=&quot;website-types&quot; class=&quot;section-card&quot;&gt;
+      &lt;div class=&quot;section-header&quot;&gt;
+        &lt;span class=&quot;section-tag&quot;&gt;ការវិភាគចំណាត់ថ្នាក់ ១.៩&lt;/span&gt;
+        &lt;h2&gt;ការប្រៀបធៀបប្រភេទគេហទំព័រទាំង ៦ (6 Types of Websites)&lt;/h2&gt;
+        &lt;p&gt;ស្វែងយល់ពីលក្ខណៈបច្ចេកទេស គោលបំណង គុណសម្បត្តិ និងបច្ចេកវិទ្យាដែលប្រើប្រាស់៖&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Type Filter Tabs --&gt;
+      &lt;div class=&quot;type-filter-nav&quot;&gt;
+        &lt;button class=&quot;type-tab active&quot; data-type=&quot;static&quot;&gt;1. Static Website&lt;/button&gt;
+        &lt;button class=&quot;type-tab&quot; data-type=&quot;dynamic&quot;&gt;2. Dynamic Website&lt;/button&gt;
+        &lt;button class=&quot;type-tab&quot; data-type=&quot;ecommerce&quot;&gt;3. E-Commerce Website&lt;/button&gt;
+        &lt;button class=&quot;type-tab&quot; data-type=&quot;portfolio&quot;&gt;4. Portfolio Website&lt;/button&gt;
+        &lt;button class=&quot;type-tab&quot; data-type=&quot;corporate&quot;&gt;5. Corporate Website&lt;/button&gt;
+        &lt;button class=&quot;type-tab&quot; data-type=&quot;educational&quot;&gt;6. Educational Website&lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Dynamic Info Container --&gt;
+      &lt;div class=&quot;type-display-card&quot; id=&quot;type-display-card&quot;&gt;
+        &lt;!-- Content will be injected by JavaScript --&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- SECTION 4: DEVTOOLS SIMULATOR &amp; LEARNING HUD --&gt;</code></pre>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ៣</span>
+        <h3 class="step-heading">ការកំណត់ Design Tokens និង Style មូលដ្ឋាន (CSS Tokens & Base Styling)</h3>
+      </div>
+      <p>
+        បង្កើតឯកសារ <code>css/style.css</code> រួចសរសេរកូដកំណត់ <code>:root</code> CSS Variables (Design Tokens សម្រាប់ពណ៌ ពុម្ពអក្សរ គម្លាត), Global Reset <code>*, *::before, *::after</code> និងការតុបតែងសមាសភាគនីមួយៗ៖
+      </p>
+
+      <div class="code-block-container">
+        <div class="code-header-bar">
+          <span class="code-file-name">🎨 css/style.css (Tokens & Component Styling)</span>
+          <button class="btn-copy" onclick="copyCode(this, 'code-step-3')">📋 ចម្លងកូដ (Copy)</button>
+        </div>
+        <pre class="code-view" id="code-step-3"><code>/* ============================================================
+   PROJECT: Web Tech Explorer (Sample Project - Chapter 01)
+   AUTHOR: Web Design Curriculum (Bachelor Year 3)
+   PURPOSE: Interactive demonstration of Web Design Fundamentals
+   ============================================================ */
+
+/* CSS Variables for Themes and Spacing */
+:root {
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-light: #e0f2fe;
+  --secondary: #475569;
+  --accent: #f59e0b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --border: #e2e8f0;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --font-body: &#x27;Khmer OS Siemreap&#x27;, &#x27;Kantumruy Pro&#x27;, system-ui, -apple-system, sans-serif;
+  --font-title: &#x27;Khmer OS Muol Light-Kh Auto&#x27;, &#x27;Khmer OS Muol Light&#x27;, &#x27;Moul&#x27;, serif;
+  --font-code: &#x27;Consolas&#x27;, &#x27;Fira Code&#x27;, &#x27;Courier New&#x27;, monospace;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+  --radius: 10px;
+  --transition: all 0.25s ease-in-out;
+}
+
+/* Reset and Global Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-dark);
+  background-color: var(--bg-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: normal;
+  color: #1e293b;
+  line-height: 1.5;
+}
+
+p {
+  margin-bottom: 12px;
+}
+
+code {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+/* ==================== HEADER ==================== */
+.main-header {
+  background-color: #ffffff;
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand-badge {
+  display: inline-block;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 4px;
+}
+
+.brand-title {
+  font-size: 20px;
+  color: #0f172a;
+}
+
+.brand-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.main-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 13.5px;
+  color: var(--secondary);
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.nav-link:hover, .nav-link.active {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+/* ==================== MAIN CONTENT ==================== */
+.main-content {
+  max-width: 1200px;
+  margin: 28px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Hero Section */
+.hero-card {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  padding: 36px 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-card h2 {
+  font-size: 22px;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.hero-card p {
+  font-size: 15px;
+  max-width: 800px;
+  color: #f0f9ff;
+  line-height: 1.8;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-number {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #e0f2fe;
+}
+
+/* Section Card Standard */
+.section-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow-sm);
+}
+
+.section-header {
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.section-header h2 {
+  font-size: 19px;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 18px;
+  font-size: 13.5px;
+  font-family: inherit;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: #f1f5f9;
+  color: var(--secondary);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+  color: var(--text-dark);
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  border-radius: 14px;
+}
+
+.badge.success {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.badge.warning {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+/* ==================== 1. TRIAD LAB ==================== */
+.triad-controls {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  background-color: #f8fafc;
+  padding: 16px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.toggle-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-control input[type=&quot;checkbox&quot;] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--primary);
+}
+
+.toggle-label {
+  font-size: 14px;
+}
+
+.sandbox-container {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sandbox-header {
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sandbox-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.red { background-color: #ef4444; }
+.dot.yellow { background-color: #f59e0b; }
+.dot.green { background-color: #10b981; }
+
+.sandbox-title {
+  font-size: 12.5px;
+  color: #94a3b8;
+  font-family: var(--font-code);
+}
+
+/* Sandbox States */
+.sandbox-view {
+  padding: 30px;
+  background-color: #ffffff;
+  min-height: 280px;
+  transition: all 0.3s ease;
+}
+
+/* When CSS is turned OFF (Raw HTML view simulator) */
+.sandbox-view.css-disabled {
+  all: revert !important;
+  display: block !important;
+  padding: 20px !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  font-family: serif !important;
+}
+
+.sandbox-view.css-disabled * {
+  all: revert !important;
+}
+
+.sandbox-view.css-disabled img {
+  max-width: 250px !important;
+  display: block !important;
+}
+
+.sandbox-view.css-disabled .demo-badge {
+  display: inline !important;
+  border: 1px solid #000 !important;
+}
+
+.sandbox-view.css-disabled button {
+  display: inline-block !important;
+  margin-top: 5px !important;
+}
+
+/* When CSS is ON: Styled Demo Card */
+.demo-card {
+  max-width: 440px;
+  margin: 0 auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background-color: #ffffff;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.demo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.demo-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.demo-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.demo-body {
+  padding: 20px;
+}
+
+.demo-title {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+.demo-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.demo-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+
+.demo-meta .price {
+  font-weight: 700;
+  color: var(--success);
+}
+
+.demo-meta .rating {
+  font-size: 12.5px;
+  color: #64748b;
+}
+
+.demo-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.demo-output {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  background-color: #f8fafc;
+  border: 1px solid var(--border);
+  color: #334155;
+  min-height: 40px;
+}
+
+/* Triad Explanation Grid */
+.triad-explanation {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 24px;
+  background-color: #f8fafc;
+  border-top: 1px solid var(--border);
+}
+
+.col-exp {
+  padding: 16px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+}
+
+.col-exp h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+.col-exp p {
+  font-size: 13px;
+  color: var(--secondary);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ==================== 2. HOW WEB WORKS ==================== */
+.step-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.step-btn {
+  background-color: #f1f5f9;
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.step-btn.active, .step-btn:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.flow-stage {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  background-color: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.node-box {
+  background-color: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 16px;
+  text-align: center;
+  min-width: 140px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  z-index: 2;
+}
+
+.node-box.highlight {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25);
+  transform: scale(1.05);
+}
+
+.node-icon {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.node-title {
+  font-family: var(--font-title);
+  font-size: 13px;
+  color: #0f172a;
+}
+
+.node-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.connection-line {
+  flex-grow: 1;
+  height: 4px;
+  background: #cbd5e1;
+  position: relative;
+  margin: 0 10px;
+}
+
+.data-packet {
+  position: absolute;
+  top: -12px;
+  left: 0;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  transition: left 0.6s ease-in-out;
+}
+
+.step-detail-card {
+  background-color: #ffffff;
+  border-left: 4px solid var(--primary);
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 0 8px 8px 0;
+}
+
+.step-detail-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+.step-detail-card p {
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.7;
+}
+
+.step-tech-specs {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+/* ==================== 3. WEBSITE TYPES ==================== */
+.type-filter-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.type-tab {
+  background: #f1f5f9;
+  border: 1px solid var(--border);
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.type-tab.active, .type-tab:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.type-display-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.type-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.type-title-group h3 {
+  font-size: 18px;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.type-badge-stack {
+  display: flex;
+  gap: 6px;
+}
+
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.type-box {
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.type-box h4 {
+  font-size: 13px;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.type-box ul {
+  padding-left: 20px;
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.6;
+}
+
+/* ==================== 4. DEVTOOLS SIMULATOR ==================== */
+.devtools-interface {
+  border: 1px solid #334155;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #1e293b;
+  color: #f8fafc;
+}
+
+.devtools-tabs {
+  display: flex;
+  background-color: #0f172a;
+  border-bottom: 1px solid #334155;
+}
+
+.dev-tab {
+  background: transparent;
+  color: #94a3b8;
+  border: none;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-family: var(--font-code);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition);
+}
+
+.dev-tab.active {
+  color: #38bdf8;
+  border-bottom-color: #38bdf8;
+  background-color: #1e293b;
+}
+
+.dev-panel {
+  display: none;
+  padding: 20px;
+}
+
+.dev-panel.active {
+  display: block;
+}
+
+.dev-hint {
+  font-size: 13px;
+  color: #cbd5e1;
+  margin-bottom: 14px;
+}
+
+/* Elements Panel */
+.dom-code-view {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin-bottom: 16px;
+}
+
+/* VS Code Light Syntax Style (NO BACKGROUND COLOR) */
+.vscode-code {
+  font-family: var(--font-code);
+  font-size: 13px;
+  line-height: 1.6;
+  background: transparent !important;
+  color: #000000;
+  margin: 0;
+}
+
+.token-tag {
+  color: #0000ff; /* Blue for HTML tags */
+  font-weight: 600;
+}
+
+.token-attr {
+  color: #e50000; /* Red for attributes */
+}
+
+.token-str {
+  color: #a31515; /* Brick Red for string values */
+}
+
+.token-comment {
+  color: #008000; /* Green for comments */
+  font-style: italic;
+}
+
+.token-keyword {
+  color: #af00db; /* Purple for keywords */
+}
+
+.dom-editor-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.dom-editor-bar input[type=&quot;text&quot;] {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #475569;
+  background-color: #0f172a;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  flex-grow: 1;
+}
+
+.dom-editor-bar input[type=&quot;color&quot;] {
+  border: none;
+  width: 36px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: none;
+}
+
+/* Console Panel */
+.console-box {
+  font-family: var(--font-code);
+  font-size: 13px;
+}
+
+.console-logs {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 14px;
+  min-height: 160px;
+  max-height: 240px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.log-entry {
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.log-entry.info { color: #38bdf8; }
+.log-entry.log { color: #f8fafc; }
+.log-entry.warn { color: #f59e0b; }
+.log-entry.error { color: #ef4444; }
+
+.console-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+
+.console-input-row .prompt {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.console-input-row input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: var(--font-code);
+  font-size: 13px;
+  padding: 6px 0;
+}
+
+/* Network Panel */
+.network-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.network-status {
+  font-size: 12px;
+  color: #94a3b8;
+  font-family: var(--font-code);
+  margin-left: auto;
+}
+
+.network-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-code);
+  font-size: 12.5px;
+}
+
+.network-table th {
+  background-color: #0f172a;
+  color: #94a3b8;
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #334155;
+}
+
+.network-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.network-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* ==================== FOOTER ==================== */
+.main-footer {
+  background-color: #0f172a;
+  color: #cbd5e1;
+  padding: 40px 20px 20px 20px;
+  margin-top: 40px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #334155;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.footer-col p {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #94a3b8;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 20px auto 0 auto;
+  text-align: center;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */</code></pre>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ៤</span>
+        <h3 class="step-heading">ការរៀបចំប្លង់ Responsive និងមុខងារអន្តរកម្ម (Responsive Layout & Interactivity)</h3>
+      </div>
+      <p>
+        បន្ថែម Media Queries ទៅខាងចុងនៃឯកសារ <code>css/style.css</code> ដើម្បីធានាថាគេហទំព័របង្ហាញរូបរាងយ៉ាងស្អាតនៅលើ Tablet និង Mobile Device ព្រមទាំងបន្ថែម JavaScript ទៅក្នុង <code>js/app.js</code> សម្រាប់មុខងារអន្តរកម្ម៖
+      </p>
+
+      <div class="code-block-container">
+        <div class="code-header-bar">
+          <span class="code-file-name">📱 Responsive Media Queries & ⚡ js/app.js</span>
+          <button class="btn-copy" onclick="copyCode(this, 'code-step-4')">📋 ចម្លងកូដ (Copy)</button>
+        </div>
+        <pre class="code-view" id="code-step-4"><code>/* === 1. Responsive Media Queries (css/style.css) === */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   
+  .flow-stage {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .connection-line {
+    width: 4px;
+    height: 30px;
+    margin: 0 auto;
+  }
+
+  .data-packet {
+    top: 0;
+    left: -14px;
+  }
+
+  .triad-controls {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* === 2. Dynamic Interactivity Script (js/app.js) === */
+/**
+ * ============================================================
+ * PROJECT: Web Tech Explorer (Sample Project - Chapter 01)
+ * AUTHOR: Web Design Curriculum (Bachelor Year 3)
+ * FILE: js/app.js
+ * ============================================================
+ */
+
+document.addEventListener(&#x27;DOMContentLoaded&#x27;, () =&gt; {
+  initTriadLab();
+  initWebFlowSimulator();
+  initWebsiteTypes();
+  initDevToolsSimulator();
+  initNavScroll();
+});
+
+/* ============================================================
+   1. TRIAD LAB (HTML / CSS / JS Live Toggle)
+   ============================================================ */
+function initTriadLab() {
+  const toggleCss = document.getElementById(&#x27;toggle-css&#x27;);
+  const toggleJs = document.getElementById(&#x27;toggle-js&#x27;);
+  const sandboxView = document.getElementById(&#x27;sandbox-view&#x27;);
+  const statusBadge = document.getElementById(&#x27;sandbox-status-badge&#x27;);
+  const btnInteractive = document.getElementById(&#x27;btn-interactive&#x27;);
+  const btnReset = document.getElementById(&#x27;btn-reset-demo&#x27;);
+  const demoOutput = document.getElementById(&#x27;demo-output&#x27;);
+  let clickCount = 0;
+
+  function updateSandboxState() {
+    // CSS state
+    if (toggleCss.checked) {
+      sandboxView.classList.remove(&#x27;css-disabled&#x27;);
+      sandboxView.classList.add(&#x27;css-enabled&#x27;);
+    } else {
+      sandboxView.classList.remove(&#x27;css-enabled&#x27;);
+      sandboxView.classList.add(&#x27;css-disabled&#x27;);
+    }
+
+    // JS state
+    if (toggleJs.checked) {
+      sandboxView.classList.add(&#x27;js-enabled&#x27;);
+      sandboxView.classList.remove(&#x27;js-disabled&#x27;);
+    } else {
+      sandboxView.classList.remove(&#x27;js-enabled&#x27;);
+      sandboxView.classList.add(&#x27;js-disabled&#x27;);
+    }
+
+    // Badge text
+    if (toggleCss.checked &amp;&amp; toggleJs.checked) {
+      statusBadge.textContent = &#x27;ស្ថានភាព: HTML + CSS + JS (គេហទំព័រពេញលេញ)&#x27;;
+      statusBadge.className = &#x27;badge success&#x27;;
+    } else if (toggleCss.checked &amp;&amp; !toggleJs.checked) {
+      statusBadge.textContent = &#x27;ស្ថានភាព: HTML + CSS (គេហទំព័រឋិតិវន្ត គ្មានអន្តរកម្ម)&#x27;;
+      statusBadge.className = &#x27;badge warning&#x27;;
+    } else if (!toggleCss.checked &amp;&amp; toggleJs.checked) {
+      statusBadge.textContent = &#x27;ស្ថានភាព: HTML + JS (មានអន្តរកម្ម ប៉ុន្តែគ្មានស្ទីល)&#x27;;
+      statusBadge.className = &#x27;badge warning&#x27;;
+    } else {
+      statusBadge.textContent = &#x27;ស្ថានភាព: តែ HTML សុទ្ធ (គ្រោងឆ្អឹង Raw HTML)&#x27;;
+      statusBadge.className = &#x27;badge&#x27;;
+    }
+  }
+
+  toggleCss.addEventListener(&#x27;change&#x27;, updateSandboxState);
+  toggleJs.addEventListener(&#x27;change&#x27;, updateSandboxState);
+
+  // Demo Interactive Button
+  btnInteractive.addEventListener(&#x27;click&#x27;, () =&gt; {
+    if (!toggleJs.checked) {
+      alert(&#x27;JavaScript ត្រូវបានបិទ! ប៊ូតុងមិនអាចឆ្លើយតបព្រឹត្តិការណ៍បានទេ។ សូមបើក JavaScript ឡើងវិញ។&#x27;);
+      return;
+    }
+    clickCount++;
+    const now = new Date().toLocaleTimeString();
+    demoOutput.innerHTML = `&lt;strong&gt;[JS Event Triggered]&lt;/strong&gt; អ្នកបានចុចចំនួន &lt;strong&gt;${clickCount} ដង&lt;/strong&gt;! ម៉ោងឆ្លើយតប: ${now}`;
+    demoOutput.style.borderColor = &#x27;#10b981&#x27;;
+    demoOutput.style.backgroundColor = &#x27;#ecfdf5&#x27;;
+  });
+
+  btnReset.addEventListener(&#x27;click&#x27;, () =&gt; {
+    clickCount = 0;
+    demoOutput.innerHTML = &#x27;ចុចប៊ូតុងខាងលើដើម្បីមើលសកម្មភាព JavaScript...&#x27;;
+    demoOutput.style.borderColor = &#x27;#e2e8f0&#x27;;
+    demoOutput.style.backgroundColor = &#x27;#f8fafc&#x27;;
+  });
+}
+
+/* ============================================================
+   2. HOW THE WEB WORKS SIMULATOR
+   ============================================================ */
+function initWebFlowSimulator() {
+  const stepButtons = document.querySelectorAll(&#x27;.step-btn&#x27;);
+  const titleEl = document.getElementById(&#x27;step-title&#x27;);
+  const descEl = document.getElementById(&#x27;step-desc&#x27;);
+  const specsEl = document.getElementById(&#x27;step-specs&#x27;);
+  const packet = document.getElementById(&#x27;packet-animation&#x27;);
+  const nodeClient = document.getElementById(&#x27;node-client&#x27;);
+  const nodeDns = document.getElementById(&#x27;node-dns&#x27;);
+  const nodeServer = document.getElementById(&#x27;node-server&#x27;);
+
+  const stepsData = {
+    1: {
+      title: &#x27;ជំហានទី ១: អ្នកប្រើប្រាស់វាយបញ្ចូល URL (User Enters URL)&#x27;,
+      desc: &#x27;អ្នកប្រើប្រាស់បើក Web Browser រួចវាយបញ្ចូលអាសយដ្ឋាន URL (Uniform Resource Locator) ដូចជា &lt;code&gt;https://www.example.com/index.html&lt;/code&gt;។ Browser នឹងបំបែក URL ជាផ្នែកៗ៖ Protocol (HTTPS), Domain Name (www.example.com) និង Resource Path (/index.html)។&#x27;,
+      specs: &#x27;&lt;span&gt;&lt;strong&gt;Protocol:&lt;/strong&gt; HTTPS (Port 443)&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Domain:&lt;/strong&gt; www.example.com&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Target:&lt;/strong&gt; Client Request Initiation&lt;/span&gt;&#x27;,
+      activeNode: &#x27;client&#x27;,
+      packetPos: &#x27;5%&#x27;
+    },
+    2: {
+      title: &#x27;ជំហានទី ២: ស្វែងរកអាសយដ្ឋាន IP តាមរយៈ DNS Lookup&#x27;,
+      desc: &#x27;កុំព្យូទ័រមិនស្គាល់ឈ្មោះជាអក្សរទេ Browser ត្រូវសួររក IP Address ពី DNS (Domain Name System) Resolver។ ប្រសិនបើគ្មាននៅក្នុង Browser Cache ឬ OS Cache ទេ DNS Root, TLD (.com) និង Authoritative Servers នឹងធ្វើការស្វែងរក រហូតឃើញ IP ឧទាហរណ៍៖ &lt;code&gt;93.184.216.34&lt;/code&gt;។&#x27;,
+      specs: &#x27;&lt;span&gt;&lt;strong&gt;Query:&lt;/strong&gt; A Record (IPv4)&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Response IP:&lt;/strong&gt; 93.184.216.34&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Server:&lt;/strong&gt; DNS Resolver 8.8.8.8&lt;/span&gt;&#x27;,
+      activeNode: &#x27;dns&#x27;,
+      packetPos: &#x27;50%&#x27;
+    },
+    3: {
+      title: &#x27;ជំហានទី ៣: បង្កើតការតភ្ជាប់ TCP Handshake &amp; TLS/SSL&#x27;,
+      desc: &#x27;Browser បង្កើតការតភ្ជាប់សុវត្ថិភាពជាមួយ Server តាមរយៈ TCP 3-Way Handshake (SYN -&gt; SYN-ACK -&gt; ACK)។ សម្រាប់ HTTPS ការចរចាសោសម្ងាត់ TLS/SSL Handshake ត្រូវបានធ្វើឡើងដើម្បីធានាការអ៊ិនគ្រីបទិន្នន័យ (Data Encryption)។&#x27;,
+      specs: &#x27;&lt;span&gt;&lt;strong&gt;Handshake:&lt;/strong&gt; SYN / SYN-ACK / ACK&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Encryption:&lt;/strong&gt; TLS 1.3 / AES-256&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Security:&lt;/strong&gt; Encrypted Tunnel Established&lt;/span&gt;&#x27;,
+      activeNode: &#x27;both&#x27;,
+      packetPos: &#x27;50%&#x27;
+    },
+    4: {
+      title: &#x27;ជំហានទី ៤: ផ្ញើ HTTP GET Request ទៅកាន់ Web Server&#x27;,
+      desc: &#x27;បន្ទាប់ពីតភ្ជាប់ជោគជ័យ Browser នឹងរៀបចំ HTTP Request Header (User-Agent, Accept, Cookie) រួចផ្ញើ &lt;code&gt;GET /index.html HTTP/2&lt;/code&gt; ទៅកាន់ Web Server ផ្ទាល់។&#x27;,
+      specs: &#x27;&lt;span&gt;&lt;strong&gt;Method:&lt;/strong&gt; GET&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Path:&lt;/strong&gt; /index.html&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Host:&lt;/strong&gt; www.example.com&lt;/span&gt;&#x27;,
+      activeNode: &#x27;server&#x27;,
+      packetPos: &#x27;85%&#x27;
+    },
+    5: {
+      title: &#x27;ជំហានទី ៥: Web Server ដំណើរការ និងឆ្លើយតប (HTTP 200 OK)&#x27;,
+      desc: &#x27;Web Server (ដូចជា Nginx, Apache ឬ Node.js) ទទួល Request រកមើលឯកសារ ឬដំណើរការ Backend Logic រួចផ្ញើ HTTP Response Status &lt;code&gt;200 OK&lt;/code&gt; ត្រឡប់មកវិញ អមជាមួយ Payload កូដ HTML, CSS, និង Headers។&#x27;,
+      specs: &#x27;&lt;span&gt;&lt;strong&gt;Status Code:&lt;/strong&gt; 200 OK&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Content-Type:&lt;/strong&gt; text/html; charset=UTF-8&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Server:&lt;/strong&gt; nginx/1.24.0&lt;/span&gt;&#x27;,
+      activeNode: &#x27;server&#x27;,
+      packetPos: &#x27;50%&#x27;
+    },
+    6: {
+      title: &#x27;ជំហានទី ៦: Browser បកប្រែ និងបង្ហាញទំព័រ (Parsing &amp; Rendering)&#x27;,
+      desc: &#x27;Browser Rendering Engine ដំណើរការ Critical Rendering Path (CRP)៖ បម្លែង HTML ទៅជា DOM Tree, បម្លែង CSS ទៅជា CSSOM Tree, រួមបញ្ចូលគ្នាបង្កើត Render Tree, គណនាទំហំទីតាំង (Layout), និងគូរភីកសែលលើអេក្រង់ (Paint &amp; Compositing)។&#x27;,
+      specs: &#x27;&lt;span&gt;&lt;strong&gt;DOM Construction:&lt;/strong&gt; 1,240 nodes&lt;/span&gt;&lt;span&gt;&lt;strong&gt;CSSOM:&lt;/strong&gt; Parsed&lt;/span&gt;&lt;span&gt;&lt;strong&gt;CRP:&lt;/strong&gt; First Contentful Paint (FCP) 0.6s&lt;/span&gt;&#x27;,
+      activeNode: &#x27;client&#x27;,
+      packetPos: &#x27;5%&#x27;
+    }
+  };
+
+  stepButtons.forEach(btn =&gt; {
+    btn.addEventListener(&#x27;click&#x27;, () =&gt; {
+      stepButtons.forEach(b =&gt; b.classList.remove(&#x27;active&#x27;));
+      btn.classList.add(&#x27;active&#x27;);
+
+      const stepNum = btn.getAttribute(&#x27;data-step&#x27;);
+      const data = stepsData[stepNum];
+
+      titleEl.innerHTML = data.title;
+      descEl.innerHTML = data.desc;
+      specsEl.innerHTML = data.specs;
+      packet.style.left = data.packetPos;
+
+      // Highlight nodes
+      nodeClient.classList.remove(&#x27;highlight&#x27;);
+      nodeDns.classList.remove(&#x27;highlight&#x27;);
+      nodeServer.classList.remove(&#x27;highlight&#x27;);
+
+      if (data.activeNode === &#x27;client&#x27;) nodeClient.classList.add(&#x27;highlight&#x27;);
+      else if (data.activeNode === &#x27;dns&#x27;) nodeDns.classList.add(&#x27;highlight&#x27;);
+      else if (data.activeNode === &#x27;server&#x27;) nodeServer.classList.add(&#x27;highlight&#x27;);
+      else if (data.activeNode === &#x27;both&#x27;) {
+        nodeClient.classList.add(&#x27;highlight&#x27;);
+        nodeServer.classList.add(&#x27;highlight&#x27;);
+      }
+    });
+  });
+}
+
+/* ============================================================
+   3. WEBSITE TYPES EXPLORER
+   ============================================================ */
+function initWebsiteTypes() {
+  const tabs = document.querySelectorAll(&#x27;.type-tab&#x27;);
+  const displayContainer = document.getElementById(&#x27;type-display-card&#x27;);
+
+  const typesData = {
+    static: {
+      title: &#x27;1. គេហទំព័រឋិតិវន្ត (Static Website)&#x27;,
+      subtitle: &#x27;ឯកសារ HTML/CSS/JS ថេរ រក្សាទុកផ្ទាល់លើ Server ដោយមិនឆ្លងកាត់ការគណនា Database&#x27;,
+      badges: [&#x27;ល្បឿនលឿនបំផុត&#x27;, &#x27;សុវត្ថិភាពខ្ពស់&#x27;, &#x27;តម្លៃថោក&#x27;],
+      purpose: &#x27;បង្ហាញព័ត៌មានដែលមិនសូវផ្លាស់ប្តូរ ដូចជា ឯកសារច្បាប់ គេហទំព័រព័ត៌មានផលិតផលទោល (Landing Pages) ឬ Documentation។&#x27;,
+      techStack: &#x27;HTML5, CSS3, Vanilla JavaScript, Jamstack, GitHub Pages, Netlify, Vercel&#x27;,
+      pros: [&#x27;ផ្ទុកទំព័ររហ័ស (Sub-second loading)&#x27;, &#x27;មិនងាយរងការវាយប្រហារតាម SQL Injection&#x27;, &#x27;ចំណាយលើ Hosting ទាប&#x27;],
+      cons: [&#x27;ពិបាកកែប្រែទិន្នន័យ (ត្រូវកូដឯកសារផ្ទាល់)&#x27;, &#x27;គ្មានមុខងារ Dynamic User Login ឬ Shopping Cart ស្មុគស្មាញ&#x27;]
+    },
+    dynamic: {
+      title: &#x27;2. គេហទំព័រឌីណាមិក (Dynamic Website)&#x27;,
+      subtitle: &#x27;ទំព័រដែលបង្កើតឡើងតាមរយៈ Server-side Scripting និងទាញទិន្នន័យពី Database តាមសំណូមពរ&#x27;,
+      badges: [&#x27;អន្តរកម្មខ្ពស់&#x27;, &#x27;ទិន្នន័យទាន់ហេតុការណ៍&#x27;, &#x27;CMS ងាយស្រួល&#x27;],
+      purpose: &#x27;គេហទំព័រព័ត៌មាន (News Portals), ប្លុក (Blogs), បណ្តាញសង្គម ឬវេទិកាពិភាក្សាដែលទិន្នន័យផ្លាស់ប្តូរឥតឈប់ឈរ។&#x27;,
+      techStack: &#x27;Frontend (HTML/CSS/JS/React/Vue), Backend (Node.js, PHP, Python, Java), Database (MySQL, PostgreSQL, MongoDB)&#x27;,
+      pros: [&#x27;គ្រប់គ្រងទិន្នន័យរាប់ពាន់ទំព័រតាមរយៈ Database តែមួយ&#x27;, &#x27;គាំទ្រប្រព័ន្ធគ្រប់គ្រងសិទ្ធិអ្នកប្រើប្រាស់ (User Roles &amp; Auth)&#x27;, &#x27;មាន Search Engine ស្វែងរកក្នុងទំព័រ&#x27;],
+      cons: [&#x27;ត្រូវការធនធាន Server ខ្ពស់ជាង Static&#x27;, &#x27;ត្រូវការការថែទាំសុវត្ថិភាព Database និង Backend ម៉ត់ចត់&#x27;]
+    },
+    ecommerce: {
+      title: &#x27;3. គេហទំព័រពាណិជ្ជកម្មអេឡិចត្រូនិក (E-Commerce Website)&#x27;,
+      subtitle: &#x27;វេទិកាលក់ទំនិញ ឬសេវាកម្មតាមអ៊ីនធឺណិតពេញលេញ ជាមួយប្រព័ន្ធទូទាត់ និងដឹកជញ្ជូន&#x27;,
+      badges: [&#x27;Payment Gateway&#x27;, &#x27;Inventory System&#x27;, &#x27;High Security&#x27;],
+      purpose: &#x27;ការលក់ដូរអនឡាញ (Online Retail, B2B, B2C) ដូចជា Amazon, eBay, ឬគេហទំព័រហាងក្នុងស្រុក។&#x27;,
+      techStack: &#x27;WooCommerce, Shopify, Magento, Next.js Commerce, Stripe/PayPal/Bakong KHQR APIs, Redis Cache&#x27;,
+      pros: [&#x27;ដំណើរការអាជីវកម្ម ២៤/៧ ដោយស្វ័យប្រវត្តិ&#x27;, &#x27;តាមដានការបញ្ជាទិញ និងទិន្នន័យស្តុកច្បាស់លាស់&#x27;, &#x27;ផ្សព្វផ្សាយទីផ្សារទូលំទូលាយ&#x27;],
+      cons: [&#x27;ស្មុគស្មាញខ្ពស់ក្នុងការរៀបចំ និងអនុលោមតាមស្តង់ដាសុវត្ថិភាព PCI-DSS&#x27;, &#x27;ទាមទារប្រព័ន្ធ Backup និង High Availability ខ្ពស់&#x27;]
+    },
+    portfolio: {
+      title: &#x27;4. គេហទំព័របង្ហាញស្នាដៃផ្ទាល់ខ្លួន (Portfolio Website)&#x27;,
+      subtitle: &#x27;កាតាឡុកឌីជីថលបង្ហាញពីសមត្ថភាព គម្រោង និងប្រវត្តិរូបសង្ខេបរបស់បុគ្គល ឬ Freelancer&#x27;,
+      badges: [&#x27;Personal Brand&#x27;, &#x27;Visual Storytelling&#x27;, &#x27;Lead Generation&#x27;],
+      purpose: &#x27;សម្រាប់ Web Designers, Developers, វិចិត្រករ និងអ្នកជំនាញដើម្បីទាក់ទាញអតិថិជន ឬនិយោជក។&#x27;,
+      techStack: &#x27;HTML5 Semantic, CSS Grid/Animations, Minimalist JS, Formspree (Contact Form), GitHub Hosting&#x27;,
+      pros: [&#x27;កសាងកេរ្តិ៍ឈ្មោះវិជ្ជាជីវៈ (Professional Branding)&#x27;, &#x27;បង្ហាញលទ្ធផលការងារជាក់ស្តែង (Live Demos &amp; Case Studies)&#x27;, &#x27;ដំណើរការរហ័ស និងស្រាល&#x27;],
+      cons: [&#x27;ត្រូវចំណាយពេលធ្វើបច្ចុប្បន្នភាពស្នាដៃថ្មីៗជានិច្ច&#x27;, &#x27;ទាមទារសោភ័ណភាព UI/UX ខ្ពស់ដើម្បីទាក់ទាញចំណាប់អារម្មណ៍&#x27;]
+    },
+    corporate: {
+      title: &#x27;5. គេហទំព័រស្ថាប័ន ឬក្រុមហ៊ុន (Corporate Website)&#x27;,
+      subtitle: &#x27;វត្តមានផ្លូវការលើអ៊ីនធឺណិតដើម្បីបង្កើតទំនុកចិត្ត បង្ហាញសេវាកម្ម និងវប្បធម៌ស្ថាប័ន&#x27;,
+      badges: [&#x27;Brand Authority&#x27;, &#x27;Lead Capture&#x27;, &#x27;Corporate Trust&#x27;],
+      purpose: &#x27;សម្រាប់ក្រុមហ៊ុន ធនាគារ អង្គការក្រៅរដ្ឋាភិបាល ឬភ្នាក់ងារប្រឹក្សាដើម្បីបង្ហាញពីសេវាកម្ម ក្រុមការងារ និងទាក់ទងដៃគូពាណិជ្ជកម្ម។&#x27;,
+      techStack: &#x27;Corporate CMS (WordPress, Drupal, Headless CMS), Responsive Frameworks, SEO Tools, Analytics Suite&#x27;,
+      pros: [&#x27;បង្កើនភាពជឿជាក់ និងកិត្យានុភាពលើទីផ្សារ&#x27;, &#x27;ប្រភពព័ត៌មានផ្លូវការសម្រាប់វិនិយោគិន និងសារព័ត៌មាន&#x27;, &#x27;SEO Optimization ល្អប្រសើរ&#x27;],
+      cons: [&#x27;ដំណើរការអនុម័តខ្លឹមសារមានច្រើនដំណាក់កាល&#x27;, &#x27;ទាមទារការថែទាំការអនុលោមភាពផ្លូវច្បាប់ និង Privacy Policies&#x27;]
+    },
+    educational: {
+      title: &#x27;6. គេហទំព័រអប់រំ និងសាកលវិទ្យាល័យ (Educational Website)&#x27;,
+      subtitle: &#x27;មជ្ឈមណ្ឌលចែករំលែកចំណេះដឹង ប្រព័ន្ធសិក្សាអនឡាញ (LMS) និងព័ត៌មានកម្មវិធីសិក្សា&#x27;,
+      badges: [&#x27;LMS Integration&#x27;, &#x27;Multi-user Portals&#x27;, &#x27;Accessibility (WCAG)&#x27;],
+      purpose: &#x27;សម្រាប់សាលារៀន សាកលវិទ្យាល័យ វិទ្យាស្ថាន ឬវេទិកាសិក្សាអនឡាញ (Coursera, Khan Academy, University Portals)។&#x27;,
+      techStack: &#x27;Moodle LMS, Canvas API, Custom Web Apps, Video Streaming (HLS), Relational DB for Student Records&#x27;,
+      pros: [&#x27;ផ្តល់លទ្ធភាពសិក្សាពីចម្ងាយគ្រប់ពេលវេលា&#x27;, &#x27;ប្រព័ន្ធគ្រប់គ្រងពិន្ទុ កិច្ចការផ្ទះ និងធនធានបណ្ណាល័យឌីជីថល&#x27;, &#x27;ជួយសម្រួលដល់ការប្រាស្រ័យទាក់ទងរវាងគ្រូនិងសិស្ស&#x27;],
+      cons: [&#x27;ចំនួនអ្នកចូលប្រើប្រាស់ខ្ពស់ក្នុងពេលប្រឡង (Spike Traffic) អាចធ្វើឱ្យគាំង Server&#x27;, &#x27;ទាមទារស្តង់ដា Accessibility (WCAG 2.1) ខ្ពស់សម្រាប់សិស្សពិការ&#x27;]
+    }
+  };
+
+  function renderType(typeKey) {
+    const data = typesData[typeKey];
+    displayContainer.innerHTML = `
+      &lt;div class=&quot;type-header-row&quot;&gt;
+        &lt;div class=&quot;type-title-group&quot;&gt;
+          &lt;h3&gt;${data.title}&lt;/h3&gt;
+          &lt;p style=&quot;color: #64748b; font-size: 13.5px;&quot;&gt;${data.subtitle}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;type-badge-stack&quot;&gt;
+          ${data.badges.map(b =&gt; `&lt;span class=&quot;badge success&quot;&gt;${b}&lt;/span&gt;`).join(&#x27;&#x27;)}
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;p&gt;&lt;strong&gt;គោលបំណងចម្បង៖&lt;/strong&gt; ${data.purpose}&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;បច្ចេកវិទ្យាទូទៅ (Tech Stack):&lt;/strong&gt; &lt;code&gt;${data.techStack}&lt;/code&gt;&lt;/p&gt;
+      &lt;div class=&quot;type-grid&quot;&gt;
+        &lt;div class=&quot;type-box&quot;&gt;
+          &lt;h4&gt;✅ គុណសម្បត្តិ (Advantages)&lt;/h4&gt;
+          &lt;ul&gt;${data.pros.map(p =&gt; `&lt;li&gt;${p}&lt;/li&gt;`).join(&#x27;&#x27;)}&lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;type-box&quot;&gt;
+          &lt;h4&gt;⚠️ ដែនកំណត់ (Limitations)&lt;/h4&gt;
+          &lt;ul&gt;${data.cons.map(c =&gt; `&lt;li&gt;${c}&lt;/li&gt;`).join(&#x27;&#x27;)}&lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    `;
+  }
+
+  tabs.forEach(tab =&gt; {
+    tab.addEventListener(&#x27;click&#x27;, () =&gt; {
+      tabs.forEach(t =&gt; t.classList.remove(&#x27;active&#x27;));
+      tab.classList.add(&#x27;active&#x27;);
+      renderType(tab.getAttribute(&#x27;data-type&#x27;));
+    });
+  });
+
+  // Initial render
+  renderType(&#x27;static&#x27;);
+}
+
+/* ============================================================
+   4. DEVTOOLS SIMULATOR &amp; LEARNING HUD
+   ============================================================ */
+function initDevToolsSimulator() {
+  const tabs = document.querySelectorAll(&#x27;.dev-tab&#x27;);
+  const panels = document.querySelectorAll(&#x27;.dev-panel&#x27;);
+
+  tabs.forEach(tab =&gt; {
+    tab.addEventListener(&#x27;click&#x27;, () =&gt; {
+      tabs.forEach(t =&gt; t.classList.remove(&#x27;active&#x27;));
+      panels.forEach(p =&gt; p.classList.remove(&#x27;active&#x27;));
+
+      tab.classList.add(&#x27;active&#x27;);
+      const targetPanel = document.getElementById(`dev-panel-${tab.getAttribute(&#x27;data-devtab&#x27;)}`);
+      if (targetPanel) targetPanel.classList.add(&#x27;active&#x27;);
+    });
+  });
+
+  // Elements panel live controls
+  const colorPicker = document.getElementById(&#x27;dom-color-picker&#x27;);
+  const textInput = document.getElementById(&#x27;dom-text-input&#x27;);
+  const targetHeading = document.getElementById(&#x27;target-heading&#x27;);
+
+  if (colorPicker &amp;&amp; targetHeading) {
+    colorPicker.addEventListener(&#x27;input&#x27;, (e) =&gt; {
+      targetHeading.style.color = e.target.value;
+      addConsoleLog(`[Elements] Modified style.color to &quot;${e.target.value}&quot;`, &#x27;info&#x27;);
+    });
+  }
+
+  if (textInput &amp;&amp; targetHeading) {
+    textInput.addEventListener(&#x27;input&#x27;, (e) =&gt; {
+      targetHeading.textContent = e.target.value || &#x27;ចំណងជើងសាកល្បង&#x27;;
+    });
+  }
+
+  // Console Panel Logic
+  const consoleInput = document.getElementById(&#x27;console-input&#x27;);
+  const btnRunConsole = document.getElementById(&#x27;btn-run-console&#x27;);
+  const logsContainer = document.getElementById(&#x27;console-logs&#x27;);
+
+  function addConsoleLog(message, type = &#x27;log&#x27;) {
+    const entry = document.createElement(&#x27;div&#x27;);
+    entry.className = `log-entry ${type}`;
+    entry.textContent = message;
+    logsContainer.appendChild(entry);
+    logsContainer.scrollTop = logsContainer.scrollHeight;
+  }
+
+  function executeConsoleInput() {
+    const val = consoleInput.value.trim();
+    if (!val) return;
+
+    addConsoleLog(`&gt; ${val}`, &#x27;log&#x27;);
+
+    try {
+      // Safe evaluation for basic math/expressions
+      const result = Function(`&quot;use strict&quot;; return (${val})`)();
+      addConsoleLog(`&lt;- ${result}`, &#x27;info&#x27;);
+    } catch (err) {
+      addConsoleLog(`Uncaught ${err.name}: ${err.message}`, &#x27;error&#x27;);
+    }
+
+    consoleInput.value = &#x27;&#x27;;
+  }
+
+  if (btnRunConsole) btnRunConsole.addEventListener(&#x27;click&#x27;, executeConsoleInput);
+  if (consoleInput) {
+    consoleInput.addEventListener(&#x27;keydown&#x27;, (e) =&gt; {
+      if (e.key === &#x27;Enter&#x27;) executeConsoleInput();
+    });
+  }
+
+  // Network Panel Simulated Fetch
+  const btnFetchMock = document.getElementById(&#x27;btn-fetch-mock&#x27;);
+  const btnClearNetwork = document.getElementById(&#x27;btn-clear-network&#x27;);
+  const tableBody = document.getElementById(&#x27;network-table-body&#x27;);
+  const counterEl = document.getElementById(&#x27;network-counter&#x27;);
+  let mockCount = 3;
+
+  if (btnFetchMock) {
+    btnFetchMock.addEventListener(&#x27;click&#x27;, () =&gt; {
+      mockCount++;
+      const latency = Math.floor(Math.random() * 45) + 15;
+      const size = (Math.random() * 4 + 1.2).toFixed(1);
+
+      const row = document.createElement(&#x27;tr&#x27;);
+      row.innerHTML = `
+        &lt;td&gt;/api/v1/courses/chapter-0${mockCount}.json&lt;/td&gt;
+        &lt;td&gt;GET&lt;/td&gt;
+        &lt;td&gt;&lt;span class=&quot;badge success&quot;&gt;200 OK&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;fetch / json&lt;/td&gt;
+        &lt;td&gt;${size} KB&lt;/td&gt;
+        &lt;td&gt;${latency} ms&lt;/td&gt;
+      `;
+      tableBody.appendChild(row);
+      counterEl.textContent = `${mockCount} Requests | ${(mockCount * 3.8).toFixed(1)} KB transferred`;
+      addConsoleLog(`[Network] Simulated HTTP GET /api/v1/courses/chapter-0${mockCount}.json 200 OK (${latency}ms)`, &#x27;info&#x27;);
+    });
+  }
+
+  if (btnClearNetwork) {
+    btnClearNetwork.addEventListener(&#x27;click&#x27;, () =&gt; {
+      tableBody.innerHTML = &#x27;&#x27;;
+      mockCount = 0;
+      counterEl.textContent = &#x27;0 Requests | 0 KB transferred&#x27;;
+      addConsoleLog(&#x27;[Network] Network log cleared.&#x27;, &#x27;warn&#x27;);
+    });
+  }
+}
+
+/* ============================================================
+   5. NAVIGATION SMOOTH SCROLLING
+   ============================================================ */
+function initNavScroll() {
+  const navLinks = document.querySelectorAll(&#x27;.main-nav .nav-link&#x27;);
+  navLinks.forEach(link =&gt; {
+    link.addEventListener(&#x27;click&#x27;, (e) =&gt; {
+      navLinks.forEach(l =&gt; l.classList.remove(&#x27;active&#x27;));
+      link.classList.add(&#x27;active&#x27;);
+    });
+  });
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step-card">
+      <div class="step-header">
+        <span class="step-badge">ជំហានទី ៥</span>
+        <h3 class="step-heading">កូដគម្រោងពេញលេញទាំងស្រុង និងការសាកល្បងដំណើរការ (Full Complete Code & Testing)</h3>
+      </div>
+      <p>
+        ខាងក្រោមនេះជាកូដពេញលេញនៃឯកសារនីមួយៗក្នុងគម្រោង។ និស្សិតអាចជ្រើសរើសផ្ទាំង (Tab) ដើម្បីចម្លងកូដឯកសារទាំងស្រុងយកទៅប្រើប្រាស់ និងសាកល្បងដំណើរការជាមួយ <strong>VS Code Live Server</strong> (Right-Click លើ <code>index.html</code> &gt; <em>Open with Live Server</em>)៖
+      </p>
+
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab(this, 'tab-html')">📄 index.html (កូដពេញលេញ)</button>
+        <button class="tab-btn" onclick="switchTab(this, 'tab-css')">🎨 css/style.css (កូដពេញលេញ)</button>
+        <button class="tab-btn" onclick="switchTab(this, 'tab-js')">⚡ js/app.js (កូដពេញលេញ)</button>
+      </div>
+
+      <!-- Tab HTML -->
+      <div id="tab-html" class="tab-pane active">
+        <div class="code-block-container">
+          <div class="code-header-bar">
+            <span class="code-file-name">📄 index.html (Complete Working Code)</span>
+            <button class="btn-copy" onclick="copyCode(this, 'full-code-html')">📋 ចម្លង index.html ទាំងមូល</button>
+          </div>
+          <pre class="code-view" id="full-code-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;km&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;គម្រោងគំរូមេរៀនទី ១: សេចក្តីផ្តើមអំពីការរចនាគេហទំព័រ (Introduction to Web Design) - Bachelor Year 3&quot;&gt;
+  &lt;title&gt;គម្រោងគំរូ: ការស្វែងយល់បច្ចេកវិទ្យាវេប (Web Tech Explorer)&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;600;700&amp;family=Moul&amp;family=Fira+Code:wght@400;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;!-- ==================== HEADER SECTION ==================== --&gt;
+  &lt;header class=&quot;main-header&quot;&gt;
+    &lt;div class=&quot;header-container&quot;&gt;
+      &lt;div class=&quot;brand&quot;&gt;
+        &lt;span class=&quot;brand-badge&quot;&gt;Module 01 • Chapter 01&lt;/span&gt;
+        &lt;h1 class=&quot;brand-title&quot;&gt;Web Tech Explorer&lt;/h1&gt;
+        &lt;p class=&quot;brand-subtitle&quot;&gt;កម្មវិធីសិក្សា និងពិសោធន៍ជាក់ស្តែងអំពីស្ថាបត្យកម្មគេហទំព័រ&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;nav class=&quot;main-nav&quot; aria-label=&quot;Main Navigation&quot;&gt;
+        &lt;a href=&quot;#triad-lab&quot; class=&quot;nav-link active&quot;&gt;1. សសរស្តម្ភទាំងបី (HTML/CSS/JS)&lt;/a&gt;
+        &lt;a href=&quot;#how-web-works&quot; class=&quot;nav-link&quot;&gt;2. យន្តការដំណើរការវេប&lt;/a&gt;
+        &lt;a href=&quot;#website-types&quot; class=&quot;nav-link&quot;&gt;3. ប្រភេទគេហទំព័រទាំង ៦&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;!-- ==================== MAIN CONTENT ==================== --&gt;
+  &lt;main class=&quot;main-content&quot;&gt;
+
+    &lt;!-- HERO BANNER --&gt;
+    &lt;section class=&quot;hero-section&quot;&gt;
+      &lt;div class=&quot;hero-card&quot;&gt;
+        &lt;h2&gt;សូមស្វាគមន៍មកកាន់មេរៀនទី ១: សេចក្តីផ្តើមអំពីការរចនាគេហទំព័រ&lt;/h2&gt;
+        &lt;p&gt;
+          គេហទំព័រទំនើបកើតឡើងពីការរួមបញ្ចូលគ្នាយ៉ាងចុះសម្រុងរវាង &lt;strong&gt;HTML&lt;/strong&gt; (រចនាសម្ព័ន្ធ), 
+          &lt;strong&gt;CSS&lt;/strong&gt; (សោភ័ណភាព) និង &lt;strong&gt;JavaScript&lt;/strong&gt; (អន្តរកម្ម) 
+          នៅលើស្ថាបត្យកម្ម &lt;strong&gt;Client-Server&lt;/strong&gt; តាមរយៈពិធីការ &lt;strong&gt;HTTP/HTTPS&lt;/strong&gt;។
+        &lt;/p&gt;
+        &lt;div class=&quot;hero-stats&quot;&gt;
+          &lt;div class=&quot;stat-item&quot;&gt;
+            &lt;span class=&quot;stat-number&quot;&gt;1991&lt;/span&gt;
+            &lt;span class=&quot;stat-label&quot;&gt;កំណើតនៃ Web (Tim Berners-Lee)&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;stat-item&quot;&gt;
+            &lt;span class=&quot;stat-number&quot;&gt;3 សសរស្តម្ភ&lt;/span&gt;
+            &lt;span class=&quot;stat-label&quot;&gt;HTML + CSS + JavaScript&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;stat-item&quot;&gt;
+            &lt;span class=&quot;stat-number&quot;&gt;6 ប្រភេទ&lt;/span&gt;
+            &lt;span class=&quot;stat-label&quot;&gt;ប្រភេទគេហទំព័រសំខាន់ៗ&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;stat-item&quot;&gt;
+            &lt;span class=&quot;stat-number&quot;&gt;DevTools&lt;/span&gt;
+            &lt;span class=&quot;stat-label&quot;&gt;ឧបករណ៍ត្រួតពិនិត្យ F12&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- SECTION 1: THE WEB TRIAD LAB --&gt;
+    &lt;section id=&quot;triad-lab&quot; class=&quot;section-card&quot;&gt;
+      &lt;div class=&quot;section-header&quot;&gt;
+        &lt;span class=&quot;section-tag&quot;&gt;ពិសោធន៍ជាក់ស្តែង ១.៦&lt;/span&gt;
+        &lt;h2&gt;បន្ទប់ពិសោធន៍សសរស្តម្ភទាំងបី (The Web Triad Laboratory)&lt;/h2&gt;
+        &lt;p&gt;សាកល្បងបើក/បិទ បច្ចេកវិទ្យានីមួយៗ ដើម្បីយល់ពីតួនាទីជាក់ស្តែងរបស់ HTML, CSS និង JavaScript៖&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Controls --&gt;
+      &lt;div class=&quot;triad-controls&quot;&gt;
+        &lt;label class=&quot;toggle-control&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; id=&quot;toggle-html&quot; checked disabled&gt;
+          &lt;span class=&quot;toggle-track&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;toggle-label&quot;&gt;&lt;strong&gt;HTML5&lt;/strong&gt; (គ្រោងឆ្អឹង/រចនាសម្ព័ន្ធ) - &lt;em&gt;ចាំបាច់&lt;/em&gt;&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;label class=&quot;toggle-control&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; id=&quot;toggle-css&quot; checked&gt;
+          &lt;span class=&quot;toggle-track&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;toggle-label&quot;&gt;&lt;strong&gt;CSS3&lt;/strong&gt; (ស្បែក និងសម្លៀកបំពាក់/Styling)&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;label class=&quot;toggle-control&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; id=&quot;toggle-js&quot; checked&gt;
+          &lt;span class=&quot;toggle-track&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;toggle-label&quot;&gt;&lt;strong&gt;JavaScript&lt;/strong&gt; (ប្រព័ន្ធប្រសាទ និងអន្តរកម្ម/Behavior)&lt;/span&gt;
+        &lt;/label&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Preview Sandbox --&gt;
+      &lt;div class=&quot;sandbox-container&quot;&gt;
+        &lt;div class=&quot;sandbox-header&quot;&gt;
+          &lt;div class=&quot;sandbox-dots&quot;&gt;
+            &lt;span class=&quot;dot red&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;dot yellow&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;dot green&quot;&gt;&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;span class=&quot;sandbox-title&quot;&gt;លទ្ធផលបង្ហាញផ្ទាល់ (Live Sandbox Preview)&lt;/span&gt;
+          &lt;span id=&quot;sandbox-status-badge&quot; class=&quot;badge&quot;&gt;ស្ថានភាព: ដំណើរការពេញលេញ&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;sandbox-view&quot; class=&quot;sandbox-view css-enabled js-enabled&quot;&gt;
+          &lt;article class=&quot;demo-card&quot; id=&quot;demo-product-card&quot;&gt;
+            &lt;div class=&quot;demo-badge&quot;&gt;Featured Course&lt;/div&gt;
+            &lt;img src=&quot;data:image/svg+xml;utf8,&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;400&#x27; height=&#x27;200&#x27; viewBox=&#x27;0 0 400 200&#x27;&gt;&lt;rect width=&#x27;400&#x27; height=&#x27;200&#x27; fill=&#x27;%231e293b&#x27;/&gt;&lt;text x=&#x27;50%25&#x27; y=&#x27;50%25&#x27; dominant-baseline=&#x27;middle&#x27; text-anchor=&#x27;middle&#x27; fill=&#x27;%2338bdf8&#x27; font-size=&#x27;20&#x27; font-family=&#x27;sans-serif&#x27;&gt;Web Design Course (Year 3)&lt;/text&gt;&lt;/svg&gt;&quot; alt=&quot;Web Design Graphic&quot; class=&quot;demo-image&quot;&gt;
+            &lt;div class=&quot;demo-body&quot;&gt;
+              &lt;h3 class=&quot;demo-title&quot;&gt;ការរចនាគេហទំព័រអាជីព (Bachelor Web Design)&lt;/h3&gt;
+              &lt;p class=&quot;demo-desc&quot;&gt;
+                រៀនពីមូលដ្ឋានគ្រឹះ UI/UX, Semantic HTML5, CSS3 Grid/Flexbox និងទំនើបកម្ម Frontend សម្រាប់និស្សិតឆ្នាំទី ៣។
+              &lt;/p&gt;
+              &lt;div class=&quot;demo-meta&quot;&gt;
+                &lt;span class=&quot;price&quot;&gt;$0.00 (Free Education)&lt;/span&gt;
+                &lt;span class=&quot;rating&quot;&gt;⭐⭐⭐⭐⭐ (4.9/5)&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;demo-actions&quot;&gt;
+                &lt;button type=&quot;button&quot; id=&quot;btn-interactive&quot; class=&quot;btn btn-primary&quot;&gt;ចុចទីនេះដើម្បីសាកល្បង JS&lt;/button&gt;
+                &lt;button type=&quot;button&quot; id=&quot;btn-reset-demo&quot; class=&quot;btn btn-secondary&quot;&gt;កំណត់ឡើងវិញ&lt;/button&gt;
+              &lt;/div&gt;
+              &lt;div id=&quot;demo-output&quot; class=&quot;demo-output&quot;&gt;
+                ចុចប៊ូតុងខាងលើដើម្បីមើលសកម្មភាព JavaScript...
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/article&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Role explanation matrix --&gt;
+        &lt;div class=&quot;triad-explanation&quot;&gt;
+          &lt;div class=&quot;col-exp html-box&quot;&gt;
+            &lt;h4&gt;🦴 HTML (HyperText Markup Language)&lt;/h4&gt;
+            &lt;p&gt;កំណត់អត្ថន័យ និងរចនាសម្ព័ន្ធនៃទិន្នន័យ (ចំណងជើង, កថាខណ្ឌ, រូបភាព, ប៊ូតុង)។ បើគ្មាន HTML គឺគ្មានអ្វីបង្ហាញទាំងអស់។&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col-exp css-box&quot;&gt;
+            &lt;h4&gt;🎨 CSS (Cascading Style Sheets)&lt;/h4&gt;
+            &lt;p&gt;គ្រប់គ្រងការតុបតែង រូបរាង ពណ៌ ពុម្ពអក្សរ គម្លាត និងប្លង់សម្របតាមអេក្រង់ (Responsive Layout)។&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col-exp js-box&quot;&gt;
+            &lt;h4&gt;⚡ JavaScript&lt;/h4&gt;
+            &lt;p&gt;បន្ថែមភាពរស់រវើក ការឆ្លើយតបព្រឹត្តិការណ៍ (Event Handling), ការគណនា និងការទាញទិន្នន័យពី Server ដោយមិនចាំបាច់ Reload ទំព័រ។&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- SECTION 2: HOW THE WEB WORKS SIMULATOR --&gt;
+    &lt;section id=&quot;how-web-works&quot; class=&quot;section-card&quot;&gt;
+      &lt;div class=&quot;section-header&quot;&gt;
+        &lt;span class=&quot;section-tag&quot;&gt;យន្តការបច្ចេកវិទ្យា ១.៧ &amp; ១.៨&lt;/span&gt;
+        &lt;h2&gt;យន្តការដំណើរការនៃគេហទំព័រ (How a Website Works Visualizer)&lt;/h2&gt;
+        &lt;p&gt;តើមានអ្វីកើតឡើងនៅពេលអ្នកវាយបញ្ចូលអាសយដ្ឋាន URL ឧទាហរណ៍ &lt;code&gt;https://www.example.com&lt;/code&gt; រួចចុច Enter?&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;simulator-wrapper&quot;&gt;
+        &lt;!-- Interactive Step Selector --&gt;
+        &lt;div class=&quot;step-buttons&quot;&gt;
+          &lt;button class=&quot;step-btn active&quot; data-step=&quot;1&quot;&gt;ជំហាន ១: បញ្ចូល URL&lt;/button&gt;
+          &lt;button class=&quot;step-btn&quot; data-step=&quot;2&quot;&gt;ជំហាន ២: ស្វែងរក DNS Lookup&lt;/button&gt;
+          &lt;button class=&quot;step-btn&quot; data-step=&quot;3&quot;&gt;ជំហាន ៣: TCP &amp; SSL Handshake&lt;/button&gt;
+          &lt;button class=&quot;step-btn&quot; data-step=&quot;4&quot;&gt;ជំហាន ៤: ផ្ញើ HTTP GET Request&lt;/button&gt;
+          &lt;button class=&quot;step-btn&quot; data-step=&quot;5&quot;&gt;ជំហាន ៥: Server Response 200 OK&lt;/button&gt;
+          &lt;button class=&quot;step-btn&quot; data-step=&quot;6&quot;&gt;ជំហាន ៦: Browser Parsing &amp; Rendering&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Visual Flow Diagram --&gt;
+        &lt;div class=&quot;flow-stage&quot;&gt;
+          &lt;div class=&quot;node-box client-node&quot; id=&quot;node-client&quot;&gt;
+            &lt;div class=&quot;node-icon&quot;&gt;💻&lt;/div&gt;
+            &lt;div class=&quot;node-title&quot;&gt;Client Browser&lt;/div&gt;
+            &lt;div class=&quot;node-desc&quot;&gt;Chrome / Edge / Safari&lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;connection-line&quot;&gt;
+            &lt;div id=&quot;packet-animation&quot; class=&quot;data-packet&quot;&gt;HTTP&lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;node-box dns-node&quot; id=&quot;node-dns&quot;&gt;
+            &lt;div class=&quot;node-icon&quot;&gt;🌐&lt;/div&gt;
+            &lt;div class=&quot;node-title&quot;&gt;DNS Server&lt;/div&gt;
+            &lt;div class=&quot;node-desc&quot;&gt;Phonebook: IP Address&lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;connection-line&quot;&gt;&lt;/div&gt;
+
+          &lt;div class=&quot;node-box server-node&quot; id=&quot;node-server&quot;&gt;
+            &lt;div class=&quot;node-icon&quot;&gt;🖥️&lt;/div&gt;
+            &lt;div class=&quot;node-title&quot;&gt;Web Server&lt;/div&gt;
+            &lt;div class=&quot;node-desc&quot;&gt;Nginx / Apache / Node.js&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Detail Explanation Box --&gt;
+        &lt;div class=&quot;step-detail-card&quot; id=&quot;step-detail-card&quot;&gt;
+          &lt;h3 id=&quot;step-title&quot;&gt;ជំហានទី ១: អ្នកប្រើប្រាស់វាយបញ្ចូល URL (User Enters URL)&lt;/h3&gt;
+          &lt;p id=&quot;step-desc&quot;&gt;
+            អ្នកប្រើប្រាស់បើក Web Browser រួចវាយបញ្ចូលអាសយដ្ឋាន URL (Uniform Resource Locator) ដូចជា &lt;code&gt;https://www.example.com/index.html&lt;/code&gt;។ Browser នឹងបំបែក URL ជាផ្នែកៗ៖ Protocol (HTTPS), Domain Name (www.example.com) និង Resource Path (/index.html)។
+          &lt;/p&gt;
+          &lt;div class=&quot;step-tech-specs&quot; id=&quot;step-specs&quot;&gt;
+            &lt;span&gt;&lt;strong&gt;Protocol:&lt;/strong&gt; HTTPS (Port 443)&lt;/span&gt;
+            &lt;span&gt;&lt;strong&gt;Domain:&lt;/strong&gt; www.example.com&lt;/span&gt;
+            &lt;span&gt;&lt;strong&gt;Target:&lt;/strong&gt; Client Request Initiation&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- SECTION 3: TYPES OF WEBSITES --&gt;
+    &lt;section id=&quot;website-types&quot; class=&quot;section-card&quot;&gt;
+      &lt;div class=&quot;section-header&quot;&gt;
+        &lt;span class=&quot;section-tag&quot;&gt;ការវិភាគចំណាត់ថ្នាក់ ១.៩&lt;/span&gt;
+        &lt;h2&gt;ការប្រៀបធៀបប្រភេទគេហទំព័រទាំង ៦ (6 Types of Websites)&lt;/h2&gt;
+        &lt;p&gt;ស្វែងយល់ពីលក្ខណៈបច្ចេកទេស គោលបំណង គុណសម្បត្តិ និងបច្ចេកវិទ្យាដែលប្រើប្រាស់៖&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Type Filter Tabs --&gt;
+      &lt;div class=&quot;type-filter-nav&quot;&gt;
+        &lt;button class=&quot;type-tab active&quot; data-type=&quot;static&quot;&gt;1. Static Website&lt;/button&gt;
+        &lt;button class=&quot;type-tab&quot; data-type=&quot;dynamic&quot;&gt;2. Dynamic Website&lt;/button&gt;
+        &lt;button class=&quot;type-tab&quot; data-type=&quot;ecommerce&quot;&gt;3. E-Commerce Website&lt;/button&gt;
+        &lt;button class=&quot;type-tab&quot; data-type=&quot;portfolio&quot;&gt;4. Portfolio Website&lt;/button&gt;
+        &lt;button class=&quot;type-tab&quot; data-type=&quot;corporate&quot;&gt;5. Corporate Website&lt;/button&gt;
+        &lt;button class=&quot;type-tab&quot; data-type=&quot;educational&quot;&gt;6. Educational Website&lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Dynamic Info Container --&gt;
+      &lt;div class=&quot;type-display-card&quot; id=&quot;type-display-card&quot;&gt;
+        &lt;!-- Content will be injected by JavaScript --&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- SECTION 4: DEVTOOLS SIMULATOR &amp; LEARNING HUD --&gt;
+    &lt;/main&gt;
+
+  &lt;!-- ==================== FOOTER SECTION ==================== --&gt;
+  &lt;footer class=&quot;main-footer&quot;&gt;
+    &lt;div class=&quot;footer-container&quot;&gt;
+      &lt;div class=&quot;footer-col&quot;&gt;
+        &lt;h4&gt;វិទ្យាសាស្ត្រកុំព្យូទ័រ និងបច្ចេកវិទ្យាព័ត៌មាន&lt;/h4&gt;
+        &lt;p&gt;មុខវិជ្ជា៖ ការរចនាគេហទំព័រ (Web Design - Bachelor Year 3)&lt;/p&gt;
+        &lt;p&gt;ម៉ូឌុល ០១: Web Design Fundamentals &amp; UI/UX&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;footer-col&quot;&gt;
+        &lt;h4&gt;ឯកសារយោង និងស្តង់ដាអន្តរជាតិ&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;World Wide Web Consortium (W3C)&lt;/li&gt;
+          &lt;li&gt;Mozilla Developer Network (MDN Web Docs)&lt;/li&gt;
+          &lt;li&gt;Google Web Fundamentals &amp; Lighthouse Audit&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;footer-col&quot;&gt;
+        &lt;h4&gt;ការណែនាំការអនុវត្ត&lt;/h4&gt;
+        &lt;p&gt;ប្រើប្រាស់បន្សំគ្រាប់ចុច &lt;code&gt;F12&lt;/code&gt; ឬ &lt;code&gt;Ctrl + Shift + I&lt;/code&gt; នៅលើ Browser របស់អ្នក ដើម្បីពិនិត្យកូដប្រភពនៃគម្រោងគំរូនេះ។&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;footer-bottom&quot;&gt;
+      &lt;p&gt;&amp;copy; 2026 Web Design Curriculum — Bachelor Degree Program. All technical terms preserved.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+
+  &lt;!-- Link JavaScript --&gt;
+  &lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Tab CSS -->
+      <div id="tab-css" class="tab-pane">
+        <div class="code-block-container">
+          <div class="code-header-bar">
+            <span class="code-file-name">🎨 css/style.css (Complete Working Code)</span>
+            <button class="btn-copy" onclick="copyCode(this, 'full-code-css')">📋 ចម្លង style.css ទាំងមូល</button>
+          </div>
+          <pre class="code-view" id="full-code-css"><code>/* ============================================================
+   PROJECT: Web Tech Explorer (Sample Project - Chapter 01)
+   AUTHOR: Web Design Curriculum (Bachelor Year 3)
+   PURPOSE: Interactive demonstration of Web Design Fundamentals
+   ============================================================ */
+
+/* CSS Variables for Themes and Spacing */
+:root {
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-light: #e0f2fe;
+  --secondary: #475569;
+  --accent: #f59e0b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --border: #e2e8f0;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --font-body: &#x27;Khmer OS Siemreap&#x27;, &#x27;Kantumruy Pro&#x27;, system-ui, -apple-system, sans-serif;
+  --font-title: &#x27;Khmer OS Muol Light-Kh Auto&#x27;, &#x27;Khmer OS Muol Light&#x27;, &#x27;Moul&#x27;, serif;
+  --font-code: &#x27;Consolas&#x27;, &#x27;Fira Code&#x27;, &#x27;Courier New&#x27;, monospace;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+  --radius: 10px;
+  --transition: all 0.25s ease-in-out;
+}
+
+/* Reset and Global Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-dark);
+  background-color: var(--bg-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: normal;
+  color: #1e293b;
+  line-height: 1.5;
+}
+
+p {
+  margin-bottom: 12px;
+}
+
+code {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+/* ==================== HEADER ==================== */
+.main-header {
+  background-color: #ffffff;
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand-badge {
+  display: inline-block;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 4px;
+}
+
+.brand-title {
+  font-size: 20px;
+  color: #0f172a;
+}
+
+.brand-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.main-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 13.5px;
+  color: var(--secondary);
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.nav-link:hover, .nav-link.active {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+/* ==================== MAIN CONTENT ==================== */
+.main-content {
+  max-width: 1200px;
+  margin: 28px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Hero Section */
+.hero-card {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  padding: 36px 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-card h2 {
+  font-size: 22px;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.hero-card p {
+  font-size: 15px;
+  max-width: 800px;
+  color: #f0f9ff;
+  line-height: 1.8;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-number {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #e0f2fe;
+}
+
+/* Section Card Standard */
+.section-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow-sm);
+}
+
+.section-header {
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.section-header h2 {
+  font-size: 19px;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 18px;
+  font-size: 13.5px;
+  font-family: inherit;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: #f1f5f9;
+  color: var(--secondary);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+  color: var(--text-dark);
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  border-radius: 14px;
+}
+
+.badge.success {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.badge.warning {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+/* ==================== 1. TRIAD LAB ==================== */
+.triad-controls {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  background-color: #f8fafc;
+  padding: 16px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.toggle-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-control input[type=&quot;checkbox&quot;] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--primary);
+}
+
+.toggle-label {
+  font-size: 14px;
+}
+
+.sandbox-container {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sandbox-header {
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sandbox-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.red { background-color: #ef4444; }
+.dot.yellow { background-color: #f59e0b; }
+.dot.green { background-color: #10b981; }
+
+.sandbox-title {
+  font-size: 12.5px;
+  color: #94a3b8;
+  font-family: var(--font-code);
+}
+
+/* Sandbox States */
+.sandbox-view {
+  padding: 30px;
+  background-color: #ffffff;
+  min-height: 280px;
+  transition: all 0.3s ease;
+}
+
+/* When CSS is turned OFF (Raw HTML view simulator) */
+.sandbox-view.css-disabled {
+  all: revert !important;
+  display: block !important;
+  padding: 20px !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  font-family: serif !important;
+}
+
+.sandbox-view.css-disabled * {
+  all: revert !important;
+}
+
+.sandbox-view.css-disabled img {
+  max-width: 250px !important;
+  display: block !important;
+}
+
+.sandbox-view.css-disabled .demo-badge {
+  display: inline !important;
+  border: 1px solid #000 !important;
+}
+
+.sandbox-view.css-disabled button {
+  display: inline-block !important;
+  margin-top: 5px !important;
+}
+
+/* When CSS is ON: Styled Demo Card */
+.demo-card {
+  max-width: 440px;
+  margin: 0 auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background-color: #ffffff;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.demo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.demo-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.demo-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.demo-body {
+  padding: 20px;
+}
+
+.demo-title {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+.demo-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.demo-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+
+.demo-meta .price {
+  font-weight: 700;
+  color: var(--success);
+}
+
+.demo-meta .rating {
+  font-size: 12.5px;
+  color: #64748b;
+}
+
+.demo-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.demo-output {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  background-color: #f8fafc;
+  border: 1px solid var(--border);
+  color: #334155;
+  min-height: 40px;
+}
+
+/* Triad Explanation Grid */
+.triad-explanation {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 24px;
+  background-color: #f8fafc;
+  border-top: 1px solid var(--border);
+}
+
+.col-exp {
+  padding: 16px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+}
+
+.col-exp h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+.col-exp p {
+  font-size: 13px;
+  color: var(--secondary);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ==================== 2. HOW WEB WORKS ==================== */
+.step-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.step-btn {
+  background-color: #f1f5f9;
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.step-btn.active, .step-btn:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.flow-stage {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  background-color: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.node-box {
+  background-color: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 16px;
+  text-align: center;
+  min-width: 140px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  z-index: 2;
+}
+
+.node-box.highlight {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25);
+  transform: scale(1.05);
+}
+
+.node-icon {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.node-title {
+  font-family: var(--font-title);
+  font-size: 13px;
+  color: #0f172a;
+}
+
+.node-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.connection-line {
+  flex-grow: 1;
+  height: 4px;
+  background: #cbd5e1;
+  position: relative;
+  margin: 0 10px;
+}
+
+.data-packet {
+  position: absolute;
+  top: -12px;
+  left: 0;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  transition: left 0.6s ease-in-out;
+}
+
+.step-detail-card {
+  background-color: #ffffff;
+  border-left: 4px solid var(--primary);
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 0 8px 8px 0;
+}
+
+.step-detail-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+.step-detail-card p {
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.7;
+}
+
+.step-tech-specs {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+/* ==================== 3. WEBSITE TYPES ==================== */
+.type-filter-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.type-tab {
+  background: #f1f5f9;
+  border: 1px solid var(--border);
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.type-tab.active, .type-tab:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.type-display-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.type-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.type-title-group h3 {
+  font-size: 18px;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.type-badge-stack {
+  display: flex;
+  gap: 6px;
+}
+
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.type-box {
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.type-box h4 {
+  font-size: 13px;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.type-box ul {
+  padding-left: 20px;
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.6;
+}
+
+/* ==================== 4. DEVTOOLS SIMULATOR ==================== */
+.devtools-interface {
+  border: 1px solid #334155;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #1e293b;
+  color: #f8fafc;
+}
+
+.devtools-tabs {
+  display: flex;
+  background-color: #0f172a;
+  border-bottom: 1px solid #334155;
+}
+
+.dev-tab {
+  background: transparent;
+  color: #94a3b8;
+  border: none;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-family: var(--font-code);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: var(--transition);
+}
+
+.dev-tab.active {
+  color: #38bdf8;
+  border-bottom-color: #38bdf8;
+  background-color: #1e293b;
+}
+
+.dev-panel {
+  display: none;
+  padding: 20px;
+}
+
+.dev-panel.active {
+  display: block;
+}
+
+.dev-hint {
+  font-size: 13px;
+  color: #cbd5e1;
+  margin-bottom: 14px;
+}
+
+/* Elements Panel */
+.dom-code-view {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  margin-bottom: 16px;
+}
+
+/* VS Code Light Syntax Style (NO BACKGROUND COLOR) */
+.vscode-code {
+  font-family: var(--font-code);
+  font-size: 13px;
+  line-height: 1.6;
+  background: transparent !important;
+  color: #000000;
+  margin: 0;
+}
+
+.token-tag {
+  color: #0000ff; /* Blue for HTML tags */
+  font-weight: 600;
+}
+
+.token-attr {
+  color: #e50000; /* Red for attributes */
+}
+
+.token-str {
+  color: #a31515; /* Brick Red for string values */
+}
+
+.token-comment {
+  color: #008000; /* Green for comments */
+  font-style: italic;
+}
+
+.token-keyword {
+  color: #af00db; /* Purple for keywords */
+}
+
+.dom-editor-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.dom-editor-bar input[type=&quot;text&quot;] {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #475569;
+  background-color: #0f172a;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  flex-grow: 1;
+}
+
+.dom-editor-bar input[type=&quot;color&quot;] {
+  border: none;
+  width: 36px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: none;
+}
+
+/* Console Panel */
+.console-box {
+  font-family: var(--font-code);
+  font-size: 13px;
+}
+
+.console-logs {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 14px;
+  min-height: 160px;
+  max-height: 240px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.log-entry {
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.log-entry.info { color: #38bdf8; }
+.log-entry.log { color: #f8fafc; }
+.log-entry.warn { color: #f59e0b; }
+.log-entry.error { color: #ef4444; }
+
+.console-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+
+.console-input-row .prompt {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.console-input-row input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: var(--font-code);
+  font-size: 13px;
+  padding: 6px 0;
+}
+
+/* Network Panel */
+.network-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.network-status {
+  font-size: 12px;
+  color: #94a3b8;
+  font-family: var(--font-code);
+  margin-left: auto;
+}
+
+.network-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-code);
+  font-size: 12.5px;
+}
+
+.network-table th {
+  background-color: #0f172a;
+  color: #94a3b8;
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #334155;
+}
+
+.network-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.network-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* ==================== FOOTER ==================== */
+.main-footer {
+  background-color: #0f172a;
+  color: #cbd5e1;
+  padding: 40px 20px 20px 20px;
+  margin-top: 40px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #334155;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.footer-col p {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #94a3b8;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 20px auto 0 auto;
+  text-align: center;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .flow-stage {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .connection-line {
+    width: 4px;
+    height: 30px;
+    margin: 0 auto;
+  }
+
+  .data-packet {
+    top: 0;
+    left: -14px;
+  }
+
+  .triad-controls {
+    flex-direction: column;
+    gap: 12px;
+  }
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- Tab JS -->
+      <div id="tab-js" class="tab-pane">
+        <div class="code-block-container">
+          <div class="code-header-bar">
+            <span class="code-file-name">⚡ js/app.js (Complete Working Code)</span>
+            <button class="btn-copy" onclick="copyCode(this, 'full-code-js')">📋 ចម្លង app.js ទាំងមូល</button>
+          </div>
+          <pre class="code-view" id="full-code-js"><code>/**
+ * ============================================================
+ * PROJECT: Web Tech Explorer (Sample Project - Chapter 01)
+ * AUTHOR: Web Design Curriculum (Bachelor Year 3)
+ * FILE: js/app.js
+ * ============================================================
+ */
+
+document.addEventListener(&#x27;DOMContentLoaded&#x27;, () =&gt; {
+  initTriadLab();
+  initWebFlowSimulator();
+  initWebsiteTypes();
+  initDevToolsSimulator();
+  initNavScroll();
+});
+
+/* ============================================================
+   1. TRIAD LAB (HTML / CSS / JS Live Toggle)
+   ============================================================ */
+function initTriadLab() {
+  const toggleCss = document.getElementById(&#x27;toggle-css&#x27;);
+  const toggleJs = document.getElementById(&#x27;toggle-js&#x27;);
+  const sandboxView = document.getElementById(&#x27;sandbox-view&#x27;);
+  const statusBadge = document.getElementById(&#x27;sandbox-status-badge&#x27;);
+  const btnInteractive = document.getElementById(&#x27;btn-interactive&#x27;);
+  const btnReset = document.getElementById(&#x27;btn-reset-demo&#x27;);
+  const demoOutput = document.getElementById(&#x27;demo-output&#x27;);
+  let clickCount = 0;
+
+  function updateSandboxState() {
+    // CSS state
+    if (toggleCss.checked) {
+      sandboxView.classList.remove(&#x27;css-disabled&#x27;);
+      sandboxView.classList.add(&#x27;css-enabled&#x27;);
+    } else {
+      sandboxView.classList.remove(&#x27;css-enabled&#x27;);
+      sandboxView.classList.add(&#x27;css-disabled&#x27;);
+    }
+
+    // JS state
+    if (toggleJs.checked) {
+      sandboxView.classList.add(&#x27;js-enabled&#x27;);
+      sandboxView.classList.remove(&#x27;js-disabled&#x27;);
+    } else {
+      sandboxView.classList.remove(&#x27;js-enabled&#x27;);
+      sandboxView.classList.add(&#x27;js-disabled&#x27;);
+    }
+
+    // Badge text
+    if (toggleCss.checked &amp;&amp; toggleJs.checked) {
+      statusBadge.textContent = &#x27;ស្ថានភាព: HTML + CSS + JS (គេហទំព័រពេញលេញ)&#x27;;
+      statusBadge.className = &#x27;badge success&#x27;;
+    } else if (toggleCss.checked &amp;&amp; !toggleJs.checked) {
+      statusBadge.textContent = &#x27;ស្ថានភាព: HTML + CSS (គេហទំព័រឋិតិវន្ត គ្មានអន្តរកម្ម)&#x27;;
+      statusBadge.className = &#x27;badge warning&#x27;;
+    } else if (!toggleCss.checked &amp;&amp; toggleJs.checked) {
+      statusBadge.textContent = &#x27;ស្ថានភាព: HTML + JS (មានអន្តរកម្ម ប៉ុន្តែគ្មានស្ទីល)&#x27;;
+      statusBadge.className = &#x27;badge warning&#x27;;
+    } else {
+      statusBadge.textContent = &#x27;ស្ថានភាព: តែ HTML សុទ្ធ (គ្រោងឆ្អឹង Raw HTML)&#x27;;
+      statusBadge.className = &#x27;badge&#x27;;
+    }
+  }
+
+  toggleCss.addEventListener(&#x27;change&#x27;, updateSandboxState);
+  toggleJs.addEventListener(&#x27;change&#x27;, updateSandboxState);
+
+  // Demo Interactive Button
+  btnInteractive.addEventListener(&#x27;click&#x27;, () =&gt; {
+    if (!toggleJs.checked) {
+      alert(&#x27;JavaScript ត្រូវបានបិទ! ប៊ូតុងមិនអាចឆ្លើយតបព្រឹត្តិការណ៍បានទេ។ សូមបើក JavaScript ឡើងវិញ។&#x27;);
+      return;
+    }
+    clickCount++;
+    const now = new Date().toLocaleTimeString();
+    demoOutput.innerHTML = `&lt;strong&gt;[JS Event Triggered]&lt;/strong&gt; អ្នកបានចុចចំនួន &lt;strong&gt;${clickCount} ដង&lt;/strong&gt;! ម៉ោងឆ្លើយតប: ${now}`;
+    demoOutput.style.borderColor = &#x27;#10b981&#x27;;
+    demoOutput.style.backgroundColor = &#x27;#ecfdf5&#x27;;
+  });
+
+  btnReset.addEventListener(&#x27;click&#x27;, () =&gt; {
+    clickCount = 0;
+    demoOutput.innerHTML = &#x27;ចុចប៊ូតុងខាងលើដើម្បីមើលសកម្មភាព JavaScript...&#x27;;
+    demoOutput.style.borderColor = &#x27;#e2e8f0&#x27;;
+    demoOutput.style.backgroundColor = &#x27;#f8fafc&#x27;;
+  });
+}
+
+/* ============================================================
+   2. HOW THE WEB WORKS SIMULATOR
+   ============================================================ */
+function initWebFlowSimulator() {
+  const stepButtons = document.querySelectorAll(&#x27;.step-btn&#x27;);
+  const titleEl = document.getElementById(&#x27;step-title&#x27;);
+  const descEl = document.getElementById(&#x27;step-desc&#x27;);
+  const specsEl = document.getElementById(&#x27;step-specs&#x27;);
+  const packet = document.getElementById(&#x27;packet-animation&#x27;);
+  const nodeClient = document.getElementById(&#x27;node-client&#x27;);
+  const nodeDns = document.getElementById(&#x27;node-dns&#x27;);
+  const nodeServer = document.getElementById(&#x27;node-server&#x27;);
+
+  const stepsData = {
+    1: {
+      title: &#x27;ជំហានទី ១: អ្នកប្រើប្រាស់វាយបញ្ចូល URL (User Enters URL)&#x27;,
+      desc: &#x27;អ្នកប្រើប្រាស់បើក Web Browser រួចវាយបញ្ចូលអាសយដ្ឋាន URL (Uniform Resource Locator) ដូចជា &lt;code&gt;https://www.example.com/index.html&lt;/code&gt;។ Browser នឹងបំបែក URL ជាផ្នែកៗ៖ Protocol (HTTPS), Domain Name (www.example.com) និង Resource Path (/index.html)។&#x27;,
+      specs: &#x27;&lt;span&gt;&lt;strong&gt;Protocol:&lt;/strong&gt; HTTPS (Port 443)&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Domain:&lt;/strong&gt; www.example.com&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Target:&lt;/strong&gt; Client Request Initiation&lt;/span&gt;&#x27;,
+      activeNode: &#x27;client&#x27;,
+      packetPos: &#x27;5%&#x27;
+    },
+    2: {
+      title: &#x27;ជំហានទី ២: ស្វែងរកអាសយដ្ឋាន IP តាមរយៈ DNS Lookup&#x27;,
+      desc: &#x27;កុំព្យូទ័រមិនស្គាល់ឈ្មោះជាអក្សរទេ Browser ត្រូវសួររក IP Address ពី DNS (Domain Name System) Resolver។ ប្រសិនបើគ្មាននៅក្នុង Browser Cache ឬ OS Cache ទេ DNS Root, TLD (.com) និង Authoritative Servers នឹងធ្វើការស្វែងរក រហូតឃើញ IP ឧទាហរណ៍៖ &lt;code&gt;93.184.216.34&lt;/code&gt;។&#x27;,
+      specs: &#x27;&lt;span&gt;&lt;strong&gt;Query:&lt;/strong&gt; A Record (IPv4)&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Response IP:&lt;/strong&gt; 93.184.216.34&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Server:&lt;/strong&gt; DNS Resolver 8.8.8.8&lt;/span&gt;&#x27;,
+      activeNode: &#x27;dns&#x27;,
+      packetPos: &#x27;50%&#x27;
+    },
+    3: {
+      title: &#x27;ជំហានទី ៣: បង្កើតការតភ្ជាប់ TCP Handshake &amp; TLS/SSL&#x27;,
+      desc: &#x27;Browser បង្កើតការតភ្ជាប់សុវត្ថិភាពជាមួយ Server តាមរយៈ TCP 3-Way Handshake (SYN -&gt; SYN-ACK -&gt; ACK)។ សម្រាប់ HTTPS ការចរចាសោសម្ងាត់ TLS/SSL Handshake ត្រូវបានធ្វើឡើងដើម្បីធានាការអ៊ិនគ្រីបទិន្នន័យ (Data Encryption)។&#x27;,
+      specs: &#x27;&lt;span&gt;&lt;strong&gt;Handshake:&lt;/strong&gt; SYN / SYN-ACK / ACK&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Encryption:&lt;/strong&gt; TLS 1.3 / AES-256&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Security:&lt;/strong&gt; Encrypted Tunnel Established&lt;/span&gt;&#x27;,
+      activeNode: &#x27;both&#x27;,
+      packetPos: &#x27;50%&#x27;
+    },
+    4: {
+      title: &#x27;ជំហានទី ៤: ផ្ញើ HTTP GET Request ទៅកាន់ Web Server&#x27;,
+      desc: &#x27;បន្ទាប់ពីតភ្ជាប់ជោគជ័យ Browser នឹងរៀបចំ HTTP Request Header (User-Agent, Accept, Cookie) រួចផ្ញើ &lt;code&gt;GET /index.html HTTP/2&lt;/code&gt; ទៅកាន់ Web Server ផ្ទាល់។&#x27;,
+      specs: &#x27;&lt;span&gt;&lt;strong&gt;Method:&lt;/strong&gt; GET&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Path:&lt;/strong&gt; /index.html&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Host:&lt;/strong&gt; www.example.com&lt;/span&gt;&#x27;,
+      activeNode: &#x27;server&#x27;,
+      packetPos: &#x27;85%&#x27;
+    },
+    5: {
+      title: &#x27;ជំហានទី ៥: Web Server ដំណើរការ និងឆ្លើយតប (HTTP 200 OK)&#x27;,
+      desc: &#x27;Web Server (ដូចជា Nginx, Apache ឬ Node.js) ទទួល Request រកមើលឯកសារ ឬដំណើរការ Backend Logic រួចផ្ញើ HTTP Response Status &lt;code&gt;200 OK&lt;/code&gt; ត្រឡប់មកវិញ អមជាមួយ Payload កូដ HTML, CSS, និង Headers។&#x27;,
+      specs: &#x27;&lt;span&gt;&lt;strong&gt;Status Code:&lt;/strong&gt; 200 OK&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Content-Type:&lt;/strong&gt; text/html; charset=UTF-8&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Server:&lt;/strong&gt; nginx/1.24.0&lt;/span&gt;&#x27;,
+      activeNode: &#x27;server&#x27;,
+      packetPos: &#x27;50%&#x27;
+    },
+    6: {
+      title: &#x27;ជំហានទី ៦: Browser បកប្រែ និងបង្ហាញទំព័រ (Parsing &amp; Rendering)&#x27;,
+      desc: &#x27;Browser Rendering Engine ដំណើរការ Critical Rendering Path (CRP)៖ បម្លែង HTML ទៅជា DOM Tree, បម្លែង CSS ទៅជា CSSOM Tree, រួមបញ្ចូលគ្នាបង្កើត Render Tree, គណនាទំហំទីតាំង (Layout), និងគូរភីកសែលលើអេក្រង់ (Paint &amp; Compositing)។&#x27;,
+      specs: &#x27;&lt;span&gt;&lt;strong&gt;DOM Construction:&lt;/strong&gt; 1,240 nodes&lt;/span&gt;&lt;span&gt;&lt;strong&gt;CSSOM:&lt;/strong&gt; Parsed&lt;/span&gt;&lt;span&gt;&lt;strong&gt;CRP:&lt;/strong&gt; First Contentful Paint (FCP) 0.6s&lt;/span&gt;&#x27;,
+      activeNode: &#x27;client&#x27;,
+      packetPos: &#x27;5%&#x27;
+    }
+  };
+
+  stepButtons.forEach(btn =&gt; {
+    btn.addEventListener(&#x27;click&#x27;, () =&gt; {
+      stepButtons.forEach(b =&gt; b.classList.remove(&#x27;active&#x27;));
+      btn.classList.add(&#x27;active&#x27;);
+
+      const stepNum = btn.getAttribute(&#x27;data-step&#x27;);
+      const data = stepsData[stepNum];
+
+      titleEl.innerHTML = data.title;
+      descEl.innerHTML = data.desc;
+      specsEl.innerHTML = data.specs;
+      packet.style.left = data.packetPos;
+
+      // Highlight nodes
+      nodeClient.classList.remove(&#x27;highlight&#x27;);
+      nodeDns.classList.remove(&#x27;highlight&#x27;);
+      nodeServer.classList.remove(&#x27;highlight&#x27;);
+
+      if (data.activeNode === &#x27;client&#x27;) nodeClient.classList.add(&#x27;highlight&#x27;);
+      else if (data.activeNode === &#x27;dns&#x27;) nodeDns.classList.add(&#x27;highlight&#x27;);
+      else if (data.activeNode === &#x27;server&#x27;) nodeServer.classList.add(&#x27;highlight&#x27;);
+      else if (data.activeNode === &#x27;both&#x27;) {
+        nodeClient.classList.add(&#x27;highlight&#x27;);
+        nodeServer.classList.add(&#x27;highlight&#x27;);
+      }
+    });
+  });
+}
+
+/* ============================================================
+   3. WEBSITE TYPES EXPLORER
+   ============================================================ */
+function initWebsiteTypes() {
+  const tabs = document.querySelectorAll(&#x27;.type-tab&#x27;);
+  const displayContainer = document.getElementById(&#x27;type-display-card&#x27;);
+
+  const typesData = {
+    static: {
+      title: &#x27;1. គេហទំព័រឋិតិវន្ត (Static Website)&#x27;,
+      subtitle: &#x27;ឯកសារ HTML/CSS/JS ថេរ រក្សាទុកផ្ទាល់លើ Server ដោយមិនឆ្លងកាត់ការគណនា Database&#x27;,
+      badges: [&#x27;ល្បឿនលឿនបំផុត&#x27;, &#x27;សុវត្ថិភាពខ្ពស់&#x27;, &#x27;តម្លៃថោក&#x27;],
+      purpose: &#x27;បង្ហាញព័ត៌មានដែលមិនសូវផ្លាស់ប្តូរ ដូចជា ឯកសារច្បាប់ គេហទំព័រព័ត៌មានផលិតផលទោល (Landing Pages) ឬ Documentation។&#x27;,
+      techStack: &#x27;HTML5, CSS3, Vanilla JavaScript, Jamstack, GitHub Pages, Netlify, Vercel&#x27;,
+      pros: [&#x27;ផ្ទុកទំព័ររហ័ស (Sub-second loading)&#x27;, &#x27;មិនងាយរងការវាយប្រហារតាម SQL Injection&#x27;, &#x27;ចំណាយលើ Hosting ទាប&#x27;],
+      cons: [&#x27;ពិបាកកែប្រែទិន្នន័យ (ត្រូវកូដឯកសារផ្ទាល់)&#x27;, &#x27;គ្មានមុខងារ Dynamic User Login ឬ Shopping Cart ស្មុគស្មាញ&#x27;]
+    },
+    dynamic: {
+      title: &#x27;2. គេហទំព័រឌីណាមិក (Dynamic Website)&#x27;,
+      subtitle: &#x27;ទំព័រដែលបង្កើតឡើងតាមរយៈ Server-side Scripting និងទាញទិន្នន័យពី Database តាមសំណូមពរ&#x27;,
+      badges: [&#x27;អន្តរកម្មខ្ពស់&#x27;, &#x27;ទិន្នន័យទាន់ហេតុការណ៍&#x27;, &#x27;CMS ងាយស្រួល&#x27;],
+      purpose: &#x27;គេហទំព័រព័ត៌មាន (News Portals), ប្លុក (Blogs), បណ្តាញសង្គម ឬវេទិកាពិភាក្សាដែលទិន្នន័យផ្លាស់ប្តូរឥតឈប់ឈរ។&#x27;,
+      techStack: &#x27;Frontend (HTML/CSS/JS/React/Vue), Backend (Node.js, PHP, Python, Java), Database (MySQL, PostgreSQL, MongoDB)&#x27;,
+      pros: [&#x27;គ្រប់គ្រងទិន្នន័យរាប់ពាន់ទំព័រតាមរយៈ Database តែមួយ&#x27;, &#x27;គាំទ្រប្រព័ន្ធគ្រប់គ្រងសិទ្ធិអ្នកប្រើប្រាស់ (User Roles &amp; Auth)&#x27;, &#x27;មាន Search Engine ស្វែងរកក្នុងទំព័រ&#x27;],
+      cons: [&#x27;ត្រូវការធនធាន Server ខ្ពស់ជាង Static&#x27;, &#x27;ត្រូវការការថែទាំសុវត្ថិភាព Database និង Backend ម៉ត់ចត់&#x27;]
+    },
+    ecommerce: {
+      title: &#x27;3. គេហទំព័រពាណិជ្ជកម្មអេឡិចត្រូនិក (E-Commerce Website)&#x27;,
+      subtitle: &#x27;វេទិកាលក់ទំនិញ ឬសេវាកម្មតាមអ៊ីនធឺណិតពេញលេញ ជាមួយប្រព័ន្ធទូទាត់ និងដឹកជញ្ជូន&#x27;,
+      badges: [&#x27;Payment Gateway&#x27;, &#x27;Inventory System&#x27;, &#x27;High Security&#x27;],
+      purpose: &#x27;ការលក់ដូរអនឡាញ (Online Retail, B2B, B2C) ដូចជា Amazon, eBay, ឬគេហទំព័រហាងក្នុងស្រុក។&#x27;,
+      techStack: &#x27;WooCommerce, Shopify, Magento, Next.js Commerce, Stripe/PayPal/Bakong KHQR APIs, Redis Cache&#x27;,
+      pros: [&#x27;ដំណើរការអាជីវកម្ម ២៤/៧ ដោយស្វ័យប្រវត្តិ&#x27;, &#x27;តាមដានការបញ្ជាទិញ និងទិន្នន័យស្តុកច្បាស់លាស់&#x27;, &#x27;ផ្សព្វផ្សាយទីផ្សារទូលំទូលាយ&#x27;],
+      cons: [&#x27;ស្មុគស្មាញខ្ពស់ក្នុងការរៀបចំ និងអនុលោមតាមស្តង់ដាសុវត្ថិភាព PCI-DSS&#x27;, &#x27;ទាមទារប្រព័ន្ធ Backup និង High Availability ខ្ពស់&#x27;]
+    },
+    portfolio: {
+      title: &#x27;4. គេហទំព័របង្ហាញស្នាដៃផ្ទាល់ខ្លួន (Portfolio Website)&#x27;,
+      subtitle: &#x27;កាតាឡុកឌីជីថលបង្ហាញពីសមត្ថភាព គម្រោង និងប្រវត្តិរូបសង្ខេបរបស់បុគ្គល ឬ Freelancer&#x27;,
+      badges: [&#x27;Personal Brand&#x27;, &#x27;Visual Storytelling&#x27;, &#x27;Lead Generation&#x27;],
+      purpose: &#x27;សម្រាប់ Web Designers, Developers, វិចិត្រករ និងអ្នកជំនាញដើម្បីទាក់ទាញអតិថិជន ឬនិយោជក។&#x27;,
+      techStack: &#x27;HTML5 Semantic, CSS Grid/Animations, Minimalist JS, Formspree (Contact Form), GitHub Hosting&#x27;,
+      pros: [&#x27;កសាងកេរ្តិ៍ឈ្មោះវិជ្ជាជីវៈ (Professional Branding)&#x27;, &#x27;បង្ហាញលទ្ធផលការងារជាក់ស្តែង (Live Demos &amp; Case Studies)&#x27;, &#x27;ដំណើរការរហ័ស និងស្រាល&#x27;],
+      cons: [&#x27;ត្រូវចំណាយពេលធ្វើបច្ចុប្បន្នភាពស្នាដៃថ្មីៗជានិច្ច&#x27;, &#x27;ទាមទារសោភ័ណភាព UI/UX ខ្ពស់ដើម្បីទាក់ទាញចំណាប់អារម្មណ៍&#x27;]
+    },
+    corporate: {
+      title: &#x27;5. គេហទំព័រស្ថាប័ន ឬក្រុមហ៊ុន (Corporate Website)&#x27;,
+      subtitle: &#x27;វត្តមានផ្លូវការលើអ៊ីនធឺណិតដើម្បីបង្កើតទំនុកចិត្ត បង្ហាញសេវាកម្ម និងវប្បធម៌ស្ថាប័ន&#x27;,
+      badges: [&#x27;Brand Authority&#x27;, &#x27;Lead Capture&#x27;, &#x27;Corporate Trust&#x27;],
+      purpose: &#x27;សម្រាប់ក្រុមហ៊ុន ធនាគារ អង្គការក្រៅរដ្ឋាភិបាល ឬភ្នាក់ងារប្រឹក្សាដើម្បីបង្ហាញពីសេវាកម្ម ក្រុមការងារ និងទាក់ទងដៃគូពាណិជ្ជកម្ម។&#x27;,
+      techStack: &#x27;Corporate CMS (WordPress, Drupal, Headless CMS), Responsive Frameworks, SEO Tools, Analytics Suite&#x27;,
+      pros: [&#x27;បង្កើនភាពជឿជាក់ និងកិត្យានុភាពលើទីផ្សារ&#x27;, &#x27;ប្រភពព័ត៌មានផ្លូវការសម្រាប់វិនិយោគិន និងសារព័ត៌មាន&#x27;, &#x27;SEO Optimization ល្អប្រសើរ&#x27;],
+      cons: [&#x27;ដំណើរការអនុម័តខ្លឹមសារមានច្រើនដំណាក់កាល&#x27;, &#x27;ទាមទារការថែទាំការអនុលោមភាពផ្លូវច្បាប់ និង Privacy Policies&#x27;]
+    },
+    educational: {
+      title: &#x27;6. គេហទំព័រអប់រំ និងសាកលវិទ្យាល័យ (Educational Website)&#x27;,
+      subtitle: &#x27;មជ្ឈមណ្ឌលចែករំលែកចំណេះដឹង ប្រព័ន្ធសិក្សាអនឡាញ (LMS) និងព័ត៌មានកម្មវិធីសិក្សា&#x27;,
+      badges: [&#x27;LMS Integration&#x27;, &#x27;Multi-user Portals&#x27;, &#x27;Accessibility (WCAG)&#x27;],
+      purpose: &#x27;សម្រាប់សាលារៀន សាកលវិទ្យាល័យ វិទ្យាស្ថាន ឬវេទិកាសិក្សាអនឡាញ (Coursera, Khan Academy, University Portals)។&#x27;,
+      techStack: &#x27;Moodle LMS, Canvas API, Custom Web Apps, Video Streaming (HLS), Relational DB for Student Records&#x27;,
+      pros: [&#x27;ផ្តល់លទ្ធភាពសិក្សាពីចម្ងាយគ្រប់ពេលវេលា&#x27;, &#x27;ប្រព័ន្ធគ្រប់គ្រងពិន្ទុ កិច្ចការផ្ទះ និងធនធានបណ្ណាល័យឌីជីថល&#x27;, &#x27;ជួយសម្រួលដល់ការប្រាស្រ័យទាក់ទងរវាងគ្រូនិងសិស្ស&#x27;],
+      cons: [&#x27;ចំនួនអ្នកចូលប្រើប្រាស់ខ្ពស់ក្នុងពេលប្រឡង (Spike Traffic) អាចធ្វើឱ្យគាំង Server&#x27;, &#x27;ទាមទារស្តង់ដា Accessibility (WCAG 2.1) ខ្ពស់សម្រាប់សិស្សពិការ&#x27;]
+    }
+  };
+
+  function renderType(typeKey) {
+    const data = typesData[typeKey];
+    displayContainer.innerHTML = `
+      &lt;div class=&quot;type-header-row&quot;&gt;
+        &lt;div class=&quot;type-title-group&quot;&gt;
+          &lt;h3&gt;${data.title}&lt;/h3&gt;
+          &lt;p style=&quot;color: #64748b; font-size: 13.5px;&quot;&gt;${data.subtitle}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;type-badge-stack&quot;&gt;
+          ${data.badges.map(b =&gt; `&lt;span class=&quot;badge success&quot;&gt;${b}&lt;/span&gt;`).join(&#x27;&#x27;)}
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;p&gt;&lt;strong&gt;គោលបំណងចម្បង៖&lt;/strong&gt; ${data.purpose}&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;បច្ចេកវិទ្យាទូទៅ (Tech Stack):&lt;/strong&gt; &lt;code&gt;${data.techStack}&lt;/code&gt;&lt;/p&gt;
+      &lt;div class=&quot;type-grid&quot;&gt;
+        &lt;div class=&quot;type-box&quot;&gt;
+          &lt;h4&gt;✅ គុណសម្បត្តិ (Advantages)&lt;/h4&gt;
+          &lt;ul&gt;${data.pros.map(p =&gt; `&lt;li&gt;${p}&lt;/li&gt;`).join(&#x27;&#x27;)}&lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;type-box&quot;&gt;
+          &lt;h4&gt;⚠️ ដែនកំណត់ (Limitations)&lt;/h4&gt;
+          &lt;ul&gt;${data.cons.map(c =&gt; `&lt;li&gt;${c}&lt;/li&gt;`).join(&#x27;&#x27;)}&lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    `;
+  }
+
+  tabs.forEach(tab =&gt; {
+    tab.addEventListener(&#x27;click&#x27;, () =&gt; {
+      tabs.forEach(t =&gt; t.classList.remove(&#x27;active&#x27;));
+      tab.classList.add(&#x27;active&#x27;);
+      renderType(tab.getAttribute(&#x27;data-type&#x27;));
+    });
+  });
+
+  // Initial render
+  renderType(&#x27;static&#x27;);
+}
+
+/* ============================================================
+   4. DEVTOOLS SIMULATOR &amp; LEARNING HUD
+   ============================================================ */
+function initDevToolsSimulator() {
+  const tabs = document.querySelectorAll(&#x27;.dev-tab&#x27;);
+  const panels = document.querySelectorAll(&#x27;.dev-panel&#x27;);
+
+  tabs.forEach(tab =&gt; {
+    tab.addEventListener(&#x27;click&#x27;, () =&gt; {
+      tabs.forEach(t =&gt; t.classList.remove(&#x27;active&#x27;));
+      panels.forEach(p =&gt; p.classList.remove(&#x27;active&#x27;));
+
+      tab.classList.add(&#x27;active&#x27;);
+      const targetPanel = document.getElementById(`dev-panel-${tab.getAttribute(&#x27;data-devtab&#x27;)}`);
+      if (targetPanel) targetPanel.classList.add(&#x27;active&#x27;);
+    });
+  });
+
+  // Elements panel live controls
+  const colorPicker = document.getElementById(&#x27;dom-color-picker&#x27;);
+  const textInput = document.getElementById(&#x27;dom-text-input&#x27;);
+  const targetHeading = document.getElementById(&#x27;target-heading&#x27;);
+
+  if (colorPicker &amp;&amp; targetHeading) {
+    colorPicker.addEventListener(&#x27;input&#x27;, (e) =&gt; {
+      targetHeading.style.color = e.target.value;
+      addConsoleLog(`[Elements] Modified style.color to &quot;${e.target.value}&quot;`, &#x27;info&#x27;);
+    });
+  }
+
+  if (textInput &amp;&amp; targetHeading) {
+    textInput.addEventListener(&#x27;input&#x27;, (e) =&gt; {
+      targetHeading.textContent = e.target.value || &#x27;ចំណងជើងសាកល្បង&#x27;;
+    });
+  }
+
+  // Console Panel Logic
+  const consoleInput = document.getElementById(&#x27;console-input&#x27;);
+  const btnRunConsole = document.getElementById(&#x27;btn-run-console&#x27;);
+  const logsContainer = document.getElementById(&#x27;console-logs&#x27;);
+
+  function addConsoleLog(message, type = &#x27;log&#x27;) {
+    const entry = document.createElement(&#x27;div&#x27;);
+    entry.className = `log-entry ${type}`;
+    entry.textContent = message;
+    logsContainer.appendChild(entry);
+    logsContainer.scrollTop = logsContainer.scrollHeight;
+  }
+
+  function executeConsoleInput() {
+    const val = consoleInput.value.trim();
+    if (!val) return;
+
+    addConsoleLog(`&gt; ${val}`, &#x27;log&#x27;);
+
+    try {
+      // Safe evaluation for basic math/expressions
+      const result = Function(`&quot;use strict&quot;; return (${val})`)();
+      addConsoleLog(`&lt;- ${result}`, &#x27;info&#x27;);
+    } catch (err) {
+      addConsoleLog(`Uncaught ${err.name}: ${err.message}`, &#x27;error&#x27;);
+    }
+
+    consoleInput.value = &#x27;&#x27;;
+  }
+
+  if (btnRunConsole) btnRunConsole.addEventListener(&#x27;click&#x27;, executeConsoleInput);
+  if (consoleInput) {
+    consoleInput.addEventListener(&#x27;keydown&#x27;, (e) =&gt; {
+      if (e.key === &#x27;Enter&#x27;) executeConsoleInput();
+    });
+  }
+
+  // Network Panel Simulated Fetch
+  const btnFetchMock = document.getElementById(&#x27;btn-fetch-mock&#x27;);
+  const btnClearNetwork = document.getElementById(&#x27;btn-clear-network&#x27;);
+  const tableBody = document.getElementById(&#x27;network-table-body&#x27;);
+  const counterEl = document.getElementById(&#x27;network-counter&#x27;);
+  let mockCount = 3;
+
+  if (btnFetchMock) {
+    btnFetchMock.addEventListener(&#x27;click&#x27;, () =&gt; {
+      mockCount++;
+      const latency = Math.floor(Math.random() * 45) + 15;
+      const size = (Math.random() * 4 + 1.2).toFixed(1);
+
+      const row = document.createElement(&#x27;tr&#x27;);
+      row.innerHTML = `
+        &lt;td&gt;/api/v1/courses/chapter-0${mockCount}.json&lt;/td&gt;
+        &lt;td&gt;GET&lt;/td&gt;
+        &lt;td&gt;&lt;span class=&quot;badge success&quot;&gt;200 OK&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;fetch / json&lt;/td&gt;
+        &lt;td&gt;${size} KB&lt;/td&gt;
+        &lt;td&gt;${latency} ms&lt;/td&gt;
+      `;
+      tableBody.appendChild(row);
+      counterEl.textContent = `${mockCount} Requests | ${(mockCount * 3.8).toFixed(1)} KB transferred`;
+      addConsoleLog(`[Network] Simulated HTTP GET /api/v1/courses/chapter-0${mockCount}.json 200 OK (${latency}ms)`, &#x27;info&#x27;);
+    });
+  }
+
+  if (btnClearNetwork) {
+    btnClearNetwork.addEventListener(&#x27;click&#x27;, () =&gt; {
+      tableBody.innerHTML = &#x27;&#x27;;
+      mockCount = 0;
+      counterEl.textContent = &#x27;0 Requests | 0 KB transferred&#x27;;
+      addConsoleLog(&#x27;[Network] Network log cleared.&#x27;, &#x27;warn&#x27;);
+    });
+  }
+}
+
+/* ============================================================
+   5. NAVIGATION SMOOTH SCROLLING
+   ============================================================ */
+function initNavScroll() {
+  const navLinks = document.querySelectorAll(&#x27;.main-nav .nav-link&#x27;);
+  navLinks.forEach(link =&gt; {
+    link.addEventListener(&#x27;click&#x27;, (e) =&gt; {
+      navLinks.forEach(l =&gt; l.classList.remove(&#x27;active&#x27;));
+      link.classList.add(&#x27;active&#x27;);
+    });
+  });
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Self-Check Quality Checklist -->
+    <h2 class="section-heading">៤. បញ្ជីផ្ទៀងផ្ទាត់គុណភាពកូដ (Self-Check Quality Checklist)</h2>
+    <div class="callout callout-tip">
+      <p><strong>មុនពេលបញ្ជូនកិច្ចការ សូមផ្ទៀងផ្ទាត់ចំណុចខាងក្រោម៖</strong></p>
+      <ul style="margin: 0.5rem 0 0 1.25rem;">
+        <li>[ ] ឯកសារ <code>index.html</code> ដំណើរការត្រឹមត្រូវជាមួយ Live Server ដោយគ្មាន Error ក្នុង Console</li>
+        <li>[ ] រចនាសម្ព័ន្ធកូដប្រើប្រាស់ Semantic Tags ត្រឹមត្រូវ (header, nav, main, section, footer)</li>
+        <li>[ ] ឆ្លងកាត់ការត្រួតពិនិត្យលើ W3C Validator (<a href="https://validator.w3.org" target="_blank" rel="noopener">validator.w3.org</a>) ដោយគ្មាន Error</li>
+        <li>[ ] ប្លង់គេហទំព័របង្ហាញសមាមាត្រត្រឹមត្រូវទាំងលើទូរស័ព្ទដៃ (Mobile View) និងកុំព្យូទ័រ (Desktop View)</li>
+        <li>[ ] រូបភាព និងតំណភ្ជាប់ទាំងអស់ដំណើរការត្រឹមត្រូវ (No Broken Links / Images)</li>
+      </ul>
+    </div>
+
+    <!-- Section 5: 100-Point Rubric -->
+    <h2 class="section-heading">៥. តារាងពិន្ទុវាយតម្លៃ ១០០ ពិន្ទុ (100-Point Evaluation Rubric)</h2>
+    <div class="table-responsive">
+      <table class="rubric-table">
+        <thead>
+          <tr>
+            <th style="width: 25%;">លក្ខណៈវិនិច្ឆ័យ (Criteria)</th>
+            <th style="width: 15%;">ទម្ងន់ពិន្ទុ</th>
+            <th style="width: 60%;">សូចនាករវាស់វែងសមត្ថភាព (Performance Indicators)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>១. រចនាសម្ព័ន្ធកូដ & HTML5 Semantics</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">២៥ ពិន្ទុ</td>
+            <td>ប្រើប្រាស់ Semantic Elements ត្រឹមត្រូវតាមស្ដង់ដារ W3C, DOCTYPE, ឋានានុក្រម Headings (H1-H6) ច្បាស់លាស់ និងរៀបចំ Indentation ស្អាតបាត។</td>
+          </tr>
+          <tr>
+            <td><strong>២. រចនាប័ទ្ម CSS & Responsive Design</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">២៥ ពិន្ទុ</td>
+            <td>ប្រើប្រាស់ CSS Variables (:root), Box Model, Flexbox/Grid បានត្រឹមត្រូវ និងមាន Media Queries គាំទ្រការបង្ហាញលើ Mobile បានយ៉ាងរលូន។</td>
+          </tr>
+          <tr>
+            <td><strong>៣. ភាពត្រឹមត្រូវនៃមុខងារអនុវត្ត</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">២៥ ពិន្ទុ</td>
+            <td>សមាសភាគស្នូលនៃមេរៀន (ការវិភាគគេហទំព័រអាជីពចំនួន ៣) ដំណើរការពេញលេញ គ្មាន Error និងឆ្លើយតបទៅនឹងគោលបំណងនៃមន្ទីរពិសោធន៍។</td>
+          </tr>
+          <tr>
+            <td><strong>៤. សោភ័ណភាព UI/UX & ភាពងាយស្រួល</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">១៥ ពិន្ទុ</td>
+            <td>ការជ្រើសរើសកម្រិតពណ៌ផ្ទុយត្រឹមត្រូវតាម WCAG, ការរៀបចំគម្លាត Spacing ស្មើដៃ និងទំហំអក្សរងាយស្រួលអានលើគ្រប់ឧបករណ៍។</td>
+          </tr>
+          <tr>
+            <td><strong>៥. វិន័យកូដ និងការរៀបចំឯកសារគម្រោង</strong></td>
+            <td style="text-align: center; font-weight: 700; color: #0284C7;">១០ ពិន្ទុ</td>
+            <td>រៀបចំ Folder តាមស្តង់ដារវិជ្ជាជីវៈ (css, js, images), ការដាក់ឈ្មោះឯកសារជាអក្សរតូចគ្មានដកឃ្លា និងមាន Comments ពន្យល់កូដច្បាស់លាស់។</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </div>
 
+<!-- Floating Toast Notification -->
+<div id="toastNotification" class="toast-notification">
+  <span>✅</span>
+  <span id="toastMsg">បានចម្លងកូដដោយជោគជ័យ!</span>
+</div>
+
+<!-- Interactive Scripts -->
 <script>
-  let currentScale = 16;
+  // Font Size Adjuster
+  let currentFontScale = 16;
   function changeFontSize(delta) {
-    currentScale = Math.min(22, Math.max(13, currentScale + delta));
-    document.documentElement.style.setProperty('--font-scale', currentScale + 'px');
+    currentFontScale = Math.max(13, Math.min(22, currentFontScale + delta));
+    document.documentElement.style.setProperty('--font-scale', currentFontScale + 'px');
+  }
+
+  // Copy Code Functionality
+  function copyCode(btn, elementId) {
+    const codeEl = document.getElementById(elementId);
+    if (!codeEl) return;
+    
+    const textToCopy = codeEl.innerText || codeEl.textContent;
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '✅ ចម្លងរួចរាល់!';
+      btn.classList.add('copied');
+      showToast('បានចម្លងកូដដោយជោគជ័យ!');
+      
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('copied');
+      }, 2500);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+      showToast('មិនអាចចម្លងកូដបានទេ សូមសាកល្បងម្តងទៀត');
+    });
+  }
+
+  // Show Toast
+  function showToast(msg) {
+    const toast = document.getElementById('toastNotification');
+    const toastMsg = document.getElementById('toastMsg');
+    if (!toast || !toastMsg) return;
+    toastMsg.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2800);
+  }
+
+  // Tab Switching
+  function switchTab(btn, tabId) {
+    const card = btn.closest('.step-card') || document;
+    card.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    card.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    
+    btn.classList.add('active');
+    const targetPane = document.getElementById(tabId);
+    if (targetPane) targetPane.classList.add('active');
   }
 </script>
 

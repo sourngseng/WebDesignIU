@@ -3,96 +3,734 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Modern Product Card</title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-    <div class="product-container">
-        <h2>Home</h2>
+    <title>Sourng Digital | Modern E-Commerce</title>
+    <!-- Import Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-        <div class="product-list">
-            <div class="product-card">
-                <!-- Product Image -->
-                <div class="image-container">
-                    <img
-                        src="images/product.png"
-                        alt="Wireless Headphones"
-                    >
-                    <span class="badge">NEW</span>
-                </div>
-        
-                <!-- Product Content -->
-                <div class="content">
-                    <h2 class="title">
-                        Wireless Headphones
-                    </h2>
-                    <p class="description">
-                        High quality sound, comfortable design,
-                        and long battery life for your daily use.
-                    </p>
-                    <a href="product-detail.html" class="btn">
-                        មើល​បន្ថែម
-                    </a>
-                </div>
-        
-            </div>
-        
-            <div class="product-card">
-                <!-- Product Image -->
-                <div class="image-container">
-                    <img
-                        src="images/java_programming.png"
-                        alt="Java Programming"
-                    >
-                    <span class="badge">ថ្មី</span>
-                </div>
-        
-                <!-- Product Content -->
-                <div class="content">
-                    <h2 class="title">
-                        សៀវភៅ Java Programming
-                    </h2>
-                    <p class="description">
-                        មេរៀន​សម្រាប់​អ្នក​ចាប់​ផ្តើម​រៀន Java Programming
-                    </p>
-                    <a href="product-detail.html" class="btn">
-                         មើល​បន្ថែម
-                    </a>
-                </div>
-        
-            </div>
-        
-            <div class="product-card">
-                <!-- Product Image -->
-                <div class="image-container">
-                    <img
-                        src="images/java_programming.png"
-                        alt="Java Programming"
-                    >
-                    <span class="badge">ថ្មី</span>
-                </div>
-        
-                <!-- Product Content -->
-                <div class="content">
-                    <h2 class="title">
-                        សៀវភៅ Java Programming
-                    </h2>
-                    <p class="description">
-                        មេរៀន​សម្រាប់​អ្នក​ចាប់​ផ្តើម​រៀន Java Programming
-                    </p>
-                    <a href="product-detail.html" class="btn">
-                         មើល​បន្ថែម
-                    </a>
-                </div>
-        
-            </div>
-        </div>
-    </div>
+    <style>
+        /* CSS Variables for Consistent Theming */
+        :root {
+            --primary: #0ea5e9; /* Sky Blue */
+            --primary-hover: #0284c7;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+        }
 
+        /* Reset & Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; transition: color 0.2s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* Typography */
+        h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; color: var(--text-main); }
+        p { color: var(--text-muted); }
+
+        /* Navigation Bar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo span { color: var(--primary); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+        
+        .cart-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--bg);
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+        
+        .cart-icon:hover { background: var(--border); }
+
+        .cart-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Multi-page CSS Logic using :target and :has */
+        /* Hide all pages by default */
+        .page-section { 
+            display: none; 
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        /* Show targeted page */
+        .page-section:target { display: block; }
+
+        /* Default to showing home if no target is active (using :has selector) */
+        body:not(:has(.page-section:target)) #home { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(14, 165, 233, 0.39);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--border);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-main);
+        }
+
+        .btn-block { width: 100%; }
+
+        /* =========================================
+           1. HOMEPAGE (#home)
+           ========================================= */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: var(--radius-lg);
+            padding: 5rem 2rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 { color: white; font-size: 3.5rem; margin-bottom: 1.5rem; letter-spacing: -1px; }
+        .hero p { color: #cbd5e1; font-size: 1.25rem; max-width: 600px; margin: 0 auto 2rem; }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 2rem;
+        }
+        
+        .section-header h2 { font-size: 2rem; }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background: #f1f5f9;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-category { font-size: 0.875rem; color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .product-title { font-size: 1.25rem; margin-bottom: 0.5rem; }
+        .product-price { font-size: 1.5rem; font-weight: 700; color: var(--text-main); margin-bottom: 1.5rem; }
+        .product-card .btn { margin-top: auto; }
+
+        /* =========================================
+           2. PRODUCT DETAIL (#product)
+           ========================================= */
+        .product-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-top: 2rem;
+        }
+
+        .product-gallery img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            background: var(--surface);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+
+        .product-details { padding-top: 1rem; }
+        .product-details .badge { display: inline-block; padding: 0.35rem 0.75rem; background: #e0f2fe; color: var(--primary); border-radius: 2rem; font-weight: 600; font-size: 0.875rem; margin-bottom: 1rem; }
+        .product-details h1 { font-size: 3rem; margin-bottom: 1rem; letter-spacing: -1px; }
+        .product-details .price { font-size: 2.5rem; font-weight: 700; color: var(--text-main); margin-bottom: 1.5rem; }
+        .product-details .description { font-size: 1.125rem; margin-bottom: 2rem; line-height: 1.7; }
+        
+        .feature-list { margin-bottom: 3rem; }
+        .feature-list li { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; color: var(--text-muted); }
+        .feature-list li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .action-group { display: flex; gap: 1rem; }
+        .qty-input { width: 80px; padding: 0.875rem; border: 1px solid var(--border); border-radius: var(--radius-md); text-align: center; font-size: 1rem; font-weight: 600; }
+
+        /* =========================================
+           3. SHOPPING CART (#cart)
+           ========================================= */
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 2.5fr 1.2fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .cart-header { font-size: 2rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+        
+        .cart-items { background: var(--surface); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        .cart-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        
+        .cart-item img { width: 100px; height: 100px; border-radius: var(--radius-md); object-fit: cover; border: 1px solid var(--border); }
+        .item-info { flex-grow: 1; }
+        .item-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.25rem; }
+        .item-meta { font-size: 0.875rem; color: var(--text-muted); }
+        
+        .item-price { font-size: 1.25rem; font-weight: 700; }
+        .item-remove { color: #ef4444; font-size: 0.875rem; font-weight: 500; cursor: pointer; border: none; background: none; margin-top: 0.5rem; }
+
+        .cart-summary {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .cart-summary h3 { font-size: 1.25rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+        
+        .summary-row { display: flex; justify-content: space-between; margin-bottom: 1rem; color: var(--text-muted); }
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed var(--border);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+        }
+
+        /* =========================================
+           4. CHECKOUT (#checkout)
+           ========================================= */
+        .checkout-layout {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .checkout-form-container { background: var(--surface); padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
+        
+        .form-section { margin-bottom: 2.5rem; }
+        .form-section h3 { font-size: 1.25rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--bg); }
+        
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.5rem; }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        
+        .form-group label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-main); }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 1rem;
+            background: var(--bg);
+            transition: all 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--surface);
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+        }
+
+        /* =========================================
+           5. SUCCESS (#success)
+           ========================================= */
+        .success-container {
+            max-width: 600px;
+            margin: 4rem auto;
+            text-align: center;
+            background: var(--surface);
+            padding: 4rem 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #10b981;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+        }
+        
+        .success-icon svg { width: 40px; height: 40px; }
+
+        .success-container h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .success-container p { font-size: 1.125rem; margin-bottom: 2.5rem; }
+        
+        .order-meta {
+            background: var(--bg);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+        .order-meta div { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+        .order-meta div:last-child { margin-bottom: 0; }
+        .order-meta strong { color: var(--text-main); }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .product-layout, .cart-layout, .checkout-layout { grid-template-columns: 1fr; gap: 2rem; }
+            .cart-summary { position: static; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero { padding: 3rem 1.5rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .product-details h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Persistent Navigation -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                SourngDigital<span>.</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="products.html">Products</a>
+                <a href="#home">Shop</a>
+                <a href="#cart" class="cart-icon" aria-label="Shopping Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <span class="cart-badge">1</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- 1. HOMEPAGE SECTION -->
+        <section id="home" class="page-section">
+            <div class="hero">
+                <h1>Elevate Your Everyday</h1>
+                <p>Discover our meticulously curated collection of premium electronics, designed to seamlessly integrate into your modern lifestyle.</p>
+                <a href="#product" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.125rem;">Shop the Collection</a>
+            </div>
+
+            <div class="section-header">
+                <h2>Featured Products</h2>
+            </div>
+
+            <div class="product-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <img src="https://placehold.co/600x600/f1f5f9/0f172a?text=Headphones" alt="Noise-Canceling Headphones" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Audio</span>
+                        <h3 class="product-title">Aura Silence Pro</h3>
+                        <div class="product-price">$299.00</div>
+                        <a href="#product" class="btn btn-outline btn-block">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <img src="https://placehold.co/600x600/f1f5f9/0f172a?text=Smartwatch" alt="Minimalist Smartwatch" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Wearables</span>
+                        <h3 class="product-title">Aura Chrono Series 2</h3>
+                        <div class="product-price">$199.00</div>
+                        <a href="#product" class="btn btn-outline btn-block">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <img src="https://placehold.co/600x600/f1f5f9/0f172a?text=Keyboard" alt="Mechanical Keyboard" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Accessories</span>
+                        <h3 class="product-title">Aura Tactile Board</h3>
+                        <div class="product-price">$149.00</div>
+                        <a href="#product" class="btn btn-outline btn-block">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <img src="https://placehold.co/600x600/f1f5f9/0f172a?text=Speaker" alt="Bluetooth Speaker" class="product-image">
+                    <div class="product-info">
+                        <span class="product-category">Audio</span>
+                        <h3 class="product-title">Aura SoundBox Mini</h3>
+                        <div class="product-price">$89.00</div>
+                        <a href="#product" class="btn btn-outline btn-block">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 2. PRODUCT DETAIL SECTION -->
+        <section id="product" class="page-section">
+            <a href="#home" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; font-weight: 500;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Products
+            </a>
+            
+            <div class="product-layout">
+                <div class="product-gallery">
+                    <img src="https://placehold.co/800x800/f1f5f9/0f172a?text=Aura+Silence+Pro" alt="Aura Silence Pro Headphones">
+                </div>
+                
+                <div class="product-details">
+                    <span class="badge">Bestseller</span>
+                    <h1>Aura Silence Pro</h1>
+                    <div class="price">$299.00</div>
+                    
+                    <p class="description">
+                        Experience unparalleled audio clarity with the Aura Silence Pro. Featuring next-generation active noise cancellation, studio-quality drivers, and up to 40 hours of battery life. Crafted with premium materials for all-day comfort.
+                    </p>
+                    
+                    <ul class="feature-list">
+                        <li>Adaptive Active Noise Cancellation</li>
+                        <li>High-Fidelity Spatial Audio</li>
+                        <li>40-Hour Battery Life with Fast Charge</li>
+                        <li>Plush Memory Foam Ear Cushions</li>
+                    </ul>
+                    
+                    <div class="action-group">
+                        <input type="number" class="qty-input" value="1" min="1" max="10" aria-label="Quantity">
+                        <a href="#cart" class="btn btn-primary" style="flex-grow: 1;">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 3. SHOPPING CART SECTION -->
+        <section id="cart" class="page-section">
+            <h1 class="cart-header">Your Shopping Cart</h1>
+            
+            <div class="cart-layout">
+                <div class="cart-items">
+                    <!-- Cart Item 1 -->
+                    <div class="cart-item">
+                        <img src="https://placehold.co/200x200/f1f5f9/0f172a?text=Headphones" alt="Aura Silence Pro">
+                        <div class="item-info">
+                            <h3 class="item-title">Aura Silence Pro</h3>
+                            <p class="item-meta">Color: Midnight Black</p>
+                            <button class="item-remove">Remove</button>
+                        </div>
+                        <div class="item-quantity">
+                            <input type="number" class="qty-input" value="1" min="1" readonly>
+                        </div>
+                        <div class="item-price">$299.00</div>
+                    </div>
+                </div>
+                
+                <div class="cart-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>$299.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Estimated Tax</span>
+                        <span>$23.92</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span>$322.92</span>
+                    </div>
+                    
+                    <a href="#checkout" class="btn btn-primary btn-block">Proceed to Checkout</a>
+                    <a href="#home" class="btn btn-outline btn-block" style="margin-top: 1rem; border-color: transparent;">Continue Shopping</a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 4. CHECKOUT SECTION -->
+        <section id="checkout" class="page-section">
+            <h1 class="cart-header">Checkout</h1>
+            
+            <div class="checkout-layout">
+                <div class="checkout-form-container">
+                    
+                    <!-- Form is purely visual and navigation is handled by the <a> styled as a button -->
+                    <form onsubmit="event.preventDefault();">
+                        <div class="form-section">
+                            <h3>Contact Information</h3>
+                            <div class="form-group full-width">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="you@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Shipping Address</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="fname">First Name</label>
+                                    <input type="text" id="fname" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lname">Last Name</label>
+                                    <input type="text" id="lname" required>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="address">Address</label>
+                                    <input type="text" id="address" placeholder="123 Main St" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">ZIP / Postal Code</label>
+                                    <input type="text" id="zip" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Payment Method</h3>
+                            <div class="form-group full-width">
+                                <label for="card">Card Number</label>
+                                <input type="text" id="card" placeholder="0000 0000 0000 0000" required>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="exp">Expiry Date</label>
+                                    <input type="text" id="exp" placeholder="MM/YY" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvc">CVC</label>
+                                    <input type="text" id="cvc" placeholder="123" required>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="cart-summary">
+                    <h3>In Your Cart</h3>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);">
+                        <img src="https://placehold.co/100x100/f1f5f9/0f172a?text=HP" alt="Headphones" style="width: 60px; height: 60px; border-radius: 8px; object-fit: cover;">
+                        <div style="flex-grow: 1;">
+                            <div style="font-weight: 600;">Aura Silence Pro</div>
+                            <div style="color: var(--text-muted); font-size: 0.875rem;">Qty: 1</div>
+                        </div>
+                        <div style="font-weight: 600;">$299.00</div>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>$299.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax</span>
+                        <span>$23.92</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total to Pay</span>
+                        <span>$322.92</span>
+                    </div>
+                    
+                    <!-- Note: This acts as the submit button linking to success page using :target -->
+                    <a href="#success" class="btn btn-primary btn-block" style="font-size: 1.125rem; padding: 1rem;">Submit Payment</a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 5. PAYMENT SUCCESS SECTION -->
+        <section id="success" class="page-section">
+            <div class="success-container">
+                <div class="success-icon">
+                    <!-- SVG Checkmark -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                </div>
+                <h1>Payment Successful!</h1>
+                <p>Thank you for your purchase. Your order has been received and is currently being processed.</p>
+                
+                <div class="order-meta">
+                    <div>
+                        <span>Order Number:</span>
+                        <strong>#AUR-847291</strong>
+                    </div>
+                    <div>
+                        <span>Date:</span>
+                        <strong>Today</strong>
+                    </div>
+                    <div>
+                        <span>Total Paid:</span>
+                        <strong>$322.92</strong>
+                    </div>
+                </div>
+
+                <a href="#home" class="btn btn-primary btn-block" style="margin-bottom: 1rem;">Return to Homepage</a>
+                <a href="#home" class="btn btn-outline btn-block" style="border: none;">View Order Status</a>
+            </div>
+        </section>
+
+    </main>
 
 </body>
 </html>
