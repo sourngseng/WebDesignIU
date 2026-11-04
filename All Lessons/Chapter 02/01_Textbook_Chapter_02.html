@@ -343,6 +343,142 @@
       white-space: pre-wrap !important;
     }
   }
+
+  /* ==========================================================================
+     Enhanced Mobile & Responsive Layout Styles
+     ========================================================================== */
+  .doc-header-card {
+    background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+    border: 1px solid #cbd5e1;
+    border-left: 6px solid #2563eb;
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  }
+  .doc-header-card.lab-card {
+    border-left-color: #0284c7;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  }
+  .doc-header-card .module-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #1e40af;
+    background: #ffffff;
+    border: 1px solid #bfdbfe;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  .doc-header-card .chapter-main-title {
+    font-size: clamp(1.25rem, 3.5vw, 1.65rem);
+    color: #0f172a;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0 0 0.4rem 0;
+    border: none !important;
+    padding: 0 !important;
+  }
+  .doc-header-card .chapter-sub-title {
+    font-size: 1rem;
+    color: #475569;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* Responsive Table Wrapper */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1.25rem 0;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+  .table-responsive table, table {
+    width: 100%;
+    min-width: 520px;
+    border-collapse: collapse;
+  }
+
+  /* Responsive Code Blocks */
+  pre, pre.code-block, .code-container pre {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    white-space: pre !important;
+    word-break: normal !important;
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+    border-radius: 8px !important;
+  }
+
+  /* Mobile Media Query Breakpoints */
+  @media screen and (max-width: 768px) {
+    body {
+      font-size: 15px;
+    }
+    .page-container, .document-container, .document-wrapper {
+      padding: 1.25rem 0.85rem !important;
+      max-width: 100% !important;
+      border-radius: 0 !important;
+      border-left: none !important;
+      border-right: none !important;
+      box-shadow: none !important;
+    }
+    .doc-header-card {
+      padding: 1.15rem 1rem !important;
+      margin-bottom: 1.25rem !important;
+      border-radius: 8px !important;
+    }
+    .reader-toolbar {
+      padding: 0.5rem 0.75rem !important;
+      position: sticky !important;
+      top: 0 !important;
+    }
+    .toolbar-container {
+      flex-wrap: wrap !important;
+      gap: 0.5rem !important;
+    }
+    .toolbar-brand {
+      font-size: 0.8rem !important;
+    }
+    .btn-tool, .tool-btn, .toolbar-btn {
+      padding: 0.35rem 0.55rem !important;
+      font-size: 0.78rem !important;
+      min-height: 36px !important;
+    }
+    h1 { font-size: 1.35rem !important; }
+    h2 { font-size: 1.18rem !important; }
+    h3 { font-size: 1.05rem !important; }
+    p, li {
+      text-align: left !important;
+    }
+    ul.numbered-list li, ol.number-list li {
+      gap: 0.4rem !important;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    body {
+      font-size: 14.5px;
+    }
+    .doc-header-card .module-badge {
+      font-size: 0.75rem !important;
+      padding: 0.2rem 0.5rem !important;
+    }
+    .doc-header-card .chapter-main-title {
+      font-size: 1.15rem !important;
+    }
+    .doc-header-card .chapter-sub-title {
+      font-size: 0.88rem !important;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -365,17 +501,11 @@
 <!-- Main Reader Document -->
 <div class="document-wrapper">
   <div class="page-container">
-<div class="print-bar no-print">
-    <span>📄 ស្តង់ដាសៀវភៅគោល A4 (Left 2.5cm, Right 1.5cm, Top 2.5cm, Bottom 2.5cm)</span>
-    <button class="print-btn" onclick="window.print()">🖨️ បោះពុម្ព ឬទាញយកជា PDF (Print / Save as PDF)</button>
-  </div>
-  <div class="page-container">
 
-    <div class="title-center">
-      <h1 class="heading-muol">សាកលវិទ្យាល័យភូមិន្ទ — មហាវិទ្យាល័យវិទ្យាសាស្ត្រកុំព្យូទ័រ</h1>
-      <h2 class="heading-muol">មុខវិជ្ជា៖ ការរចនាគេហទំព័រ (Web Design — Bachelor Year 3)</h2>
-      <h2 class="heading-muol">ម៉ូឌុល ០១៖ មូលដ្ឋានគ្រឹះនៃការរចនាគេហទំព័រ និង UI/UX (Web Design Fundamentals & UI/UX)</h2>
-      <h2 class="heading-muol" style="color: #0284c7;">ជំពូកទី ២៖ រចនាសម្ព័ន្ធគេហទំព័រ និងដំណើរការរចនា (Website Structure and Design Process)</h2>
+    <div class="doc-header-card">
+      <div class="module-badge">ម៉ូឌុល 01៖ មូលដ្ឋានគ្រឹះនៃការរចនាគេហទំព័រ និង UI/UX (Web Design Fundamentals & UI/UX)</div>
+      <h1 class="chapter-main-title">ជំពូកទី 2៖ រចនាសម្ព័ន្ធគេហទំព័រ និងដំណើរការរចនា</h1>
+      <div class="chapter-sub-title">Chapter 02: Website Structure and Design Process</div>
     </div>
 
     <div class="callout-box">

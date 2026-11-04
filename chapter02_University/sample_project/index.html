@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="គម្រោងគំរូមេរៀនទី ២: រចនាសម្ព័ន្ធគេហទំព័រ និងដំណើរការរចនា (Website Structure and Design Process) - Bachelor Year 3">
-  <title>គម្រោងគំរូ: គេហទំព័រសាកលវិទ្យាល័យ និងឧបករណ៍វិភាគរចនាសម្ព័ន្ធ (University Portal & Structure Explorer)</title>
+  <title>គម្រោងគំរូ: គេហទំព័រវិទ្យាស្ថាន និងឧបករណ៍វិភាគរចនាសម្ព័ន្ធ (Academy Portal & Structure Explorer)</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,33 +12,7 @@
 </head>
 <body>
 
-  <!-- ==================== TEACHER / STUDENT ANATOMY TOOLBAR (FLOATING HUD) ==================== -->
-  <aside class="anatomy-hud" aria-label="Anatomy Highlighter HUD">
-    <div class="hud-header">
-      <span class="hud-badge">ឧបករណ៍រៀនជាក់ស្តែង</span>
-      <h3 class="hud-title">Anatomy Inspector</h3>
-      <button type="button" id="btn-toggle-hud" class="hud-btn-minimize" aria-label="Minimize HUD">_</button>
-    </div>
-    <div class="hud-body" id="hud-body">
-      <p class="hud-desc">ចុចប៊ូតុងខាងក្រោមដើម្បីរំលេច (Highlight) រចនាសម្ព័ន្ធ Semantic នៃគេហទំព័រ៖</p>
-      <div class="hud-buttons">
-        <button type="button" class="btn-highlight" data-target="header">1. Header (&lt;header&gt;)</button>
-        <button type="button" class="btn-highlight" data-target="nav">2. Navigation (&lt;nav&gt;)</button>
-        <button type="button" class="btn-highlight" data-target="hero">3. Hero &amp; CTA</button>
-        <button type="button" class="btn-highlight" data-target="main">4. Main Content (&lt;main&gt;)</button>
-        <button type="button" class="btn-highlight" data-target="sidebar">5. Sidebar (&lt;aside&gt;)</button>
-        <button type="button" class="btn-highlight" data-target="footer">6. Footer (&lt;footer&gt;)</button>
-        <button type="button" class="btn-highlight" data-target="all">រំលេចទាំងអស់ (All Parts)</button>
-        <button type="button" class="btn-highlight btn-reset-hud" data-target="clear">លុបការរំលេច (Clear)</button>
-      </div>
-      <div class="hud-view-modes">
-        <button type="button" id="btn-open-sitemap-modal" class="btn-hud-action">🗺️ មើល Visual Sitemap</button>
-        <button type="button" id="btn-open-req-modal" class="btn-hud-action">📋 មើល Project Requirements</button>
-      </div>
-    </div>
-  </aside>
-
-  <!-- ==================== 1. TOP UTILITY BAR & HEADER ==================== -->
+    <!-- ==================== 1. TOP UTILITY BAR & HEADER ==================== -->
   <header class="site-header" id="site-header">
     <!-- Top Utility Bar -->
     <div class="utility-bar">
@@ -58,11 +32,11 @@
     <!-- Main Header Bar -->
     <div class="container main-header-container">
       <div class="brand-group">
-        <a href="index.html" class="brand-link" aria-label="University Homepage">
+        <a href="index.html" class="brand-link" aria-label="Academy Homepage">
           <div class="brand-logo-icon">🏛️</div>
           <div class="brand-text">
-            <span class="brand-name">សាកលវិទ្យាល័យជាតិបច្ចេកវិទ្យា</span>
-            <span class="brand-tagline">National University of Digital Technology</span>
+            <span class="brand-name">វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល (TechEdu Portal)</span>
+            <span class="brand-tagline">National Academy of Digital Technology</span>
           </div>
         </a>
       </div>
@@ -115,7 +89,7 @@
 
           <li class="nav-item"><a href="#research" class="nav-link">ការស្រាវជ្រាវ</a></li>
           <li class="nav-item"><a href="#campus-life" class="nav-link">ជីវិតនិស្សិត</a></li>
-          <li class="nav-item"><a href="#about" class="nav-link">អំពីសាកលវិទ្យាល័យ</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">អំពីវិទ្យាស្ថាន</a></li>
           <li class="nav-item"><a href="#contact" class="nav-link">ទំនាក់ទំនង</a></li>
         </ul>
       </div>
@@ -129,7 +103,7 @@
         <span class="hero-tag">🌟 បើកទទួលពាក្យឆ្នាំសិក្សា ២០២៦ - ២០២៧</span>
         <h1 class="hero-title">កសាងអនាគតឌីជីថលរបស់អ្នកជាមួយជំនាញបច្ចេកវិទ្យាកម្រិតខ្ពស់</h1>
         <p class="hero-desc">
-          សាកលវិទ្យាល័យជាតិបច្ចេកវិទ្យា ផ្តល់ជូននូវកម្មវិធីសិក្សាស្របតាមស្តង់ដាអន្តរជាតិលើមុខវិជ្ជាការរចនាគេហទំព័រ (Web Design), 
+          វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល (TechEdu Portal) ផ្តល់ជូននូវកម្មវិធីសិក្សាស្របតាមស្តង់ដាអន្តរជាតិលើមុខវិជ្ជាការរចនាគេហទំព័រ (Web Design), 
           វិស្វកម្មសូហ្វវែរ និងបញ្ញាសិប្បនិម្មិត ដោយផ្តោតលើការអនុវត្តជាក់ស្តែង ៨០% នៅក្នុងបន្ទប់ពិសោធន៍ទំនើប។
         </p>
         <!-- Strategic Dual Call-to-Actions (CTAs) -->
@@ -230,7 +204,7 @@
         <div class="content-box">
           <div class="pyramid-level level-lead">
             <h4>១. ព័ត៌មានស្នូលសំខាន់បំផុត (The Lead / Most Critical Info)</h4>
-            <p><strong>តើនរណា? អ្វី? ទីណា? ពេលណា? និងហេតុអ្វី?</strong> — សាកលវិទ្យាល័យជាតិបច្ចេកវិទ្យា ចាប់ផ្តើមទទួលពាក្យសុំអាហារូបករណ៍ ១០០% សម្រាប់សិស្សទូទាំងប្រទេសចាប់ពីថ្ងៃទី ០១ ខែវិច្ឆិកា ឆ្នាំ ២០២៦ នេះតទៅ។</p>
+            <p><strong>តើនរណា? អ្វី? ទីណា? ពេលណា? និងហេតុអ្វី?</strong> — វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល (TechEdu Portal) ចាប់ផ្តើមទទួលពាក្យសុំអាហារូបករណ៍ ១០០% សម្រាប់សិស្សទូទាំងប្រទេសចាប់ពីថ្ងៃទី ០១ ខែវិច្ឆិកា ឆ្នាំ ២០២៦ នេះតទៅ។</p>
           </div>
           <div class="pyramid-level level-body">
             <h4>២. ព័ត៌មានលម្អិតគាំទ្រ (Important Body Details)</h4>
@@ -238,7 +212,7 @@
           </div>
           <div class="pyramid-level level-tail">
             <h4>៣. ព័ត៌មានបន្ថែម និងប្រវត្តិទូទៅ (Background &amp; General Info)</h4>
-            <p>ព័ត៌មានអំពីប្រវត្តិនៃការបង្កើតសាកលវិទ្យាល័យ កិច្ចសហប្រតិបត្តិការជាមួយដៃគូអន្តរជាតិ និងទីតាំងអន្តេវាសិកដ្ឋាននិស្សិត។</p>
+            <p>ព័ត៌មានអំពីប្រវត្តិនៃការបង្កើតវិទ្យាស្ថាន កិច្ចសហប្រតិបត្តិការជាមួយដៃគូអន្តរជាតិ និងទីតាំងអន្តេវាសិកដ្ឋាននិស្សិត។</p>
           </div>
         </div>
       </section>
@@ -276,7 +250,7 @@
             <span class="event-date">10 មករា</span>
             <div class="event-info">
               <strong>ពិធីបើកបវេសនកាលថ្មី</strong>
-              <small>បរិវេណសាកលវិទ្យាល័យ</small>
+              <small>បរិវេណវិទ្យាស្ថាន</small>
             </div>
           </li>
         </ul>
@@ -289,7 +263,7 @@
           <li><a href="#downloads">📥 ទាញយកពាក្យសុំចូលរៀន (.PDF)</a></li>
           <li><a href="#student-handbook">📖 សៀវភៅណែនាំនិស្សិតឆ្នាំ ២០២៦</a></li>
           <li><a href="#faq">❓ សំណួរដែលសួរញឹកញាប់ (FAQ)</a></li>
-          <li><a href="#map">🗺️ ផែនទីបរិវេណសាកលវិទ្យាល័យ</a></li>
+          <li><a href="#map">🗺️ ផែនទីបរិវេណវិទ្យាស្ថាន</a></li>
         </ul>
       </div>
 
@@ -308,9 +282,9 @@
   <!-- ==================== 6. MEGA FOOTER (<footer>) ==================== -->
   <footer class="site-footer" id="site-footer">
     <div class="container footer-grid">
-      <!-- Footer Col 1: University Identity -->
+      <!-- Footer Col 1: Academy Identity -->
       <div class="footer-col col-brand">
-        <div class="footer-logo">🏛️ សាកលវិទ្យាល័យជាតិបច្ចេកវិទ្យា</div>
+        <div class="footer-logo">🏛️ វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល (TechEdu Portal)</div>
         <p class="footer-about">
           គ្រឹះស្ថានឧត្តមសិក្សាសាធារណៈឈានមុខគេក្នុងប្រទេសកម្ពុជា ក្នុងការបណ្តុះបណ្តាលធនធានមនុស្សជំនាញបច្ចេកវិទ្យា ឌីជីថល នវានុវត្តន៍ និងវិស្វកម្មសូហ្វវែរ។
         </p>
@@ -362,7 +336,7 @@
     <div class="footer-bottom">
       <div class="container footer-bottom-container">
         <p class="copyright-text">
-          &copy; 2026 សាកលវិទ្យាល័យជាតិបច្ចេកវិទ្យា (National University of Digital Technology). រក្សាសិទ្ធិគ្រប់យ៉ាង។
+          &copy; 2026 វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល (TechEdu Portal) (National Academy of Digital Technology). រក្សាសិទ្ធិគ្រប់យ៉ាង។
         </p>
         <div class="legal-links">
           <a href="#privacy">គោលការណ៍ឯកជនភាព (Privacy Policy)</a>
@@ -378,7 +352,7 @@
   <div class="modal-overlay" id="sitemap-modal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-header">
-        <h3 class="modal-title">🗺️ ផែនទីគេហទំព័រសាកលវិទ្យាល័យ (University Website Sitemap - Level 1 to 3)</h3>
+        <h3 class="modal-title">🗺️ ផែនទីគេហទំព័រវិទ្យាស្ថាន (Academy Website Sitemap - Level 1 to 3)</h3>
         <button type="button" class="modal-close" id="btn-close-sitemap">&times;</button>
       </div>
       <div class="modal-body">
@@ -426,7 +400,7 @@
 
               <!-- Branch 4: About Us -->
               <div class="tree-branch">
-                <span class="tree-node branch-node">📂 4. អំពីសាកលវិទ្យាល័យ (About Us) <code>/about</code></span>
+                <span class="tree-node branch-node">📂 4. អំពីវិទ្យាស្ថាន (About Us) <code>/about</code></span>
                 <ul class="tree-leaves">
                   <li>📄 ប្រវត្តិ និងចក្ខុវិស័យ (History &amp; Vision) <code>/about/history</code></li>
                   <li>📄 គណៈគ្រប់គ្រង (Leadership Team) <code>/about/leadership</code></li>
