@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sourng Academy responsive HTML and CSS e-commerce demo">
+    <title>Payment Success | Sourng Academy</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container navbar">
+        <a class="logo" href="index.html">
+          <span class="logo-mark">S</span>Sourng <span>Academy</span>
+        </a>
+
+        <div class="nav-controls">
+          <!-- Mobile Quick Cart Button -->
+          <a class="mobile-cart" href="cart.html" aria-label="Shopping Cart">
+            <span class="mobile-cart-icon">🛒</span>
+            <span class="cart-count">2</span>
+          </a>
+
+          <!-- Pure CSS Mobile Hamburger Toggle -->
+          <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu">
+          <label for="nav-toggle" class="nav-toggle-btn" aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </label>
+
+          <!-- Navigation Menu (Desktop Horizontal / Mobile Dropdown) -->
+          <nav class="nav-menu" aria-label="Main navigation">
+            <div class="nav-menu-header">
+              <span class="nav-menu-eyebrow">Menu</span>
+            </div>
+
+            <a class="nav-link" href="index.html">
+              <span class="nav-icon-badge icon-home">🏠</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Home</span>
+                <span class="nav-sub">Storefront & essentials</span>
+              </span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <a class="nav-link" href="index.html#products">
+              <span class="nav-icon-badge icon-products">🛍️</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Products</span>
+                <span class="nav-sub">Explore popular picks</span>
+              </span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <a class="nav-link cart-link" href="cart.html">
+              <span class="nav-icon-badge icon-cart">🛒</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Cart</span>
+                <span class="nav-sub">Review items</span>
+              </span>
+              <span class="cart-count">2</span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <a class="nav-link" href="checkout.html">
+              <span class="nav-icon-badge icon-checkout">💳</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Checkout</span>
+                <span class="nav-sub">Complete demo order</span>
+              </span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <div class="nav-menu-footer">
+              <span class="nav-footer-brand">
+                <span class="status-dot"></span>Sourng Digital
+              </span>
+              <span class="nav-footer-tag">Pure CSS3</span>
+            </div>
+          </nav>
+
+          <!-- Backdrop overlay to tap outside and close -->
+          <label for="nav-toggle" class="nav-backdrop" aria-hidden="true"></label>
+        </div>
+      </div>
+    </header>
+
+    <main class="container page">
+      <section class="panel success-panel">
+        <div class="success-icon">✓</div>
+        <span class="pill" style="background: #e6f8ef; color: #168553">ORDER CONFIRMED</span>
+        <h1 class="success-title">Thank you for your order!</h1>
+        <p class="muted">Your demo order has been placed successfully. This page represents the final step in the shopping flow.</p>
+
+        <div class="order-reference">
+          <div>
+            <span class="muted">Order reference</span>
+            <strong>SH-2026-001</strong>
+          </div>
+          <div>
+            <span class="muted">Order total</span>
+            <strong>$143.00</strong>
+          </div>
+          <div>
+            <span class="muted">Payment</span>
+            <strong>Demo payment</strong>
+          </div>
+        </div>
+
+        <a class="button large" href="index.html">Continue shopping</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© 2026 Sourng Academy. Demo storefront.</span>
+        <span>Sourng Digital</span>
+      </div>
+    </footer>
+  </body>
+</html>

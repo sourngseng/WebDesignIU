@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sourng Academy responsive HTML and CSS e-commerce demo">
+    <title>Home | Sourng Academy</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container navbar">
+        <a class="logo" href="index.html">
+          <span class="logo-mark">S</span>Sourng <span>Academy</span>
+        </a>
+
+        <div class="nav-controls">
+          <!-- Mobile Quick Cart Button -->
+          <a class="mobile-cart" href="cart.html" aria-label="Shopping Cart">
+            <span class="mobile-cart-icon">🛒</span>
+            <span class="cart-count">2</span>
+          </a>
+
+          <!-- Pure CSS Mobile Hamburger Toggle -->
+          <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu">
+          <label for="nav-toggle" class="nav-toggle-btn" aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </label>
+
+          <!-- Navigation Menu (Desktop Horizontal / Mobile Dropdown) -->
+          <nav class="nav-menu" aria-label="Main navigation">
+            <div class="nav-menu-header">
+              <span class="nav-menu-eyebrow">Menu</span>
+            </div>
+
+            <a class="nav-link active" href="index.html">
+              <span class="nav-icon-badge icon-home">🏠</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Home</span>
+                <span class="nav-sub">Storefront & essentials</span>
+              </span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <a class="nav-link" href="index.html#products">
+              <span class="nav-icon-badge icon-products">🛍️</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Products</span>
+                <span class="nav-sub">Explore popular picks</span>
+              </span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <a class="nav-link cart-link" href="cart.html">
+              <span class="nav-icon-badge icon-cart">🛒</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Cart</span>
+                <span class="nav-sub">Review items</span>
+              </span>
+              <span class="cart-count">2</span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <a class="nav-link" href="checkout.html">
+              <span class="nav-icon-badge icon-checkout">💳</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Checkout</span>
+                <span class="nav-sub">Complete demo order</span>
+              </span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <div class="nav-menu-footer">
+              <span class="nav-footer-brand">
+                <span class="status-dot"></span>Sourng Digital
+              </span>
+              <span class="nav-footer-tag">Pure CSS3</span>
+            </div>
+          </nav>
+
+          <!-- Backdrop overlay to tap outside and close -->
+          <label for="nav-toggle" class="nav-backdrop" aria-hidden="true"></label>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">New season · New essentials</p>
+          <h1>Find your next<br><em>everyday favorite.</em></h1>
+          <p class="hero-copy">Thoughtful picks for work, home, and everywhere in between.</p>
+          <a class="button large" href="#products">Explore products <span>→</span></a>
+        </div>
+        <div class="hero-art">
+          <div class="hero-emoji">🛍️</div>
+        </div>
+      </section>
+
+      <section id="products">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow small">Curated for you</p>
+            <h2 class="section-title">Popular products</h2>
+          </div>
+          <span class="muted small">Showing 4 products</span>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <a href="product.html">
+              <div class="product-image">🎧</div>
+            </a>
+            <div class="product-info">
+              <p class="category">Audio</p>
+              <h3 class="product-name"><a href="product.html">Wireless Headphones</a></h3>
+              <span class="price">$59.00</span>
+              <a class="button secondary card-button" href="product.html">View product</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <a href="product.html">
+              <div class="product-image green">⌚</div>
+            </a>
+            <div class="product-info">
+              <p class="category">Accessories</p>
+              <h3 class="product-name"><a href="product.html">Smart Watch</a></h3>
+              <span class="price">$89.00</span>
+              <a class="button secondary card-button" href="product.html">View product</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <a href="product.html">
+              <div class="product-image peach">🎒</div>
+            </a>
+            <div class="product-info">
+              <p class="category">Lifestyle</p>
+              <h3 class="product-name"><a href="product.html">Everyday Backpack</a></h3>
+              <span class="price">$42.00</span>
+              <a class="button secondary card-button" href="product.html">View product</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <a href="product.html">
+              <div class="product-image lilac">📷</div>
+            </a>
+            <div class="product-info">
+              <p class="category">Electronics</p>
+              <h3 class="product-name"><a href="product.html">Instant Camera</a></h3>
+              <span class="price">$74.00</span>
+              <a class="button secondary card-button" href="product.html">View product</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© 2026 Sourng Academy. Demo storefront.</span>
+        <span>Sourng Digital</span>
+      </div>
+    </footer>
+  </body>
+</html>

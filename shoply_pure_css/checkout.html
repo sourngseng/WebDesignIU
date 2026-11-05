@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sourng Academy responsive HTML and CSS e-commerce demo">
+    <title>Checkout | Sourng Academy</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container navbar">
+        <a class="logo" href="index.html">
+          <span class="logo-mark">S</span>Sourng <span>Academy</span>
+        </a>
+
+        <div class="nav-controls">
+          <!-- Mobile Quick Cart Button -->
+          <a class="mobile-cart" href="cart.html" aria-label="Shopping Cart">
+            <span class="mobile-cart-icon">🛒</span>
+            <span class="cart-count">2</span>
+          </a>
+
+          <!-- Pure CSS Mobile Hamburger Toggle -->
+          <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu">
+          <label for="nav-toggle" class="nav-toggle-btn" aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </label>
+
+          <!-- Navigation Menu (Desktop Horizontal / Mobile Dropdown) -->
+          <nav class="nav-menu" aria-label="Main navigation">
+            <div class="nav-menu-header">
+              <span class="nav-menu-eyebrow">Menu</span>
+            </div>
+
+            <a class="nav-link" href="index.html">
+              <span class="nav-icon-badge icon-home">🏠</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Home</span>
+                <span class="nav-sub">Storefront & essentials</span>
+              </span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <a class="nav-link" href="index.html#products">
+              <span class="nav-icon-badge icon-products">🛍️</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Products</span>
+                <span class="nav-sub">Explore popular picks</span>
+              </span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <a class="nav-link cart-link" href="cart.html">
+              <span class="nav-icon-badge icon-cart">🛒</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Cart</span>
+                <span class="nav-sub">Review items</span>
+              </span>
+              <span class="cart-count">2</span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <a class="nav-link active" href="checkout.html">
+              <span class="nav-icon-badge icon-checkout">💳</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Checkout</span>
+                <span class="nav-sub">Complete demo order</span>
+              </span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <div class="nav-menu-footer">
+              <span class="nav-footer-brand">
+                <span class="status-dot"></span>Sourng Digital
+              </span>
+              <span class="nav-footer-tag">Pure CSS3</span>
+            </div>
+          </nav>
+
+          <!-- Backdrop overlay to tap outside and close -->
+          <label for="nav-toggle" class="nav-backdrop" aria-hidden="true"></label>
+        </div>
+      </div>
+    </header>
+
+    <main class="container page">
+      <p class="eyebrow small">Almost yours</p>
+      <h1 class="section-title" style="font-size: 2.5rem">Checkout</h1>
+      <p class="muted">Enter your details to complete this demo order.</p>
+
+      <div class="checkout-steps">
+        <span class="step done"><b class="step-number">1</b> Cart</span>
+        <i class="step-line"></i>
+        <span class="step current"><b class="step-number">2</b> Checkout</span>
+        <i class="step-line"></i>
+        <span class="step"><b class="step-number">3</b> Success</span>
+      </div>
+
+      <form action="success.html" method="get">
+        <div class="content-layout">
+          <div>
+            <section class="panel" style="margin-bottom: 20px">
+              <h2>Contact information</h2>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="name">Full name</label>
+                  <input id="name" name="name" placeholder="Your full name" required>
+                </div>
+                <div class="field">
+                  <label for="email">Email address</label>
+                  <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                </div>
+                <div class="field full">
+                  <label for="phone">Phone number</label>
+                  <input id="phone" name="phone" type="tel" placeholder="+855 12 345 678" required>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel" style="margin-bottom: 20px">
+              <h2>Shipping address</h2>
+              <div class="form-grid">
+                <div class="field full">
+                  <label for="address">Street address</label>
+                  <input id="address" name="address" placeholder="House number, street name" required>
+                </div>
+                <div class="field">
+                  <label for="city">City / Province</label>
+                  <input id="city" name="city" placeholder="Phnom Penh" required>
+                </div>
+                <div class="field">
+                  <label for="postal">Postal code</label>
+                  <input id="postal" name="postal" placeholder="Optional">
+                </div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <h2>Payment method</h2>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="Cash on delivery" checked>
+                <span>
+                  <strong>Cash on Delivery</strong>
+                  <span>Pay when your order arrives.</span>
+                </span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="Bank transfer">
+                <span>
+                  <strong>Bank Transfer</strong>
+                  <span>Demo option — no real payment is processed.</span>
+                </span>
+              </label>
+            </section>
+          </div>
+
+          <aside class="panel summary-panel">
+            <h2>Your order</h2>
+            <div class="summary-line">
+              <span>Wireless Headphones × 1</span>
+              <strong>$59.00</strong>
+            </div>
+            <div class="summary-line">
+              <span>Smart Watch × 1</span>
+              <strong>$89.00</strong>
+            </div>
+            <div class="summary-line">
+              <span>Subtotal</span>
+              <strong>$148.00</strong>
+            </div>
+            <div class="summary-line">
+              <span>Shipping</span>
+              <strong>$5.00</strong>
+            </div>
+            <div class="summary-line">
+              <span>Discount</span>
+              <strong style="color: var(--green)">−$10.00</strong>
+            </div>
+            <div class="summary-line summary-total">
+              <span>Total</span>
+              <span>$143.00</span>
+            </div>
+            <button class="button large" type="submit">Place Demo Order</button>
+            <p class="notice">No real payment is processed.</p>
+          </aside>
+        </div>
+      </form>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© 2026 Sourng Academy. Demo storefront.</span>
+        <span>Sourng Digital</span>
+      </div>
+    </footer>
+  </body>
+</html>

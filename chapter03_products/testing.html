@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!-- ========================================================================== -->
+<!-- មុខវិជ្ជា៖ ការរចនាគេហទំព័រ (Web Design — Bachelor Year 3)                  -->
+<!-- ម៉ូឌុល ០២៖ HTML5 Fundamentals | ជំពូកទី ៥៖ មូលដ្ឋានគ្រឹះ HTML5              -->
+<!-- គម្រោងអនុវត្ត៖ គេហទំព័រប្រវត្តិរូបផ្ទាល់ខ្លួន (Personal Profile Website)       -->
+<!-- ========================================================================== -->
+<html lang="km" dir="ltr">
+<head>
+    <!-- ១. ការកំណត់តួអក្សរភាសាខ្មែរ និងអន្តរជាតិ (Unicode Character Encoding) -->
+    <meta charset="UTF-8">
+
+    <!-- ២. ការកំណត់ Viewport សម្រាប់ Responsive Web Design លើឧបករណ៍ចល័ត -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ៣. ព័ត៌មាន Metadata សម្រាប់ Search Engines (SEO) -->
+    <meta name="description" content="គេហទំព័រប្រវត្តិរូបផ្ទាល់ខ្លួនរបស់ សុខ វិបុល និស្សិតព័ត៌មានវិទ្យាឆ្នាំទី៣ និងជាអ្នកអភិវឌ្ឍន៍គេហទំព័រ Frontend">
+    <meta name="keywords" content="សុខ វិបុល, Sok Vibol, Web Developer, HTML5, CSS3, Personal Profile, Cambodia">
+    <meta name="author" content="សុខ វិបុល (Sok Vibol)">
+
+    <!-- ៤. ចំណងជើងទំព័រ (បង្ហាញលើ Browser Tab និង Google Search Results) -->
+    <title>ប្រវត្តិរូបសង្ខេប | សុខ វិបុល (Sok Vibol) - Web Developer</title>
+
+    <!-- ៥. ការភ្ជាប់ពុម្ពអក្សរខ្មែរ Google Fonts & Khmer Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Siemreap&display=swap" rel="stylesheet">
+
+    <!-- ៦. ការភ្ជាប់ឯកសាររចនាបថខាងក្រៅ (External CSS Stylesheet) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top" class="standard-mode">
+
+    <!-- ====================================================================== -->
+    <!-- របារឧបករណ៍ជំនួយការសិក្សា (Interactive Learning HUD & Inspector Bar)      -->
+    <!-- កំណត់ចំណាំ៖ របារនេះបង្កើតឡើងសម្រាប់ជួយសិស្សក្នុងការពិនិត្យ Tags និង Elements   -->
+    <!-- ====================================================================== -->
+    <!-- ប្រអប់ផ្ទុកខ្លឹមសារទាំងមូលនៃគេហទំព័រ (Main Container) -->
+    <div class="container main-wrapper">
+
+        <!-- ================================================================== -->
+        <!-- ផ្នែកក្បាលទំព័រ និងប្រវត្តិរូបសង្ខេប (HEADER & HERO SECTION)             -->
+        <!-- ================================================================== -->
+        <header id="profile-header" class="profile-header-card" data-section="header">
+            <div class="avatar-container">
+                <!-- រូបតំណាងប្រវត្តិរូប (Profile Avatar) -->
+                <div class="avatar-circle" title="រូបថតផ្លូវការរបស់ សុខ វិបុល">
+                    <span class="avatar-text">SV</span>
+                </div>
+            </div>
+
+            <div class="profile-intro">
+                <!-- ចំណងជើងកម្រិត ១ (H1): ត្រូវមានត្រឹមតែ ១ គត់ក្នុងមួយទំព័រសម្រាប់ Main Subject -->
+                <h1 class="candidate-name" id="main-heading">សុខ វិបុល (Sok Vibol)</h1>
+
+                <!-- កថាខណ្ឌបង្ហាញមុខតំណែង និងជំនាញស្នូល -->
+                <p class="candidate-role" title="មុខតំណែង និងកម្រិតសិក្សា">
+                    <strong>និស្សិតវិទ្យាសាស្ត្រកុំព្យូទ័រ ឆ្នាំទី ៣</strong> | <em>Junior Frontend Web Developer</em>
+                </p>
+
+                <!-- កថាខណ្ឌពិពណ៌នាអំពីគោលដៅជីវិត និងចំណាប់អារម្មណ៍ -->
+                <p class="candidate-bio">
+                    ខ្ញុំបាទជានិស្សិតឆ្នាំទី ៣ ផ្នែកវិទ្យាសាស្ត្រកុំព្យូទ័រ ដែលមានចំណង់ចំណូលចិត្តយ៉ាងជ្រាលជ្រៅក្នុងការរចនា និងបង្កើតគេហទំព័រទំនើបប្រកបដោយភាពច្នៃប្រឌិត។ ខ្ញុំមានគោលបំណងអភិវឌ្ឍប្រព័ន្ធគេហទំព័រដែលមានរចនាសម្ព័ន្ធត្រឹមត្រូវតាមស្តង់ដារ W3C/HTML5 ផ្តល់បទពិសោធន៍រលូនដល់អ្នកប្រើប្រាស់ (UX) និងគាំទ្រយ៉ាងពេញលេញដល់ភាសាខ្មែរ។
+                </p>
+
+                <!-- ព័ត៌មានទាក់ទងរហ័ស ដោយប្រើ Tag <br> សម្រាប់ចុះបន្ទាត់សមស្រប -->
+                <p class="quick-contact">
+                    📧 អ៊ីមែល៖ <span class="code-font">sok.vibol.dev@example.edu.kh</span><br>
+                    📱 ទូរស័ព្ទ៖ <span class="code-font">(+855) 12 345 678</span><br>
+                    📍 ទីតាំង៖ រាជធានីភ្នំពេញ ព្រះរាជាណាចក្រកម្ពុជា
+                </p>
+            </div>
+        </header>
+
+        <!-- បន្ទាត់ខណ្ឌចែកផ្នែកប្រធានបទ (Thematic Break) -->
+        <hr class="section-divider">
+
+        <!-- ================================================================== -->
+        <!-- ផ្នែកទី ១៖ គោលបំណងអាជីពការងារ (CAREER OBJECTIVE)                   -->
+        <!-- ================================================================== -->
+        <section id="objective" class="content-card" data-section="objective">
+            <!-- ចំណងជើងកម្រិត ២ (H2): បែងចែកផ្នែកសំខាន់ៗ -->
+            <h2 class="section-title">១. គោលបំណងអាជីពការងារ (Career Objective)</h2>
+
+            <p>
+                ស្វែងរកឱកាសការងារជា <strong>Junior Web Developer</strong> ឬ <strong>Frontend Intern</strong> នៅក្នុងក្រុមហ៊ុនបច្ចេកវិទ្យាដែលមានបរិយាកាសការងារស្វាហាប់ និងវិជ្ជាជីវៈខ្ពស់ ដើម្បីយកចំណេះដឹងផ្នែក HTML5, CSS3, JavaScript និង UI/UX មកអនុវត្តដោះស្រាយបញ្ហាជាក់ស្តែង ព្រមទាំងបន្តអភិវឌ្ឍសមត្ថភាពបច្ចេកវិទ្យាគេហទំព័រជំនាន់ថ្មី។
+            </p>
+        </section>
+
+        <!-- បន្ទាត់ខណ្ឌចែកផ្នែកប្រធានបទ -->
+        <hr class="section-divider">
+
+        <!-- ================================================================== -->
+        <!-- ផ្នែកទី ២៖ ប្រវត្តិការសិក្សា (EDUCATION)                              -->
+        <!-- ================================================================== -->
+        <section id="education" class="content-card" data-section="education">
+            <h2 class="section-title">២. ប្រវត្តិការសិក្សា (Education Background)</h2>
+
+            <!-- កម្រិតសិក្សាទី ១ ដោយប្រើ H3 -->
+            <div class="timeline-item" data-degree="bachelor">
+                <h3 class="item-title">ថ្នាក់បរិញ្ញាបត្រ វិទ្យាសាស្ត្រកុំព្យូទ័រ (Bachelor of Computer Science)</h3>
+                <p class="item-meta">
+                    <strong>វិទ្យាស្ថានបច្ចេកវិទ្យាឌីជីថល</strong> — <em>មហាវិទ្យាល័យវិទ្យាសាស្ត្រ</em><br>
+                    ឆ្នាំសិក្សា៖ ២០២៣ - បច្ចុប្បន្ន (កំពុងសិក្សាឆ្នាំទី ៣) | និទ្ទេសមធ្យមភាគ (GPA)៖ ៣.៧៥ / ៤.០០
+                </p>
+                <p class="item-desc">
+                    មុខវិជ្ជាស្នូលដែលបានសិក្សា៖ ការរចនា និងអភិវឌ្ឍគេហទំព័រ (Web Design & Development), រចនាសម្ព័ន្ធទិន្នន័យ (Data Structures & Algorithms), មូលដ្ឋានទិន្នន័យ (Database Systems), និងវិស្វកម្មកម្មវិធី (Software Engineering)។
+                </p>
+            </div>
+
+            <!-- កម្រិតសិក្សាទី ២ ដោយប្រើ H3 -->
+            <div class="timeline-item" data-degree="highschool">
+                <h3 class="item-title">សញ្ញាបត្រមធ្យមសិក្សាទុតិយភូមិ (High School Diploma)</h3>
+                <p class="item-meta">
+                    <strong>វិទ្យាល័យព្រះស៊ីសុវត្ថិ (Preah Sisowath High School)</strong><br>
+                    ឆ្នាំបញ្ចប់ការសិក្សា៖ ២០២២ | និទ្ទេសទូទៅ៖ <strong>និទ្ទេស A</strong>
+                </p>
+                <p class="item-desc">
+                    បានចូលរួមក្នុងក្លឹបវិទ្យាសាស្ត្រកុំព្យូទ័រ និងការប្រកួតប្រជែងសរសេរកូដថ្នាក់ជាតិសម្រាប់យុវជន។
+                </p>
+            </div>
+        </section>
+
+        <!-- បន្ទាត់ខណ្ឌចែកផ្នែកប្រធានបទ -->
+        <hr class="section-divider">
+
+        <!-- ================================================================== -->
+        <!-- ផ្នែកទី ៣៖ ជំនាញបច្ចេកទេស (TECHNICAL SKILLS)                         -->
+        <!-- ================================================================== -->
+        <section id="skills" class="content-card" data-section="skills">
+            <h2 class="section-title">៣. ជំនាញបច្ចេកវិទ្យា (Technical Skills)</h2>
+
+            <!-- ចំណងជើងរងកម្រិត ៣ (H3) -->
+            <h3 class="sub-title">បច្ចេកវិទ្យាគេហទំព័រផ្នែកខាងមុខ (Frontend Web Technologies)</h3>
+            <p>
+                មានចំណេះដឹងរឹងមាំក្នុងការបង្កើតរចនាសម្ព័ន្ធកូដតាមស្តង់ដារ៖
+            </p>
+            <div class="skills-grid">
+                <div class="skill-badge" data-level="advanced" title="កម្រិតស្ទាត់ជំនាញខ្ពស់">
+                    <strong>HTML5</strong> — ស្តង់ដារ Semantic, Forms & Multimedia
+                </div>
+                <div class="skill-badge" data-level="intermediate" title="កម្រិតមធ្យម">
+                    <strong>CSS3</strong> — Flexbox, Grid, Animations & Responsive Design
+                </div>
+                <div class="skill-badge" data-level="intermediate" title="កម្រិតមធ្យម">
+                    <strong>JavaScript (ES6+)</strong> — DOM Manipulation & Event Handling
+                </div>
+                <div class="skill-badge" data-level="beginner" title="កម្រិតមូលដ្ឋាន">
+                    <strong>Git & GitHub</strong> — Version Control & Collaboration
+                </div>
+            </div>
+
+            <h3 class="sub-title">ឧបករណ៍ និងកម្មវិធីជំនួយការងារ (Tools & Environments)</h3>
+            <p>
+                Visual Studio Code, Chrome DevTools, Figma (UI/UX Prototyping), GitHub Desktop, និង Live Server។
+            </p>
+        </section>
+
+        <!-- បន្ទាត់ខណ្ឌចែកផ្នែកប្រធានបទ -->
+        <hr class="section-divider">
+
+        <!-- ================================================================== -->
+        <!-- ផ្នែកទី ៤៖ គម្រោងស្នាដៃជាក់ស្តែង (FEATURED PROJECTS)                 -->
+        <!-- ================================================================== -->
+        <section id="projects" class="content-card" data-section="projects">
+            <h2 class="section-title">៤. ស្នាដៃគម្រោងដែលបានបង្កើត (Academic Projects)</h2>
+
+            <!-- គម្រោងទី ១ -->
+            <article class="project-box" data-category="frontend">
+                <h3 class="item-title">គម្រោងទី ១៖ គេហទំព័រព័ត៌មាននិស្សិតវិទ្យាស្ថាន (Academy Portal)</h3>
+                <!-- កម្រិតចំណងជើងរងទី ៤ (H4) -->
+                <h4 class="project-subheading">តួនាទី៖ Frontend Designer & Developer | បច្ចេកវិទ្យា៖ HTML5, CSS3, JavaScript</h4>
+                <p>
+                    បានបង្កើតគេហទំព័រគំរូសម្រាប់និស្សិតចូលមើលកាលវិភាគសិក្សា លទ្ធផលប្រឡង និងព្រឹត្តិការណ៍ផ្សេងៗ។ គម្រោងនេះផ្តោតសំខាន់លើ Semantic HTML5 Elements ការរៀបចំឋានានុក្រមព័ត៌មាន (Information Architecture) និងការរចនាស្របតាម UI/UX ទំនើប។
+                </p>
+            </article>
+
+            <!-- គម្រោងទី ២ -->
+            <article class="project-box" data-category="ui-ux">
+                <h3 class="item-title">គម្រោងទី ២៖ គេហទំព័រផ្សព្វផ្សាយទេសចរណ៍ធម្មជាតិកម្ពុជា (Eco-Tourism Website)</h3>
+                <h4 class="project-subheading">តួនាទី៖ Solo Developer | បច្ចេកវិទ្យា៖ HTML5, CSS Grid, Flexbox</h4>
+                <p>
+                    គេហទំព័របង្ហាញតំបន់ទេសចរណ៍ធម្មជាតិនៅកម្ពុជា ជាមួយការប្រើប្រាស់ Semantic Tags ពេញលេញ ការកំណត់ Color Contrast ស្របតាម WCAG 2.1 AA និងការគាំទ្រពេញលេញលើទូរស័ព្ទដៃ។
+                </p>
+            </article>
+        </section>
+
+        <!-- បន្ទាត់ខណ្ឌចែកផ្នែកប្រធានបទ -->
+        <hr class="section-divider">
+
+        <!-- ================================================================== -->
+        <!-- ផ្នែកទី ៥៖ ព័ត៌មានលម្អិតទំនាក់ទំនង (CONTACT & ADDRESS)               -->
+        <!-- ================================================================== -->
+        <section id="contact" class="content-card" data-section="contact">
+            <h2 class="section-title">៥. ព័ត៌មានទំនាក់ទំនងផ្លូវការ (Contact Information)</h2>
+
+            <p>
+                លោកអ្នកអាចធ្វើការទាក់ទងខ្ញុំបាទសម្រាប់កិច្ចការងារ ឬគម្រោងសហការតាមរយៈអាសយដ្ឋានខាងក្រោម៖
+            </p>
+
+            <!-- ការប្រើប្រាស់ <address> និង <br> តាមស្តង់ដារត្រឹមត្រូវ -->
+            <address class="contact-box">
+                <strong>សុខ វិបុល (Sok Vibol)</strong><br>
+                ដេប៉ាតឺម៉ង់វិទ្យាសាស្ត្រកុំព្យូទ័រ មហាវិទ្យាល័យវិទ្យាសាស្ត្រ<br>
+                វិទ្យាស្ថានបច្ចេកវិទ្យា មហាវិថីសហព័ន្ធរុស្ស៊ី<br>
+                ខណ្ឌទួលគោក រាជធានីភ្នំពេញ ១២០៤០៤<br>
+                ព្រះរាជាណាចក្រកម្ពុជា<br>
+                🌐 គេហទំព័រផ្ទាល់ខ្លួន៖ <span class="code-font">https://sokvibol-portfolio.kh</span>
+            </address>
+
+            <!-- សម្រង់ពាក្យស្លោកផ្ទាល់ខ្លួន ដោយប្រើ <p>, <em>, និង <br> -->
+            <p class="quote-box">
+                <em>"ការសរសេរកូដដែលមានរចនាសម្ព័ន្ធត្រឹមត្រូវ គឺជាសិល្បៈនៃការកសាងពិភពឌីជីថលដ៏រឹងមាំ និងមានតម្លៃសម្រាប់មនុស្សជាតិ។"<br>
+                — សុខ វិបុល</em>
+            </p>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- ផ្នែកបាតទំព័រ (PAGE FOOTER)                                         -->
+        <!-- ================================================================== -->
+        <footer id="page-footer" class="profile-footer">
+            <!-- ចំណងជើងកម្រិត ៥ (H5): សេចក្តីជូនដំណឹងរក្សាសិទ្ធិ -->
+            <h5 class="footer-title">រក្សាសិទ្ធិគ្រប់យ៉ាង © ២០២៦ សុខ វិបុល | បង្កើតឡើងសម្រាប់មុខវិជ្ជា Web Design ឆ្នាំទី ៣</h5>
+
+            <!-- ចំណងជើងកម្រិត ៦ (H6): កំណែទម្រង់ និងលក្ខខណ្ឌបច្ចេកទេស -->
+            <h6 class="footer-version">
+                ឯកសារកូដស្តង់ដារ HTML5 (W3C Standard) | Encoding: UTF-8 | Layout: Responsive Grid
+            </h6>
+
+            <p class="footer-note">
+                ទំព័រនេះត្រូវបានបង្កើតឡើងសម្រាប់គោលបំណងនៃការអនុវត្តមេរៀនជំពូកទី ៥ នៃសៀវភៅសិក្សាគោល "ការរចនាគេហទំព័រ"។
+            </p>
+        </footer>
+
+    </div> <!-- បញ្ចប់ .container -->
+
+    <!-- ====================================================================== -->
+    <!-- ផ្ទាំង MODAL សម្រាប់បង្ហាញកូដដើម និងការត្រួតពិនិត្យ (MODALS)             -->
+    <!-- ====================================================================== -->
+    <!-- Modal ១៖ មើលកូដ HTML ដើម -->
+    <div id="modal-source" class="modal-overlay" hidden>
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>កូដ HTML5 ដើមនៃទំព័រនេះ (Raw HTML Source)</h3>
+                <button type="button" class="btn-close-modal" aria-label="Close Modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-help">
+                    នេះជាកូដ HTML5 ស្តង់ដារដែលត្រូវបានសរសេរយ៉ាងត្រឹមត្រូវតាមរចនាសម្ព័ន្ធមេរៀនជំពូកទី ៥៖
+                </p>
+                <pre class="code-viewer"><code id="code-content"></code></pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn-copy-code" class="btn-secondary">📋 ចម្លងកូដ (Copy Code)</button>
+                <button type="button" class="btn-primary btn-close-modal">យល់ព្រម (Close)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal ២៖ ការផ្ទៀងផ្ទាត់ស្តង់ដារ HTML5 (Validator Checklist) -->
+    <div id="modal-validate" class="modal-overlay" hidden>
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>ការផ្ទៀងផ្ទាត់ស្តង់ដារ HTML5 (W3C Standards Checklist)</h3>
+                <button type="button" class="btn-close-modal" aria-label="Close Modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <ul class="validation-list" id="validation-checklist">
+                    <!-- Dynamic Checklist items injected by app.js -->
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-primary btn-close-modal">បិទផ្ទាំង (Close)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal ៣៖ រចនាសម្ព័ន្ធដើមឈើ DOM Tree -->
+    <div id="modal-dom" class="modal-overlay" hidden>
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>រចនាសម្ព័ន្ធដើមឈើ DOM Tree (DOM Hierarchy)</h3>
+                <button type="button" class="btn-close-modal" aria-label="Close Modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-help">
+                    ឋានានុក្រមនៃឯកសារបច្ចុប្បន្ន ចាប់ពី Root Element <code>&lt;html&gt;</code> រហូតដល់ស្លឹកឈើ (Leaf Elements)៖
+                </p>
+                <div class="dom-tree-view" id="dom-tree-container">
+                    <!-- Dynamic Tree populated by app.js -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-primary btn-close-modal">បិទផ្ទាំង (Close)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ៧. ការភ្ជាប់ឯកសារ JavaScript ខាងក្រៅ -->
+    <script src="js/app.js"></script>
+</body>
+</html>

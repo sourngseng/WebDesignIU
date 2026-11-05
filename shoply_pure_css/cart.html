@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sourng Academy responsive HTML and CSS e-commerce demo">
+    <title>Shopping Cart | Sourng Academy</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container navbar">
+        <a class="logo" href="index.html">
+          <span class="logo-mark">S</span>Sourng <span>Academy</span>
+        </a>
+
+        <div class="nav-controls">
+          <!-- Mobile Quick Cart Button -->
+          <a class="mobile-cart active" href="cart.html" aria-label="Shopping Cart">
+            <span class="mobile-cart-icon">🛒</span>
+            <span class="cart-count">2</span>
+          </a>
+
+          <!-- Pure CSS Mobile Hamburger Toggle -->
+          <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu">
+          <label for="nav-toggle" class="nav-toggle-btn" aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </label>
+
+          <!-- Navigation Menu (Desktop Horizontal / Mobile Dropdown) -->
+          <nav class="nav-menu" aria-label="Main navigation">
+            <div class="nav-menu-header">
+              <span class="nav-menu-eyebrow">Menu</span>
+            </div>
+
+            <a class="nav-link" href="index.html">
+              <span class="nav-icon-badge icon-home">🏠</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Home</span>
+                <span class="nav-sub">Storefront & essentials</span>
+              </span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <a class="nav-link" href="index.html#products">
+              <span class="nav-icon-badge icon-products">🛍️</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Products</span>
+                <span class="nav-sub">Explore popular picks</span>
+              </span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <a class="nav-link cart-link active" href="cart.html">
+              <span class="nav-icon-badge icon-cart">🛒</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Cart</span>
+                <span class="nav-sub">Review items</span>
+              </span>
+              <span class="cart-count">2</span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <a class="nav-link" href="checkout.html">
+              <span class="nav-icon-badge icon-checkout">💳</span>
+              <span class="nav-text-group">
+                <span class="nav-title">Checkout</span>
+                <span class="nav-sub">Complete demo order</span>
+              </span>
+              <span class="nav-arrow">›</span>
+            </a>
+
+            <div class="nav-menu-footer">
+              <span class="nav-footer-brand">
+                <span class="status-dot"></span>Sourng Digital
+              </span>
+              <span class="nav-footer-tag">Pure CSS3</span>
+            </div>
+          </nav>
+
+          <!-- Backdrop overlay to tap outside and close -->
+          <label for="nav-toggle" class="nav-backdrop" aria-hidden="true"></label>
+        </div>
+      </div>
+    </header>
+
+    <main class="container page">
+      <p class="eyebrow small">Your selection</p>
+      <h1 class="section-title" style="font-size: 2.5rem">Shopping Cart</h1>
+      <p class="muted">Review your items before checkout.</p>
+
+      <div class="checkout-steps">
+        <span class="step done"><b class="step-number">1</b> Cart</span>
+        <i class="step-line"></i>
+        <span class="step"><b class="step-number">2</b> Checkout</span>
+        <i class="step-line"></i>
+        <span class="step"><b class="step-number">3</b> Success</span>
+      </div>
+
+      <div class="content-layout">
+        <section class="panel">
+          <h2>Products (2)</h2>
+          <div class="cart-item">
+            <div class="cart-thumb">🎧</div>
+            <div>
+              <h3>Wireless Headphones</h3>
+              <p>Color: Midnight Black · Quantity: 1</p>
+            </div>
+            <strong class="item-price">$59.00</strong>
+          </div>
+          <div class="cart-item">
+            <div class="cart-thumb" style="background: #e6f7f0">⌚</div>
+            <div>
+              <h3>Smart Watch</h3>
+              <p>Color: Sage Green · Quantity: 1</p>
+            </div>
+            <strong class="item-price">$89.00</strong>
+          </div>
+        </section>
+
+        <aside class="panel summary-panel">
+          <h2>Order summary</h2>
+          <div class="summary-line">
+            <span>Subtotal</span>
+            <strong>$148.00</strong>
+          </div>
+          <div class="summary-line">
+            <span>Shipping</span>
+            <strong>$5.00</strong>
+          </div>
+          <div class="summary-line">
+            <span>Discount</span>
+            <strong style="color: var(--green)">−$10.00</strong>
+          </div>
+          <div class="summary-line summary-total">
+            <span>Total</span>
+            <span>$143.00</span>
+          </div>
+          <a class="button large" href="checkout.html">Proceed to Checkout</a>
+        </aside>
+      </div>
+
+      <a class="breadcrumb" href="index.html">← Continue shopping</a>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© 2026 Sourng Academy. Demo storefront.</span>
+        <span>Sourng Digital</span>
+      </div>
+    </footer>
+  </body>
+</html>
